@@ -5,5 +5,3 @@
 #   * a provider listed here must NOT have one yet -- remove it once it does
 #
 # provider<TAB>reason
-org.cancercelllines	awaiting a live recording: scripts/record_fixtures.py, run from AWS
-org.progenetix.beacon	awaiting a live recording: scripts/record_fixtures.py, run from AWS
