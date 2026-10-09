@@ -1,0 +1,121 @@
+{
+ "_note": "Count is rounded, so 20 may not be 20. An imprecise count cannot certify completeness any more than it can support a frequency -- the same rule, the same field, the same reason. Reject even though the reported total is under the limit.",
+ "_requested_limit": 100,
+ "_expected": {
+  "holds": false,
+  "has_total": true,
+  "within_limit": true,
+  "count_exact": false,
+  "effective_limit": 100,
+  "limit_source": "response",
+  "not_test_mode": true
+ },
+ "meta": {
+  "apiVersion": "2.0",
+  "returnedGranularity": "record",
+  "returnedSchemas": [
+   {
+    "entityType": "genomicVariant",
+    "schema": "beacon-g_variant-v2.0.0"
+   }
+  ],
+  "receivedRequestSummary": {
+   "apiVersion": "2.0",
+   "requestedSchemas": [
+    {
+     "entityType": "genomicVariant"
+    }
+   ],
+   "pagination": {
+    "skip": 0,
+    "limit": 100
+   },
+   "requestedGranularity": "record",
+   "testMode": false
+  }
+ },
+ "responseSummary": {
+  "exists": true,
+  "numTotalResults": 20
+ },
+ "response": {
+  "resultSets": [
+   {
+    "id": "ds-1",
+    "setType": "dataset",
+    "exists": true,
+    "resultsCount": 20,
+    "countPrecision": "rounded",
+    "countAdjustedTo": 10,
+    "results": [
+     {
+      "variantInternalId": "fixture:rejects_imprecise_count.json",
+      "caseLevelData": [
+       {
+        "biosampleId": "fixture-bs-0"
+       },
+       {
+        "biosampleId": "fixture-bs-1"
+       },
+       {
+        "biosampleId": "fixture-bs-2"
+       },
+       {
+        "biosampleId": "fixture-bs-3"
+       },
+       {
+        "biosampleId": "fixture-bs-4"
+       },
+       {
+        "biosampleId": "fixture-bs-5"
+       },
+       {
+        "biosampleId": "fixture-bs-6"
+       },
+       {
+        "biosampleId": "fixture-bs-7"
+       },
+       {
+        "biosampleId": "fixture-bs-8"
+       },
+       {
+        "biosampleId": "fixture-bs-9"
+       },
+       {
+        "biosampleId": "fixture-bs-10"
+       },
+       {
+        "biosampleId": "fixture-bs-11"
+       },
+       {
+        "biosampleId": "fixture-bs-12"
+       },
+       {
+        "biosampleId": "fixture-bs-13"
+       },
+       {
+        "biosampleId": "fixture-bs-14"
+       },
+       {
+        "biosampleId": "fixture-bs-15"
+       },
+       {
+        "biosampleId": "fixture-bs-16"
+       },
+       {
+        "biosampleId": "fixture-bs-17"
+       },
+       {
+        "biosampleId": "fixture-bs-18"
+       },
+       {
+        "biosampleId": "fixture-bs-19"
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "_delivery_note": "CONSTRUCTED: 20 instance(s) delivered against a reported total of 20. Until 3.0.0's partiality fix these fixtures delivered no records at all, which the coalescence check never compared against the total; a record-granularity response is complete only if it delivers what it reports."
+}

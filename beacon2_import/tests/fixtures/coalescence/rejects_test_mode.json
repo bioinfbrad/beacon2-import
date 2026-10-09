@@ -1,0 +1,66 @@
+{
+ "_note": "A testMode response that otherwise passes every condition: numTotalResults present, under the applied limit, precision exact. It must STILL be rejected. bycon's own parameter documentation describes testMode as returning 'some random documents', so the records are a random sample of the collection rather than the answer to the query \u2014 per-record classification cannot speak for classes that were never separately requested, no matter what the count says. This is a precondition, not a fourth condition: it is checked before the arithmetic, because the arithmetic is meaningless here.",
+ "_requested_limit": 5,
+ "_expected": {
+  "holds": false,
+  "has_total": true,
+  "within_limit": true,
+  "count_exact": true,
+  "not_test_mode": false,
+  "effective_limit": 5,
+  "limit_source": "response"
+ },
+ "meta": {
+  "apiVersion": "v2.3.0-beaconplus",
+  "returnedGranularity": "record",
+  "returnedSchemas": [
+   {
+    "entityType": "genomicVariant",
+    "schema": "beacon-g_variant-v2.0.0"
+   }
+  ],
+  "receivedRequestSummary": {
+   "requestedSchemas": [
+    {
+     "entityType": "genomicVariant"
+    }
+   ],
+   "pagination": {
+    "skip": 0,
+    "limit": 5
+   },
+   "requestedGranularity": "record",
+   "testMode": true
+  }
+ },
+ "responseSummary": {
+  "exists": true,
+  "numTotalResults": 2
+ },
+ "response": {
+  "resultSets": [
+   {
+    "id": "cellz",
+    "setType": "dataset",
+    "exists": true,
+    "resultsCount": 2,
+    "countPrecision": "exact",
+    "responseEntityId": "genomicVariant",
+    "results": [
+     {
+      "variantInternalId": "fixture:rejects_test_mode.json",
+      "caseLevelData": [
+       {
+        "biosampleId": "fixture-bs-0"
+       },
+       {
+        "biosampleId": "fixture-bs-1"
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "_delivery_note": "CONSTRUCTED: 2 instance(s) delivered against a reported total of 2. Until 3.0.0's partiality fix these fixtures delivered no records at all, which the coalescence check never compared against the total; a record-granularity response is complete only if it delivers what it reports."
+}

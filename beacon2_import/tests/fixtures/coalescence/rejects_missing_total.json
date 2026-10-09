@@ -1,0 +1,52 @@
+{
+  "_note": "No numTotalResults, so completeness cannot be established at all -- absence of the field is not evidence that nothing was truncated. Reject.",
+  "_requested_limit": 100,
+  "_expected": {
+    "holds": false,
+    "has_total": false,
+    "within_limit": false,
+    "count_exact": true,
+    "effective_limit": 100,
+    "limit_source": "response",
+    "not_test_mode": true
+  },
+  "meta": {
+    "apiVersion": "2.0",
+    "returnedGranularity": "record",
+    "returnedSchemas": [
+      {
+        "entityType": "genomicVariant",
+        "schema": "beacon-g_variant-v2.0.0"
+      }
+    ],
+    "receivedRequestSummary": {
+      "apiVersion": "2.0",
+      "requestedSchemas": [
+        {
+          "entityType": "genomicVariant"
+        }
+      ],
+      "pagination": {
+        "skip": 0,
+        "limit": 100
+      },
+      "requestedGranularity": "record",
+      "testMode": false
+    }
+  },
+  "responseSummary": {
+    "exists": true
+  },
+  "response": {
+    "resultSets": [
+      {
+        "id": "ds-1",
+        "setType": "dataset",
+        "exists": true,
+        "resultsCount": 7,
+        "countPrecision": "exact",
+        "results": []
+      }
+    ]
+  }
+}

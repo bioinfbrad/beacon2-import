@@ -1,0 +1,654 @@
+<macros>
+    <token name="@TOOL_VERSION@">3.0.0</token>
+    <token name="@VERSION_SUFFIX@">0</token>
+    <token name="@PROFILE@">23.0</token>
+
+    <xml name="requirements">
+        <requirements>
+            <requirement type="package" version="@TOOL_VERSION@">beacon2-import</requirement>
+        </requirements>
+    </xml>
+
+    <xml name="xrefs">
+        <xrefs>
+            <xref type="bio.tools">ga4gh_beacon</xref>
+        </xrefs>
+    </xml>
+
+    <xml name="creators">
+        <creator>
+            <person givenName="Khaled" familyName="Jum'ah" url="https://github.com/khaled196" />
+            <person givenName="Björn" familyName="Grüning" url="https://github.com/bgruening" />
+            <person givenName="Katarzyna" familyName="Kamieniecka" url="https://github.com/kkamieniecka" />
+            <person givenName="Krzysztof" familyName="Poterlowicz" url="https://github.com/poterlowicz-lab" />
+            <organization name="poterlowicz-lab" url="https://github.com/poterlowicz-lab" />
+        </creator>
+    </xml>
+
+    <xml name="citations">
+        <citations>
+            <citation type="doi">10.1002/humu.24369</citation>
+            <citation type="doi">10.1371/journal.pcbi.1011475</citation>
+        </citations>
+    </xml>
+
+    <!--
+        CREDENTIALS
+        ===========
+        Credentials reach the job as a FILE PATH, never as a command-line value.
+        A token interpolated into the command line is recorded in the job's
+        command line and can surface in job details and error reports, which
+        would defeat the rule that credentials never appear in stdout, stderr,
+        dataset peek or exception text.
+
+        The configfile lists one `key=value` per line rather than JSON: Cheetah
+        cannot safely JSON-escape an arbitrary token, and a password containing
+        a quote would produce an unparseable file.
+
+        Only keys under the beacon2_credentials section are emitted, so an
+        unrelated preference (a Dropbox token, say) never enters the job
+        directory. Adding a credentialed provider means adding one line here and
+        one block in user_preferences_extra_conf.yml. Public providers need
+        neither and must work with an entirely empty vault.
+    -->
+    <token name="@CREDENTIALS@">--credentials-file '$credentials'</token>
+
+    <xml name="credentials_configfile">
+        <configfiles>
+            <configfile name="credentials"><![CDATA[#slurp
+#set $prefs = $__user__.extra_preferences if $__user__ else {}
+#set $keys = ['beacon2_credentials|ega_token', 'beacon2_credentials|cafevariome_token', 'beacon2_credentials|rdconnect_token']
+#for $key in $keys
+#set $value = $prefs.get($key, '')
+#if $value
+${key}=${value}
+#end if
+#end for
+#for $key in ['db_auth_source', 'db_user', 'db_password']
+#set $value = $prefs.get('beacon2_account|' + $key, '')
+#if $value
+${key}=${value}
+#end if
+#end for
+]]></configfile>
+            <!--
+                The selected providers' rows from the data table, so the CLI sees
+                the admin's base URLs (and, under test, the file:// fixture URLs)
+                rather than only the packaged registry's. Without this no tool
+                passed a base URL at all, and tool tests would have gone to the
+                network. UNVERIFIED in Galaxy: relies on `fields.<column>` of a
+                multiple select returning the comma-joined column values.
+            -->
+            <configfile name="provider_table"><![CDATA[#slurp
+#if str($connection.transport) == "api"
+#set $ids = str($connection.providers.fields.value).split(',')
+#set $urls = str($connection.providers.fields.base_url).split(',')
+#for $i in range(len($ids))
+${ids[$i]}		${urls[$i]}	1		
+#end for
+#end if
+]]></configfile>
+        </configfiles>
+    </xml>
+
+    <xml name="mongo_credentials_configfile">
+        <configfiles>
+            <configfile name="credentials"><![CDATA[#slurp
+#set $prefs = $__user__.extra_preferences if $__user__ else {}
+db_auth_source=${prefs.get('beacon2_account|db_auth_source', '')}
+db_user=${prefs.get('beacon2_account|db_user', '')}
+db_password=${prefs.get('beacon2_account|db_password', '')}
+]]></configfile>
+        </configfiles>
+    </xml>
+
+    <!--
+        PROVIDERS
+        =========
+        Providers are a runtime multi-select sourced from a data table. Adding a
+        provider is an admin edit to beacon_providers.loc, never a pull request,
+        and never a new tool. Twelve tools times six providers must not become
+        seventy-two XML files.
+    -->
+    <xml name="beacon_providers">
+        <param name="providers" type="select" multiple="true" optional="false"
+               label="Beacon providers to query"
+               help="Each selected provider is queried independently and results are combined, tagged with their origin. One unreachable beacon never fails the job: check the run report output to see what each provider did.">
+            <options from_data_table="beacon_providers">
+                <filter type="static_value" column="3" value="1" keep="true"/>
+                <validator type="no_options" message="No Beacon providers are enabled on this Galaxy instance. An administrator can enable them in the beacon_providers data table (tool-data/beacon_providers.loc)."/>
+            </options>
+        </param>
+    </xml>
+
+    <xml name="beacon_granularity">
+        <param name="granularity" type="select" label="Level of detail requested"
+               help="Beacons are not obliged to honour this: a provider may return less than you ask for, and the run report records what each one actually returned. Record level is required for the frequency and matrix tools.">
+            <option value="record" selected="true">Record — full details of each match</option>
+            <option value="count">Count — number of matches only</option>
+            <option value="boolean">Boolean — whether any match exists</option>
+        </param>
+    </xml>
+
+    <xml name="beacon_pagination">
+        <section name="pagination" title="Pagination" expanded="false">
+            <param argument="--limit" type="integer" value="100" min="0"
+                   label="Page size"
+                   help="Number of records per page. 0 requests everything the beacon is willing to return."/>
+            <param argument="--sample" type="integer" value="" optional="true" min="1"
+                   label="Accept a random sample of this size (optional)"
+                   help="Some beacons return a different random subset for any request smaller than the full result, so by default the tool retrieves everything or refuses. Set this to accept a random sample instead; every row is then labelled as a sample, and a repeat run returns different rows."/>
+            <param argument="--skip" type="integer" value="0" min="0"
+                   label="Pages to skip"
+                   help="This counts PAGES, not records — the record offset is (pages skipped × page size). Skipping 2 pages with a page size of 8 starts at record 17."/>
+        </section>
+    </xml>
+
+    <!--
+        FILTERS
+        =======
+        Beacon v2 joins filters with logical AND, always. There is no support for
+        Boolean expressions, so no OR/NOT is offered here. The `!` operator below
+        negates a VALUE within a single filter; that is not Boolean composition.
+    -->
+    <xml name="beacon_filters">
+        <repeat name="filters" title="Filter" min="0"
+                help="Filters scope a query by ontology term, numeric value or local identifier. Multiple filters are combined with AND.">
+            <conditional name="filter_type">
+                <param name="kind" type="select" label="Filter type">
+                    <option value="ontology" selected="true">Ontology term or public identifier</option>
+                    <option value="alphanumeric">Numeric or text value</option>
+                    <option value="custom">Custom term defined by the beacon</option>
+                </param>
+                <when value="ontology">
+                    <param name="term" type="text" value="" optional="false" label="Term (CURIE)"
+                           help="For example NCIT:C6975 (papillary renal cell carcinoma), HP:0100526, or PMID:22824167. Use the Filtering Terms tool to discover what a provider accepts.">
+                        <validator type="regex" message="Enter a CURIE such as NCIT:C6975">^[A-Za-z0-9_.]+:[A-Za-z0-9_.\-]+$</validator>
+                    </param>
+                    <param name="include_descendant_terms" type="boolean" checked="true"
+                           truevalue="true" falsevalue="false"
+                           label="Include descendant terms"
+                           help="On by default, matching the specification: querying a parent term also matches its children."/>
+                    <param name="similarity" type="select" label="Semantic similarity">
+                        <option value="exact" selected="true">Exact</option>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </param>
+                    <expand macro="filter_scope"/>
+                </when>
+                <when value="alphanumeric">
+                    <param name="field" type="text" value="" optional="false" label="Field identifier"
+                           help="Preferably a CURIE scoping the field, for example PATO:0000011 (age) or EFO:0004847 (age at onset)."/>
+                    <param name="operator" type="select" label="Operator">
+                        <option value="=" selected="true">equals (=)</option>
+                        <option value="&lt;">less than (&lt;)</option>
+                        <option value="&gt;">greater than (&gt;)</option>
+                        <option value="&lt;=">at most (&lt;=)</option>
+                        <option value="&gt;=">at least (&gt;=)</option>
+                        <option value="!">does not contain (!)</option>
+                    </param>
+                    <param name="value" type="text" value="" optional="false" label="Value"
+                           help="Use % as a wildcard, e.g. %cancer%. Enter ages in YEARS — they are converted to the ISO 8601 form the API requires (70 becomes P70Y)."/>
+                    <param name="is_age" type="boolean" checked="false" truevalue="true" falsevalue="false"
+                           label="This value is an age in years"
+                           help="Converts your number to an ISO 8601 period before transmission."/>
+                    <expand macro="filter_scope"/>
+                </when>
+                <when value="custom">
+                    <param name="term" type="text" value="" optional="false" label="Custom term"
+                           help="A locally defined identifier, using whatever prefix the beacon documents."/>
+                    <expand macro="filter_scope"/>
+                </when>
+            </conditional>
+        </repeat>
+    </xml>
+
+    <xml name="filter_scope">
+        <param name="scope" type="select" optional="true" label="Apply this filter to (optional)"
+               help="Resolves an ambiguity that otherwise changes your results: a cancer term with no scope can mean 'match cancer biosamples' or 'match individuals with the disease', and the second can pull in germline variants alongside tumour ones.">
+            <option value="">Let the beacon decide</option>
+            <option value="biosamples">Biosamples</option>
+            <option value="individuals">Individuals</option>
+            <option value="analyses">Analyses</option>
+            <option value="runs">Runs</option>
+            <option value="genomicVariations">Genomic variations</option>
+        </param>
+    </xml>
+
+    <xml name="beacon_reference">
+        <param argument="--reference-name" type="text" value="" optional="false"
+               label="Chromosome"
+               help="Enter it however you normally write it — 17, chr17 or NC_000017.11 are all accepted and converted to whatever the provider expects."/>
+        <param argument="--assembly" type="select" label="Genome assembly"
+               help="Used for providers that identify chromosomes by name rather than by RefSeq accession.">
+            <option value="GRCh38" selected="true">GRCh38 (hg38)</option>
+            <option value="GRCh37">GRCh37 (hg19)</option>
+        </param>
+    </xml>
+
+    <!--
+        VARIANT CLASS
+        =============
+        The second fan-out axis. Support for a query FORM says nothing about the
+        CONTENT a beacon holds, so class is selected explicitly and every
+        (provider, class) pair is planned, executed and reported on its own row.
+
+        The CNV/SV split follows the abundance-versus-junction distinction that
+        VCF 4.4 draws with SVCLAIM: an abundance event is an interval property
+        and bins across the genome; a junction event is a point-pair and bins as
+        breakpoint density. Two things that bin differently cannot share a plot.
+
+        Values are emitted as CNV, SMALL_VARIANT, SV, REPEAT. The label says
+        "SNV / small indel" but the VALUE is never SNV, because the value ends
+        up in results.tsv, in plot titles and in saved files, where a 12 bp
+        frameshift labelled SNV would be wrong in the data with no way for
+        anyone downstream to correct it.
+    -->
+    <xml name="beacon_variant_class" tokens="cnv,small,sv">
+        <param name="variant_classes" type="select" multiple="true" optional="false"
+               label="Variant classes to search"
+               help="Each class is queried separately against each beacon, and the run report has a row for every combination — so a beacon that returns nothing tells you why. Not every beacon holds every class.">
+            <option value="CNV" selected="@CNV@">Copy number variants — gains, losses, amplifications</option>
+            <option value="SMALL_VARIANT" selected="@SMALL@">SNV / small indel — substitutions and short insertions or deletions</option>
+            <option value="SV" selected="@SV@">Structural variants — breakpoints, inversions, fusions</option>
+            <option value="REPEAT" selected="false">Tandem repeat expansions</option>
+            <validator type="no_options" message="Select at least one variant class."/>
+        </param>
+    </xml>
+
+    <!--
+        PER-CLASS TERM VOCABULARIES
+        ===========================
+        A Galaxy conditional cannot key off a multi-select, so each class gets
+        its own collapsed section and the command line emits only the sections
+        whose class was selected. The curated list therefore always matches the
+        class, and nobody has to reach for the free-text box to look for a SNP.
+    -->
+    <xml name="beacon_cnv_terms">
+        <section name="cnv_terms" title="Copy number term (used if Copy number variants is selected)" expanded="false">
+            <conditional name="variant_type">
+                <param name="mode" type="select" label="Copy number term"
+                       help="DEL and DUP are what the Beacon specification itself calls legacy variant types; it prefers the EFO terms.">
+                    <option value="none" selected="true">Any copy number variant</option>
+                    <option value="efo">Specific term (recommended)</option>
+                    <option value="legacy">Legacy VCF term (DEL / DUP)</option>
+                    <option value="custom">Other — enter a term</option>
+                </param>
+                <when value="none"/>
+                <when value="efo">
+                    <param name="term" type="select" label="Term">
+                        <option value="EFO:0030067" selected="true">Copy number loss — EFO:0030067</option>
+                        <option value="EFO:0030068">Low-level copy number loss — EFO:0030068</option>
+                        <option value="EFO:0020073">High-level copy number loss — EFO:0020073</option>
+                        <option value="EFO:0030069">Complete genomic deletion — EFO:0030069</option>
+                        <option value="EFO:0030070">Copy number gain — EFO:0030070</option>
+                        <option value="EFO:0030071">Low-level copy number gain — EFO:0030071</option>
+                        <option value="EFO:0030072">High-level copy number gain — EFO:0030072</option>
+                        <option value="EFO:0030073">Focal genome amplification — EFO:0030073</option>
+                        <option value="EFO:0030064">Regional base ploidy — EFO:0030064</option>
+                    </param>
+                    <param name="expand_hierarchy" type="select" label="Expand to more specific terms"
+                           help="Querying 'copy number gain' without expansion can miss amplifications recorded under a more specific term — a false negative you cannot see in the output.">
+                        <option value="auto" selected="true">Automatically — expand unless the beacon does it itself</option>
+                        <option value="always">Always expand on this side</option>
+                        <option value="never">Never — send the single term only</option>
+                    </param>
+                </when>
+                <when value="legacy">
+                    <param name="term" type="select" label="Legacy VCF term (DEL / DUP)">
+                        <option value="DEL" selected="true">DEL — deletion</option>
+                        <option value="DUP">DUP — duplication</option>
+                    </param>
+                </when>
+                <when value="custom">
+                    <param name="term" type="text" value="" optional="false" label="Term"/>
+                </when>
+            </conditional>
+        </section>
+    </xml>
+
+    <xml name="beacon_small_variant_terms">
+        <section name="small_variant_terms" title="SNV / small indel scoping (used if that class is selected)" expanded="true">
+            <param name="reference_bases" type="text" value="" optional="true" label="Reference bases"
+                   help="The bases in the reference sequence, e.g. G. Use N as a wildcard."/>
+            <param name="alternate_bases" type="text" value="" optional="true" label="Alternate bases"
+                   help="The bases you are looking for, e.g. A. Use N as a wildcard: ANNT matches ACGT, ACCT and so on."/>
+            <param name="aminoacid_change" type="text" value="" optional="true" label="Amino acid change"
+                   help="One-letter format, e.g. V600E."/>
+            <conditional name="variant_type">
+                <param name="mode" type="select" label="Molecular consequence">
+                    <option value="none" selected="true">Any</option>
+                    <option value="so">Sequence Ontology term</option>
+                    <option value="custom">Other — enter a term</option>
+                </param>
+                <when value="none"/>
+                <when value="so">
+                    <param name="term" type="select" label="Consequence">
+                        <option value="SO:0001583" selected="true">Missense variant — SO:0001583</option>
+                        <option value="SO:0001587">Stop gained — SO:0001587</option>
+                        <option value="SO:0001580">Coding sequence variant — SO:0001580</option>
+                        <option value="SO:0001623">5 prime UTR variant — SO:0001623</option>
+                        <option value="SO:0000605">Intergenic variant — SO:0000605</option>
+                    </param>
+                </when>
+                <when value="custom">
+                    <param name="term" type="text" value="" optional="false" label="Term"
+                           help="For example SNV, INS or DEL, or any value the beacon accepts."/>
+                </when>
+            </conditional>
+        </section>
+    </xml>
+
+    <xml name="beacon_sv_terms">
+        <section name="sv_terms" title="Structural variant scoping (used if that class is selected)" expanded="false">
+            <conditional name="variant_type">
+                <param name="mode" type="select" label="Structural variant type">
+                    <option value="none" selected="true">Any</option>
+                    <option value="curated">Specific type</option>
+                    <option value="custom">Other — enter a term</option>
+                </param>
+                <when value="none"/>
+                <when value="curated">
+                    <param name="term" type="select" label="Type">
+                        <option value="BND" selected="true">BND — breakend / junction</option>
+                        <option value="INV">INV — inversion</option>
+                        <option value="TRA">TRA — translocation</option>
+                        <option value="INS">INS — insertion</option>
+                    </param>
+                </when>
+                <when value="custom">
+                    <param name="term" type="text" value="" optional="false" label="Term"/>
+                </when>
+            </conditional>
+        </section>
+    </xml>
+
+    <xml name="beacon_api_connection">
+        <conditional name="connection">
+            <param name="transport" type="select" label="Beacon connection"
+                   help="This tool reads the Beacon v2 API's informational endpoints, which a self-hosted MongoDB database does not have.">
+                <option value="api" selected="true">Beacon v2 API</option>
+            </param>
+            <when value="api">
+                <expand macro="beacon_providers"/>
+            </when>
+        </conditional>
+    </xml>
+
+    <xml name="mongo_connection">
+        <param argument="--db-host" type="text" value="127.0.0.1" label="Database host"
+               help="Hostname or IP of your self-hosted beacon database."/>
+        <param argument="--db-port" type="integer" value="27017" label="Database port"/>
+        <param argument="--database" type="text" value="beacon" label="Database"/>
+        <param argument="--collection" type="text" value="" label="Collection"/>
+    </xml>
+
+    <xml name="beacon_transport">
+        <conditional name="connection">
+            <param name="transport" type="select" label="Beacon connection">
+                <option value="api" selected="true">Beacon v2 API</option>
+                <option value="mongodb">Direct MongoDB (self-hosted)</option>
+            </param>
+            <when value="api">
+                <expand macro="beacon_providers"/>
+            </when>
+            <when value="mongodb">
+                <expand macro="mongo_connection"/>
+            </when>
+        </conditional>
+    </xml>
+
+    <!--
+        OUTPUTS
+        =======
+        Two outputs from every query tool. The run report is a scientific
+        requirement, not a log: without it, "no rows from beacon X" is ambiguous
+        between "no matches" and "never queried".
+    -->
+    <xml name="beacon_outputs">
+        <outputs>
+            <data name="results" format="tabular" label="${tool.name} on ${on_string}: results"
+                  from_work_dir="results.tsv"/>
+            <data name="outcomes" format="tabular" label="${tool.name} on ${on_string}: run report"
+                  from_work_dir="outcomes.tsv"/>
+        </outputs>
+    </xml>
+
+    <token name="@SAMPLE_ARGS@"><![CDATA[
+        #if str($pagination.sample)
+            --sample $pagination.sample
+        #end if
+    ]]></token>
+
+    <token name="@OUTPUT_ARGS@"><![CDATA[
+        --results 'results.tsv'
+        --outcomes 'outcomes.tsv'
+    ]]></token>
+
+    <token name="@PROVIDER_ARGS@"><![CDATA[
+        --providers '${",".join(str($connection.providers).split(","))}'
+        --provider-table '$provider_table'
+        @CREDENTIALS@
+    ]]></token>
+
+    <token name="@FILTER_ARGS@"><![CDATA[
+        #for $f in $filters
+            #if str($f.filter_type.kind) == "ontology"
+                --filter 'ontology:${f.filter_type.term}:descendants=${f.filter_type.include_descendant_terms}:similarity=${f.filter_type.similarity}#if str($f.filter_type.scope)#:scope=${f.filter_type.scope}#end if#'
+            #elif str($f.filter_type.kind) == "alphanumeric"
+                --filter 'alphanumeric:${f.filter_type.field}:${f.filter_type.operator}:${f.filter_type.value}:age=${f.filter_type.is_age}#if str($f.filter_type.scope)#:scope=${f.filter_type.scope}#end if#'
+            #else
+                --filter 'custom:${f.filter_type.term}#if str($f.filter_type.scope)#:scope=${f.filter_type.scope}#end if#'
+            #end if
+        #end for
+    ]]></token>
+
+    <token name="@VARIANT_CLASS_ARGS@"><![CDATA[
+        --variant-classes '${str($variant_classes)}'
+    ]]></token>
+
+    <!--
+        Terms are emitted per class, and only for classes the user selected, so
+        a CNV term can never be attached to a small-variant query. An incoherent
+        combination is caught locally by the planner rather than producing an
+        opaque 400 from one beacon and silent acceptance from another.
+    -->
+    <token name="@CNV_TERM_ARGS@"><![CDATA[
+        #if "CNV" in str($variant_classes).split(",")
+            #if str($cnv_terms.variant_type.mode) == "efo"
+                --class-term 'CNV=$cnv_terms.variant_type.term'
+                --expand-hierarchy '$cnv_terms.variant_type.expand_hierarchy'
+            #elif str($cnv_terms.variant_type.mode) != "none"
+                --class-term 'CNV=$cnv_terms.variant_type.term'
+            #end if
+        #end if
+    ]]></token>
+
+    <token name="@SMALL_VARIANT_TERM_ARGS@"><![CDATA[
+        #if "SMALL_VARIANT" in str($variant_classes).split(",")
+            #if str($small_variant_terms.reference_bases)
+                --reference-bases '$small_variant_terms.reference_bases'
+            #end if
+            #if str($small_variant_terms.alternate_bases)
+                --alternate-bases '$small_variant_terms.alternate_bases'
+            #end if
+            #if str($small_variant_terms.aminoacid_change)
+                --aminoacid-change '$small_variant_terms.aminoacid_change'
+            #end if
+            #if str($small_variant_terms.variant_type.mode) != "none"
+                --class-term 'SMALL_VARIANT=$small_variant_terms.variant_type.term'
+            #end if
+        #end if
+    ]]></token>
+
+    <token name="@SV_TERM_ARGS@"><![CDATA[
+        #if "SV" in str($variant_classes).split(",")
+            #if str($sv_terms.variant_type.mode) != "none"
+                --class-term 'SV=$sv_terms.variant_type.term'
+            #end if
+        #end if
+    ]]></token>
+
+    <!-- Shared help fragments -->
+    <!--
+        THE MODEL, in every tool's help. Two jobs: the import tool WRITES, every
+        other tool READS. beacon2-import is current, not on its way out.
+    -->
+    <token name="@HELP_READS@"><![CDATA[
+This tool **reads**: it searches beacons and never changes them. To load data
+into a self-hosted beacon, use **Beacon2 Import**.
+    ]]></token>
+
+    <token name="@HELP_WRITES@"><![CDATA[
+This tool **writes**: it loads Beacon JSON into a self-hosted beacon's MongoDB
+database, and it is the only Beacon2 tool that changes data. To search, use the
+Beacon2 query tools.
+    ]]></token>
+
+    <token name="@HELP_OUTPUTS@"><![CDATA[
+**Outputs**
+
+*Results* — one row per match. Every row carries the beacon it came from, the
+level of detail that beacon actually returned, and whether the query had to be
+weakened to run there. Because each row is tagged, filtering on ``beacon_id``
+recovers any single-beacon view: you do not need a separate run per provider.
+
+*Run report* — one row for every combination of beacon and variant class, with
+a status of ``ok``, ``skipped``, ``auth_missing``, ``blocked``, ``unavailable`` or
+``error``. Read it first.
+Two classes across three beacons gives six rows, and each one says what
+happened. Without it, a beacon returning nothing looks identical to a beacon
+that was never queried, or to one that does not hold that kind of variant.
+    ]]></token>
+
+    <token name="@HELP_VARIANT_CLASS@"><![CDATA[
+**Not every beacon holds every kind of variant**
+
+Whether a beacon can *answer* a query and whether it *holds* that kind of data
+are different things, and the Beacon protocol has no way to ask about the
+second. A resource can implement small-variant queries perfectly and hold
+almost nothing but copy number profiles.
+
+So the tool ships a registry recording, per beacon, which classes it is known
+to serve, and every result is labelled with the class it belongs to:
+
+* **known to serve it** — queried normally
+* **not known either way** — queried anyway, and the row is marked unverified.
+  If nothing comes back, the report says so in as many words: that is not
+  evidence the beacon holds none
+* **declared not to serve it** — skipped, quoting the declaration
+
+Most entries start as *not known either way*, because this genuinely cannot be
+read from a beacon's own metadata. Fetching a beacon's information endpoint
+tells you its version, its security level and its schemas, and nothing at all
+about whether it holds a single copy number variant. As people use the tool,
+results returned for an unverified class are reported as evidence that the
+registry can be updated.
+    ]]></token>
+
+    <token name="@HELP_VARIANT_SIZE@"><![CDATA[
+**Large indels are classified by what is known about them, not by size**
+
+A 120 base insertion is not a small variant in any ordinary sense, but if the
+beacon reports the reference and alternate bases then it is *precisely
+specified by sequence* — we know exactly what was inserted and where. That is
+the same kind of knowledge as for a single base change, so it is reported as
+**SNV / small indel**, with the length noted in ``classification_basis``.
+
+It is deliberately not reported as a structural variant. Structural variant
+analysis counts breakpoints, and a record that gives bases rather than a
+junction has no breakpoint to count — it would either sit in that bucket
+contributing nothing, or invite something downstream to invent a breakpoint
+from the interval ends.
+
+To find large events whatever their class, filter on the ``variant_length``
+column in the results table rather than on ``variant_class``. For example,
+``variant_length >= 50`` gives every event of that size across all classes.
+
+The same record with *no* reported bases behaves differently, and correctly so:
+with no sequence and no junction, there is nothing to classify on, so it is
+reported as a copy number variant if the beacon supplied a copy number term and
+as ``unclassified`` if it did not.
+    ]]></token>
+
+    <token name="@HELP_DEGRADATION@"><![CDATA[
+**When a query cannot be run as asked**
+
+Beacons differ in what they support. Rather than failing, the tool weakens the
+query where it must and records what it did on every affected row: a bracket
+query flattened to a range, an EFO term downgraded to DEL/DUP, a filter dropped,
+or detail capped. Check ``query_degraded`` and ``degradation_notes`` before
+comparing results between providers.
+    ]]></token>
+
+    <token name="@HELP_CNV_TERMS@"><![CDATA[
+**Copy number terms**
+
+Users think in DEL and DUP; the wire format prefers EFO terms. Enter either.
+
+======================  ===================================  ====  ===========
+EFO term                Meaning                              VCF   SO
+======================  ===================================  ====  ===========
+EFO:0030067             copy number loss                     DEL   SO:0001743
+EFO:0030068             low-level copy number loss           DEL   SO:0001743
+EFO:0020073             high-level copy number loss          DEL   SO:0001743
+EFO:0030069             complete genomic deletion            DEL   SO:0001743
+EFO:0030070             copy number gain                     DUP   SO:0001742
+EFO:0030071             low-level copy number gain           DUP   SO:0001742
+EFO:0030072             high-level copy number gain          DUP   SO:0001742
+EFO:0030073             focal genome amplification           DUP   SO:0001742
+EFO:0030064             regional base ploidy                 —     —
+======================  ===================================  ====  ===========
+
+Note ``EFO:0020073``: high-level loss uses a ``002`` prefix, breaking the
+pattern of the others.
+
+**A documented discrepancy.** Two GA4GH sources disagree about this vocabulary.
+The query-standards component lists eight terms including regional base ploidy
+but omitting focal amplification; the CNV comparison table lists eight including
+focal amplification but omitting regional base ploidy. We support all nine.
+Because regional base ploidy appears only in the first source, it has no
+VCF or SO mapping, and we leave those cells empty rather than invent them.
+
+**One local decision.** No authority states where focal amplification sits in
+the hierarchy. We place it beneath high-level gain, because it describes the
+same copy threshold with an added size constraint. When expansion crosses that
+edge, the affected rows say so in ``expansion_notes`` — so you can tell a match
+found through our inference from one found through a published hierarchy.
+    ]]></token>
+
+    <!--
+        RESTORED VERBATIM from the 2.2.4 macros for import.xml, which is ruled
+        UNCHANGED. Do not reuse these for 3.0 tools.
+
+        SECURITY-FIXED in 3.0.0. In 2.2.4 the `configfile` macro below fell
+        back to hardcoded credentials (auth source "admin", user "root",
+        password "example") whenever any preference was empty, so a user who
+        never set credentials authenticated as root with the docker-compose
+        example password. It also wrote the password unescaped into JSON, so a
+        quote produced an unparseable file. It now writes only what the user
+        set, serialised with json.dumps; with no user set, the importer
+        connects without authentication and says so.
+    -->
+    <xml name="Connection_to_MongoDB">
+        <param argument="--db-host" type="text" label="DATABASE HOST" value="127.0.0.1" help="Hostname/IP of the beacon database" />
+        <param argument="--db-port" type="integer" label="DATABASE PORT" value="27017" help="Port of the beacon database" />
+    </xml>
+
+    <xml name="Database_Configuration">
+        <param argument="--database" type="text" label="DATABASE" value="" help="The targeted beacon database" />
+        <param argument="--collection" type="text" label="COLLECTION" value="" help="The targeted beacon collection from the desired database" />
+    </xml>
+
+    <xml name="configfile">
+        <configfiles>
+            <configfile name="credentials"><![CDATA[#slurp
+#import json
+#set $prefs = $__user__.extra_preferences if $__user__ else {}
+#set $creds = {'db_auth_source': $prefs.get('beacon2_account|db_auth_source', '') or 'admin', 'db_user': $prefs.get('beacon2_account|db_user', ''), 'db_password': $prefs.get('beacon2_account|db_password', '')}
+${json.dumps($creds)}
+]]></configfile>
+    </configfiles>
+    </xml>
+</macros>

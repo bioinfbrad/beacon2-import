@@ -1,0 +1,27 @@
+{
+  "_note": "ADJACENT HARD CASE. Reference and alternate bases absent, a large interval, no mate or breakend, no type term. No sequence claim and no junction claim, so there is nothing to classify on and it falls to unclassified. Add a copy-number term to this same record and it becomes CNV via the abundance rule -- that contrast is the point of the fixture. Compare large_indel_boundary.json: identical size, fully sequence-specified, therefore SMALL_VARIANT. Size never decides.",
+  "variantInternalId": "var-noclaim-0001",
+  "variation": {
+    "location": {
+      "type": "SequenceLocation",
+      "sequence_id": "refseq:NC_000005.10",
+      "interval": {
+        "type": "SequenceInterval",
+        "start": {
+          "type": "Number",
+          "value": 12000000
+        },
+        "end": {
+          "type": "Number",
+          "value": 12000120
+        }
+      }
+    }
+  },
+  "caseLevelData": [
+    {
+      "id": "cl-1",
+      "biosampleId": "bios-fff001"
+    }
+  ]
+}

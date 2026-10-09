@@ -1,0 +1,20 @@
+{
+  "_note": "No type term. Classifiable only from reference/alternate base lengths, both within the 50 bp convention.",
+  "variantInternalId": "var-snv-0001",
+  "variation": {
+    "referenceBases": "G",
+    "alternateBases": "A",
+    "location": {
+      "type": "SequenceLocation",
+      "sequence_id": "refseq:NC_000017.11",
+      "interval": {
+        "type": "SequenceInterval",
+        "start": {"type": "Number", "value": 7577120},
+        "end": {"type": "Number", "value": 7577121}
+      }
+    }
+  },
+  "caseLevelData": [
+    {"id": "cl-1", "biosampleId": "bios-bbb001"}
+  ]
+}

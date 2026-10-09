@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<tables>
+    <table name="beacon_providers" comment_char="#">
+        <columns>value, name, base_url, enabled, tier, credential_key</columns>
+        <file path="tool-data/beacon_providers.loc" />
+    </table>
+</tables>

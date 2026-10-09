@@ -1,0 +1,115 @@
+{
+  "_note": "CONSTRUCTED, not a verbatim capture \u2014 I do not have the raw body. It reproduces the SHAPE and the arithmetic of the observed filtered limit-100 response (55 records carrying 60 caseLevelData instances, numTotalResults 60) at a size small enough to read: 3 records, 4 instances, numTotalResults 4. Replace with the raw response when available; the assertions are written against the arithmetic, not the row count, so a swap will not break them. countPrecision is deliberately ABSENT. An earlier version of this constructed fixture declared it `exact`, which I could not vouch for: the one verbatim resultSet we hold from this provider (classify/bycon_cnv_live.json) carries no countPrecision at all.",
+  "_observed_original": {
+    "records": 55,
+    "instances": 60,
+    "numTotalResults": 60,
+    "limit": 100
+  },
+  "_expected": {
+    "records": 3,
+    "instances": 4,
+    "num_total_results": 4,
+    "complete": true
+  },
+  "meta": {
+    "apiVersion": "v2.3.0-beaconplus",
+    "returnedGranularity": "record",
+    "returnedSchemas": [
+      {
+        "entityType": "genomicVariant",
+        "schema": "beacon-g_variant-v2.0.0"
+      }
+    ],
+    "receivedRequestSummary": {
+      "filters": [
+        {
+          "id": "NCIT:C3058"
+        }
+      ],
+      "pagination": {
+        "skip": 0,
+        "limit": 100
+      },
+      "requestedGranularity": "record",
+      "testMode": false
+    }
+  },
+  "responseSummary": {
+    "exists": true,
+    "numTotalResults": 4
+  },
+  "response": {
+    "resultSets": [
+      {
+        "id": "cellz",
+        "setType": "dataset",
+        "exists": true,
+        "resultsCount": 3,
+        "responseEntityId": "genomicVariant",
+        "info": {
+          "counts": {
+            "variants": 4,
+            "biosamples": 3,
+            "analyses": 3,
+            "individuals": 1
+          }
+        },
+        "results": [
+          {
+            "variantInternalId": "v1",
+            "variation": {
+              "type": "CopyNumberChange",
+              "variantState": {
+                "id": "EFO:0030070",
+                "label": "gain"
+              }
+            },
+            "caseLevelData": [
+              {
+                "biosampleId": "bs-1",
+                "individualId": "ind-1"
+              },
+              {
+                "biosampleId": "bs-2",
+                "individualId": "ind-2"
+              }
+            ]
+          },
+          {
+            "variantInternalId": "v2",
+            "variation": {
+              "type": "CopyNumberChange",
+              "variantState": {
+                "id": "EFO:0030071",
+                "label": "low-level gain"
+              }
+            },
+            "caseLevelData": [
+              {
+                "biosampleId": "bs-3",
+                "individualId": "ind-3"
+              }
+            ]
+          },
+          {
+            "variantInternalId": "v3",
+            "variation": {
+              "type": "CopyNumberChange",
+              "variantState": {
+                "id": "EFO:0030072",
+                "label": "high-level gain"
+              }
+            },
+            "caseLevelData": [
+              {
+                "biosampleId": "bs-4",
+                "individualId": "ind-4"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

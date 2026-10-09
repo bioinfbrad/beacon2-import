@@ -1,0 +1,26 @@
+{
+  "_note": "A genomicVariant query answered with biosample records. Well-formed, HTTP 200, no error field anywhere — this is exactly the silent failure the returnedSchemas check exists to catch. Without it the normaliser would flatten biosample records into variant columns and nothing downstream could tell.",
+  "_requested_entity_type": "genomicVariant",
+  "_expected": {"raises": "EntityTypeMismatch", "returned_entity_type": "biosample"},
+  "meta": {
+    "apiVersion": "v2.0.0",
+    "returnedGranularity": "record",
+    "returnedSchemas": [{"entityType": "biosample", "schema": "beacon-biosample-v2.0.0"}],
+    "receivedRequestSummary": {
+      "requestedSchemas": [{"entityType": "biosample"}],
+      "pagination": {"skip": 0, "limit": 2000}
+    }
+  },
+  "responseSummary": {"exists": true, "numTotalResults": 3},
+  "response": {
+    "resultSets": [
+      {"id": "progenetix", "setType": "dataset", "exists": true, "resultsCount": 3,
+       "countPrecision": "exact",
+       "results": [
+         {"id": "pgxbs-aaa001", "biosampleStatus": {"id": "EFO:0009654", "label": "reference specimen"}},
+         {"id": "pgxbs-aaa002", "biosampleStatus": {"id": "EFO:0009654", "label": "reference specimen"}},
+         {"id": "pgxbs-aaa003", "biosampleStatus": {"id": "EFO:0009654", "label": "reference specimen"}}
+       ]}
+    ]
+  }
+}

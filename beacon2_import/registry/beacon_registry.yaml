@@ -1,0 +1,783 @@
+# beacon_registry.yaml -- technical capability contract, keyed by provider id.
+#
+# Relationship to beacon_providers.loc:
+#   * The .loc file is the ADMIN's on/off switch and URL override. It is editable
+#     on a running Galaxy without a pull request.
+#   * This file is the TECHNICAL CONTRACT consumed by query/planner.py. A provider
+#     present in .loc but absent here is skipped with status `skipped` and a note,
+#     because we will not guess a dialect (see §13: unknown capability = skip,
+#     never probe a partner's production endpoint).
+#
+# PROVENANCE DISCIPLINE
+#   Every provider carries a `verification:` block with THREE tiers, because
+#   "documented by the operator" is neither a live observation nor a guess:
+#       observed:    confirmed against a live server, with a date
+#       documented:  taken from the operator's own published examples or config
+#       (unlisted):  an assumption, however plausible
+#   Conflating the middle tier with either neighbour is what lets a published
+#   value get mistaken for a verified one, or discarded as a guess. beacon2_service_info re-checks the observable
+#   subset and reports drift; it never silently rewrites this file.
+#
+# NO GLOBAL DIALECT DEFAULTS
+#   request_layout, filters_location, get_list_style and reference_style are
+#   deliberately absent from `defaults:`. registry/schema.py MUST reject an
+#   enabled provider that omits any of them or sets them to `unknown`. None of
+#   the three enabled providers is documented as speaking the nested `g_variant`
+#   form, so a "spec default" would be a dialect nothing we ship actually uses.
+
+# VARIANT CLASSES ARE CONTENT, NOT CAPABILITY
+#   Support for a query FORM says nothing about the CONTENT a beacon holds. A
+#   resource can implement sequence queries flawlessly and hold almost no small
+#   variants, so `variant_classes_served` is a separate declaration.
+#
+#   It CANNOT be derived from the informational endpoints. /entry_types,
+#   /configuration and /map describe capability and structure; a CNV-only and a
+#   small-variant-only beacon emit identical responses from all three.
+#   /filtering_terms carries indirect signal where an implementation derives its
+#   vocabulary from the data, but is suggestive at best. The only cheap positive
+#   evidence is a testMode=true sample, and the only source for a `no` is an
+#   operator declaration.
+#
+#   Asymmetry, enforced in registry/schema.py and registry/evidence.py:
+#   NOTE: status values are QUOTED. Unquoted `yes` and `no` are parsed as
+#   booleans by YAML 1.1, which would silently turn a class declaration into
+#   True/False and break every comparison against ClassStatus.
+#
+#       yes      may come from observation
+#       no       may come ONLY from an attributable operator declaration
+#       unknown  everything else
+#   Absence in a sample proves nothing. Nothing automated may ever write `no`.
+#
+#   Behaviour, decided in query/planner.py:
+#       yes      -> query, outcome ok
+#       unknown  -> query, outcome ok, flagged class-unverified; a zero result
+#                   is reported as NOT evidence of absence
+#       no       -> skip, quoting the declaration
+#   Only a declared `no` skips. We label rather than refuse, because a
+#   class-unknown query is well-formed, legal and user-initiated -- unlike an
+#   unknown DIALECT, where a speculative request may be malformed for that
+#   server and lands us in a partner's logs as a badly behaved client.
+
+capability_schema_version: 2
+
+# Operational settings only. Never dialect.
+defaults:
+  rate_limit_per_minute: 30
+  connect_timeout_seconds: 10
+  read_timeout_seconds: 60
+  max_retries: 3
+  retry_on_status: [429, 502, 503, 504]
+  backoff_initial_seconds: 1.0
+  backoff_max_seconds: 30.0
+  # Sent on every request. A federated client should identify itself.
+  user_agent: "GalaxyBeacon2/3.0.0 (+https://github.com/galaxyproject/tools-iuc)"
+  pagination:
+    # NORMATIVE: `skip` counts PAGES, not records. Offset = skip * limit.
+    # framework/src/common/beaconCommonComponents.yaml -> Skip
+    skip_semantics: page
+    default_limit: 100
+    max_pages: 50
+  # Always sent explicitly: the normative default for requestedGranularity is
+  # `boolean`, so omitting it can silently downgrade a record query.
+  always_send_requested_granularity: true
+  # Normative default is HIT; we send it explicitly and record what came back.
+  include_resultset_responses: HIT
+  # COMPLETE-OR-REFUSE ceiling for providers whose pages are random draws.
+  # Below the total such a provider returns a random subset, so the only
+  # honest retrievals are everything or an explicitly chosen sample. Above this
+  # many matches the tool refuses rather than fetching, unless the user opts
+  # into sampling. Judged in INSTANCES (caseLevelData entries), which is the
+  # unit numTotalResults uses on bycon; instances >= records, so this is
+  # conservative. Observed scale ~1.7 KB per record: 10000 is roughly 17 MB.
+  # Admin-overridable per provider with `full_retrieval_ceiling:`.
+  full_retrieval_ceiling: 10000
+
+providers:
+
+  # ---------------------------------------------------------------------------
+  org.progenetix.beacon:
+    name: Progenetix Beacon+
+    base_url: https://progenetix.org/beacon
+    stack: bycon
+    enabled: true
+    tier: public
+    credential_key: null
+
+    beacon_id_reported: org.progenetix               # OBSERVED (docs said org.progenetix.beacon)
+    api_version_reported: "v2.3.0-beaconplus"        # OBSERVED; the same as cancercelllines.
+                                                     # Stored verbatim, never parsed as semver.
+
+    # -- dialect (required) ---------------------------------------------------
+    request_layout: flat
+    request_layouts_accepted: [flat, nested_g_variant]   # OBSERVED: both accepted
+    #: OBSERVED on this instance: with NCIT:C3058 inside `query` the CDKN2A loss
+    #: total fell from 57,677 to 4,182; at the body ROOT it was IGNORED -- total
+    #: unchanged and the filter not echoed. The published example puts filters at
+    #: the root, which is the silent-failure placement.
+    filters_location: query
+    get_list_style: comma             # see note: their own GET example uses `repeated`
+    reference_style: name_plus_assembly
+    assembly_param: assemblyid        # lowercase in the documented POST example
+    # The same doc page writes `assemblyId` (camelCase) in its GET example.
+    # Unresolved upstream inconsistency; verify both before trusting either.
+
+    # -- entity paths ---------------------------------------------------------
+    entity_paths:
+      genomicVariant: g_variants
+      biosample: biosamples
+      individual: individuals
+      analysis: analyses
+      cohort: cohorts
+      dataset: datasets
+      run: runs
+    entity_path_aliases:
+      genomicVariant: [variants]
+    nested_paths:
+      biosample.genomicVariant: "biosamples/{id}/g_variants"
+      individual.genomicVariant: "individuals/{id}/g_variants"
+      individual.genomicVariant_alt: "individuals/{id}/genomicVariations"
+      genomicVariant.biosample: "g_variants/{id}/biosamples"
+    nested_paths_supported: true
+    map_endpoint: /map                # fall back to /beaconMap on 404
+
+    # -- query forms ----------------------------------------------------------
+    supported_query_forms: [sequence, range, bracket, geneId]
+    assemblies: [GRCh38, GRCh37]
+
+    # -- copy number ----------------------------------------------------------
+    copy_change_transport: variant_type   # copyChange is VQS-only, not v2.0/v2.1
+    #: OBSERVED, to the instance: EFO:0030067 (copy number loss) returned 4,182,
+    #: which is exactly 440 plain loss + 2,831 high-level (EFO:0020073) + 911
+    #: low-level (EFO:0030068) + 0 complete (EFO:0030069). So one query suffices.
+    copy_change_expansion: server
+    legacy_term_expansion: server         # documented: internal DUP/DEL <-> EFO support
+
+    # -- granularity ceilings, per ENTITY (not per provider) -------------------
+    granularity_ceiling:
+      genomicVariant: record
+      biosample: record
+      individual: record
+      analysis: record
+      cohort: record
+      dataset: record
+      run: record
+
+    # -- counts / frequency inputs -------------------------------------------
+    count_precision_declared: unknown     # read countPrecision per resultSet
+    count_rounding_configurable: false    # no rounding knobs documented in bycon
+    cohort_size_source: [cohorts, datasets]
+
+    # -- filters --------------------------------------------------------------
+    filter_scope_supported: unknown
+    filter_similarity_supported: unknown
+    filter_operators: ["=", "<", ">", "!", ">=", "<="]
+    #: ASSUMED false from the stack, NOT observed here and NOT documented:
+    #: verified false on the sibling cancercelllines instance, where a bare
+    #: prefix is read as a literal term id and matches nothing. Listed under
+    #: neither `observed` nor `documented` for that reason.
+    filtering_terms_prefix_filter: false
+    granularity_values_extra: [aggregated]
+    requested_granularity_default: record
+
+    # -- transport quirks -----------------------------------------------------
+    requires_user_agent: true
+    test_mode_supported: true             # OBSERVED: works, incl. /g_variants
+    #: OBSERVED: below the total, a fresh RANDOM SUBSET per request -- two
+    #: identical runs overlapped on 22 of ~295 rows. Never page; retrieve all
+    #: and verify, or refuse.
+    pagination_behaviour: random_subset_below_total
+    #: Not observed on this instance (it is on cancercelllines, same stack and
+    #: version): until it is, full retrieval asks for the reported total.
+    full_retrieval: unknown
+    default_dataset_ids: [progenetix]
+    rate_limit_per_minute: 30
+    #: DOCUMENTED default. An order of magnitude above cancercelllines' 200,
+    #: which matters twice over: it makes the coalescing completeness condition
+    #: far easier to satisfy, so coalescing fires much more often, and it
+    #: raises the memory footprint of a single page. Never hardcode either
+    #: value -- verify_coalescence() reads the limit the server actually
+    #: applied from receivedRequestSummary.
+    default_pagination_limit: 2000
+
+    # -- non-standard extensions, OFF unless explicitly enabled ---------------
+    extensions:
+      filter_logic_or: false              # &filterLogic=OR
+      phenopacket_schema: false
+      geo_query: false
+
+    variant_classes_served:
+      CNV:
+        status: "yes"
+        evidence_source: documentation
+        evidence: >-
+          The GA4GH CNV term table footnote states that the Progenetix Beacon
+          API uses EFO terms with internal expansion for legacy DUP/DEL support,
+          which is an operator statement that copy-number terms are in live use.
+          Every documented example query for this instance is a CNV bracket
+          query. https://docs.genomebeacons.org/variant-queries/
+        observed: null
+      SMALL_VARIANT:
+        status: "yes"
+        evidence_source: test_mode_sample
+        evidence: >-
+          A testMode /g_variants record, NC_000001.11:35359149: -- a VRS Allele
+          whose state is a ReferenceLengthExpression of length 0 over reference
+          C: a 1-base deletion, which Progenetix labels SO:0001483 (SNP). Kept
+          verbatim as a classifier fixture.
+        observed: "2026-10-07"
+      SV:
+        status: "unknown"
+        evidence_source: none
+        evidence: >-
+          Not evidenced. No adjacency or fusion holdings are documented, and
+          no declaration of their absence exists either -- so unknown, not no.
+        observed: null
+
+    verification:
+      last_checked: "2026-10-07"
+      checked_with: "beacon2-query from an AWS container, and a Python probe from a laptop"
+      observed:
+        - beacon_id_reported
+        - api_version_reported
+        - request_layouts_accepted
+        - filters_location
+        - copy_change_expansion
+        - pagination_behaviour
+        - test_mode_supported
+        - variant_classes_served.SMALL_VARIANT
+      documented:
+        - default_pagination_limit
+        - request_layout
+        - assembly_param
+      refuted_documentation:
+        - field: filters_location
+          documented_as: root
+          observed_as: query
+          observed: "2026-10-07"
+          note: >-
+            With the filter at the body root the total was unchanged (57,677)
+            and the filter was not echoed: silently ignored. Inside `query` it
+            applied (4,182).
+      notes: >-
+        Reachable from datacenter addresses: the tool queried it from an AWS
+        container, so Galaxy servers can use it. Its Cloudflare challenge blocks
+        Linux curl but NOT Python clients from the same address -- so a curl
+        failure against Progenetix is not evidence about the tool. Debug with
+        the tool itself, or with Python. transport/http.py still maps a
+        challenge to Status.BLOCKED, so an administrator gets something
+        actionable if one ever appears. Scale: unfiltered CDKN2A losses are
+        57,677 instances, above the default 10,000 ceiling, so an unfiltered
+        search of a common region is refused with a suggestion to filter; with
+        NCIT:C3058 the same query is 4,182.
+        Flat request layout and lowercase `assemblyid` are corroborated by a
+        published POST example placing parameters directly under
+        requestParameters with datasets.datasetIds nested inside. That example
+        also contains the "schema:" trailing-colon typo, independently
+        confirming that examples on these pages need validating before use.
+
+  # ---------------------------------------------------------------------------
+  org.cancercelllines:
+    name: Cancer Cell Line Genomics Beacon+
+    base_url: https://cancercelllines.org/beacon
+    stack: bycon
+    enabled: true
+    tier: public
+    credential_key: null
+
+    beacon_id_reported: org.cancercelllines        # meta.beaconId (OBSERVED)
+    # response.id is `org.cancercelllines.beacon` -- the two differ; we key on
+    # our own id and record theirs. service_info diffs them.
+    api_version_reported: "v2.3.0-beaconplus"      # OBSERVED, verbatim, not semver
+
+    request_layout: flat
+    #: OBSERVED: nested_g_variant and flat both accepted, identical results
+    #: (2591 matches either way). Layout is a PREFERENCE here, not a
+    #: requirement -- which gives the spec adapter a live validation target,
+    #: the one the EGA outage took away.
+    request_layouts_accepted: [flat, nested_g_variant]
+    #: OBSERVED query, refuting the documented bycon example that places
+    #: filters at the body root. At the root they are SILENTLY IGNORED: the
+    #: same NCIT:C3058 filter gave 60 matches inside query and 2591 at the
+    #: root, with no filter echoed and a well-formed response either way.
+    filters_location: query
+    get_list_style: comma
+    reference_style: name_plus_assembly
+    assembly_param: assemblyid
+
+    #: OBSERVED: below the total, bycon returns a RANDOM SUBSET. Three
+    #: identical skip=0 limit=10 requests returned thirty distinct records with
+    #: zero overlap, testMode off. Pages are independent draws, so paging is
+    #: sampling WITH REPLACEMENT -- duplicates and gaps, indistinguishable.
+    pagination_behaviour: random_subset_below_total
+    #: OBSERVED: limit 0 is honoured as "all"; ~1700 records served in one shot
+    #: with no cap encountered.
+    full_retrieval: limit_0_honoured
+    #: OBSERVED: numTotalResults counts caseLevelData ENTRIES (per-sample
+    #: variant instances), not records -- 55 records carried 60 instances.
+    #: `limit` counts records. The two numbers are in DIFFERENT UNITS.
+    total_counts_unit: variant_instances
+    #: OBSERVED unreliable: server info.counts.individuals disagreed with
+    #: counts derived from caseLevelData in BOTH directions (25 vs 43, and
+    #: 2236 vs 1798), so it is not computed over the same set. Derive from
+    #: caseLevelData; info.counts.biosamples agreed and is usable as a
+    #: cross-check only.
+    info_counts_individuals_reliable: false
+
+    entity_paths:
+      genomicVariant: genomicVariations            # NOTE: differs from Progenetix
+      biosample: biosamples
+      individual: individuals
+      analysis: analyses
+      cohort: cohorts
+      dataset: datasets
+      run: runs
+    entity_path_aliases:
+      genomicVariant: [g_variants, variants_in_sample]
+    nested_paths:
+      biosample.genomicVariant: "biosamples/{id}/g_variants"
+      biosample.analysis: "biosamples/{id}/analyses"
+      individual.genomicVariant: "individuals/{id}/genomicVariations"
+      genomicVariant.biosample: "genomicVariations/{id}/biosamples"
+    nested_paths_supported: true
+    map_endpoint: /map
+
+    supported_query_forms: [sequence, range, bracket, geneId]
+    assemblies: [GRCh38]
+
+    copy_change_transport: variant_type
+    #: OBSERVED server-side: querying EFO:0030070 (gain) also returned
+    #: EFO:0030071 and EFO:0030072. The client MUST NOT also expand here --
+    #: issuing one query per descendant against a server that already expands
+    #: returns overlapping result sets and the frequency engine would count the
+    #: same samples two or three times.
+    copy_change_expansion: server
+    legacy_term_expansion: server
+
+    granularity_ceiling:
+      genomicVariant: record          # returnedGranularity: record (OBSERVED)
+      biosample: record
+      individual: record
+      analysis: record
+      cohort: record
+      dataset: record
+      run: record
+
+    count_precision_declared: unknown
+    count_rounding_configurable: false
+    cohort_size_source: [cohorts, datasets]
+
+    filter_scope_supported: unknown
+    filter_similarity_supported: unknown
+    filter_operators: ["=", "<", ">", "!", ">=", "<="]
+    #: OBSERVED false. `?filters=EFO` is accepted, interpreted as a filter term
+    #: whose id is literally "EFO", matches nothing, and returns empty arrays
+    #: with NO error. Prefix selection must therefore be client-side; sending a
+    #: prefix as a server parameter hands the user a silent empty result.
+    filtering_terms_prefix_filter: false
+    #: OBSERVED. bycon's own parameter documentation gives this as its default.
+    include_resultset_responses_default: HIT
+    #: bycon accepts a non-standard fourth granularity value, `aggregated`,
+    #: alongside boolean/count/record. An `aggregated` response is NOT
+    #: record-level, so analysis/frequency.py must refuse it rather than treat
+    #: an unrecognised value as records.
+    granularity_values_extra: [aggregated]
+    #: bycon defaults requestedGranularity to `record`, where the framework
+    #: default is `boolean`. Recorded, not relied on: we always send it.
+    requested_granularity_default: record
+
+    requires_user_agent: false
+    test_mode_supported: true                      # OBSERVED on /g_variants
+    default_dataset_ids: [cellz]                   # OBSERVED
+    rate_limit_per_minute: 30
+    default_pagination_limit: 200                  # OBSERVED server default
+    pagination:
+      skip_semantics: page
+
+    extensions:
+      filter_logic_or: false
+      phenopacket_schema: false
+      geo_query: false
+
+    variant_classes_served:
+      CNV:
+        status: "yes"
+        evidence_source: test_mode_sample
+        evidence: >-
+          A live record from /g_variants?testMode=true&limit=5 carries
+          variation.variantState.id = EFO:0030070 (copy number gain) with
+          variation.type = CopyNumberChange, at
+          NC_000003.12:195728637-198169247. This is an observation, which the
+          asymmetry rule permits to write `yes`. Corroborated by the resource
+          documentation, which describes it as a mostly CNV-containing resource.
+        observed: "2026-09-08"
+      SMALL_VARIANT:
+        status: "unknown"
+        evidence_source: none
+        evidence: Not evidenced.
+        observed: null
+      SV:
+        status: "unknown"
+        evidence_source: none
+        evidence: Not evidenced.
+        observed: null
+
+    verification:
+      last_checked: "2026-08-21"
+      checked_with: "GET https://cancercelllines.org/beacon/"
+      observed:
+        - beacon_id_reported
+        - api_version_reported
+        - default_dataset_ids
+        - default_pagination_limit
+        - granularity_ceiling.genomicVariant
+        - base_url
+        - filtering_terms_prefix_filter
+        - include_resultset_responses_default
+        - test_mode_supported
+        - variant_classes_served.CNV
+        - filters_location
+        - request_layouts_accepted
+        - copy_change_expansion
+        - pagination_behaviour
+        - full_retrieval
+        - total_counts_unit
+        - info_counts_individuals_reliable
+      documented:
+        - request_layout
+        - entity_paths
+      #: `filtering_terms_prefix_filter` was previously listed here as
+      #: documented `true`. Observation refuted it, so it moved to `observed`
+      #: as `false` and was removed from this list. Recorded because a
+      #: documented claim being overturned by a live check is exactly what the
+      #: three tiers exist to make visible -- and the disjointness lint is what
+      #: caught the field sitting in both.
+      refuted_documentation:
+        - field: filtering_terms_prefix_filter
+          documented_as: true
+          observed_as: false
+          observed: "2026-09-08"
+        - field: filters_location
+          documented_as: root
+          observed_as: query
+          observed: "2026-09-08"
+          note: >-
+            The documented bycon example places filters at the body root. Live,
+            root-placed filters are SILENTLY IGNORED -- 2591 matches instead of
+            60, no filter echoed, and a well-formed response either way. A user
+            asking for gains in glioblastoma would receive all gains in a
+            response indistinguishable from a correct one.
+      notes: >-
+        Root path returned a well-formed BeaconInfoResponse, the eight endpoint
+        probe succeeded, and three rounds of live POST probes against
+        chr3:195728637-198169247 settled the dialect.
+        receivedRequestSummary does NOT echo query parameters on this stack --
+        referenceName, start, end, variantType and assemblyid never appear --
+        so parameter handling cannot be checked from the echo and must be
+        judged from the returned records. Filters DO echo, which is what makes
+        the filter-placement finding reliable.
+        testMode has three echo representations: {} on GET when unset, False on
+        POST when unset, true when set. Parse defensively -- truthiness works,
+        type checks do not. Dialect fields (request_layout,
+        filters_location) are still inherited from bycon documentation and NOT
+        confirmed for this instance -- confirming them needs a POST, which the
+        probe did not make.
+        Worth recording: this root fetch SUCCEEDED and told us nothing whatever
+        about which variant classes are held. That is the cleanest available
+        demonstration of why variant_classes_served exists and why it cannot be
+        auto-populated from the informational endpoints.
+
+  # ---------------------------------------------------------------------------
+  org.ega-archive.demo:
+    name: EGA Beacon Reference Implementation demo (synthetic data)
+    base_url: https://beacon.ega-archive.org/api    # CORRECTED: /api subpath
+    stack: b2pi
+    #: DISABLED 2026-09-08: the instance is down. See verification notes.
+    enabled: false
+    tier: public
+    credential_key: null
+
+    beacon_id_reported: org.ega-archive.beacon-ri-demo   # from B2PI conf.py
+    api_version_reported: "v2.0.0"                       # from conf.py; unverified live
+
+    request_layout: flat              # README POST examples: flat requestParameters
+    filters_location: query           # ...but filters INSIDE query (unlike bycon)
+    get_list_style: comma
+    reference_style: name_plus_assembly
+    assembly_param: assemblyId        # camelCase here
+
+    entity_paths:
+      genomicVariant: g_variants
+      biosample: biosamples
+      individual: individuals
+      analysis: analyses
+      cohort: cohorts
+      dataset: datasets
+      run: runs
+    entity_path_aliases: {}
+    nested_paths:
+      analysis.biosample: "analyses/{id}/biosamples"
+      analysis.genomicVariant: "analyses/{id}/g_variants"
+      analysis.individual: "analyses/{id}/individuals"
+      analysis.run: "analyses/{id}/runs"
+      biosample.genomicVariant: "biosamples/{id}/g_variants"
+      individual.genomicVariant: "individuals/{id}/g_variants"
+    nested_paths_supported: true
+    map_endpoint: /map
+
+    supported_query_forms: [sequence, range]   # bracket/geneId NOT confirmed
+    assemblies: [GRCh37, GRCh38]               # README example uses GRCh37
+
+    copy_change_transport: variant_type
+    copy_change_expansion: client              # no server expansion documented
+    legacy_term_expansion: none
+
+    granularity_ceiling:
+      genomicVariant: record
+      biosample: record
+      individual: record
+      analysis: record
+      cohort: unknown        # README shows cohort capped to boolean in an example
+      dataset: record
+      run: record
+    # B2PI sets ceilings per DATASET x ENTRY TYPE via default_entry_types_granularity
+    # plus entry_types_exceptions. A single per-provider ceiling is too coarse;
+    # always trust meta.returnedGranularity over anything declared here.
+
+    count_precision_declared: unknown
+    count_rounding_configurable: true          # imprecise_count/round_to_tens/hundreds
+    # ^ This provider CAN return silently rounded counts. frequency.py must read
+    #   countPrecision per resultSet and refuse to divide unless it is `exact`.
+    cohort_size_source: [cohorts, datasets]
+
+    filter_scope_supported: true               # README example uses scope: biosample
+    filter_similarity_supported: unknown
+    filter_operators: ["=", "<", ">", "!", ">=", "<="]
+    filtering_terms_prefix_filter: false
+
+    requires_user_agent: false
+    test_mode_supported: true
+    default_dataset_ids: []
+    rate_limit_per_minute: 20                  # conservative: query budget configurable
+    default_pagination_limit: null             # not documented; read from the response
+    health_endpoint: /health                   # B2PI-specific liveness check
+
+    variant_classes_served:
+      CNV:
+        status: "unknown"
+        evidence_source: none
+        evidence: >-
+          Not evidenced. 1000 Genomes does have an SV/CNV callset, but the B2PI
+          demo load is not documented as including it. Inferring absence from a
+          dataset description would be exactly the overreach the no-requires-
+          declaration rule prevents -- unknown, not no.
+        observed: null
+      SMALL_VARIANT:
+        status: "yes"
+        evidence_source: documentation
+        evidence: >-
+          B2PI conf.py documents the demo dataset as 2504 samples of 1000
+          Genomes-derived genetic data with UK Biobank-derived phenotypes; that
+          callset is predominantly SNVs and small indels. The project README's
+          own worked POST example is a sequence query with referenceBases A and
+          alternateBases G. https://github.com/EGA-archive/beacon2-pi-api
+        observed: null
+      SV:
+        status: "unknown"
+        evidence_source: none
+        evidence: Not evidenced.
+        observed: null
+
+    #: Recorded 2026-09-08. Every endpoint returned HTTP 503 with an Apache
+    #: maintenance page, and a follow-up diagnostic timed out after 20002 ms
+    #: with 0 bytes received. Captured verbatim as
+    #: tests/fixtures/transport/provider_unavailable_503.html and
+    #: provider_timeout.json -- real artifacts from a real outage, which is why
+    #: they are better fixtures than synthetic ones.
+    availability:
+      status: unavailable
+      observed: "2026-09-08"
+      detail: >-
+        HTTP 503 on all endpoints plus a connection timeout with zero bytes
+        received. A 503 proves the HOST is reachable; it does not prove the
+        /api path is right, so the base_url correction remains
+        documentation-sourced.
+
+    data_notes: >-
+      Synthetic data: 2504 samples derived from 1000 Genomes with phenotypic
+      attributes derived from UK Biobank. Not real patient data. Surface this
+      in outcomes.tsv notes so nobody reports a finding from it.
+
+    extensions:
+      filter_logic_or: false
+
+    verification:
+      last_checked: null
+      checked_with: null
+      observed: []
+      documented:
+        - base_url
+        - beacon_id_reported
+        - api_version_reported
+        - request_layout
+        - filters_location
+        - filter_scope_supported
+        - count_rounding_configurable
+      notes: >-
+        Down as of 2026-09-08: HTTP 503 on every endpoint plus a bare timeout.
+        Shipped disabled. base_url corrected on the strength of B2PI conf.py
+        (uri_subpath = '/api', alternative_url ends '/api'), which remains
+        documentation-sourced -- a 503 proves reachability, not path.
+        CONSEQUENCE WORTH FLAGGING: this was our only non-bycon target, so the
+        b2pi adapter now has no live provider to validate against and its
+        dialect assumptions (flat requestParameters with filters inside query,
+        camelCase assemblyId, filter scope) stay unverified. Not blocking --
+        fixtures cover the code paths -- but the assumptions are untested
+        against a real server. If it is still down in a week, an outage report
+        to the EGA maintainers is a reasonable small courtesy, not a request.
+
+  # ---------------------------------------------------------------------------
+  # Registered / controlled tier. Shipped disabled with a credential key so that
+  # enabling one later is a config edit, not a code change. Dialect fields are
+  # `unknown` on purpose: schema.py refuses to enable a provider with any
+  # unknown dialect field, which enforces "verify before you query".
+  # ---------------------------------------------------------------------------
+
+  org.cafevariome.rdnexus:
+    name: Cafe Variome / RD Discovery Nexus
+    base_url: null
+    stack: unknown
+    enabled: false
+    tier: registered
+    credential_key: beacon2_credentials|cafevariome_token
+    request_layout: unknown
+    filters_location: unknown
+    get_list_style: unknown
+    reference_style: unknown
+    supported_query_forms: []
+    granularity_ceiling: {}
+    variant_classes_served:
+      CNV: {status: "unknown", evidence_source: none, evidence: "Not evidenced.", observed: null}
+      SMALL_VARIANT: {status: "unknown", evidence_source: none, evidence: "Not evidenced.", observed: null}
+      SV: {status: "unknown", evidence_source: none, evidence: "Not evidenced.", observed: null}
+    verification:
+      last_checked: null
+      observed: []
+      notes: Placeholder. Requires outreach, a base URL and a dialect check.
+
+  org.ega-archive.production:
+    name: EGA production Beacon
+    base_url: null
+    stack: b2pi
+    enabled: false
+    tier: controlled
+    credential_key: beacon2_credentials|ega_token
+    request_layout: unknown
+    filters_location: unknown
+    get_list_style: unknown
+    reference_style: unknown
+    supported_query_forms: []
+    granularity_ceiling: {}
+    variant_classes_served:
+      CNV: {status: "unknown", evidence_source: none, evidence: "Not evidenced.", observed: null}
+      SMALL_VARIANT: {status: "unknown", evidence_source: none, evidence: "Not evidenced.", observed: null}
+      SV: {status: "unknown", evidence_source: none, evidence: "Not evidenced.", observed: null}
+    verification:
+      last_checked: null
+      observed: []
+      notes: >-
+        Likely shares the b2pi dialect with the demo instance, but controlled
+        tier means auth and granularity differ. Do not copy demo values across.
+
+  org.rd-connect.gpap:
+    name: RD-Connect Genome-Phenome Analysis Platform
+    base_url: null
+    stack: unknown
+    enabled: false
+    tier: controlled
+    credential_key: beacon2_credentials|rdconnect_token
+    request_layout: unknown
+    filters_location: unknown
+    get_list_style: unknown
+    reference_style: unknown
+    supported_query_forms: []
+    granularity_ceiling: {}
+    variant_classes_served:
+      CNV: {status: "unknown", evidence_source: none, evidence: "Not evidenced.", observed: null}
+      SMALL_VARIANT: {status: "unknown", evidence_source: none, evidence: "Not evidenced.", observed: null}
+      SV: {status: "unknown", evidence_source: none, evidence: "Not evidenced.", observed: null}
+    verification:
+      last_checked: null
+      observed: []
+      notes: Placeholder. Requires outreach and a dialect check.
+
+  # ---------------------------------------------------------------------------
+  # TEST FIXTURE PROVIDERS
+  # Not real beacons. registry/schema.py rejects any provider marked
+  # `test_fixture: true` whose base_url is not a file:// URL, so these can never
+  # reach the network. They exist so that a test asserting DEGRADATION
+  # behaviour does not also depend on a partner's content composition -- that
+  # coupling is what broke the original bracket test.
+  # ---------------------------------------------------------------------------
+
+  test.fixture.bracketless:
+    name: Test fixture — CNV beacon without bracket support
+    base_url: null                 # supplied by the test data table as file://
+    stack: spec
+    enabled: false                 # enabled only by test-data/beacon_providers.loc
+    test_fixture: true
+    tier: public
+    credential_key: null
+    beacon_id_reported: test.fixture.bracketless
+    api_version_reported: "2.0.0"
+    request_layout: nested_g_variant
+    filters_location: query
+    get_list_style: comma
+    reference_style: refseq_accession
+    assembly_param: assemblyId
+    entity_paths:
+      genomicVariant: g_variants
+      biosample: biosamples
+      individual: individuals
+      analysis: analyses
+      cohort: cohorts
+      dataset: datasets
+      run: runs
+    entity_path_aliases: {}
+    nested_paths:
+      biosample.genomicVariant: "biosamples/{id}/g_variants"
+    nested_paths_supported: true
+    map_endpoint: /map
+    supported_query_forms: [sequence, range]      # deliberately NO bracket
+    assemblies: [GRCh38]
+    copy_change_transport: variant_type
+    copy_change_expansion: client
+    legacy_term_expansion: none
+    granularity_ceiling:
+      genomicVariant: record
+      biosample: record
+      individual: record
+      analysis: record
+      cohort: record
+      dataset: record
+      run: record
+    count_precision_declared: exact
+    count_rounding_configurable: false
+    cohort_size_source: [cohorts]
+    filter_scope_supported: true
+    filter_similarity_supported: true
+    filter_operators: ["=", "<", ">", "!", ">=", "<="]
+    filtering_terms_prefix_filter: false
+    requires_user_agent: false
+    test_mode_supported: true
+    default_dataset_ids: [testset]
+    rate_limit_per_minute: 600
+    variant_classes_served:
+      CNV: {status: "yes", evidence_source: operator_declaration, evidence: "Fixture: declared by the test author.", observed: "2026-08-21"}
+      SMALL_VARIANT: {status: "unknown", evidence_source: none, evidence: "Fixture.", observed: null}
+      SV: {status: "no", evidence_source: operator_declaration, evidence: "Fixture: declared absent by the test author, to exercise the skip path.", observed: "2026-08-21"}
+    extensions: {}
+    verification:
+      last_checked: "2026-08-21"
+      checked_with: "fixture"
+      observed: [variant_classes_served, supported_query_forms]
+      notes: Synthetic fixture provider. Never contacts the network.

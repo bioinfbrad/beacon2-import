@@ -1,0 +1,78 @@
+<tool id="beacon2_filtering_terms" name="Beacon2 Filtering Terms" version="@TOOL_VERSION@+galaxy@VERSION_SUFFIX@" profile="@PROFILE@">
+    <description>list the filters each beacon accepts</description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <expand macro="creators"/>
+    <expand macro="xrefs"/>
+    <expand macro="requirements"/>
+    <command detect_errors="exit_code"><![CDATA[
+    beacon2-query filtering-terms
+        @PROVIDER_ARGS@
+        #for $prefix in str($prefixes).split(','):
+            #if $prefix.strip()
+                --prefix '${prefix.strip()}'
+            #end if
+        #end for
+        --terms 'filtering_terms.tsv'
+        --outcomes 'outcomes.tsv'
+    ]]></command>
+    <expand macro="credentials_configfile"/>
+    <inputs>
+        <expand macro="beacon_api_connection"/>
+        <param name="prefixes" type="text" value="" optional="true" label="Only terms with these prefixes (optional)"
+               help="Comma-separated CURIE prefixes, e.g. NCIT,HP. Matched case-insensitively.">
+            <validator type="regex" message="Comma-separated prefixes, e.g. NCIT,HP">^[A-Za-z0-9_.,\s-]*$</validator>
+        </param>
+    </inputs>
+    <outputs>
+        <data name="terms" format="tabular" label="${tool.name} on ${on_string}: terms" from_work_dir="filtering_terms.tsv"/>
+        <data name="outcomes" format="tabular" label="${tool.name} on ${on_string}: run report" from_work_dir="outcomes.tsv"/>
+    </outputs>
+    <tests>
+        <test expect_num_outputs="2">
+            <conditional name="connection">
+                <param name="providers" value="org.cancercelllines"/>
+            </conditional>
+            <output name="terms">
+                <assert_contents>
+                    <has_text text="EDAM:operation_3961"/>
+                    <has_text text="shared_with"/>
+                </assert_contents>
+            </output>
+        </test>
+        <test expect_num_outputs="2">
+            <conditional name="connection">
+                <param name="providers" value="org.cancercelllines"/>
+            </conditional>
+            <param name="prefixes" value="EFO"/>
+            <output name="outcomes">
+                <assert_contents>
+                    <has_text text="selected client-side"/>
+                </assert_contents>
+            </output>
+        </test>
+    </tests>
+    <help><![CDATA[
+**What it does**
+
+@HELP_READS@
+
+Lists the filtering terms each selected beacon accepts, with how many records
+carry each term where the beacon reports it. Every row also lists the other
+selected beacons offering the same term, so one table answers both "what can I
+filter on here" and "what can I filter on everywhere".
+
+**Prefixes are selected here, not by the beacon**
+
+Asking a beacon for a bare prefix such as ``EFO`` does not work: at least one
+implementation reads it as a term whose identifier is literally ``EFO``, finds
+nothing, and returns an empty list with no error. So the tool fetches each
+beacon's full list and selects by prefix itself, and the run report says so.
+
+**Outputs**
+
+*Terms*: one row per beacon and term. *Run report*: one row per beacon.
+    ]]></help>
+    <expand macro="citations"/>
+</tool>

@@ -1,0 +1,61 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "beacon2-import"
+dynamic = ["version"]
+description = "Load Beacon JSON into a self-hosted beacon's MongoDB, and search one or many GA4GH Beacon v2 beacons, over the API or MongoDB"
+readme = "README.md"
+# SPDX expression and licence file, per PEP 639. No `License ::` classifier:
+# setuptools >= 77 rejects one alongside a licence expression, which supersedes it.
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Khaled Jumah", email = "khalled.jooma@yahoo.com" }]
+requires-python = ">=3.10"
+dependencies = [
+    "requests",
+    "PyYAML",
+    "pymongo",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+
+[project.optional-dependencies]
+# Only the import tool's Galaxy-history path (`beacon2-import --galaxy`) uses it.
+galaxy = ["bioblend"]
+test = ["pytest"]
+
+[project.urls]
+Homepage = "https://github.com/bioinfbrad/beacon2-import"
+Source = "https://github.com/bioinfbrad/beacon2-import"
+Issues = "https://github.com/bioinfbrad/beacon2-import/issues"
+Changelog = "https://github.com/bioinfbrad/beacon2-import/blob/main/CHANGELOG.md"
+"Galaxy wrappers" = "https://github.com/galaxyproject/tools-iuc/tree/main/tools/beacon2-import"
+
+[project.scripts]
+beacon2-query = "beacon2_import.cli.main:main"
+beacon2-import = "beacon2_import.cli.import_command:main"
+
+[tool.setuptools]
+# The sdist carries the tests (MANIFEST.in); the wheel carries only the explicit
+# package-data below. Without this, MANIFEST.in's graft leaks test fixtures into
+# the wheel.
+include-package-data = false
+
+[tool.setuptools.dynamic]
+version = { attr = "beacon2_import.__version__" }
+
+[tool.setuptools.packages.find]
+include = ["beacon2_import*"]
+exclude = ["beacon2_import.tests*"]
+
+[tool.setuptools.package-data]
+beacon2_import = ["registry/*.yaml", "data/*.tsv", "data/cytobands/*"]

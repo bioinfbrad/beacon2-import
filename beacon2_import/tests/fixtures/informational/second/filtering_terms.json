@@ -1,0 +1,6 @@
+{"_note": "CONSTRUCTED: a second provider sharing one term with the first, so the merged view's shared_with column has something to show.",
+ "meta": {"apiVersion": "v2.0.0"},
+ "response": {"filteringTerms": [
+   {"id": "EDAM:operation_3961", "label": "Copy number variation detection", "type": "custom", "count": 12},
+   {"id": "NCIT:C3058", "label": "Glioblastoma", "type": "ontologyTerm", "count": 40}],
+  "resources": []}}

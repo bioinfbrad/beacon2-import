@@ -1,0 +1,16 @@
+# CNV term table. Union of two disagreeing sources; `source` records which.
+#   copy_change_component = VQS CopyChange enum (authoritative for hierarchy)
+#   cnv_table             = CNV term comparison table (authoritative for mappings)
+#   local_inference       = our placement, documented in tool help
+# EFO:0030064 appears only in the CopyChange component, so it has NO VCF/SO/VRS
+# mapping row. Those cells are left empty rather than inferred.
+efo_id	label	parent	vcf	so	vrs	source
+EFO:0030064	regional base ploidy					copy_change_component
+EFO:0030067	copy number loss		DEL	SO:0001743	partial loss	copy_change_component,cnv_table
+EFO:0030068	low-level copy number loss	EFO:0030067	DEL	SO:0001743	partial loss	copy_change_component,cnv_table
+EFO:0020073	high-level copy number loss	EFO:0030067	DEL	SO:0001743	partial loss	copy_change_component,cnv_table
+EFO:0030069	complete genomic deletion	EFO:0020073	DEL	SO:0001743	complete loss	copy_change_component,cnv_table
+EFO:0030070	copy number gain		DUP	SO:0001742	low-level gain	copy_change_component,cnv_table
+EFO:0030071	low-level copy number gain	EFO:0030070	DUP	SO:0001742	low-level gain	copy_change_component,cnv_table
+EFO:0030072	high-level copy number gain	EFO:0030070	DUP	SO:0001742	high-level gain	copy_change_component,cnv_table
+EFO:0030073	focal genome amplification	EFO:0030072	DUP	SO:0001742	high-level gain	cnv_table,local_inference

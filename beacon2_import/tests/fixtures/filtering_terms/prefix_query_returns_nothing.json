@@ -1,0 +1,15 @@
+{
+  "_note": "REAL response to /filtering_terms?filters=EFO on cancercelllines.org. The request echo shows the bare prefix was accepted and interpreted as a filter term whose id is literally 'EFO', which matches nothing. Both arrays come back empty. A bare ontology prefix is NOT a prefix query on this stack.",
+  "_expected": {"filtering_terms": 0, "resources": 0, "echoed_filter_id": "EFO"},
+  "meta": {
+    "apiVersion": "v2.3.0-beaconplus",
+    "receivedRequestSummary": {
+      "filters": [{"id": "EFO"}],
+      "pagination": {"skip": 0, "limit": 200},
+      "requestedGranularity": "record"
+    },
+    "returnedGranularity": "record"
+  },
+  "responseSummary": {"exists": false, "numTotalResults": 0},
+  "response": {"filteringTerms": [], "resources": []}
+}

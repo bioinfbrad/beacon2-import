@@ -1,0 +1,4 @@
+{"_note": "CONSTRUCTED from the framework configuration schema.",
+ "meta": {"beaconId": "org.cancercelllines", "apiVersion": "v2.3.0-beaconplus"},
+ "response": {"maturityAttributes": {"productionStatus": "PROD"},
+              "securityAttributes": {"defaultGranularity": "record", "securityLevels": ["PUBLIC"]}}}

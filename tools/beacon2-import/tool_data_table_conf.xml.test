@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+Test data table. base_url uses the file:// scheme, which selects the fixture
+transport instead of the network. The tool tests therefore exercise the real
+URL construction, dialect translation and parsing paths with no network access
+and no monkeypatching, and a fixture miss is a loud failure rather than a
+silent empty result.
+-->
+<tables>
+    <table name="beacon_providers" comment_char="#">
+        <columns>value, name, base_url, enabled, tier, credential_key</columns>
+        <file path="${__HERE__}/test-data/beacon_providers.loc" />
+    </table>
+</tables>

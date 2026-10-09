@@ -1,0 +1,41 @@
+{
+ "_note": "CONSTRUCTED from the default cohort schema for the Galaxy tool tests; not a capture.",
+ "meta": {
+  "apiVersion": "v2.3.0-beaconplus",
+  "returnedGranularity": "record",
+  "returnedSchemas": [
+   {
+    "id": "cohort"
+   }
+  ],
+  "receivedRequestSummary": {
+   "pagination": {
+    "skip": 0,
+    "limit": 0
+   },
+   "testMode": false
+  }
+ },
+ "responseSummary": {
+  "exists": true,
+  "numTotalResults": 1
+ },
+ "response": {
+  "resultSets": [
+   {
+    "id": "cellz",
+    "exists": true,
+    "resultsCount": 1,
+    "responseEntityId": "cohort",
+    "results": [
+     {
+      "id": "cellz",
+      "name": "Cancer cell lines",
+      "cohortType": "study-defined",
+      "cohortSize": 1869
+     }
+    ]
+   }
+  ]
+ }
+}

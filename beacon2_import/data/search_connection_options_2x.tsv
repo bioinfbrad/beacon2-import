@@ -1,0 +1,9 @@
+# 2.2.4's beacon2-search connection options, shared by every subcommand, and the
+# beacon2-query flag covering each. Read by the coverage test and the README.
+dest	long	target	note
+database_host	--db-host	--db-host	
+database_port	--db-port	--db-port	
+advance	--advance-connection	--credentials-file	authentication is implied by giving a credentials file
+database_auth_config	--db-auth-config	--credentials-file	key=value lines (db_auth_source, db_user, db_password), not JSON
+database	--database	--database	
+collection	--collection	--collection	

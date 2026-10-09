@@ -1,0 +1,29 @@
+{
+  "_note": "A 120 bp insertion, precisely specified by sequence. Classified SMALL_VARIANT by CLAIM TYPE, not by size: we know exactly what was inserted and where, which is a sequence claim -- fully determined and merely large. Filing it as SV would hand the SV path a record with no breakpoint to count. Its size is disclosed in classification_basis and is available for filtering in the variant_length column. Paired with large_no_sequence_no_junction.json at the SAME 120 bp, so the pair isolates claim type as the only difference.",
+  "variantInternalId": "var-ins-0001",
+  "variation": {
+    "referenceBases": "T",
+    "alternateBases": "TTCTGGAAGCTCTGGAAGCTCTGGAAGCTCTGGAAGCTCTGGAAGCTCTGGAAGCTCTGGAAGCTCTGGAAGCTCTGGAAGCTCTGGAAGCTCTGGAAGCTCTGGAAGCTCTGGAAGCTCT",
+    "location": {
+      "type": "SequenceLocation",
+      "sequence_id": "refseq:NC_000002.12",
+      "interval": {
+        "type": "SequenceInterval",
+        "start": {
+          "type": "Number",
+          "value": 47600000
+        },
+        "end": {
+          "type": "Number",
+          "value": 47600001
+        }
+      }
+    }
+  },
+  "caseLevelData": [
+    {
+      "id": "cl-1",
+      "biosampleId": "bios-eee001"
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+ "_note": "All three conditions hold: numTotalResults present, 12 <= limit 100, precision exact. Coalescing is allowed; classify per record and populate every member class at full strength.",
+ "_requested_limit": 100,
+ "_expected": {
+  "holds": true,
+  "has_total": true,
+  "within_limit": true,
+  "count_exact": true,
+  "effective_limit": 100,
+  "limit_source": "response",
+  "not_test_mode": true
+ },
+ "meta": {
+  "apiVersion": "2.0",
+  "returnedGranularity": "record",
+  "returnedSchemas": [
+   {
+    "entityType": "genomicVariant",
+    "schema": "beacon-g_variant-v2.0.0"
+   }
+  ],
+  "receivedRequestSummary": {
+   "apiVersion": "2.0",
+   "requestedSchemas": [
+    {
+     "entityType": "genomicVariant"
+    }
+   ],
+   "pagination": {
+    "skip": 0,
+    "limit": 100
+   },
+   "requestedGranularity": "record",
+   "testMode": false
+  }
+ },
+ "responseSummary": {
+  "exists": true,
+  "numTotalResults": 12
+ },
+ "response": {
+  "resultSets": [
+   {
+    "id": "ds-1",
+    "setType": "dataset",
+    "exists": true,
+    "resultsCount": 12,
+    "countPrecision": "exact",
+    "results": [
+     {
+      "variantInternalId": "fixture:holds_complete_exact.json",
+      "caseLevelData": [
+       {
+        "biosampleId": "fixture-bs-0"
+       },
+       {
+        "biosampleId": "fixture-bs-1"
+       },
+       {
+        "biosampleId": "fixture-bs-2"
+       },
+       {
+        "biosampleId": "fixture-bs-3"
+       },
+       {
+        "biosampleId": "fixture-bs-4"
+       },
+       {
+        "biosampleId": "fixture-bs-5"
+       },
+       {
+        "biosampleId": "fixture-bs-6"
+       },
+       {
+        "biosampleId": "fixture-bs-7"
+       },
+       {
+        "biosampleId": "fixture-bs-8"
+       },
+       {
+        "biosampleId": "fixture-bs-9"
+       },
+       {
+        "biosampleId": "fixture-bs-10"
+       },
+       {
+        "biosampleId": "fixture-bs-11"
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "_delivery_note": "CONSTRUCTED: 12 instance(s) delivered against a reported total of 12. Until 3.0.0's partiality fix these fixtures delivered no records at all, which the coalescence check never compared against the total; a record-granularity response is complete only if it delivers what it reports."
+}

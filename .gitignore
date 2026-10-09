@@ -1,0 +1,12 @@
+# Build and packaging output
+build/
+dist/
+*.egg-info/
+
+# Python caches
+__pycache__/
+*.pyc
+
+# Environments and test caches
+.venv/
+.pytest_cache/

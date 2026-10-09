@@ -1,0 +1,51 @@
+{
+ "_note": "CONSTRUCTED from the default biosample schema for the Galaxy tool tests; not a capture.",
+ "meta": {
+  "apiVersion": "v2.3.0-beaconplus",
+  "returnedGranularity": "record",
+  "returnedSchemas": [
+   {
+    "id": "biosample"
+   }
+  ],
+  "receivedRequestSummary": {
+   "pagination": {
+    "skip": 0,
+    "limit": 0
+   },
+   "testMode": false
+  }
+ },
+ "responseSummary": {
+  "exists": true,
+  "numTotalResults": 1
+ },
+ "response": {
+  "resultSets": [
+   {
+    "id": "cellz",
+    "exists": true,
+    "resultsCount": 1,
+    "responseEntityId": "biosample",
+    "results": [
+     {
+      "id": "cellzbs-kftvksg5",
+      "individualId": "cellzind-b13A4316",
+      "biosampleStatus": {
+       "id": "EFO:0009656",
+       "label": "neoplastic sample"
+      },
+      "sampleOriginType": {
+       "id": "OBI:0001479",
+       "label": "specimen from organism"
+      },
+      "histologicalDiagnosis": {
+       "id": "NCIT:C3058",
+       "label": "Glioblastoma"
+      }
+     }
+    ]
+   }
+  ]
+ }
+}

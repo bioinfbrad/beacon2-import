@@ -1,0 +1,46 @@
+# Fragment for Galaxy's user_preferences_extra_conf.yml
+# (sample at lib/galaxy/config/sample/user_preferences_extra_conf.yml.sample;
+#  config option: user_preferences_extra_conf_path)
+#
+# Merge the two sections below under the existing top-level `preferences:` key.
+#
+# EVERY input is `required: False`. Public beacons must work with a completely
+# empty vault — a user who only ever queries public providers should never be
+# prompted for anything. A missing credential is reported per provider in the
+# run report as `auth_missing`, naming the key to set.
+
+preferences:
+
+    beacon2_credentials:
+        description: Beacon v2 API credentials (only needed for registered or controlled beacons)
+        inputs:
+            - name: ega_token
+              label: EGA Beacon access token
+              type: password
+              required: False
+            - name: cafevariome_token
+              label: Cafe Variome / RD Discovery Nexus access token
+              type: password
+              required: False
+            - name: rdconnect_token
+              label: RD-Connect GPAP access token
+              type: password
+              required: False
+
+    # Retained unchanged from 2.x for the direct-MongoDB transport, so existing
+    # self-hosted setups keep working across the 3.0.0 upgrade.
+    beacon2_account:
+        description: Self-hosted Beacon MongoDB account
+        inputs:
+            - name: db_auth_source
+              label: Authentication source database
+              type: text
+              required: False
+            - name: db_user
+              label: Database user
+              type: text
+              required: False
+            - name: db_password
+              label: Database password
+              type: password
+              required: False

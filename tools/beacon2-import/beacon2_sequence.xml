@@ -1,0 +1,231 @@
+<tool id="beacon2_sequence" name="Beacon2 Sequence Query" version="@TOOL_VERSION@+galaxy@VERSION_SUFFIX@" profile="@PROFILE@">
+    <description>find a precise variant at a genomic position across federated beacons</description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <expand macro="creators"/>
+    <expand macro="xrefs"/>
+    <expand macro="requirements"/>
+    <command detect_errors="exit_code"><![CDATA[
+#if str($connection.transport) == "api"
+    beacon2-query sequence
+        @PROVIDER_ARGS@
+        @VARIANT_CLASS_ARGS@
+        --reference-name '$reference_name'
+        --assembly '$assembly'
+        --start $start
+        --reference-bases '$reference_bases'
+        --alternate-bases '$alternate_bases'
+        --granularity '$granularity'
+        --limit $pagination.limit
+        --skip $pagination.skip
+        @SAMPLE_ARGS@
+        #if str($advanced.allow_coalescing) == "false"
+            --no-coalescing
+        #end if
+        @SV_TERM_ARGS@
+        @CNV_TERM_ARGS@
+        @FILTER_ARGS@
+        @OUTPUT_ARGS@
+#else
+    beacon2-query sequence
+        --transport mongodb
+        --db-host '$connection.db_host'
+        --db-port $connection.db_port
+        --database '$connection.database'
+        --collection '$connection.collection'
+        --credentials-file '$credentials'
+        --reference-name '$reference_name'
+        --start $start
+        --reference-bases '$reference_bases'
+        --alternate-bases '$alternate_bases'
+        @OUTPUT_ARGS@
+#end if
+    ]]></command>
+    <expand macro="credentials_configfile"/>
+    <inputs>
+        <expand macro="beacon_transport"/>
+        <expand macro="beacon_variant_class" cnv="false" small="true" sv="false"/>
+        <expand macro="beacon_reference"/>
+        <param argument="--start" type="integer" value="" min="1" label="Position"
+               help="1-based, as you would read it in a genome browser or a paper. Converted internally to the 0-based coordinates the API uses."/>
+        <param argument="--reference-bases" type="text" value="" optional="false" label="Reference bases"
+               help="The base or bases present in the reference at this position, e.g. G.">
+            <validator type="regex" message="Use A, C, G, T or N only">^[ACGTNacgtn]+$</validator>
+        </param>
+        <param argument="--alternate-bases" type="text" value="" optional="false" label="Alternate bases"
+               help="The base or bases you are looking for, e.g. A. N acts as a wildcard: ANNT matches ACGT, ACCT and so on.">
+            <validator type="regex" message="Use A, C, G, T or N only">^[ACGTNacgtn]+$</validator>
+        </param>
+        <expand macro="beacon_granularity"/>
+        <expand macro="beacon_filters"/>
+        <expand macro="beacon_pagination"/>
+        <section name="advanced" title="Advanced" expanded="false">
+            <param name="allow_coalescing" type="boolean" checked="true" truevalue="true" falsevalue="false"
+                   label="Combine identical queries across variant classes"
+                   help="When two classes would produce exactly the same request, send it once and sort the results afterwards. The combined result is only used if the beacon reports a complete, exact count; otherwise each class is queried separately. Turn this off to always query each class independently."/>
+        </section>
+        <expand macro="beacon_sv_terms"/>
+        <expand macro="beacon_cnv_terms"/>
+    </inputs>
+    <expand macro="beacon_outputs"/>
+    <tests>
+        <!-- The EIF4A1 G>A example, against the small-variant-evidenced beacon. -->
+        <test expect_num_outputs="2">
+            <conditional name="connection">
+                <param name="transport" value="api"/>
+                <param name="providers" value="org.ega-archive.demo"/>
+            </conditional>
+            <param name="variant_classes" value="SMALL_VARIANT"/>
+            <param name="reference_name" value="17"/>
+            <param name="assembly" value="GRCh38"/>
+            <param name="start" value="7577120"/>
+            <param name="reference_bases" value="G"/>
+            <param name="alternate_bases" value="A"/>
+            <output name="results">
+                <assert_contents>
+                    <has_text text="variant_class"/>
+                    <has_text text="SMALL_VARIANT"/>
+                    <has_text_matching expression="classification_basis"/>
+                </assert_contents>
+            </output>
+            <output name="outcomes">
+                <assert_contents>
+                    <has_text text="SMALL_VARIANT"/>
+                    <has_text text="ok"/>
+                    <has_n_lines n="2"/>
+                </assert_contents>
+            </output>
+        </test>
+        <!-- Class unverified: queried anyway, zero result explicitly not evidence of absence. -->
+        <test expect_num_outputs="2">
+            <conditional name="connection">
+                <param name="transport" value="api"/>
+                <param name="providers" value="org.cancercelllines"/>
+            </conditional>
+            <param name="variant_classes" value="SMALL_VARIANT"/>
+            <param name="reference_name" value="17"/>
+            <param name="start" value="7577120"/>
+            <param name="reference_bases" value="G"/>
+            <param name="alternate_bases" value="A"/>
+            <output name="outcomes">
+                <assert_contents>
+                    <has_text text="unknown"/>
+                    <has_text text="not evidence"/>
+                </assert_contents>
+            </output>
+        </test>
+        <!-- Two classes, one provider: two outcome rows, one per pair. -->
+        <test expect_num_outputs="2">
+            <conditional name="connection">
+                <param name="transport" value="api"/>
+                <param name="providers" value="org.ega-archive.demo"/>
+            </conditional>
+            <param name="variant_classes" value="SMALL_VARIANT,CNV"/>
+            <param name="reference_name" value="17"/>
+            <param name="start" value="7577120"/>
+            <param name="reference_bases" value="G"/>
+            <param name="alternate_bases" value="A"/>
+            <output name="outcomes">
+                <assert_contents>
+                    <has_n_lines n="3"/>
+                    <has_text text="SMALL_VARIANT"/>
+                    <has_text text="CNV"/>
+                </assert_contents>
+            </output>
+        </test>
+        <!-- Declared `no` is the only thing that skips. -->
+        <test expect_num_outputs="2">
+            <conditional name="connection">
+                <param name="transport" value="api"/>
+                <param name="providers" value="test.fixture.bracketless"/>
+            </conditional>
+            <param name="variant_classes" value="SV"/>
+            <param name="reference_name" value="17"/>
+            <param name="start" value="7577120"/>
+            <param name="reference_bases" value="G"/>
+            <param name="alternate_bases" value="A"/>
+            <output name="outcomes">
+                <assert_contents>
+                    <has_text text="skipped"/>
+                    <has_text text="does not serve"/>
+                </assert_contents>
+            </output>
+        </test>
+        <!-- Repeat expansions cannot be expressed before VQS: a skip, not an error. -->
+        <test expect_num_outputs="2">
+            <conditional name="connection">
+                <param name="transport" value="api"/>
+                <param name="providers" value="org.ega-archive.demo"/>
+            </conditional>
+            <param name="variant_classes" value="REPEAT"/>
+            <param name="reference_name" value="17"/>
+            <param name="start" value="7577120"/>
+            <param name="reference_bases" value="G"/>
+            <param name="alternate_bases" value="A"/>
+            <output name="outcomes">
+                <assert_contents>
+                    <has_text text="skipped"/>
+                    <has_text text="REPEAT"/>
+                </assert_contents>
+            </output>
+        </test>
+    </tests>
+    <help><![CDATA[
+**What it does**
+
+@HELP_READS@
+
+Looks for a precise variant at a single position — the classic Beacon question,
+"do you have anyone with this change?" This is the tool for SNVs and short
+insertions or deletions, where you know the reference base or bases and the
+alternate you are looking for.
+
+For anything defined by a region rather than a position, use the Range Query
+tool. For copy number and structural variants with imprecise breakpoints, use
+the Bracket Query tool.
+
+**Worked example: a single base change in EIF4A1**
+
+::
+
+    Chromosome:       17
+    Position:         7,577,120
+    Reference bases:  G
+    Alternate bases:  A
+
+Enter the position as you would read it in a genome browser. The tool converts
+to the 0-based coordinates the API expects, so you never have to adjust by one.
+
+**Wildcards**
+
+``N`` matches any base, in either field. An alternate of ``ANNT`` matches
+``ACGT``, ``ACCT``, ``AGGT`` and so on, which is useful when you care about the
+flanking bases but not the middle.
+
+@HELP_VARIANT_CLASS@
+
+**Combining identical queries**
+
+If you select more than one variant class and the resulting requests would be
+identical, the tool sends one request and sorts the results by class afterwards
+— but only keeps that shortcut when the beacon reports a complete and exact
+count for the query. If anything was truncated, or the count is approximate,
+each class is queried separately instead and the report says so. The saving
+never comes at the cost of a weaker claim about what was found.
+
+@HELP_VARIANT_SIZE@
+
+@HELP_DEGRADATION@
+
+@HELP_OUTPUTS@
+
+**Credentials**
+
+Public beacons need none. For registered or controlled beacons, set the relevant
+key under *User → Preferences → Manage information*. A missing credential is
+reported per beacon as ``auth_missing``, naming the preference key to set — the
+tool never echoes the value itself.
+    ]]></help>
+    <expand macro="citations"/>
+</tool>

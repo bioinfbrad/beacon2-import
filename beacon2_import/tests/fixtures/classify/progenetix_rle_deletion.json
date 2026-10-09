@@ -1,0 +1,12 @@
+{
+  "variantInternalId": "NC_000001.11:35359149:",
+  "variation": {
+    "type": "Allele",
+    "location": {"chromosome": "1", "start": 35359149, "end": 35359150,
+                 "sequence_id": "refseq:NC_000001.11"},
+    "referenceSequence": "C",
+    "state": {"type": "ReferenceLengthExpression", "length": 0,
+              "repeatSubunitLength": 1, "sequence": ""},
+    "variantState": {"id": "SO:0001483", "label": "SNP"}
+  }
+}

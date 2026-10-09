@@ -1,0 +1,29 @@
+# Modules permitted to contain `raise NotImplementedError`.
+#
+# Enforced BOTH ways by tests/test_stub_audit.py:
+#   * a module NOT listed here may not contain a stub
+#   * a module listed here MUST still contain one -- remove it when done
+# Otherwise the list goes stale and the metric rots in the other direction.
+#
+# module<TAB>reason
+analysis/binning.py	PR 2: analysis and plotting
+analysis/cohorts.py	PR 2: analysis and plotting
+analysis/frequency.py	PR 2: analysis and plotting
+analysis/matrix.py	PR 2: analysis and plotting
+analysis/segments.py	PR 2: analysis and plotting
+analysis/statistics.py	PR 2: analysis and plotting
+cli/frequency.py	PR 2: analysis and plotting
+cli/matrix.py	PR 2: analysis and plotting
+cli/plot_frequency.py	PR 2: analysis and plotting
+cli/plot_meta.py	PR 2: analysis and plotting
+cli/plot_variant.py	PR 2: analysis and plotting
+cli/segments.py	PR 2: analysis and plotting
+cli/statistics.py	PR 2: analysis and plotting
+formats/frequency.py	PR 2: analysis and plotting
+formats/matrix.py	PR 2: analysis and plotting
+formats/segments.py	PR 2: analysis and plotting
+plotting/circos.py	PR 2: analysis and plotting
+plotting/genome.py	PR 2: analysis and plotting
+plotting/lollipop.py	PR 2: analysis and plotting
+plotting/metadata.py	PR 2: analysis and plotting
+plotting/theme.py	PR 2: analysis and plotting

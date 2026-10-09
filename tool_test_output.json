@@ -1,0 +1,2807 @@
+{
+    "exit_code": null,
+    "summary": {
+        "num_errors": 0,
+        "num_failures": 5,
+        "num_skips": 0,
+        "num_tests": 25
+    },
+    "tests": [
+        {
+            "data": {
+                "end_datetime": null,
+                "execution_problem": null,
+                "inputs": {
+                    "connection|providers": "org.cancercelllines"
+                },
+                "invocation_details": null,
+                "job": {
+                    "command_line": "beacon2-query service-info  --providers 'org.cancercelllines' --provider-table '/tmp/tmpuajbvyf0/job_working_directory/000/1/configs/tmpumlv1hyt' --credentials-file '/tmp/tmpuajbvyf0/job_working_directory/000/1/configs/tmp9bmha7ik'  --report 'service_info.tsv' --outcomes 'outcomes.tsv'",
+                    "command_version": "",
+                    "copied_from_job_id": null,
+                    "create_time": "2026-10-08T12:10:45.578624",
+                    "dependencies": [],
+                    "exit_code": 0,
+                    "external_id": "26320",
+                    "galaxy_version": "26.1",
+                    "handler": null,
+                    "history_id": "95bd14c88742ea55",
+                    "id": "95bd14c88742ea55",
+                    "inputs": {},
+                    "job_messages": [],
+                    "job_metrics": [
+                        {
+                            "name": "galaxy_slots",
+                            "plugin": "core",
+                            "raw_value": "1.0000000",
+                            "title": "Cores Allocated",
+                            "value": "1"
+                        },
+                        {
+                            "name": "start_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461446.0000000",
+                            "title": "Job Start Time",
+                            "value": "2026-10-08 12:10:46"
+                        },
+                        {
+                            "name": "end_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461453.0000000",
+                            "title": "Job End Time",
+                            "value": "2026-10-08 12:10:53"
+                        },
+                        {
+                            "name": "runtime_seconds",
+                            "plugin": "core",
+                            "raw_value": "7.0000000",
+                            "title": "Job Runtime (Wall Clock)",
+                            "value": "7 seconds"
+                        }
+                    ],
+                    "job_runner_name": null,
+                    "job_stderr": "",
+                    "job_stdout": "",
+                    "model_class": "Job",
+                    "output_collections": {},
+                    "outputs": {
+                        "outcomes": {
+                            "id": "2ee5ceac46fa0b32",
+                            "src": "hda",
+                            "uuid": "ed77a65e-8d5b-43b0-b819-722dc8064a61"
+                        },
+                        "report": {
+                            "id": "95bd14c88742ea55",
+                            "src": "hda",
+                            "uuid": "b9d949ef-dc96-4178-b980-ee067ab04128"
+                        }
+                    },
+                    "params": {
+                        "__input_ext": "\"input\"",
+                        "chromInfo": "\"/tmp/tmpuajbvyf0/galaxy-dev/tool-data/shared/ucsc/chrom/?.len\"",
+                        "connection": "{\"__current_case__\": 0, \"providers\": \"org.cancercelllines\", \"transport\": \"api\"}",
+                        "dbkey": "\"?\""
+                    },
+                    "state": "ok",
+                    "stderr": "",
+                    "stdout": "",
+                    "tool_id": "beacon2_service_info",
+                    "tool_stderr": "",
+                    "tool_stdout": "",
+                    "update_time": "2026-10-08T12:10:53.194193",
+                    "user_email": "planemo@galaxyproject.org",
+                    "user_id": "95bd14c88742ea55"
+                },
+                "output_problems": null,
+                "problem_log": null,
+                "start_datetime": null,
+                "status": "success",
+                "test_index": 0,
+                "time_seconds": 7.902447462081909,
+                "tool_id": "beacon2_service_info",
+                "tool_version": "3.0.0+galaxy0"
+            },
+            "doc": null,
+            "has_data": true,
+            "id": "beacon2_service_info-0",
+            "test_type": null
+        },
+        {
+            "data": {
+                "end_datetime": null,
+                "execution_problem": null,
+                "inputs": {
+                    "assembly": "GRCh38",
+                    "cnv_terms|variant_type|expand_hierarchy": "always",
+                    "cnv_terms|variant_type|mode": "efo",
+                    "cnv_terms|variant_type|term": "EFO:0030067",
+                    "connection|providers": [
+                        "org.progenetix.beacon",
+                        "org.cancercelllines"
+                    ],
+                    "connection|transport": "api",
+                    "end_max": "10000000",
+                    "end_min": "7669607",
+                    "reference_name": "17",
+                    "start_max": "7676592",
+                    "start_min": "5000000",
+                    "variant_classes": "CNV"
+                },
+                "invocation_details": null,
+                "job": {
+                    "command_line": "beacon2-query bracket  --providers 'org.progenetix.beacon,org.cancercelllines' --provider-table '/tmp/tmpuajbvyf0/job_working_directory/000/2/configs/tmp47gndu6_' --credentials-file '/tmp/tmpuajbvyf0/job_working_directory/000/2/configs/tmp5bd3s8x1'   --variant-classes 'CNV'  --reference-name '17' --assembly 'GRCh38' --start-min 5000000 --start-max 7676592 --end-min 7669607 --end-max 10000000 --granularity 'record' --limit 100 --skip 0    --class-term 'CNV=EFO:0030067' --expand-hierarchy 'always'       --results 'results.tsv' --outcomes 'outcomes.tsv'",
+                    "command_version": "",
+                    "copied_from_job_id": null,
+                    "create_time": "2026-10-08T12:10:53.522499",
+                    "dependencies": [],
+                    "exit_code": 0,
+                    "external_id": "26473",
+                    "galaxy_version": "26.1",
+                    "handler": null,
+                    "history_id": "2ee5ceac46fa0b32",
+                    "id": "2ee5ceac46fa0b32",
+                    "inputs": {},
+                    "job_messages": [],
+                    "job_metrics": [
+                        {
+                            "name": "galaxy_slots",
+                            "plugin": "core",
+                            "raw_value": "1.0000000",
+                            "title": "Cores Allocated",
+                            "value": "1"
+                        },
+                        {
+                            "name": "start_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461453.0000000",
+                            "title": "Job Start Time",
+                            "value": "2026-10-08 12:10:53"
+                        },
+                        {
+                            "name": "end_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461459.0000000",
+                            "title": "Job End Time",
+                            "value": "2026-10-08 12:10:59"
+                        },
+                        {
+                            "name": "runtime_seconds",
+                            "plugin": "core",
+                            "raw_value": "6.0000000",
+                            "title": "Job Runtime (Wall Clock)",
+                            "value": "6 seconds"
+                        }
+                    ],
+                    "job_runner_name": null,
+                    "job_stderr": "",
+                    "job_stdout": "",
+                    "model_class": "Job",
+                    "output_collections": {},
+                    "outputs": {
+                        "outcomes": {
+                            "id": "fec015efb9af1ef7",
+                            "src": "hda",
+                            "uuid": "de33e0b5-b96c-43c4-a6a3-03f50246f174"
+                        },
+                        "results": {
+                            "id": "55ec47e584c2fb23",
+                            "src": "hda",
+                            "uuid": "c6dfa6bd-0f65-47cd-99a7-a29db328b218"
+                        }
+                    },
+                    "params": {
+                        "__input_ext": "\"input\"",
+                        "advanced": "{\"allow_degradation\": true, \"variant_max_length\": \"\", \"variant_min_length\": \"\"}",
+                        "assembly": "\"GRCh38\"",
+                        "chromInfo": "\"/tmp/tmpuajbvyf0/galaxy-dev/tool-data/shared/ucsc/chrom/?.len\"",
+                        "cnv_terms": "{\"variant_type\": {\"__current_case__\": 1, \"expand_hierarchy\": \"always\", \"mode\": \"efo\", \"term\": \"EFO:0030067\"}}",
+                        "connection": "{\"__current_case__\": 0, \"providers\": [\"org.progenetix.beacon\", \"org.cancercelllines\"], \"transport\": \"api\"}",
+                        "dbkey": "\"?\"",
+                        "end_max": "\"10000000\"",
+                        "end_min": "\"7669607\"",
+                        "filters": "[]",
+                        "granularity": "\"record\"",
+                        "pagination": "{\"limit\": \"100\", \"sample\": \"\", \"skip\": \"0\"}",
+                        "reference_name": "\"17\"",
+                        "start_max": "\"7676592\"",
+                        "start_min": "\"5000000\"",
+                        "sv_terms": "{\"variant_type\": {\"__current_case__\": 0, \"mode\": \"none\"}}",
+                        "variant_classes": "\"CNV\""
+                    },
+                    "state": "ok",
+                    "stderr": "",
+                    "stdout": "",
+                    "tool_id": "beacon2_bracket",
+                    "tool_stderr": "",
+                    "tool_stdout": "",
+                    "update_time": "2026-10-08T12:10:59.864415",
+                    "user_email": "planemo@galaxyproject.org",
+                    "user_id": "95bd14c88742ea55"
+                },
+                "output_problems": null,
+                "problem_log": null,
+                "start_datetime": null,
+                "status": "success",
+                "test_index": 0,
+                "time_seconds": 6.53461766242981,
+                "tool_id": "beacon2_bracket",
+                "tool_version": "3.0.0+galaxy0"
+            },
+            "doc": null,
+            "has_data": true,
+            "id": "beacon2_bracket-0",
+            "test_type": null
+        },
+        {
+            "data": {
+                "end_datetime": null,
+                "execution_problem": null,
+                "inputs": {
+                    "connection|providers": "test.fixture.bracketless",
+                    "connection|transport": "api",
+                    "end_max": "10000000",
+                    "end_min": "7669607",
+                    "reference_name": "17",
+                    "start_max": "7676592",
+                    "start_min": "5000000",
+                    "variant_classes": "CNV"
+                },
+                "invocation_details": null,
+                "job": {
+                    "command_line": "beacon2-query bracket  --providers 'test.fixture.bracketless' --provider-table '/tmp/tmpuajbvyf0/job_working_directory/000/3/configs/tmpu257yv2h' --credentials-file '/tmp/tmpuajbvyf0/job_working_directory/000/3/configs/tmp9eas_b6p'   --variant-classes 'CNV'  --reference-name '17' --assembly 'GRCh38' --start-min 5000000 --start-max 7676592 --end-min 7669607 --end-max 10000000 --granularity 'record' --limit 100 --skip 0          --results 'results.tsv' --outcomes 'outcomes.tsv'",
+                    "command_version": "",
+                    "copied_from_job_id": null,
+                    "create_time": "2026-10-08T12:11:00.127864",
+                    "dependencies": [],
+                    "exit_code": 0,
+                    "external_id": "26645",
+                    "galaxy_version": "26.1",
+                    "handler": null,
+                    "history_id": "55ec47e584c2fb23",
+                    "id": "55ec47e584c2fb23",
+                    "inputs": {},
+                    "job_messages": [],
+                    "job_metrics": [
+                        {
+                            "name": "galaxy_slots",
+                            "plugin": "core",
+                            "raw_value": "1.0000000",
+                            "title": "Cores Allocated",
+                            "value": "1"
+                        },
+                        {
+                            "name": "start_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461461.0000000",
+                            "title": "Job Start Time",
+                            "value": "2026-10-08 12:11:01"
+                        },
+                        {
+                            "name": "end_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461467.0000000",
+                            "title": "Job End Time",
+                            "value": "2026-10-08 12:11:07"
+                        },
+                        {
+                            "name": "runtime_seconds",
+                            "plugin": "core",
+                            "raw_value": "6.0000000",
+                            "title": "Job Runtime (Wall Clock)",
+                            "value": "6 seconds"
+                        }
+                    ],
+                    "job_runner_name": null,
+                    "job_stderr": "",
+                    "job_stdout": "",
+                    "model_class": "Job",
+                    "output_collections": {},
+                    "outputs": {
+                        "outcomes": {
+                            "id": "173dca04781f2f55",
+                            "src": "hda",
+                            "uuid": "5cd255d8-3b8f-45d4-9689-eac63679c365"
+                        },
+                        "results": {
+                            "id": "270683f934287b3d",
+                            "src": "hda",
+                            "uuid": "0d454797-2ee5-4a9a-a9fd-277722bf235a"
+                        }
+                    },
+                    "params": {
+                        "__input_ext": "\"input\"",
+                        "advanced": "{\"allow_degradation\": true, \"variant_max_length\": \"\", \"variant_min_length\": \"\"}",
+                        "assembly": "\"GRCh38\"",
+                        "chromInfo": "\"/tmp/tmpuajbvyf0/galaxy-dev/tool-data/shared/ucsc/chrom/?.len\"",
+                        "cnv_terms": "{\"variant_type\": {\"__current_case__\": 0, \"mode\": \"none\"}}",
+                        "connection": "{\"__current_case__\": 0, \"providers\": \"test.fixture.bracketless\", \"transport\": \"api\"}",
+                        "dbkey": "\"?\"",
+                        "end_max": "\"10000000\"",
+                        "end_min": "\"7669607\"",
+                        "filters": "[]",
+                        "granularity": "\"record\"",
+                        "pagination": "{\"limit\": \"100\", \"sample\": \"\", \"skip\": \"0\"}",
+                        "reference_name": "\"17\"",
+                        "start_max": "\"7676592\"",
+                        "start_min": "\"5000000\"",
+                        "sv_terms": "{\"variant_type\": {\"__current_case__\": 0, \"mode\": \"none\"}}",
+                        "variant_classes": "\"CNV\""
+                    },
+                    "state": "ok",
+                    "stderr": "",
+                    "stdout": "",
+                    "tool_id": "beacon2_bracket",
+                    "tool_stderr": "",
+                    "tool_stdout": "",
+                    "update_time": "2026-10-08T12:11:07.104041",
+                    "user_email": "planemo@galaxyproject.org",
+                    "user_id": "95bd14c88742ea55"
+                },
+                "output_problems": [
+                    "Output outcomes:  different than expected\nExpected text 'range' in output ('beacon_id\tbeacon_name\tvariant_class\tclass_status\tstatus\trow_count\tgranularity_requested\tgranularity_returned\tcount_precision\tcount_precision_basis\tquery_degraded\tcoalesced\tnotes\ntest.fixture.bracketless\tTest fixture \u2014 CNV beacon without bracket support\tCNV\tyes\terror\t0\t\t\t\t\tfalse\tno\tFixtureMiss: no manifest.json in /workspaces/beacon2-import/tools/beacon2-import/test-data/fixtures/test.fixture.bracketless\n')"
+                ],
+                "problem_log": null,
+                "start_datetime": null,
+                "status": "failure",
+                "test_index": 1,
+                "time_seconds": 7.17219614982605,
+                "tool_id": "beacon2_bracket",
+                "tool_version": "3.0.0+galaxy0"
+            },
+            "doc": null,
+            "has_data": true,
+            "id": "beacon2_bracket-1",
+            "test_type": null
+        },
+        {
+            "data": {
+                "end_datetime": null,
+                "execution_problem": null,
+                "inputs": {
+                    "advanced|allow_degradation": false,
+                    "connection|providers": "test.fixture.bracketless",
+                    "connection|transport": "api",
+                    "end_max": "10000000",
+                    "end_min": "7669607",
+                    "reference_name": "17",
+                    "start_max": "7676592",
+                    "start_min": "5000000",
+                    "variant_classes": "CNV"
+                },
+                "invocation_details": null,
+                "job": {
+                    "command_line": "beacon2-query bracket  --providers 'test.fixture.bracketless' --provider-table '/tmp/tmpuajbvyf0/job_working_directory/000/4/configs/tmp1l_8gqp6' --credentials-file '/tmp/tmpuajbvyf0/job_working_directory/000/4/configs/tmpcvvj2ris'   --variant-classes 'CNV'  --reference-name '17' --assembly 'GRCh38' --start-min 5000000 --start-max 7676592 --end-min 7669607 --end-max 10000000 --granularity 'record' --limit 100 --skip 0       --no-degradation    --results 'results.tsv' --outcomes 'outcomes.tsv'",
+                    "command_version": "",
+                    "copied_from_job_id": null,
+                    "create_time": "2026-10-08T12:11:07.343785",
+                    "dependencies": [],
+                    "exit_code": 0,
+                    "external_id": "26817",
+                    "galaxy_version": "26.1",
+                    "handler": null,
+                    "history_id": "fec015efb9af1ef7",
+                    "id": "fec015efb9af1ef7",
+                    "inputs": {},
+                    "job_messages": [],
+                    "job_metrics": [
+                        {
+                            "name": "galaxy_slots",
+                            "plugin": "core",
+                            "raw_value": "1.0000000",
+                            "title": "Cores Allocated",
+                            "value": "1"
+                        },
+                        {
+                            "name": "start_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461468.0000000",
+                            "title": "Job Start Time",
+                            "value": "2026-10-08 12:11:08"
+                        },
+                        {
+                            "name": "end_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461474.0000000",
+                            "title": "Job End Time",
+                            "value": "2026-10-08 12:11:14"
+                        },
+                        {
+                            "name": "runtime_seconds",
+                            "plugin": "core",
+                            "raw_value": "6.0000000",
+                            "title": "Job Runtime (Wall Clock)",
+                            "value": "6 seconds"
+                        }
+                    ],
+                    "job_runner_name": null,
+                    "job_stderr": "",
+                    "job_stdout": "",
+                    "model_class": "Job",
+                    "output_collections": {},
+                    "outputs": {
+                        "outcomes": {
+                            "id": "1b13f8be92f730c7",
+                            "src": "hda",
+                            "uuid": "736bacde-df21-446f-9680-f844f0f19fb0"
+                        },
+                        "results": {
+                            "id": "e4806a288a1c4bfa",
+                            "src": "hda",
+                            "uuid": "efed7682-1bc8-4b6a-af30-62fe82632138"
+                        }
+                    },
+                    "params": {
+                        "__input_ext": "\"input\"",
+                        "advanced": "{\"allow_degradation\": false, \"variant_max_length\": \"\", \"variant_min_length\": \"\"}",
+                        "assembly": "\"GRCh38\"",
+                        "chromInfo": "\"/tmp/tmpuajbvyf0/galaxy-dev/tool-data/shared/ucsc/chrom/?.len\"",
+                        "cnv_terms": "{\"variant_type\": {\"__current_case__\": 0, \"mode\": \"none\"}}",
+                        "connection": "{\"__current_case__\": 0, \"providers\": \"test.fixture.bracketless\", \"transport\": \"api\"}",
+                        "dbkey": "\"?\"",
+                        "end_max": "\"10000000\"",
+                        "end_min": "\"7669607\"",
+                        "filters": "[]",
+                        "granularity": "\"record\"",
+                        "pagination": "{\"limit\": \"100\", \"sample\": \"\", \"skip\": \"0\"}",
+                        "reference_name": "\"17\"",
+                        "start_max": "\"7676592\"",
+                        "start_min": "\"5000000\"",
+                        "sv_terms": "{\"variant_type\": {\"__current_case__\": 0, \"mode\": \"none\"}}",
+                        "variant_classes": "\"CNV\""
+                    },
+                    "state": "ok",
+                    "stderr": "",
+                    "stdout": "",
+                    "tool_id": "beacon2_bracket",
+                    "tool_stderr": "",
+                    "tool_stdout": "",
+                    "update_time": "2026-10-08T12:11:14.233933",
+                    "user_email": "planemo@galaxyproject.org",
+                    "user_id": "95bd14c88742ea55"
+                },
+                "output_problems": null,
+                "problem_log": null,
+                "start_datetime": null,
+                "status": "success",
+                "test_index": 2,
+                "time_seconds": 6.989115476608276,
+                "tool_id": "beacon2_bracket",
+                "tool_version": "3.0.0+galaxy0"
+            },
+            "doc": null,
+            "has_data": true,
+            "id": "beacon2_bracket-2",
+            "test_type": null
+        },
+        {
+            "data": {
+                "end_datetime": null,
+                "execution_problem": null,
+                "inputs": {
+                    "cnv_terms|variant_type|mode": "legacy",
+                    "cnv_terms|variant_type|term": "DEL",
+                    "connection|providers": "org.cancercelllines",
+                    "connection|transport": "api",
+                    "end_max": "22500000",
+                    "end_min": "21967753",
+                    "reference_name": "9",
+                    "start_max": "21975098",
+                    "start_min": "21500001",
+                    "variant_classes": "CNV"
+                },
+                "invocation_details": null,
+                "job": {
+                    "command_line": "beacon2-query bracket  --providers 'org.cancercelllines' --provider-table '/tmp/tmpuajbvyf0/job_working_directory/000/5/configs/tmpo5zp65f_' --credentials-file '/tmp/tmpuajbvyf0/job_working_directory/000/5/configs/tmp1_1qmtfs'   --variant-classes 'CNV'  --reference-name '9' --assembly 'GRCh38' --start-min 21500001 --start-max 21975098 --end-min 21967753 --end-max 22500000 --granularity 'record' --limit 100 --skip 0    --class-term 'CNV=DEL'       --results 'results.tsv' --outcomes 'outcomes.tsv'",
+                    "command_version": "",
+                    "copied_from_job_id": null,
+                    "create_time": "2026-10-08T12:11:14.393211",
+                    "dependencies": [],
+                    "exit_code": 0,
+                    "external_id": "26968",
+                    "galaxy_version": "26.1",
+                    "handler": null,
+                    "history_id": "270683f934287b3d",
+                    "id": "270683f934287b3d",
+                    "inputs": {},
+                    "job_messages": [],
+                    "job_metrics": [
+                        {
+                            "name": "galaxy_slots",
+                            "plugin": "core",
+                            "raw_value": "1.0000000",
+                            "title": "Cores Allocated",
+                            "value": "1"
+                        },
+                        {
+                            "name": "start_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461475.0000000",
+                            "title": "Job Start Time",
+                            "value": "2026-10-08 12:11:15"
+                        },
+                        {
+                            "name": "end_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461481.0000000",
+                            "title": "Job End Time",
+                            "value": "2026-10-08 12:11:21"
+                        },
+                        {
+                            "name": "runtime_seconds",
+                            "plugin": "core",
+                            "raw_value": "6.0000000",
+                            "title": "Job Runtime (Wall Clock)",
+                            "value": "6 seconds"
+                        }
+                    ],
+                    "job_runner_name": null,
+                    "job_stderr": "",
+                    "job_stdout": "",
+                    "model_class": "Job",
+                    "output_collections": {},
+                    "outputs": {
+                        "outcomes": {
+                            "id": "661859279286f97f",
+                            "src": "hda",
+                            "uuid": "263bbc1b-939c-44b3-93d1-6867849bdc8f"
+                        },
+                        "results": {
+                            "id": "27eb406cd09ee6b3",
+                            "src": "hda",
+                            "uuid": "926366a6-f502-4581-8f2f-6ec94a1fc184"
+                        }
+                    },
+                    "params": {
+                        "__input_ext": "\"input\"",
+                        "advanced": "{\"allow_degradation\": true, \"variant_max_length\": \"\", \"variant_min_length\": \"\"}",
+                        "assembly": "\"GRCh38\"",
+                        "chromInfo": "\"/tmp/tmpuajbvyf0/galaxy-dev/tool-data/shared/ucsc/chrom/?.len\"",
+                        "cnv_terms": "{\"variant_type\": {\"__current_case__\": 2, \"mode\": \"legacy\", \"term\": \"DEL\"}}",
+                        "connection": "{\"__current_case__\": 0, \"providers\": \"org.cancercelllines\", \"transport\": \"api\"}",
+                        "dbkey": "\"?\"",
+                        "end_max": "\"22500000\"",
+                        "end_min": "\"21967753\"",
+                        "filters": "[]",
+                        "granularity": "\"record\"",
+                        "pagination": "{\"limit\": \"100\", \"sample\": \"\", \"skip\": \"0\"}",
+                        "reference_name": "\"9\"",
+                        "start_max": "\"21975098\"",
+                        "start_min": "\"21500001\"",
+                        "sv_terms": "{\"variant_type\": {\"__current_case__\": 0, \"mode\": \"none\"}}",
+                        "variant_classes": "\"CNV\""
+                    },
+                    "state": "ok",
+                    "stderr": "",
+                    "stdout": "",
+                    "tool_id": "beacon2_bracket",
+                    "tool_stderr": "",
+                    "tool_stdout": "",
+                    "update_time": "2026-10-08T12:11:21.442758",
+                    "user_email": "planemo@galaxyproject.org",
+                    "user_id": "95bd14c88742ea55"
+                },
+                "output_problems": null,
+                "problem_log": null,
+                "start_datetime": null,
+                "status": "success",
+                "test_index": 3,
+                "time_seconds": 7.2770209312438965,
+                "tool_id": "beacon2_bracket",
+                "tool_version": "3.0.0+galaxy0"
+            },
+            "doc": null,
+            "has_data": true,
+            "id": "beacon2_bracket-3",
+            "test_type": null
+        },
+        {
+            "data": {
+                "end_datetime": null,
+                "execution_problem": null,
+                "inputs": {
+                    "connection|providers": "org.cancercelllines",
+                    "connection|transport": "api"
+                },
+                "invocation_details": null,
+                "job": {
+                    "command_line": "beacon2-query entity --entity dataset  --providers 'org.cancercelllines' --provider-table '/tmp/tmpuajbvyf0/job_working_directory/000/6/configs/tmpyh3j4r9z' --credentials-file '/tmp/tmpuajbvyf0/job_working_directory/000/6/configs/tmpdwjmls4q'  --granularity 'record' --limit 100 --skip 0    --results 'results.tsv' --outcomes 'outcomes.tsv'",
+                    "command_version": "",
+                    "copied_from_job_id": null,
+                    "create_time": "2026-10-08T12:11:21.722751",
+                    "dependencies": [],
+                    "exit_code": 0,
+                    "external_id": "27175",
+                    "galaxy_version": "26.1",
+                    "handler": null,
+                    "history_id": "173dca04781f2f55",
+                    "id": "173dca04781f2f55",
+                    "inputs": {},
+                    "job_messages": [],
+                    "job_metrics": [
+                        {
+                            "name": "galaxy_slots",
+                            "plugin": "core",
+                            "raw_value": "1.0000000",
+                            "title": "Cores Allocated",
+                            "value": "1"
+                        },
+                        {
+                            "name": "start_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461482.0000000",
+                            "title": "Job Start Time",
+                            "value": "2026-10-08 12:11:22"
+                        },
+                        {
+                            "name": "end_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461488.0000000",
+                            "title": "Job End Time",
+                            "value": "2026-10-08 12:11:28"
+                        },
+                        {
+                            "name": "runtime_seconds",
+                            "plugin": "core",
+                            "raw_value": "6.0000000",
+                            "title": "Job Runtime (Wall Clock)",
+                            "value": "6 seconds"
+                        }
+                    ],
+                    "job_runner_name": null,
+                    "job_stderr": "",
+                    "job_stdout": "",
+                    "model_class": "Job",
+                    "output_collections": {},
+                    "outputs": {
+                        "outcomes": {
+                            "id": "91421fe4621fc87d",
+                            "src": "hda",
+                            "uuid": "536b6471-ac27-457a-a6e8-8f6e82db53e8"
+                        },
+                        "results": {
+                            "id": "b44f0c12d51422bf",
+                            "src": "hda",
+                            "uuid": "e4aaafa6-2550-4f84-8af0-be4b1126a16d"
+                        }
+                    },
+                    "params": {
+                        "__input_ext": "\"input\"",
+                        "chromInfo": "\"/tmp/tmpuajbvyf0/galaxy-dev/tool-data/shared/ucsc/chrom/?.len\"",
+                        "connection": "{\"__current_case__\": 0, \"filters\": [], \"granularity\": \"record\", \"lookup\": {\"__current_case__\": 0, \"mode\": \"query\"}, \"pagination\": {\"limit\": \"100\", \"sample\": \"\", \"skip\": \"0\"}, \"providers\": \"org.cancercelllines\", \"transport\": \"api\"}",
+                        "dbkey": "\"?\""
+                    },
+                    "state": "ok",
+                    "stderr": "",
+                    "stdout": "",
+                    "tool_id": "beacon2_datasets",
+                    "tool_stderr": "",
+                    "tool_stdout": "",
+                    "update_time": "2026-10-08T12:11:28.433618",
+                    "user_email": "planemo@galaxyproject.org",
+                    "user_id": "95bd14c88742ea55"
+                },
+                "output_problems": null,
+                "problem_log": null,
+                "start_datetime": null,
+                "status": "success",
+                "test_index": 0,
+                "time_seconds": 6.989614248275757,
+                "tool_id": "beacon2_datasets",
+                "tool_version": "3.0.0+galaxy0"
+            },
+            "doc": null,
+            "has_data": true,
+            "id": "beacon2_datasets-0",
+            "test_type": null
+        },
+        {
+            "data": {
+                "end_datetime": null,
+                "execution_problem": null,
+                "inputs": {
+                    "connection|providers": "org.cancercelllines",
+                    "connection|transport": "api"
+                },
+                "invocation_details": null,
+                "job": {
+                    "command_line": "beacon2-query entity --entity individual  --providers 'org.cancercelllines' --provider-table '/tmp/tmpuajbvyf0/job_working_directory/000/7/configs/tmpxn3mesmi' --credentials-file '/tmp/tmpuajbvyf0/job_working_directory/000/7/configs/tmpp2vk60kj'  --granularity 'record' --limit 100 --skip 0    --results 'results.tsv' --outcomes 'outcomes.tsv'",
+                    "command_version": "",
+                    "copied_from_job_id": null,
+                    "create_time": "2026-10-08T12:11:28.763364",
+                    "dependencies": [],
+                    "exit_code": 0,
+                    "external_id": "27305",
+                    "galaxy_version": "26.1",
+                    "handler": null,
+                    "history_id": "e4806a288a1c4bfa",
+                    "id": "e4806a288a1c4bfa",
+                    "inputs": {},
+                    "job_messages": [],
+                    "job_metrics": [
+                        {
+                            "name": "galaxy_slots",
+                            "plugin": "core",
+                            "raw_value": "1.0000000",
+                            "title": "Cores Allocated",
+                            "value": "1"
+                        },
+                        {
+                            "name": "start_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461489.0000000",
+                            "title": "Job Start Time",
+                            "value": "2026-10-08 12:11:29"
+                        },
+                        {
+                            "name": "end_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461495.0000000",
+                            "title": "Job End Time",
+                            "value": "2026-10-08 12:11:35"
+                        },
+                        {
+                            "name": "runtime_seconds",
+                            "plugin": "core",
+                            "raw_value": "6.0000000",
+                            "title": "Job Runtime (Wall Clock)",
+                            "value": "6 seconds"
+                        }
+                    ],
+                    "job_runner_name": null,
+                    "job_stderr": "",
+                    "job_stdout": "",
+                    "model_class": "Job",
+                    "output_collections": {},
+                    "outputs": {
+                        "outcomes": {
+                            "id": "6dbf29a5065b1d98",
+                            "src": "hda",
+                            "uuid": "91721189-bd8d-412e-989b-6ebe7023ec06"
+                        },
+                        "results": {
+                            "id": "3133c70c9711767d",
+                            "src": "hda",
+                            "uuid": "9b04b958-f54e-4896-9507-af3764349b2e"
+                        }
+                    },
+                    "params": {
+                        "__input_ext": "\"input\"",
+                        "chromInfo": "\"/tmp/tmpuajbvyf0/galaxy-dev/tool-data/shared/ucsc/chrom/?.len\"",
+                        "connection": "{\"__current_case__\": 0, \"filters\": [], \"granularity\": \"record\", \"lookup\": {\"__current_case__\": 0, \"mode\": \"query\"}, \"pagination\": {\"limit\": \"100\", \"sample\": \"\", \"skip\": \"0\"}, \"providers\": \"org.cancercelllines\", \"transport\": \"api\"}",
+                        "dbkey": "\"?\""
+                    },
+                    "state": "ok",
+                    "stderr": "",
+                    "stdout": "",
+                    "tool_id": "beacon2_individuals",
+                    "tool_stderr": "",
+                    "tool_stdout": "",
+                    "update_time": "2026-10-08T12:11:35.662756",
+                    "user_email": "planemo@galaxyproject.org",
+                    "user_id": "95bd14c88742ea55"
+                },
+                "output_problems": null,
+                "problem_log": null,
+                "start_datetime": null,
+                "status": "success",
+                "test_index": 0,
+                "time_seconds": 7.26236891746521,
+                "tool_id": "beacon2_individuals",
+                "tool_version": "3.0.0+galaxy0"
+            },
+            "doc": null,
+            "has_data": true,
+            "id": "beacon2_individuals-0",
+            "test_type": null
+        },
+        {
+            "data": {
+                "end_datetime": null,
+                "execution_problem": null,
+                "inputs": {
+                    "connection|providers": "org.cancercelllines"
+                },
+                "invocation_details": null,
+                "job": {
+                    "command_line": "beacon2-query filtering-terms  --providers 'org.cancercelllines' --provider-table '/tmp/tmpuajbvyf0/job_working_directory/000/8/configs/tmpkft1n0y4' --credentials-file '/tmp/tmpuajbvyf0/job_working_directory/000/8/configs/tmppzh136d6'  --terms 'filtering_terms.tsv' --outcomes 'outcomes.tsv'",
+                    "command_version": "",
+                    "copied_from_job_id": null,
+                    "create_time": "2026-10-08T12:11:36.078902",
+                    "dependencies": [],
+                    "exit_code": 0,
+                    "external_id": "27521",
+                    "galaxy_version": "26.1",
+                    "handler": null,
+                    "history_id": "1b13f8be92f730c7",
+                    "id": "1b13f8be92f730c7",
+                    "inputs": {},
+                    "job_messages": [],
+                    "job_metrics": [
+                        {
+                            "name": "galaxy_slots",
+                            "plugin": "core",
+                            "raw_value": "1.0000000",
+                            "title": "Cores Allocated",
+                            "value": "1"
+                        },
+                        {
+                            "name": "start_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461496.0000000",
+                            "title": "Job Start Time",
+                            "value": "2026-10-08 12:11:36"
+                        },
+                        {
+                            "name": "end_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461502.0000000",
+                            "title": "Job End Time",
+                            "value": "2026-10-08 12:11:42"
+                        },
+                        {
+                            "name": "runtime_seconds",
+                            "plugin": "core",
+                            "raw_value": "6.0000000",
+                            "title": "Job Runtime (Wall Clock)",
+                            "value": "6 seconds"
+                        }
+                    ],
+                    "job_runner_name": null,
+                    "job_stderr": "",
+                    "job_stdout": "",
+                    "model_class": "Job",
+                    "output_collections": {},
+                    "outputs": {
+                        "outcomes": {
+                            "id": "d88899770342d8c4",
+                            "src": "hda",
+                            "uuid": "03838578-b483-48ff-b54f-c5bfd645a555"
+                        },
+                        "terms": {
+                            "id": "59cf44892241f4d0",
+                            "src": "hda",
+                            "uuid": "90895bd2-44c3-446e-b223-cfce700cfe13"
+                        }
+                    },
+                    "params": {
+                        "__input_ext": "\"input\"",
+                        "chromInfo": "\"/tmp/tmpuajbvyf0/galaxy-dev/tool-data/shared/ucsc/chrom/?.len\"",
+                        "connection": "{\"__current_case__\": 0, \"providers\": \"org.cancercelllines\", \"transport\": \"api\"}",
+                        "dbkey": "\"?\"",
+                        "prefixes": "\"\""
+                    },
+                    "state": "ok",
+                    "stderr": "",
+                    "stdout": "",
+                    "tool_id": "beacon2_filtering_terms",
+                    "tool_stderr": "",
+                    "tool_stdout": "",
+                    "update_time": "2026-10-08T12:11:42.888513",
+                    "user_email": "planemo@galaxyproject.org",
+                    "user_id": "95bd14c88742ea55"
+                },
+                "output_problems": null,
+                "problem_log": null,
+                "start_datetime": null,
+                "status": "success",
+                "test_index": 0,
+                "time_seconds": 6.937028169631958,
+                "tool_id": "beacon2_filtering_terms",
+                "tool_version": "3.0.0+galaxy0"
+            },
+            "doc": null,
+            "has_data": true,
+            "id": "beacon2_filtering_terms-0",
+            "test_type": null
+        },
+        {
+            "data": {
+                "end_datetime": null,
+                "execution_problem": null,
+                "inputs": {
+                    "connection|providers": "org.cancercelllines",
+                    "prefixes": "EFO"
+                },
+                "invocation_details": null,
+                "job": {
+                    "command_line": "beacon2-query filtering-terms  --providers 'org.cancercelllines' --provider-table '/tmp/tmpuajbvyf0/job_working_directory/000/9/configs/tmpnvjorasy' --credentials-file '/tmp/tmpuajbvyf0/job_working_directory/000/9/configs/tmpnqfkqb_3'  --prefix 'EFO' --terms 'filtering_terms.tsv' --outcomes 'outcomes.tsv'",
+                    "command_version": "",
+                    "copied_from_job_id": null,
+                    "create_time": "2026-10-08T12:11:43.067553",
+                    "dependencies": [],
+                    "exit_code": 0,
+                    "external_id": "27663",
+                    "galaxy_version": "26.1",
+                    "handler": null,
+                    "history_id": "27eb406cd09ee6b3",
+                    "id": "27eb406cd09ee6b3",
+                    "inputs": {},
+                    "job_messages": [],
+                    "job_metrics": [
+                        {
+                            "name": "galaxy_slots",
+                            "plugin": "core",
+                            "raw_value": "1.0000000",
+                            "title": "Cores Allocated",
+                            "value": "1"
+                        },
+                        {
+                            "name": "start_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461504.0000000",
+                            "title": "Job Start Time",
+                            "value": "2026-10-08 12:11:44"
+                        },
+                        {
+                            "name": "end_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461509.0000000",
+                            "title": "Job End Time",
+                            "value": "2026-10-08 12:11:49"
+                        },
+                        {
+                            "name": "runtime_seconds",
+                            "plugin": "core",
+                            "raw_value": "5.0000000",
+                            "title": "Job Runtime (Wall Clock)",
+                            "value": "5 seconds"
+                        }
+                    ],
+                    "job_runner_name": null,
+                    "job_stderr": "",
+                    "job_stdout": "",
+                    "model_class": "Job",
+                    "output_collections": {},
+                    "outputs": {
+                        "outcomes": {
+                            "id": "e7b5aee9ce1daffb",
+                            "src": "hda",
+                            "uuid": "473f8870-ac68-4675-8d63-d6ab4e7be257"
+                        },
+                        "terms": {
+                            "id": "6a1ab6177d77f61a",
+                            "src": "hda",
+                            "uuid": "b2178e4f-f690-4228-81f8-0916f7d2956c"
+                        }
+                    },
+                    "params": {
+                        "__input_ext": "\"input\"",
+                        "chromInfo": "\"/tmp/tmpuajbvyf0/galaxy-dev/tool-data/shared/ucsc/chrom/?.len\"",
+                        "connection": "{\"__current_case__\": 0, \"providers\": \"org.cancercelllines\", \"transport\": \"api\"}",
+                        "dbkey": "\"?\"",
+                        "prefixes": "\"EFO\""
+                    },
+                    "state": "ok",
+                    "stderr": "",
+                    "stdout": "",
+                    "tool_id": "beacon2_filtering_terms",
+                    "tool_stderr": "",
+                    "tool_stdout": "",
+                    "update_time": "2026-10-08T12:11:49.834169",
+                    "user_email": "planemo@galaxyproject.org",
+                    "user_id": "95bd14c88742ea55"
+                },
+                "output_problems": null,
+                "problem_log": null,
+                "start_datetime": null,
+                "status": "success",
+                "test_index": 1,
+                "time_seconds": 6.908682823181152,
+                "tool_id": "beacon2_filtering_terms",
+                "tool_version": "3.0.0+galaxy0"
+            },
+            "doc": null,
+            "has_data": true,
+            "id": "beacon2_filtering_terms-1",
+            "test_type": null
+        },
+        {
+            "data": {
+                "end_datetime": null,
+                "execution_problem": null,
+                "inputs": {
+                    "assembly": "GRCh38",
+                    "connection|providers": [
+                        "org.progenetix.beacon",
+                        "org.cancercelllines"
+                    ],
+                    "connection|transport": "api",
+                    "end": "7578641",
+                    "granularity": "record",
+                    "reference_name": "17",
+                    "start": "7572837",
+                    "variant_classes": "CNV"
+                },
+                "invocation_details": null,
+                "job": {
+                    "command_line": "beacon2-query range  --providers 'org.progenetix.beacon,org.cancercelllines' --provider-table '/tmp/tmpuajbvyf0/job_working_directory/000/10/configs/tmpy1xjn2hm' --credentials-file '/tmp/tmpuajbvyf0/job_working_directory/000/10/configs/tmppgrm613s'   --variant-classes 'CNV'  --reference-name '17' --assembly 'GRCh38' --start 7572837 --end 7578641 --granularity 'record' --limit 100 --skip 0            --results 'results.tsv' --outcomes 'outcomes.tsv'",
+                    "command_version": "",
+                    "copied_from_job_id": null,
+                    "create_time": "2026-10-08T12:11:50.031102",
+                    "dependencies": [],
+                    "exit_code": 0,
+                    "external_id": "27790",
+                    "galaxy_version": "26.1",
+                    "handler": null,
+                    "history_id": "661859279286f97f",
+                    "id": "661859279286f97f",
+                    "inputs": {},
+                    "job_messages": [],
+                    "job_metrics": [
+                        {
+                            "name": "galaxy_slots",
+                            "plugin": "core",
+                            "raw_value": "1.0000000",
+                            "title": "Cores Allocated",
+                            "value": "1"
+                        },
+                        {
+                            "name": "start_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461510.0000000",
+                            "title": "Job Start Time",
+                            "value": "2026-10-08 12:11:50"
+                        },
+                        {
+                            "name": "end_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461516.0000000",
+                            "title": "Job End Time",
+                            "value": "2026-10-08 12:11:56"
+                        },
+                        {
+                            "name": "runtime_seconds",
+                            "plugin": "core",
+                            "raw_value": "6.0000000",
+                            "title": "Job Runtime (Wall Clock)",
+                            "value": "6 seconds"
+                        }
+                    ],
+                    "job_runner_name": null,
+                    "job_stderr": "",
+                    "job_stdout": "",
+                    "model_class": "Job",
+                    "output_collections": {},
+                    "outputs": {
+                        "outcomes": {
+                            "id": "d776ef4f109ddef0",
+                            "src": "hda",
+                            "uuid": "5a65308a-53bb-4b87-8ade-7f58a5667c4a"
+                        },
+                        "results": {
+                            "id": "35975f779dad99e8",
+                            "src": "hda",
+                            "uuid": "849a9481-6847-4276-a0bb-96662c2cc731"
+                        }
+                    },
+                    "params": {
+                        "__input_ext": "\"input\"",
+                        "advanced": "{\"variant_max_length\": \"\", \"variant_min_length\": \"\"}",
+                        "assembly": "\"GRCh38\"",
+                        "chromInfo": "\"/tmp/tmpuajbvyf0/galaxy-dev/tool-data/shared/ucsc/chrom/?.len\"",
+                        "cnv_terms": "{\"variant_type\": {\"__current_case__\": 0, \"mode\": \"none\"}}",
+                        "connection": "{\"__current_case__\": 0, \"providers\": [\"org.progenetix.beacon\", \"org.cancercelllines\"], \"transport\": \"api\"}",
+                        "dbkey": "\"?\"",
+                        "end": "\"7578641\"",
+                        "filters": "[]",
+                        "granularity": "\"record\"",
+                        "pagination": "{\"limit\": \"100\", \"sample\": \"\", \"skip\": \"0\"}",
+                        "reference_name": "\"17\"",
+                        "small_variant_terms": "{\"alternate_bases\": \"\", \"aminoacid_change\": \"\", \"reference_bases\": \"\", \"variant_type\": {\"__current_case__\": 0, \"mode\": \"none\"}}",
+                        "start": "\"7572837\"",
+                        "sv_terms": "{\"variant_type\": {\"__current_case__\": 0, \"mode\": \"none\"}}",
+                        "variant_classes": "\"CNV\""
+                    },
+                    "state": "ok",
+                    "stderr": "",
+                    "stdout": "",
+                    "tool_id": "beacon2_range",
+                    "tool_stderr": "",
+                    "tool_stdout": "",
+                    "update_time": "2026-10-08T12:11:56.148139",
+                    "user_email": "planemo@galaxyproject.org",
+                    "user_id": "95bd14c88742ea55"
+                },
+                "output_problems": [
+                    "Output results:  different than expected\nExpected text 'org.progenetix.beacon' in output ('beacon_id\tbeacon_name\taccess_tier\tvariant_class\tclassification_basis\tgranularity_returned\tcount_precision\tcount_precision_basis\tcount_adjusted_to\tquery_degraded\tdegradation_notes\texpansion_notes\tvariant_internal_id\tchromosome\tstart\tend\tvariant_length\treference_bases\talternate_bases\tvariant_type_raw\tefo_id\tbiosample_id\tindividual_id\tanalysis_id\trun_id\tdataset_id\texists\tnum_total_results\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030071 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:135893497-198076921:EFO_0030071\t3\t135893498\t198076921\t62183424\t\t\tEFO:0030071\tEFO:0030071\tcellzbs-kftvjsyp\tcellzind-kftx5r8i\tcellzcs-kftwm81o\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030071 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:135893497-198076921:EFO_0030071\t3\t135893498\t198076921\t62183424\t\t\tEFO:0030071\tEFO:0030071\tcellzbs-kftvjsyx\tcellzind-kftx5r8s\tcellzcs-kftwm937\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:168993109-197488359:EFO_0030070\t3\t168993110\t197488359\t28495250\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvipvs\tcellzind-f3Ba884e\tcellzcs-kftwaezv\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:196537842-197613975:EFO_0030070\t3\t196537843\t197613975\t1076133\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvkshi\tcellzind-d7e9fE71\tcellzcs-kftwtzwb\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030071 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:195751990-198073373:EFO_0030071\t3\t195751991\t198073373\t2321383\t\t\tEFO:0030071\tEFO:0030071\tcellzbs-kftvjtcn\tcellzind-kftx5rpt\tcellzcs-kftwmbas\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:154144930-197488359:EFO_0030070\t3\t154144931\t197488359\t43343429\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvipvu\tcellzind-A91ed03E\tcellzcs-kftwaf0d\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030071 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:191566911-198106887:EFO_0030071\t3\t191566912\t198106887\t6539976\t\t\tEFO:0030071\tEFO:0030071\tcellzbs-kftvib2o\tcellzind-kftx3y11\tcellzcs-kftw5xxf\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:195728637-198125948:EFO_0030070\t3\t195728638\t198125948\t2397311\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvkth5\tcellzind-367241fB\tcellzcs-kftwubbx\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:195974292-196535323:EFO_0030070\t3\t195974293\t196535323\t561031\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvkshi\tcellzind-d7e9fE71\tcellzcs-kftwtzwb\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:195728637-196937288:EFO_0030070\t3\t195728638\t196937288\t1208651\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvkss7\tcellzind-A5cba35c\tcellzcs-kftwu3bn\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030071 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:175349649-198073373:EFO_0030071\t3\t175349650\t198073373\t22723724\t\t\tEFO:0030071\tEFO:0030071\tcellzbs-kftvjtcq\tcellzind-kftx5rpx\tcellzcs-kftwmb9s\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:197956904-198010049:EFO_0030070\t3\t197956905\t198010049\t53145\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvkshr\tcellzind-FAbefB8F\tcellzcs-kftwtzyr\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030071 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:175310454-198106887:EFO_0030071\t3\t175310455\t198106887\t22796433\t\t\tEFO:0030071\tEFO:0030071\tcellzbs-kftvjtco\tcellzind-kftx5rpv\tcellzcs-kftwmac3\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:193552688-197336437:EFO_0030070\t3\t193552689\t197336437\t3783749\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvipyo\tcellzind-9bE96dC3\tcellzcs-kftwafwr\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030071 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:31930-198106887:EFO_0030071\t3\t31931\t198106887\t198074957\t\t\tEFO:0030071\tEFO:0030071\tcellzbs-kftvjtcj\tcellzind-kftx5rpp\tcellzcs-kftwmad3\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030071 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:160504584-198076921:EFO_0030071\t3\t160504585\t198076921\t37572337\t\t\tEFO:0030071\tEFO:0030071\tcellzbs-kftvjt2k\tcellzind-kftx5rda\tcellzcs-kftwm8a9\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:195728637-198169247:EFO_0030070\t3\t195728638\t198169247\t2440610\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvksro\tcellzind-F1Afb8A3\tcellzcs-kftwu35q\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:195728637-198169247:EFO_0030070\t3\t195728638\t198169247\t2440610\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvkt9t\tcellzind-aF7Fd8c7\tcellzcs-kftwu8zm\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:197338008-197392762:EFO_0030070\t3\t197338009\t197392762\t54754\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvkstl\tcellzind-f51d2291\tcellzcs-kftwu3qh\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:197659410-198169247:EFO_0030070\t3\t197659411\t198169247\t509837\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvkshi\tcellzind-d7e9fE71\tcellzcs-kftwtzwb\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:197659410-198169247:EFO_0030070\t3\t197659411\t198169247\t509837\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvkspz\tcellzind-DCb01F45\tcellzcs-kftwu2ks\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:195672204-195747892:EFO_0030070\t3\t195672205\t195747892\t75688\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvkshi\tcellzind-d7e9fE71\tcellzcs-kftwtzwb\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:198169131-198169247:EFO_0030070\t3\t198169132\t198169247\t116\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvktaw\tcellzind-ABd580e7\tcellzcs-kftwu9bb\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:195768501-198169247:EFO_0030070\t3\t195768502\t198169247\t2400746\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvkth7\tcellzind-72aF68Fd\tcellzcs-kftwubce\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:198142659-198169247:EFO_0030070\t3\t198142660\t198169247\t26588\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvkth5\tcellzind-367241fB\tcellzcs-kftwubbx\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:195656271-195737995:EFO_0030070\t3\t195656272\t195737995\t81724\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvks8n\tcellzind-02EcA5aC\tcellzcs-kftwtx3p\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:194142759-195729069:EFO_0030070\t3\t194142760\t195729069\t1586310\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvkshu\tcellzind-c086C55c\tcellzcs-kftwtzzq\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:195728637-198107669:EFO_0030070\t3\t195728638\t198107669\t2379032\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvksf6\tcellzind-6b809278\tcellzcs-kftwtz7d\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:195751823-195974244:EFO_0030070\t3\t195751824\t195974244\t222421\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvkshi\tcellzind-d7e9fE71\tcellzcs-kftwtzwb\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:195729040-198169114:EFO_0030070\t3\t195729041\t198169114\t2440074\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvktaw\tcellzind-ABd580e7\tcellzcs-kftwu9bb\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030072 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:197278817-198106887:EFO_0030072\t3\t197278818\t198106887\t828070\t\t\tEFO:0030072\tEFO:0030072\tcellzbs-kftvkokp\tcellzind-kftx6tse\tcellzcs-kftx0e16\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030071 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:190802921-198191278:EFO_0030071\t3\t190802922\t198191278\t7388357\t\t\tEFO:0030071\tEFO:0030071\tcellzbs-kftvjsvl\tcellzind-kftx5r4n\tcellzcs-kftwm7bw\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:195728990-197588244:EFO_0030070\t3\t195728991\t197588244\t1859254\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvkscm\tcellzind-786DbEF8\tcellzcs-kftwtyd9\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030071 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:162908797-198191278:EFO_0030071\t3\t162908798\t198191278\t35282481\t\t\tEFO:0030071\tEFO:0030071\tcellzbs-kftvjsvk\tcellzind-kftx5r4l\tcellzcs-kftwm7cn\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:195751823-198169247:EFO_0030070\t3\t195751824\t198169247\t2417424\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvkshu\tcellzind-c086C55c\tcellzcs-kftwtzzq\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030071 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:193739898-196683406:EFO_0030071\t3\t193739899\t196683406\t2943508\t\t\tEFO:0030071\tEFO:0030071\tcellzbs-kftvjt5f\tcellzind-kftx5rgu\tcellzcs-kftwm9q0\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:195673928-195768450:EFO_0030070\t3\t195673929\t195768450\t94522\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvkth7\tcellzind-72aF68Fd\tcellzcs-kftwubce\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030071 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:168082114-198106887:EFO_0030071\t3\t168082115\t198106887\t30024773\t\t\tEFO:0030071\tEFO:0030071\tcellzbs-kftvib18\tcellzind-kftx3xz8\tcellzcs-kftw5xfb\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030071 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:173739471-196683406:EFO_0030071\t3\t173739472\t196683406\t22943935\t\t\tEFO:0030071\tEFO:0030071\tcellzbs-kftvjt4x\tcellzind-kftx5rg8\tcellzcs-kftwm9lp\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030071 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:175550664-198076921:EFO_0030071\t3\t175550665\t198076921\t22526257\t\t\tEFO:0030071\tEFO:0030071\tcellzbs-kftvjsyj\tcellzind-kftx5r8a\tcellzcs-kftwm819\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:195728990-197613975:EFO_0030070\t3\t195728991\t197613975\t1884985\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvkspz\tcellzind-DCb01F45\tcellzcs-kftwu2ks\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:197056949-197243254:EFO_0030070\t3\t197056950\t197243254\t186305\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvkshr\tcellzind-FAbefB8F\tcellzcs-kftwtzyr\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:193168646-197895214:EFO_0030070\t3\t193168647\t197895214\t4726568\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvks96\tcellzind-CAd1B3b4\tcellzcs-kftwtx9n\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:196948008-198121231:EFO_0030070\t3\t196948009\t198121231\t1173223\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvkss7\tcellzind-A5cba35c\tcellzcs-kftwu3bn\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030071 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:175407314-198076921:EFO_0030071\t3\t175407315\t198076921\t22669607\t\t\tEFO:0030071\tEFO:0030071\tcellzbs-kftvjsyk\tcellzind-kftx5r8c\tcellzcs-kftwm86w\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:198125948-198169247:EFO_0030070\t3\t198125949\t198169247\t43299\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvktbc\tcellzind-eE5AE0D7\tcellzcs-kftwu9g8\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:195991894-198169247:EFO_0030070\t3\t195991895\t198169247\t2177353\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvksrr\tcellzind-CCe6Ef78\tcellzcs-kftwu36p\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:197621717-197627117:EFO_0030070\t3\t197621718\t197627117\t5400\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvkshi\tcellzind-d7e9fE71\tcellzcs-kftwtzwb\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:197621717-197627117:EFO_0030070\t3\t197621718\t197627117\t5400\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvkspz\tcellzind-DCb01F45\tcellzcs-kftwu2ks\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:195974292-198169247:EFO_0030070\t3\t195974293\t198169247\t2194955\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvkt7o\tcellzind-Ba6Cd70F\tcellzcs-kftwu89u\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:197613975-198111467:EFO_0030070\t3\t197613976\t198111467\t497492\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvkscm\tcellzind-786DbEF8\tcellzcs-kftwtyd9\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:175461663-197488359:EFO_0030070\t3\t175461664\t197488359\t22026696\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvipvp\tcellzind-9bE96dC3\tcellzcs-kftwaeyv\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:198065918-198169247:EFO_0030070\t3\t198065919\t198169247\t103329\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvktb1\tcellzind-39FFA6Bc\tcellzcs-kftwu9cs\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:195691392-195729005:EFO_0030070\t3\t195691393\t195729005\t37613\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvktaw\tcellzind-ABd580e7\tcellzcs-kftwu9bb\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030071 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:193856072-198073373:EFO_0030071\t3\t193856073\t198073373\t4217301\t\t\tEFO:0030071\tEFO:0030071\tcellzbs-kftvkokq\tcellzind-kftx6tsg\tcellzcs-kftx0e24\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030071 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:195846916-196365040:EFO_0030071\t3\t195846917\t196365040\t518124\t\t\tEFO:0030071\tEFO:0030071\tcellzbs-kftvkmp2\tcellzind-kftx6rfx\tcellzcs-kftwz6wm\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:195663809-195729177:EFO_0030070\t3\t195663810\t195729177\t65368\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvkshk\tcellzind-4Fac4afc\tcellzcs-kftwtzws\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:195729085-195747892:EFO_0030070\t3\t195729086\t195747892\t18807\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvkshu\tcellzind-c086C55c\tcellzcs-kftwtzzq\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:193168646-198169247:EFO_0030070\t3\t193168647\t198169247\t5000601\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvkta8\tcellzind-Bb7A41D3\tcellzcs-kftwu940\t\t\t\t\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tpublic\tCNV\tpinned by query; EFO:0030070 copy-number term (variation.variantState.id)\trecord\texact\tinferred_from_complete_retrieval\t\tfalse\t\t\tNC_000003.12:193168646-198169247:EFO_0030070\t3\t193168647\t198169247\t5000601\t\t\tEFO:0030070\tEFO:0030070\tcellzbs-kftvks93\tcellzind-1Bfa1d6B\tcellzcs-kftwtx8n\t\t\t\t\n')"
+                ],
+                "problem_log": null,
+                "start_datetime": null,
+                "status": "failure",
+                "test_index": 0,
+                "time_seconds": 6.460111618041992,
+                "tool_id": "beacon2_range",
+                "tool_version": "3.0.0+galaxy0"
+            },
+            "doc": null,
+            "has_data": true,
+            "id": "beacon2_range-0",
+            "test_type": null
+        },
+        {
+            "data": {
+                "end_datetime": null,
+                "execution_problem": null,
+                "inputs": {
+                    "connection|providers": [
+                        "org.progenetix.beacon",
+                        "org.ega-archive.demo"
+                    ],
+                    "connection|transport": "api",
+                    "end": "7578641",
+                    "reference_name": "chr17",
+                    "start": "7572837",
+                    "variant_classes": "CNV"
+                },
+                "invocation_details": null,
+                "job": {
+                    "command_line": "beacon2-query range  --providers 'org.progenetix.beacon,org.ega-archive.demo' --provider-table '/tmp/tmpuajbvyf0/job_working_directory/000/11/configs/tmp9jsi9kmp' --credentials-file '/tmp/tmpuajbvyf0/job_working_directory/000/11/configs/tmpixffyrpc'   --variant-classes 'CNV'  --reference-name 'chr17' --assembly 'GRCh38' --start 7572837 --end 7578641 --granularity 'record' --limit 100 --skip 0            --results 'results.tsv' --outcomes 'outcomes.tsv'",
+                    "command_version": "",
+                    "copied_from_job_id": null,
+                    "create_time": "2026-10-08T12:11:56.536549",
+                    "dependencies": [],
+                    "exit_code": 0,
+                    "external_id": "28013",
+                    "galaxy_version": "26.1",
+                    "handler": null,
+                    "history_id": "b44f0c12d51422bf",
+                    "id": "b44f0c12d51422bf",
+                    "inputs": {},
+                    "job_messages": [],
+                    "job_metrics": [
+                        {
+                            "name": "galaxy_slots",
+                            "plugin": "core",
+                            "raw_value": "1.0000000",
+                            "title": "Cores Allocated",
+                            "value": "1"
+                        },
+                        {
+                            "name": "start_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461517.0000000",
+                            "title": "Job Start Time",
+                            "value": "2026-10-08 12:11:57"
+                        },
+                        {
+                            "name": "end_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461523.0000000",
+                            "title": "Job End Time",
+                            "value": "2026-10-08 12:12:03"
+                        },
+                        {
+                            "name": "runtime_seconds",
+                            "plugin": "core",
+                            "raw_value": "6.0000000",
+                            "title": "Job Runtime (Wall Clock)",
+                            "value": "6 seconds"
+                        }
+                    ],
+                    "job_runner_name": null,
+                    "job_stderr": "",
+                    "job_stdout": "",
+                    "model_class": "Job",
+                    "output_collections": {},
+                    "outputs": {
+                        "outcomes": {
+                            "id": "992aef75f589d24c",
+                            "src": "hda",
+                            "uuid": "0e5644d2-a59d-4ad5-ab5e-1f48a1e9e120"
+                        },
+                        "results": {
+                            "id": "8f7af021f19398ab",
+                            "src": "hda",
+                            "uuid": "777b5fb2-a394-4995-a20f-95b9daef36b5"
+                        }
+                    },
+                    "params": {
+                        "__input_ext": "\"input\"",
+                        "advanced": "{\"variant_max_length\": \"\", \"variant_min_length\": \"\"}",
+                        "assembly": "\"GRCh38\"",
+                        "chromInfo": "\"/tmp/tmpuajbvyf0/galaxy-dev/tool-data/shared/ucsc/chrom/?.len\"",
+                        "cnv_terms": "{\"variant_type\": {\"__current_case__\": 0, \"mode\": \"none\"}}",
+                        "connection": "{\"__current_case__\": 0, \"providers\": [\"org.progenetix.beacon\", \"org.ega-archive.demo\"], \"transport\": \"api\"}",
+                        "dbkey": "\"?\"",
+                        "end": "\"7578641\"",
+                        "filters": "[]",
+                        "granularity": "\"record\"",
+                        "pagination": "{\"limit\": \"100\", \"sample\": \"\", \"skip\": \"0\"}",
+                        "reference_name": "\"chr17\"",
+                        "small_variant_terms": "{\"alternate_bases\": \"\", \"aminoacid_change\": \"\", \"reference_bases\": \"\", \"variant_type\": {\"__current_case__\": 0, \"mode\": \"none\"}}",
+                        "start": "\"7572837\"",
+                        "sv_terms": "{\"variant_type\": {\"__current_case__\": 0, \"mode\": \"none\"}}",
+                        "variant_classes": "\"CNV\""
+                    },
+                    "state": "ok",
+                    "stderr": "",
+                    "stdout": "",
+                    "tool_id": "beacon2_range",
+                    "tool_stderr": "",
+                    "tool_stdout": "",
+                    "update_time": "2026-10-08T12:12:03.306880",
+                    "user_email": "planemo@galaxyproject.org",
+                    "user_id": "95bd14c88742ea55"
+                },
+                "output_problems": null,
+                "problem_log": null,
+                "start_datetime": null,
+                "status": "success",
+                "test_index": 1,
+                "time_seconds": 7.034786701202393,
+                "tool_id": "beacon2_range",
+                "tool_version": "3.0.0+galaxy0"
+            },
+            "doc": null,
+            "has_data": true,
+            "id": "beacon2_range-1",
+            "test_type": null
+        },
+        {
+            "data": {
+                "end_datetime": null,
+                "execution_problem": null,
+                "inputs": {
+                    "connection|providers": "org.cancercelllines",
+                    "connection|transport": "api",
+                    "end": "7578641",
+                    "granularity": "count",
+                    "reference_name": "17",
+                    "start": "7572837",
+                    "variant_classes": "CNV"
+                },
+                "invocation_details": null,
+                "job": {
+                    "command_line": "beacon2-query range  --providers 'org.cancercelllines' --provider-table '/tmp/tmpuajbvyf0/job_working_directory/000/12/configs/tmpvna_xv83' --credentials-file '/tmp/tmpuajbvyf0/job_working_directory/000/12/configs/tmptr0j45ym'   --variant-classes 'CNV'  --reference-name '17' --assembly 'GRCh38' --start 7572837 --end 7578641 --granularity 'count' --limit 100 --skip 0            --results 'results.tsv' --outcomes 'outcomes.tsv'",
+                    "command_version": "",
+                    "copied_from_job_id": null,
+                    "create_time": "2026-10-08T12:12:03.628080",
+                    "dependencies": [],
+                    "exit_code": 0,
+                    "external_id": "28156",
+                    "galaxy_version": "26.1",
+                    "handler": null,
+                    "history_id": "91421fe4621fc87d",
+                    "id": "91421fe4621fc87d",
+                    "inputs": {},
+                    "job_messages": [],
+                    "job_metrics": [
+                        {
+                            "name": "galaxy_slots",
+                            "plugin": "core",
+                            "raw_value": "1.0000000",
+                            "title": "Cores Allocated",
+                            "value": "1"
+                        },
+                        {
+                            "name": "start_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461524.0000000",
+                            "title": "Job Start Time",
+                            "value": "2026-10-08 12:12:04"
+                        },
+                        {
+                            "name": "end_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461530.0000000",
+                            "title": "Job End Time",
+                            "value": "2026-10-08 12:12:10"
+                        },
+                        {
+                            "name": "runtime_seconds",
+                            "plugin": "core",
+                            "raw_value": "6.0000000",
+                            "title": "Job Runtime (Wall Clock)",
+                            "value": "6 seconds"
+                        }
+                    ],
+                    "job_runner_name": null,
+                    "job_stderr": "",
+                    "job_stdout": "",
+                    "model_class": "Job",
+                    "output_collections": {},
+                    "outputs": {
+                        "outcomes": {
+                            "id": "989e0faf14f4c4aa",
+                            "src": "hda",
+                            "uuid": "76f7b672-4532-4df7-ac6f-8fa5798d3784"
+                        },
+                        "results": {
+                            "id": "004ad49825dce539",
+                            "src": "hda",
+                            "uuid": "228ec357-a7a7-4dcc-ad15-b6c3e20009ca"
+                        }
+                    },
+                    "params": {
+                        "__input_ext": "\"input\"",
+                        "advanced": "{\"variant_max_length\": \"\", \"variant_min_length\": \"\"}",
+                        "assembly": "\"GRCh38\"",
+                        "chromInfo": "\"/tmp/tmpuajbvyf0/galaxy-dev/tool-data/shared/ucsc/chrom/?.len\"",
+                        "cnv_terms": "{\"variant_type\": {\"__current_case__\": 0, \"mode\": \"none\"}}",
+                        "connection": "{\"__current_case__\": 0, \"providers\": \"org.cancercelllines\", \"transport\": \"api\"}",
+                        "dbkey": "\"?\"",
+                        "end": "\"7578641\"",
+                        "filters": "[]",
+                        "granularity": "\"count\"",
+                        "pagination": "{\"limit\": \"100\", \"sample\": \"\", \"skip\": \"0\"}",
+                        "reference_name": "\"17\"",
+                        "small_variant_terms": "{\"alternate_bases\": \"\", \"aminoacid_change\": \"\", \"reference_bases\": \"\", \"variant_type\": {\"__current_case__\": 0, \"mode\": \"none\"}}",
+                        "start": "\"7572837\"",
+                        "sv_terms": "{\"variant_type\": {\"__current_case__\": 0, \"mode\": \"none\"}}",
+                        "variant_classes": "\"CNV\""
+                    },
+                    "state": "ok",
+                    "stderr": "",
+                    "stdout": "",
+                    "tool_id": "beacon2_range",
+                    "tool_stderr": "",
+                    "tool_stdout": "",
+                    "update_time": "2026-10-08T12:12:10.386028",
+                    "user_email": "planemo@galaxyproject.org",
+                    "user_id": "95bd14c88742ea55"
+                },
+                "output_problems": null,
+                "problem_log": null,
+                "start_datetime": null,
+                "status": "success",
+                "test_index": 2,
+                "time_seconds": 7.0019214153289795,
+                "tool_id": "beacon2_range",
+                "tool_version": "3.0.0+galaxy0"
+            },
+            "doc": null,
+            "has_data": true,
+            "id": "beacon2_range-2",
+            "test_type": null
+        },
+        {
+            "data": {
+                "end_datetime": null,
+                "execution_problem": null,
+                "inputs": {
+                    "connection|providers": "org.progenetix.beacon",
+                    "connection|transport": "api",
+                    "end": "7578641",
+                    "filters_0|filter_type|include_descendant_terms": false,
+                    "filters_0|filter_type|kind": "ontology",
+                    "filters_0|filter_type|term": "NCIT:C3058",
+                    "reference_name": "17",
+                    "start": "7572837",
+                    "variant_classes": "CNV"
+                },
+                "invocation_details": null,
+                "job": {
+                    "command_line": "beacon2-query range  --providers 'org.progenetix.beacon' --provider-table '/tmp/tmpuajbvyf0/job_working_directory/000/13/configs/tmpjnfdmix9' --credentials-file '/tmp/tmpuajbvyf0/job_working_directory/000/13/configs/tmpiubr76sb'   --variant-classes 'CNV'  --reference-name '17' --assembly 'GRCh38' --start 7572837 --end 7578641 --granularity 'record' --limit 100 --skip 0          --filter 'ontology:NCIT:C3058:descendants=false:similarity=exact:scope=None'   --results 'results.tsv' --outcomes 'outcomes.tsv'",
+                    "command_version": "",
+                    "copied_from_job_id": null,
+                    "create_time": "2026-10-08T12:12:10.683676",
+                    "dependencies": [],
+                    "exit_code": 0,
+                    "external_id": "28370",
+                    "galaxy_version": "26.1",
+                    "handler": null,
+                    "history_id": "3133c70c9711767d",
+                    "id": "3133c70c9711767d",
+                    "inputs": {},
+                    "job_messages": [],
+                    "job_metrics": [
+                        {
+                            "name": "galaxy_slots",
+                            "plugin": "core",
+                            "raw_value": "1.0000000",
+                            "title": "Cores Allocated",
+                            "value": "1"
+                        },
+                        {
+                            "name": "start_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461531.0000000",
+                            "title": "Job Start Time",
+                            "value": "2026-10-08 12:12:11"
+                        },
+                        {
+                            "name": "end_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461537.0000000",
+                            "title": "Job End Time",
+                            "value": "2026-10-08 12:12:17"
+                        },
+                        {
+                            "name": "runtime_seconds",
+                            "plugin": "core",
+                            "raw_value": "6.0000000",
+                            "title": "Job Runtime (Wall Clock)",
+                            "value": "6 seconds"
+                        }
+                    ],
+                    "job_runner_name": null,
+                    "job_stderr": "",
+                    "job_stdout": "",
+                    "model_class": "Job",
+                    "output_collections": {},
+                    "outputs": {
+                        "outcomes": {
+                            "id": "b7c06e6cfcacfc27",
+                            "src": "hda",
+                            "uuid": "7b14b9e4-7752-462c-91ab-b443c49307a4"
+                        },
+                        "results": {
+                            "id": "b2d13293449fff65",
+                            "src": "hda",
+                            "uuid": "29f20556-07ea-4614-82bd-37065173f2e9"
+                        }
+                    },
+                    "params": {
+                        "__input_ext": "\"input\"",
+                        "advanced": "{\"variant_max_length\": \"\", \"variant_min_length\": \"\"}",
+                        "assembly": "\"GRCh38\"",
+                        "chromInfo": "\"/tmp/tmpuajbvyf0/galaxy-dev/tool-data/shared/ucsc/chrom/?.len\"",
+                        "cnv_terms": "{\"variant_type\": {\"__current_case__\": 0, \"mode\": \"none\"}}",
+                        "connection": "{\"__current_case__\": 0, \"providers\": \"org.progenetix.beacon\", \"transport\": \"api\"}",
+                        "dbkey": "\"?\"",
+                        "end": "\"7578641\"",
+                        "filters": "[{\"__index__\": 0, \"filter_type\": {\"__current_case__\": 0, \"include_descendant_terms\": false, \"kind\": \"ontology\", \"scope\": null, \"similarity\": \"exact\", \"term\": \"NCIT:C3058\"}}]",
+                        "granularity": "\"record\"",
+                        "pagination": "{\"limit\": \"100\", \"sample\": \"\", \"skip\": \"0\"}",
+                        "reference_name": "\"17\"",
+                        "small_variant_terms": "{\"alternate_bases\": \"\", \"aminoacid_change\": \"\", \"reference_bases\": \"\", \"variant_type\": {\"__current_case__\": 0, \"mode\": \"none\"}}",
+                        "start": "\"7572837\"",
+                        "sv_terms": "{\"variant_type\": {\"__current_case__\": 0, \"mode\": \"none\"}}",
+                        "variant_classes": "\"CNV\""
+                    },
+                    "state": "ok",
+                    "stderr": "",
+                    "stdout": "",
+                    "tool_id": "beacon2_range",
+                    "tool_stderr": "",
+                    "tool_stdout": "",
+                    "update_time": "2026-10-08T12:12:17.628703",
+                    "user_email": "planemo@galaxyproject.org",
+                    "user_id": "95bd14c88742ea55"
+                },
+                "output_problems": null,
+                "problem_log": null,
+                "start_datetime": null,
+                "status": "success",
+                "test_index": 3,
+                "time_seconds": 7.227903604507446,
+                "tool_id": "beacon2_range",
+                "tool_version": "3.0.0+galaxy0"
+            },
+            "doc": null,
+            "has_data": true,
+            "id": "beacon2_range-3",
+            "test_type": null
+        },
+        {
+            "data": {
+                "end_datetime": null,
+                "execution_problem": null,
+                "inputs": {
+                    "connection|providers": "org.cancercelllines",
+                    "connection|transport": "api"
+                },
+                "invocation_details": null,
+                "job": {
+                    "command_line": "beacon2-query entity --entity run  --providers 'org.cancercelllines' --provider-table '/tmp/tmpuajbvyf0/job_working_directory/000/14/configs/tmpqu_hkh50' --credentials-file '/tmp/tmpuajbvyf0/job_working_directory/000/14/configs/tmpr_on7iip'  --granularity 'record' --limit 100 --skip 0    --results 'results.tsv' --outcomes 'outcomes.tsv'",
+                    "command_version": "",
+                    "copied_from_job_id": null,
+                    "create_time": "2026-10-08T12:12:17.964118",
+                    "dependencies": [],
+                    "exit_code": 0,
+                    "external_id": "28498",
+                    "galaxy_version": "26.1",
+                    "handler": null,
+                    "history_id": "6dbf29a5065b1d98",
+                    "id": "6dbf29a5065b1d98",
+                    "inputs": {},
+                    "job_messages": [],
+                    "job_metrics": [
+                        {
+                            "name": "galaxy_slots",
+                            "plugin": "core",
+                            "raw_value": "1.0000000",
+                            "title": "Cores Allocated",
+                            "value": "1"
+                        },
+                        {
+                            "name": "start_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461538.0000000",
+                            "title": "Job Start Time",
+                            "value": "2026-10-08 12:12:18"
+                        },
+                        {
+                            "name": "end_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461544.0000000",
+                            "title": "Job End Time",
+                            "value": "2026-10-08 12:12:24"
+                        },
+                        {
+                            "name": "runtime_seconds",
+                            "plugin": "core",
+                            "raw_value": "6.0000000",
+                            "title": "Job Runtime (Wall Clock)",
+                            "value": "6 seconds"
+                        }
+                    ],
+                    "job_runner_name": null,
+                    "job_stderr": "",
+                    "job_stdout": "",
+                    "model_class": "Job",
+                    "output_collections": {},
+                    "outputs": {
+                        "outcomes": {
+                            "id": "752b7395d6c7666e",
+                            "src": "hda",
+                            "uuid": "2499a219-e4fa-4f70-ad7c-8d186252c729"
+                        },
+                        "results": {
+                            "id": "e6902f95eadda9ae",
+                            "src": "hda",
+                            "uuid": "234cf6e3-34fe-455a-b2f0-8c43fcd11663"
+                        }
+                    },
+                    "params": {
+                        "__input_ext": "\"input\"",
+                        "chromInfo": "\"/tmp/tmpuajbvyf0/galaxy-dev/tool-data/shared/ucsc/chrom/?.len\"",
+                        "connection": "{\"__current_case__\": 0, \"filters\": [], \"granularity\": \"record\", \"lookup\": {\"__current_case__\": 0, \"mode\": \"query\"}, \"pagination\": {\"limit\": \"100\", \"sample\": \"\", \"skip\": \"0\"}, \"providers\": \"org.cancercelllines\", \"transport\": \"api\"}",
+                        "dbkey": "\"?\""
+                    },
+                    "state": "ok",
+                    "stderr": "",
+                    "stdout": "",
+                    "tool_id": "beacon2_runs",
+                    "tool_stderr": "",
+                    "tool_stdout": "",
+                    "update_time": "2026-10-08T12:12:24.799521",
+                    "user_email": "planemo@galaxyproject.org",
+                    "user_id": "95bd14c88742ea55"
+                },
+                "output_problems": null,
+                "problem_log": null,
+                "start_datetime": null,
+                "status": "success",
+                "test_index": 0,
+                "time_seconds": 7.004549026489258,
+                "tool_id": "beacon2_runs",
+                "tool_version": "3.0.0+galaxy0"
+            },
+            "doc": null,
+            "has_data": true,
+            "id": "beacon2_runs-0",
+            "test_type": null
+        },
+        {
+            "data": {
+                "end_datetime": null,
+                "execution_problem": null,
+                "inputs": {
+                    "alternate_bases": "A",
+                    "assembly": "GRCh38",
+                    "connection|providers": "org.ega-archive.demo",
+                    "connection|transport": "api",
+                    "reference_bases": "G",
+                    "reference_name": "17",
+                    "start": "7577120",
+                    "variant_classes": "SMALL_VARIANT"
+                },
+                "invocation_details": null,
+                "job": {
+                    "command_line": "beacon2-query sequence  --providers 'org.ega-archive.demo' --provider-table '/tmp/tmpuajbvyf0/job_working_directory/000/15/configs/tmprwwy3i0t' --credentials-file '/tmp/tmpuajbvyf0/job_working_directory/000/15/configs/tmp1oqpxt_4'   --variant-classes 'SMALL_VARIANT'  --reference-name '17' --assembly 'GRCh38' --start 7577120 --reference-bases 'G' --alternate-bases 'A' --granularity 'record' --limit 100 --skip 0          --results 'results.tsv' --outcomes 'outcomes.tsv'",
+                    "command_version": "",
+                    "copied_from_job_id": null,
+                    "create_time": "2026-10-08T12:12:25.024582",
+                    "dependencies": [],
+                    "exit_code": 0,
+                    "external_id": "28678",
+                    "galaxy_version": "26.1",
+                    "handler": null,
+                    "history_id": "59cf44892241f4d0",
+                    "id": "59cf44892241f4d0",
+                    "inputs": {},
+                    "job_messages": [],
+                    "job_metrics": [
+                        {
+                            "name": "galaxy_slots",
+                            "plugin": "core",
+                            "raw_value": "1.0000000",
+                            "title": "Cores Allocated",
+                            "value": "1"
+                        },
+                        {
+                            "name": "start_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461546.0000000",
+                            "title": "Job Start Time",
+                            "value": "2026-10-08 12:12:26"
+                        },
+                        {
+                            "name": "end_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461551.0000000",
+                            "title": "Job End Time",
+                            "value": "2026-10-08 12:12:31"
+                        },
+                        {
+                            "name": "runtime_seconds",
+                            "plugin": "core",
+                            "raw_value": "5.0000000",
+                            "title": "Job Runtime (Wall Clock)",
+                            "value": "5 seconds"
+                        }
+                    ],
+                    "job_runner_name": null,
+                    "job_stderr": "",
+                    "job_stdout": "",
+                    "model_class": "Job",
+                    "output_collections": {},
+                    "outputs": {
+                        "outcomes": {
+                            "id": "59d3fb776f52274a",
+                            "src": "hda",
+                            "uuid": "8181a6f4-080d-4de7-ac1c-10e531ef79b7"
+                        },
+                        "results": {
+                            "id": "a130de8bf85a8f91",
+                            "src": "hda",
+                            "uuid": "8ff75ff5-0d9f-4ef5-852e-3bedb082ec57"
+                        }
+                    },
+                    "params": {
+                        "__input_ext": "\"input\"",
+                        "advanced": "{\"allow_coalescing\": true}",
+                        "alternate_bases": "\"A\"",
+                        "assembly": "\"GRCh38\"",
+                        "chromInfo": "\"/tmp/tmpuajbvyf0/galaxy-dev/tool-data/shared/ucsc/chrom/?.len\"",
+                        "cnv_terms": "{\"variant_type\": {\"__current_case__\": 0, \"mode\": \"none\"}}",
+                        "connection": "{\"__current_case__\": 0, \"providers\": \"org.ega-archive.demo\", \"transport\": \"api\"}",
+                        "dbkey": "\"?\"",
+                        "filters": "[]",
+                        "granularity": "\"record\"",
+                        "pagination": "{\"limit\": \"100\", \"sample\": \"\", \"skip\": \"0\"}",
+                        "reference_bases": "\"G\"",
+                        "reference_name": "\"17\"",
+                        "start": "\"7577120\"",
+                        "sv_terms": "{\"variant_type\": {\"__current_case__\": 0, \"mode\": \"none\"}}",
+                        "variant_classes": "\"SMALL_VARIANT\""
+                    },
+                    "state": "ok",
+                    "stderr": "",
+                    "stdout": "",
+                    "tool_id": "beacon2_sequence",
+                    "tool_stderr": "",
+                    "tool_stdout": "",
+                    "update_time": "2026-10-08T12:12:31.962621",
+                    "user_email": "planemo@galaxyproject.org",
+                    "user_id": "95bd14c88742ea55"
+                },
+                "output_problems": [
+                    "Output results:  different than expected\nExpected text 'SMALL_VARIANT' in output ('beacon_id\tbeacon_name\taccess_tier\tvariant_class\tclassification_basis\tgranularity_returned\tcount_precision\tcount_precision_basis\tcount_adjusted_to\tquery_degraded\tdegradation_notes\texpansion_notes\tvariant_internal_id\tchromosome\tstart\tend\tvariant_length\treference_bases\talternate_bases\tvariant_type_raw\tefo_id\tbiosample_id\tindividual_id\tanalysis_id\trun_id\tdataset_id\texists\tnum_total_results\n')",
+                    "Output outcomes:  different than expected\nExpected text 'ok' in output ('beacon_id\tbeacon_name\tvariant_class\tclass_status\tstatus\trow_count\tgranularity_requested\tgranularity_returned\tcount_precision\tcount_precision_basis\tquery_degraded\tcoalesced\tnotes\norg.ega-archive.demo\tEGA Beacon Reference Implementation demo (synthetic data)\tSMALL_VARIANT\tyes\terror\t0\t\t\t\t\tfalse\tno\tFixtureMiss: no manifest.json in /workspaces/beacon2-import/tools/beacon2-import/test-data/fixtures/org.ega-archive.demo\n')"
+                ],
+                "problem_log": null,
+                "start_datetime": null,
+                "status": "failure",
+                "test_index": 0,
+                "time_seconds": 7.259000778198242,
+                "tool_id": "beacon2_sequence",
+                "tool_version": "3.0.0+galaxy0"
+            },
+            "doc": null,
+            "has_data": true,
+            "id": "beacon2_sequence-0",
+            "test_type": null
+        },
+        {
+            "data": {
+                "end_datetime": null,
+                "execution_problem": null,
+                "inputs": {
+                    "alternate_bases": "A",
+                    "connection|providers": "org.cancercelllines",
+                    "connection|transport": "api",
+                    "reference_bases": "G",
+                    "reference_name": "17",
+                    "start": "7577120",
+                    "variant_classes": "SMALL_VARIANT"
+                },
+                "invocation_details": null,
+                "job": {
+                    "command_line": "beacon2-query sequence  --providers 'org.cancercelllines' --provider-table '/tmp/tmpuajbvyf0/job_working_directory/000/16/configs/tmpr2b6uct7' --credentials-file '/tmp/tmpuajbvyf0/job_working_directory/000/16/configs/tmplf5yvism'   --variant-classes 'SMALL_VARIANT'  --reference-name '17' --assembly 'GRCh38' --start 7577120 --reference-bases 'G' --alternate-bases 'A' --granularity 'record' --limit 100 --skip 0          --results 'results.tsv' --outcomes 'outcomes.tsv'",
+                    "command_version": "",
+                    "copied_from_job_id": null,
+                    "create_time": "2026-10-08T12:12:32.330944",
+                    "dependencies": [],
+                    "exit_code": 0,
+                    "external_id": "28862",
+                    "galaxy_version": "26.1",
+                    "handler": null,
+                    "history_id": "d88899770342d8c4",
+                    "id": "d88899770342d8c4",
+                    "inputs": {},
+                    "job_messages": [],
+                    "job_metrics": [
+                        {
+                            "name": "galaxy_slots",
+                            "plugin": "core",
+                            "raw_value": "1.0000000",
+                            "title": "Cores Allocated",
+                            "value": "1"
+                        },
+                        {
+                            "name": "start_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461553.0000000",
+                            "title": "Job Start Time",
+                            "value": "2026-10-08 12:12:33"
+                        },
+                        {
+                            "name": "end_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461559.0000000",
+                            "title": "Job End Time",
+                            "value": "2026-10-08 12:12:39"
+                        },
+                        {
+                            "name": "runtime_seconds",
+                            "plugin": "core",
+                            "raw_value": "6.0000000",
+                            "title": "Job Runtime (Wall Clock)",
+                            "value": "6 seconds"
+                        }
+                    ],
+                    "job_runner_name": null,
+                    "job_stderr": "",
+                    "job_stdout": "",
+                    "model_class": "Job",
+                    "output_collections": {},
+                    "outputs": {
+                        "outcomes": {
+                            "id": "3c565975eb880bf9",
+                            "src": "hda",
+                            "uuid": "ed1228f8-955f-40f4-add2-3a49ac556d10"
+                        },
+                        "results": {
+                            "id": "65a2978696656a3d",
+                            "src": "hda",
+                            "uuid": "47ad4455-51d2-401c-b001-073b2c37e2e8"
+                        }
+                    },
+                    "params": {
+                        "__input_ext": "\"input\"",
+                        "advanced": "{\"allow_coalescing\": true}",
+                        "alternate_bases": "\"A\"",
+                        "assembly": "\"GRCh38\"",
+                        "chromInfo": "\"/tmp/tmpuajbvyf0/galaxy-dev/tool-data/shared/ucsc/chrom/?.len\"",
+                        "cnv_terms": "{\"variant_type\": {\"__current_case__\": 0, \"mode\": \"none\"}}",
+                        "connection": "{\"__current_case__\": 0, \"providers\": \"org.cancercelllines\", \"transport\": \"api\"}",
+                        "dbkey": "\"?\"",
+                        "filters": "[]",
+                        "granularity": "\"record\"",
+                        "pagination": "{\"limit\": \"100\", \"sample\": \"\", \"skip\": \"0\"}",
+                        "reference_bases": "\"G\"",
+                        "reference_name": "\"17\"",
+                        "start": "\"7577120\"",
+                        "sv_terms": "{\"variant_type\": {\"__current_case__\": 0, \"mode\": \"none\"}}",
+                        "variant_classes": "\"SMALL_VARIANT\""
+                    },
+                    "state": "ok",
+                    "stderr": "  org.cancercelllines:\n    variant_classes_served:\n      SMALL_VARIANT:\n        status: \"yes\"\n        evidence_source: query_observation\n        evidence: \"60 SMALL_VARIANT records returned by a query on 2026-10-08\"\n        observed: \"2026-10-08\"\n\n",
+                    "stdout": "",
+                    "tool_id": "beacon2_sequence",
+                    "tool_stderr": "  org.cancercelllines:\n    variant_classes_served:\n      SMALL_VARIANT:\n        status: \"yes\"\n        evidence_source: query_observation\n        evidence: \"60 SMALL_VARIANT records returned by a query on 2026-10-08\"\n        observed: \"2026-10-08\"\n\n",
+                    "tool_stdout": "",
+                    "update_time": "2026-10-08T12:12:39.052765",
+                    "user_email": "planemo@galaxyproject.org",
+                    "user_id": "95bd14c88742ea55"
+                },
+                "output_problems": [
+                    "Output outcomes:  different than expected\nExpected text 'not evidence' in output ('beacon_id\tbeacon_name\tvariant_class\tclass_status\tstatus\trow_count\tgranularity_requested\tgranularity_returned\tcount_precision\tcount_precision_basis\tquery_degraded\tcoalesced\tnotes\norg.cancercelllines\tCancer Cell Line Genomics Beacon+\tSMALL_VARIANT\tunknown\tok\t60\trecord\trecord\texact\tinferred_from_complete_retrieval\tfalse\tno\tRecords returned for SMALL_VARIANT, which the registry lists as unknown for this beacon. The class can be upgraded to yes -- see the run log for a pasteable registry fragment.\n')"
+                ],
+                "problem_log": null,
+                "start_datetime": null,
+                "status": "failure",
+                "test_index": 1,
+                "time_seconds": 6.928106784820557,
+                "tool_id": "beacon2_sequence",
+                "tool_version": "3.0.0+galaxy0"
+            },
+            "doc": null,
+            "has_data": true,
+            "id": "beacon2_sequence-1",
+            "test_type": null
+        },
+        {
+            "data": {
+                "end_datetime": null,
+                "execution_problem": null,
+                "inputs": {
+                    "alternate_bases": "A",
+                    "connection|providers": "org.ega-archive.demo",
+                    "connection|transport": "api",
+                    "reference_bases": "G",
+                    "reference_name": "17",
+                    "start": "7577120",
+                    "variant_classes": [
+                        "SMALL_VARIANT",
+                        "CNV"
+                    ]
+                },
+                "invocation_details": null,
+                "job": {
+                    "command_line": "beacon2-query sequence  --providers 'org.ega-archive.demo' --provider-table '/tmp/tmpuajbvyf0/job_working_directory/000/17/configs/tmpq2_2ia1d' --credentials-file '/tmp/tmpuajbvyf0/job_working_directory/000/17/configs/tmpg2vg8_jo'   --variant-classes 'SMALL_VARIANT,CNV'  --reference-name '17' --assembly 'GRCh38' --start 7577120 --reference-bases 'G' --alternate-bases 'A' --granularity 'record' --limit 100 --skip 0          --results 'results.tsv' --outcomes 'outcomes.tsv'",
+                    "command_version": "",
+                    "copied_from_job_id": null,
+                    "create_time": "2026-10-08T12:12:39.298918",
+                    "dependencies": [],
+                    "exit_code": 0,
+                    "external_id": "28988",
+                    "galaxy_version": "26.1",
+                    "handler": null,
+                    "history_id": "6a1ab6177d77f61a",
+                    "id": "6a1ab6177d77f61a",
+                    "inputs": {},
+                    "job_messages": [],
+                    "job_metrics": [
+                        {
+                            "name": "galaxy_slots",
+                            "plugin": "core",
+                            "raw_value": "1.0000000",
+                            "title": "Cores Allocated",
+                            "value": "1"
+                        },
+                        {
+                            "name": "start_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461560.0000000",
+                            "title": "Job Start Time",
+                            "value": "2026-10-08 12:12:40"
+                        },
+                        {
+                            "name": "end_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461566.0000000",
+                            "title": "Job End Time",
+                            "value": "2026-10-08 12:12:46"
+                        },
+                        {
+                            "name": "runtime_seconds",
+                            "plugin": "core",
+                            "raw_value": "6.0000000",
+                            "title": "Job Runtime (Wall Clock)",
+                            "value": "6 seconds"
+                        }
+                    ],
+                    "job_runner_name": null,
+                    "job_stderr": "",
+                    "job_stdout": "",
+                    "model_class": "Job",
+                    "output_collections": {},
+                    "outputs": {
+                        "outcomes": {
+                            "id": "bb1efdd7eb78861d",
+                            "src": "hda",
+                            "uuid": "843cd089-a7b5-4f28-adc9-35ec145de6d1"
+                        },
+                        "results": {
+                            "id": "4928ee6a388181d5",
+                            "src": "hda",
+                            "uuid": "4600d353-61f9-44e7-a8c8-8b077df7fd3a"
+                        }
+                    },
+                    "params": {
+                        "__input_ext": "\"input\"",
+                        "advanced": "{\"allow_coalescing\": true}",
+                        "alternate_bases": "\"A\"",
+                        "assembly": "\"GRCh38\"",
+                        "chromInfo": "\"/tmp/tmpuajbvyf0/galaxy-dev/tool-data/shared/ucsc/chrom/?.len\"",
+                        "cnv_terms": "{\"variant_type\": {\"__current_case__\": 0, \"mode\": \"none\"}}",
+                        "connection": "{\"__current_case__\": 0, \"providers\": \"org.ega-archive.demo\", \"transport\": \"api\"}",
+                        "dbkey": "\"?\"",
+                        "filters": "[]",
+                        "granularity": "\"record\"",
+                        "pagination": "{\"limit\": \"100\", \"sample\": \"\", \"skip\": \"0\"}",
+                        "reference_bases": "\"G\"",
+                        "reference_name": "\"17\"",
+                        "start": "\"7577120\"",
+                        "sv_terms": "{\"variant_type\": {\"__current_case__\": 0, \"mode\": \"none\"}}",
+                        "variant_classes": "[\"SMALL_VARIANT\", \"CNV\"]"
+                    },
+                    "state": "ok",
+                    "stderr": "",
+                    "stdout": "",
+                    "tool_id": "beacon2_sequence",
+                    "tool_stderr": "",
+                    "tool_stdout": "",
+                    "update_time": "2026-10-08T12:12:46.275230",
+                    "user_email": "planemo@galaxyproject.org",
+                    "user_id": "95bd14c88742ea55"
+                },
+                "output_problems": null,
+                "problem_log": null,
+                "start_datetime": null,
+                "status": "success",
+                "test_index": 2,
+                "time_seconds": 7.2315733432769775,
+                "tool_id": "beacon2_sequence",
+                "tool_version": "3.0.0+galaxy0"
+            },
+            "doc": null,
+            "has_data": true,
+            "id": "beacon2_sequence-2",
+            "test_type": null
+        },
+        {
+            "data": {
+                "end_datetime": null,
+                "execution_problem": null,
+                "inputs": {
+                    "alternate_bases": "A",
+                    "connection|providers": "test.fixture.bracketless",
+                    "connection|transport": "api",
+                    "reference_bases": "G",
+                    "reference_name": "17",
+                    "start": "7577120",
+                    "variant_classes": "SV"
+                },
+                "invocation_details": null,
+                "job": {
+                    "command_line": "beacon2-query sequence  --providers 'test.fixture.bracketless' --provider-table '/tmp/tmpuajbvyf0/job_working_directory/000/18/configs/tmpogem8_3p' --credentials-file '/tmp/tmpuajbvyf0/job_working_directory/000/18/configs/tmpin4s0jqn'   --variant-classes 'SV'  --reference-name '17' --assembly 'GRCh38' --start 7577120 --reference-bases 'G' --alternate-bases 'A' --granularity 'record' --limit 100 --skip 0          --results 'results.tsv' --outcomes 'outcomes.tsv'",
+                    "command_version": "",
+                    "copied_from_job_id": null,
+                    "create_time": "2026-10-08T12:12:46.587274",
+                    "dependencies": [],
+                    "exit_code": 0,
+                    "external_id": "29203",
+                    "galaxy_version": "26.1",
+                    "handler": null,
+                    "history_id": "e7b5aee9ce1daffb",
+                    "id": "e7b5aee9ce1daffb",
+                    "inputs": {},
+                    "job_messages": [],
+                    "job_metrics": [
+                        {
+                            "name": "galaxy_slots",
+                            "plugin": "core",
+                            "raw_value": "1.0000000",
+                            "title": "Cores Allocated",
+                            "value": "1"
+                        },
+                        {
+                            "name": "start_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461567.0000000",
+                            "title": "Job Start Time",
+                            "value": "2026-10-08 12:12:47"
+                        },
+                        {
+                            "name": "end_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461573.0000000",
+                            "title": "Job End Time",
+                            "value": "2026-10-08 12:12:53"
+                        },
+                        {
+                            "name": "runtime_seconds",
+                            "plugin": "core",
+                            "raw_value": "6.0000000",
+                            "title": "Job Runtime (Wall Clock)",
+                            "value": "6 seconds"
+                        }
+                    ],
+                    "job_runner_name": null,
+                    "job_stderr": "",
+                    "job_stdout": "",
+                    "model_class": "Job",
+                    "output_collections": {},
+                    "outputs": {
+                        "outcomes": {
+                            "id": "10cb361b44637169",
+                            "src": "hda",
+                            "uuid": "862a155d-4793-480f-b565-bda7d33b837d"
+                        },
+                        "results": {
+                            "id": "2c8a07f162a9bd77",
+                            "src": "hda",
+                            "uuid": "b9fb3248-6ee4-4820-9b15-136b8907052c"
+                        }
+                    },
+                    "params": {
+                        "__input_ext": "\"input\"",
+                        "advanced": "{\"allow_coalescing\": true}",
+                        "alternate_bases": "\"A\"",
+                        "assembly": "\"GRCh38\"",
+                        "chromInfo": "\"/tmp/tmpuajbvyf0/galaxy-dev/tool-data/shared/ucsc/chrom/?.len\"",
+                        "cnv_terms": "{\"variant_type\": {\"__current_case__\": 0, \"mode\": \"none\"}}",
+                        "connection": "{\"__current_case__\": 0, \"providers\": \"test.fixture.bracketless\", \"transport\": \"api\"}",
+                        "dbkey": "\"?\"",
+                        "filters": "[]",
+                        "granularity": "\"record\"",
+                        "pagination": "{\"limit\": \"100\", \"sample\": \"\", \"skip\": \"0\"}",
+                        "reference_bases": "\"G\"",
+                        "reference_name": "\"17\"",
+                        "start": "\"7577120\"",
+                        "sv_terms": "{\"variant_type\": {\"__current_case__\": 0, \"mode\": \"none\"}}",
+                        "variant_classes": "\"SV\""
+                    },
+                    "state": "ok",
+                    "stderr": "",
+                    "stdout": "",
+                    "tool_id": "beacon2_sequence",
+                    "tool_stderr": "",
+                    "tool_stdout": "",
+                    "update_time": "2026-10-08T12:12:53.328671",
+                    "user_email": "planemo@galaxyproject.org",
+                    "user_id": "95bd14c88742ea55"
+                },
+                "output_problems": null,
+                "problem_log": null,
+                "start_datetime": null,
+                "status": "success",
+                "test_index": 3,
+                "time_seconds": 7.017160892486572,
+                "tool_id": "beacon2_sequence",
+                "tool_version": "3.0.0+galaxy0"
+            },
+            "doc": null,
+            "has_data": true,
+            "id": "beacon2_sequence-3",
+            "test_type": null
+        },
+        {
+            "data": {
+                "end_datetime": null,
+                "execution_problem": null,
+                "inputs": {
+                    "alternate_bases": "A",
+                    "connection|providers": "org.ega-archive.demo",
+                    "connection|transport": "api",
+                    "reference_bases": "G",
+                    "reference_name": "17",
+                    "start": "7577120",
+                    "variant_classes": "REPEAT"
+                },
+                "invocation_details": null,
+                "job": {
+                    "command_line": "beacon2-query sequence  --providers 'org.ega-archive.demo' --provider-table '/tmp/tmpuajbvyf0/job_working_directory/000/19/configs/tmpjjypd2to' --credentials-file '/tmp/tmpuajbvyf0/job_working_directory/000/19/configs/tmp6h576abv'   --variant-classes 'REPEAT'  --reference-name '17' --assembly 'GRCh38' --start 7577120 --reference-bases 'G' --alternate-bases 'A' --granularity 'record' --limit 100 --skip 0          --results 'results.tsv' --outcomes 'outcomes.tsv'",
+                    "command_version": "",
+                    "copied_from_job_id": null,
+                    "create_time": "2026-10-08T12:12:53.656308",
+                    "dependencies": [],
+                    "exit_code": 0,
+                    "external_id": "29346",
+                    "galaxy_version": "26.1",
+                    "handler": null,
+                    "history_id": "35975f779dad99e8",
+                    "id": "35975f779dad99e8",
+                    "inputs": {},
+                    "job_messages": [],
+                    "job_metrics": [
+                        {
+                            "name": "galaxy_slots",
+                            "plugin": "core",
+                            "raw_value": "1.0000000",
+                            "title": "Cores Allocated",
+                            "value": "1"
+                        },
+                        {
+                            "name": "start_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461574.0000000",
+                            "title": "Job Start Time",
+                            "value": "2026-10-08 12:12:54"
+                        },
+                        {
+                            "name": "end_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461580.0000000",
+                            "title": "Job End Time",
+                            "value": "2026-10-08 12:13:00"
+                        },
+                        {
+                            "name": "runtime_seconds",
+                            "plugin": "core",
+                            "raw_value": "6.0000000",
+                            "title": "Job Runtime (Wall Clock)",
+                            "value": "6 seconds"
+                        }
+                    ],
+                    "job_runner_name": null,
+                    "job_stderr": "",
+                    "job_stdout": "",
+                    "model_class": "Job",
+                    "output_collections": {},
+                    "outputs": {
+                        "outcomes": {
+                            "id": "7a7deb786c1e015d",
+                            "src": "hda",
+                            "uuid": "3425b361-3d59-47d6-a918-6bd93a164d54"
+                        },
+                        "results": {
+                            "id": "81b1efbb2d9c2600",
+                            "src": "hda",
+                            "uuid": "b0d5a3e3-01f4-4711-809d-5e27a49b9bad"
+                        }
+                    },
+                    "params": {
+                        "__input_ext": "\"input\"",
+                        "advanced": "{\"allow_coalescing\": true}",
+                        "alternate_bases": "\"A\"",
+                        "assembly": "\"GRCh38\"",
+                        "chromInfo": "\"/tmp/tmpuajbvyf0/galaxy-dev/tool-data/shared/ucsc/chrom/?.len\"",
+                        "cnv_terms": "{\"variant_type\": {\"__current_case__\": 0, \"mode\": \"none\"}}",
+                        "connection": "{\"__current_case__\": 0, \"providers\": \"org.ega-archive.demo\", \"transport\": \"api\"}",
+                        "dbkey": "\"?\"",
+                        "filters": "[]",
+                        "granularity": "\"record\"",
+                        "pagination": "{\"limit\": \"100\", \"sample\": \"\", \"skip\": \"0\"}",
+                        "reference_bases": "\"G\"",
+                        "reference_name": "\"17\"",
+                        "start": "\"7577120\"",
+                        "sv_terms": "{\"variant_type\": {\"__current_case__\": 0, \"mode\": \"none\"}}",
+                        "variant_classes": "\"REPEAT\""
+                    },
+                    "state": "ok",
+                    "stderr": "",
+                    "stdout": "",
+                    "tool_id": "beacon2_sequence",
+                    "tool_stderr": "",
+                    "tool_stdout": "",
+                    "update_time": "2026-10-08T12:13:00.471447",
+                    "user_email": "planemo@galaxyproject.org",
+                    "user_id": "95bd14c88742ea55"
+                },
+                "output_problems": null,
+                "problem_log": null,
+                "start_datetime": null,
+                "status": "success",
+                "test_index": 4,
+                "time_seconds": 6.901242017745972,
+                "tool_id": "beacon2_sequence",
+                "tool_version": "3.0.0+galaxy0"
+            },
+            "doc": null,
+            "has_data": true,
+            "id": "beacon2_sequence-4",
+            "test_type": null
+        },
+        {
+            "data": {
+                "end_datetime": null,
+                "execution_problem": null,
+                "inputs": {
+                    "collection": "test",
+                    "database": "beacon",
+                    "db_host": "20.108.51.167",
+                    "input_json_file": {
+                        "id": "0a6f2e264eb76241",
+                        "src": "hda"
+                    }
+                },
+                "invocation_details": null,
+                "job": {
+                    "command_line": "ln -s '/tmp/tmpuajbvyf0/files/8/f/2/dataset_8f2f6bfe-5b42-4749-b422-8000f30a9b7e.dat' ./input.json && beacon2-import --input_json_file ./input.json --db-host 20.108.51.167 --db-port 27017 --database 'beacon' --collection 'test' --advance-connection --db-auth-config '/tmp/tmpuajbvyf0/job_working_directory/000/21/configs/tmpl86rzxx_'  > logs.txt",
+                    "command_version": "",
+                    "copied_from_job_id": null,
+                    "create_time": "2026-10-08T12:13:15.881063",
+                    "dependencies": [],
+                    "exit_code": 1,
+                    "external_id": "29845",
+                    "galaxy_version": "26.1",
+                    "handler": null,
+                    "history_id": "d776ef4f109ddef0",
+                    "id": "8f7af021f19398ab",
+                    "inputs": {
+                        "input_json_file": {
+                            "id": "0a6f2e264eb76241",
+                            "src": "hda",
+                            "uuid": "8f2f6bfe-5b42-4749-b422-8000f30a9b7e"
+                        }
+                    },
+                    "job_messages": [
+                        {
+                            "code_desc": "",
+                            "desc": "Fatal error: Exit code 1 ()",
+                            "error_level": 3.0,
+                            "exit_code": 1,
+                            "type": "exit_code"
+                        }
+                    ],
+                    "job_metrics": [
+                        {
+                            "name": "galaxy_slots",
+                            "plugin": "core",
+                            "raw_value": "1.0000000",
+                            "title": "Cores Allocated",
+                            "value": "1"
+                        },
+                        {
+                            "name": "start_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461596.0000000",
+                            "title": "Job Start Time",
+                            "value": "2026-10-08 12:13:16"
+                        },
+                        {
+                            "name": "end_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461633.0000000",
+                            "title": "Job End Time",
+                            "value": "2026-10-08 12:13:53"
+                        },
+                        {
+                            "name": "runtime_seconds",
+                            "plugin": "core",
+                            "raw_value": "37.0000000",
+                            "title": "Job Runtime (Wall Clock)",
+                            "value": "37 seconds"
+                        }
+                    ],
+                    "job_runner_name": null,
+                    "job_stderr": "",
+                    "job_stdout": "",
+                    "model_class": "Job",
+                    "output_collections": {},
+                    "outputs": {
+                        "out_logs": {
+                            "id": "f58427e5e874d471",
+                            "src": "hda",
+                            "uuid": "2b8b818c-8d4e-44d8-beee-4d33a7c75d7c"
+                        }
+                    },
+                    "params": {
+                        "__input_ext": "\"input\"",
+                        "advanced_settings": "{\"clearAll\": false, \"clearColl\": false, \"removeCollection\": \"\"}",
+                        "chromInfo": "\"/tmp/tmpuajbvyf0/galaxy-dev/tool-data/shared/ucsc/chrom/?.len\"",
+                        "collection": "\"test\"",
+                        "database": "\"beacon\"",
+                        "db_host": "\"20.108.51.167\"",
+                        "db_port": "\"27017\"",
+                        "dbkey": "\"?\""
+                    },
+                    "state": "error",
+                    "stderr": "No database user is configured, so connecting without authentication. Set the beacon2_account preferences to authenticate.\nTraceback (most recent call last):\n  File \"/workspaces/beacon2-import/.venv/bin/beacon2-import\", line 6, in <module>\n    sys.exit(main())\n             ~~~~^^\n  File \"/workspaces/beacon2-import/beacon2_import/cli/import_command.py\", line 23, in main\n    beacon2_import()\n    ~~~~~~~~~~~~~~^^\n  File \"/workspaces/beacon2-import/beacon2_import/importer/importer.py\", line 351, in beacon2_import\n    clear_collections(db, args)\n    ~~~~~~~~~~~~~~~~~^^^^^^^^^^\n  File \"/workspaces/beacon2-import/beacon2_import/importer/importer.py\", line 290, in clear_collections\n    existing_names = db.list_collection_names()\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/database.py\", line 1247, in list_collection_names\n    return self._list_collection_names(session, filter, comment, **kwargs)\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/database.py\", line 1212, in _list_collection_names\n    result[\"name\"] for result in self._list_collections_helper(session=session, **kwargs)\n                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/database.py\", line 1150, in _list_collections_helper\n    return self._client._retryable_read(\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^\n        _cmd, read_pref, session, operation=_Op.LIST_COLLECTIONS\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/mongo_client.py\", line 2061, in _retryable_read\n    return self._retry_internal(\n           ~~~~~~~~~~~~~~~~~~~~^\n        func,\n        ^^^^^\n    ...<9 lines>...\n        is_aggregate_write=is_aggregate_write,\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/_csot.py\", line 126, in csot_wrapper\n    return func(self, *args, **kwargs)\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/mongo_client.py\", line 2022, in _retry_internal\n    ).run()\n      ~~~^^\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/mongo_client.py\", line 2890, in run\n    res = self._read() if self._is_read else self._write()\n          ~~~~~~~~~~^^\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/mongo_client.py\", line 3118, in _read\n    self._server = self._get_server()\n                   ~~~~~~~~~~~~~~~~^^\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/mongo_client.py\", line 3063, in _get_server\n    return self._client._select_server(\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^\n        self._server_selector,\n        ^^^^^^^^^^^^^^^^^^^^^^\n    ...<4 lines>...\n        operation_id=self._operation_id,\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/mongo_client.py\", line 1862, in _select_server\n    server = topology.select_server(\n        server_selector,\n    ...<2 lines>...\n        operation_id=operation_id,\n    )\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/topology.py\", line 357, in select_server\n    server = self._select_server(\n        selector,\n    ...<4 lines>...\n        operation_id=operation_id,\n    )\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/topology.py\", line 331, in _select_server\n    servers = self.select_servers(\n        selector,\n    ...<4 lines>...\n        deprioritized_servers,\n    )\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/topology.py\", line 249, in select_servers\n    server_descriptions = self._select_servers_loop(\n        selector,\n    ...<4 lines>...\n        deprioritized_servers=deprioritized_servers,\n    )\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/topology.py\", line 297, in _select_servers_loop\n    raise ServerSelectionTimeoutError(\n        f\"{self._error_message(selector)}, Timeout: {timeout}s, Topology Description: {self.description!r}\"\n    )\npymongo.errors.ServerSelectionTimeoutError: 20.108.51.167:27017: timed out (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 6ac788dce5e4171f30c7bb38, topology_type: Unknown, servers: [<ServerDescription ('20.108.51.167', 27017) server_type: Unknown, rtt: None, error=NetworkTimeout('20.108.51.167:27017: timed out (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>\n",
+                    "stdout": "",
+                    "tool_id": "beacon2_import",
+                    "tool_stderr": "No database user is configured, so connecting without authentication. Set the beacon2_account preferences to authenticate.\nTraceback (most recent call last):\n  File \"/workspaces/beacon2-import/.venv/bin/beacon2-import\", line 6, in <module>\n    sys.exit(main())\n             ~~~~^^\n  File \"/workspaces/beacon2-import/beacon2_import/cli/import_command.py\", line 23, in main\n    beacon2_import()\n    ~~~~~~~~~~~~~~^^\n  File \"/workspaces/beacon2-import/beacon2_import/importer/importer.py\", line 351, in beacon2_import\n    clear_collections(db, args)\n    ~~~~~~~~~~~~~~~~~^^^^^^^^^^\n  File \"/workspaces/beacon2-import/beacon2_import/importer/importer.py\", line 290, in clear_collections\n    existing_names = db.list_collection_names()\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/database.py\", line 1247, in list_collection_names\n    return self._list_collection_names(session, filter, comment, **kwargs)\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/database.py\", line 1212, in _list_collection_names\n    result[\"name\"] for result in self._list_collections_helper(session=session, **kwargs)\n                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/database.py\", line 1150, in _list_collections_helper\n    return self._client._retryable_read(\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^\n        _cmd, read_pref, session, operation=_Op.LIST_COLLECTIONS\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/mongo_client.py\", line 2061, in _retryable_read\n    return self._retry_internal(\n           ~~~~~~~~~~~~~~~~~~~~^\n        func,\n        ^^^^^\n    ...<9 lines>...\n        is_aggregate_write=is_aggregate_write,\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/_csot.py\", line 126, in csot_wrapper\n    return func(self, *args, **kwargs)\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/mongo_client.py\", line 2022, in _retry_internal\n    ).run()\n      ~~~^^\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/mongo_client.py\", line 2890, in run\n    res = self._read() if self._is_read else self._write()\n          ~~~~~~~~~~^^\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/mongo_client.py\", line 3118, in _read\n    self._server = self._get_server()\n                   ~~~~~~~~~~~~~~~~^^\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/mongo_client.py\", line 3063, in _get_server\n    return self._client._select_server(\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^\n        self._server_selector,\n        ^^^^^^^^^^^^^^^^^^^^^^\n    ...<4 lines>...\n        operation_id=self._operation_id,\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/mongo_client.py\", line 1862, in _select_server\n    server = topology.select_server(\n        server_selector,\n    ...<2 lines>...\n        operation_id=operation_id,\n    )\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/topology.py\", line 357, in select_server\n    server = self._select_server(\n        selector,\n    ...<4 lines>...\n        operation_id=operation_id,\n    )\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/topology.py\", line 331, in _select_server\n    servers = self.select_servers(\n        selector,\n    ...<4 lines>...\n        deprioritized_servers,\n    )\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/topology.py\", line 249, in select_servers\n    server_descriptions = self._select_servers_loop(\n        selector,\n    ...<4 lines>...\n        deprioritized_servers=deprioritized_servers,\n    )\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/topology.py\", line 297, in _select_servers_loop\n    raise ServerSelectionTimeoutError(\n        f\"{self._error_message(selector)}, Timeout: {timeout}s, Topology Description: {self.description!r}\"\n    )\npymongo.errors.ServerSelectionTimeoutError: 20.108.51.167:27017: timed out (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 6ac788dce5e4171f30c7bb38, topology_type: Unknown, servers: [<ServerDescription ('20.108.51.167', 27017) server_type: Unknown, rtt: None, error=NetworkTimeout('20.108.51.167:27017: timed out (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>\n",
+                    "tool_stdout": "",
+                    "update_time": "2026-10-08T12:13:53.742705",
+                    "user_email": "planemo@galaxyproject.org",
+                    "user_id": "95bd14c88742ea55"
+                },
+                "output_problems": [
+                    "Job in error state.. tool_id: beacon2_import, exit_code: 1, stderr: No database user is configured, so connecting without authentication. Set the beacon2_account preferences to authenticate.\nTraceback (most recent call last):\n  File \"/workspaces/beacon2-import/.venv/bin/beacon2-import\", line 6, in <module>\n    sys.exit(main())\n             ~~~~^^\n  File \"/workspaces/beacon2-import/beacon2_import/cli/import_command.py\", line 23, in main\n    beacon2_import()\n    ~~~~~~~~~~~~~~^^\n  File \"/workspaces/beacon2-import/beacon2_import/importer/importer.py\", line 351, in beacon2_import\n    clear_collections(db, args)\n    ~~~~~~~~~~~~~~~~~^^^^^^^^^^\n  File \"/workspaces/beacon2-import/beacon2_import/importer/importer.py\", line 290, in clear_collections\n    existing_names = db.list_collection_names()\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/database.py\", line 1247, in list_collection_names\n    return self._list_collection_names(session, filter, comment, **kwargs)\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/database.py\", line 1212, in _list_collection_names\n    result[\"name\"] for result in self._list_collections_helper(session=session, **kwargs)\n                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/database.py\", line 1150, in _list_collections_helper\n    return self._client._retryable_read(\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^\n        _cmd, read_pref, session, operation=_Op.LIST_COLLECTIONS\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/mongo_client.py\", line 2061, in _retryable_read\n    return self._retry_internal(\n           ~~~~~~~~~~~~~~~~~~~~^\n        func,\n        ^^^^^\n    ...<9 lines>...\n        is_aggregate_write=is_aggregate_write,\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/_csot.py\", line 126, in csot_wrapper\n    return func(self, *args, **kwargs)\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/mongo_client.py\", line 2022, in _retry_internal\n    ).run()\n      ~~~^^\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/mongo_client.py\", line 2890, in run\n    res = self._read() if self._is_read else self._write()\n          ~~~~~~~~~~^^\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/mongo_client.py\", line 3118, in _read\n    self._server = self._get_server()\n                   ~~~~~~~~~~~~~~~~^^\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/mongo_client.py\", line 3063, in _get_server\n    return self._client._select_server(\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^\n        self._server_selector,\n        ^^^^^^^^^^^^^^^^^^^^^^\n    ...<4 lines>...\n        operation_id=self._operation_id,\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/mongo_client.py\", line 1862, in _select_server\n    server = topology.select_server(\n        server_selector,\n    ...<2 lines>...\n        operation_id=operation_id,\n    )\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/topology.py\", line 357, in select_server\n    server = self._select_server(\n        selector,\n    ...<4 lines>...\n        operation_id=operation_id,\n    )\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/topology.py\", line 331, in _select_server\n    servers = self.select_servers(\n        selector,\n    ...<4 lines>...\n        deprioritized_servers,\n    )\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/topology.py\", line 249, in select_servers\n    server_descriptions = self._select_servers_loop(\n        selector,\n    ...<4 lines>...\n        deprioritized_servers=deprioritized_servers,\n    )\n  File \"/workspaces/beacon2-import/.venv/lib/python3.14/site-packages/pymongo/synchronous/topology.py\", line 297, in _select_servers_loop\n    raise ServerSelectionTimeoutError(\n        f\"{self._error_message(selector)}, Timeout: {timeout}s, Topology Description: {self.description!r}\"\n    )\npymongo.errors.ServerSelectionTimeoutError: 20.108.51.167:27017: timed out (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 6ac788dce5e4171f30c7bb38, topology_type: Unknown, servers: [<ServerDescription ('20.108.51.167', 27017) server_type: Unknown, rtt: None, error=NetworkTimeout('20.108.51.167:27017: timed out (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>\n.",
+                    "Output out_logs:  different than expected\nExpected text matching expression 'inserted' in output ('')"
+                ],
+                "problem_log": null,
+                "start_datetime": null,
+                "status": "failure",
+                "test_index": 0,
+                "time_seconds": 53.27661609649658,
+                "tool_id": "beacon2_import",
+                "tool_version": "3.0.0+galaxy0"
+            },
+            "doc": null,
+            "has_data": true,
+            "id": "beacon2_import-0",
+            "test_type": null
+        },
+        {
+            "data": {
+                "end_datetime": null,
+                "execution_problem": null,
+                "inputs": {
+                    "connection|providers": "org.cancercelllines",
+                    "connection|transport": "api"
+                },
+                "invocation_details": null,
+                "job": {
+                    "command_line": "beacon2-query entity --entity analysis  --providers 'org.cancercelllines' --provider-table '/tmp/tmpuajbvyf0/job_working_directory/000/22/configs/tmpsxmicwka' --credentials-file '/tmp/tmpuajbvyf0/job_working_directory/000/22/configs/tmpq95qdws1'  --granularity 'record' --limit 100 --skip 0    --results 'results.tsv' --outcomes 'outcomes.tsv'",
+                    "command_version": "",
+                    "copied_from_job_id": null,
+                    "create_time": "2026-10-08T12:13:53.923132",
+                    "dependencies": [],
+                    "exit_code": 0,
+                    "external_id": "30747",
+                    "galaxy_version": "26.1",
+                    "handler": null,
+                    "history_id": "8f7af021f19398ab",
+                    "id": "992aef75f589d24c",
+                    "inputs": {},
+                    "job_messages": [],
+                    "job_metrics": [
+                        {
+                            "name": "galaxy_slots",
+                            "plugin": "core",
+                            "raw_value": "1.0000000",
+                            "title": "Cores Allocated",
+                            "value": "1"
+                        },
+                        {
+                            "name": "start_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461634.0000000",
+                            "title": "Job Start Time",
+                            "value": "2026-10-08 12:13:54"
+                        },
+                        {
+                            "name": "end_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461640.0000000",
+                            "title": "Job End Time",
+                            "value": "2026-10-08 12:14:00"
+                        },
+                        {
+                            "name": "runtime_seconds",
+                            "plugin": "core",
+                            "raw_value": "6.0000000",
+                            "title": "Job Runtime (Wall Clock)",
+                            "value": "6 seconds"
+                        }
+                    ],
+                    "job_runner_name": null,
+                    "job_stderr": "",
+                    "job_stdout": "",
+                    "model_class": "Job",
+                    "output_collections": {},
+                    "outputs": {
+                        "outcomes": {
+                            "id": "3284e22c71d00ecc",
+                            "src": "hda",
+                            "uuid": "e7f7c63f-bdab-4a7f-870e-bf0947fe071a"
+                        },
+                        "results": {
+                            "id": "d6626e03ae410815",
+                            "src": "hda",
+                            "uuid": "441c9237-4a96-4d82-bdd8-de8d7eac3275"
+                        }
+                    },
+                    "params": {
+                        "__input_ext": "\"input\"",
+                        "chromInfo": "\"/tmp/tmpuajbvyf0/galaxy-dev/tool-data/shared/ucsc/chrom/?.len\"",
+                        "connection": "{\"__current_case__\": 0, \"filters\": [], \"granularity\": \"record\", \"lookup\": {\"__current_case__\": 0, \"mode\": \"query\"}, \"pagination\": {\"limit\": \"100\", \"sample\": \"\", \"skip\": \"0\"}, \"providers\": \"org.cancercelllines\", \"transport\": \"api\"}",
+                        "dbkey": "\"?\""
+                    },
+                    "state": "ok",
+                    "stderr": "",
+                    "stdout": "",
+                    "tool_id": "beacon2_analyses",
+                    "tool_stderr": "",
+                    "tool_stdout": "",
+                    "update_time": "2026-10-08T12:14:00.655903",
+                    "user_email": "planemo@galaxyproject.org",
+                    "user_id": "95bd14c88742ea55"
+                },
+                "output_problems": null,
+                "problem_log": null,
+                "start_datetime": null,
+                "status": "success",
+                "test_index": 0,
+                "time_seconds": 7.0435240268707275,
+                "tool_id": "beacon2_analyses",
+                "tool_version": "3.0.0+galaxy0"
+            },
+            "doc": null,
+            "has_data": true,
+            "id": "beacon2_analyses-0",
+            "test_type": null
+        },
+        {
+            "data": {
+                "end_datetime": null,
+                "execution_problem": null,
+                "inputs": {
+                    "connection|providers": "org.cancercelllines",
+                    "connection|transport": "api"
+                },
+                "invocation_details": null,
+                "job": {
+                    "command_line": "beacon2-query entity --entity biosample  --providers 'org.cancercelllines' --provider-table '/tmp/tmpuajbvyf0/job_working_directory/000/23/configs/tmpfm71ydzc' --credentials-file '/tmp/tmpuajbvyf0/job_working_directory/000/23/configs/tmp6bf3p0n4'  --granularity 'record' --limit 100 --skip 0    --results 'results.tsv' --outcomes 'outcomes.tsv'",
+                    "command_version": "",
+                    "copied_from_job_id": null,
+                    "create_time": "2026-10-08T12:14:01.039794",
+                    "dependencies": [],
+                    "exit_code": 0,
+                    "external_id": "30964",
+                    "galaxy_version": "26.1",
+                    "handler": null,
+                    "history_id": "992aef75f589d24c",
+                    "id": "004ad49825dce539",
+                    "inputs": {},
+                    "job_messages": [],
+                    "job_metrics": [
+                        {
+                            "name": "galaxy_slots",
+                            "plugin": "core",
+                            "raw_value": "1.0000000",
+                            "title": "Cores Allocated",
+                            "value": "1"
+                        },
+                        {
+                            "name": "start_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461641.0000000",
+                            "title": "Job Start Time",
+                            "value": "2026-10-08 12:14:01"
+                        },
+                        {
+                            "name": "end_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461647.0000000",
+                            "title": "Job End Time",
+                            "value": "2026-10-08 12:14:07"
+                        },
+                        {
+                            "name": "runtime_seconds",
+                            "plugin": "core",
+                            "raw_value": "6.0000000",
+                            "title": "Job Runtime (Wall Clock)",
+                            "value": "6 seconds"
+                        }
+                    ],
+                    "job_runner_name": null,
+                    "job_stderr": "",
+                    "job_stdout": "",
+                    "model_class": "Job",
+                    "output_collections": {},
+                    "outputs": {
+                        "outcomes": {
+                            "id": "f4e88371a762b5c5",
+                            "src": "hda",
+                            "uuid": "d1f64495-075a-47c8-ba0f-810d17eb5390"
+                        },
+                        "results": {
+                            "id": "0b3a9040d372a9d3",
+                            "src": "hda",
+                            "uuid": "eb8b7329-3748-427e-b9bf-89155e441845"
+                        }
+                    },
+                    "params": {
+                        "__input_ext": "\"input\"",
+                        "chromInfo": "\"/tmp/tmpuajbvyf0/galaxy-dev/tool-data/shared/ucsc/chrom/?.len\"",
+                        "connection": "{\"__current_case__\": 0, \"filters\": [], \"granularity\": \"record\", \"lookup\": {\"__current_case__\": 0, \"mode\": \"query\"}, \"pagination\": {\"limit\": \"100\", \"sample\": \"\", \"skip\": \"0\"}, \"providers\": \"org.cancercelllines\", \"transport\": \"api\"}",
+                        "dbkey": "\"?\""
+                    },
+                    "state": "ok",
+                    "stderr": "",
+                    "stdout": "",
+                    "tool_id": "beacon2_biosamples",
+                    "tool_stderr": "",
+                    "tool_stdout": "",
+                    "update_time": "2026-10-08T12:14:07.848559",
+                    "user_email": "planemo@galaxyproject.org",
+                    "user_id": "95bd14c88742ea55"
+                },
+                "output_problems": null,
+                "problem_log": null,
+                "start_datetime": null,
+                "status": "success",
+                "test_index": 0,
+                "time_seconds": 6.97556734085083,
+                "tool_id": "beacon2_biosamples",
+                "tool_version": "3.0.0+galaxy0"
+            },
+            "doc": null,
+            "has_data": true,
+            "id": "beacon2_biosamples-0",
+            "test_type": null
+        },
+        {
+            "data": {
+                "end_datetime": null,
+                "execution_problem": null,
+                "inputs": {
+                    "connection|providers": "org.cancercelllines",
+                    "connection|transport": "api"
+                },
+                "invocation_details": null,
+                "job": {
+                    "command_line": "beacon2-query entity --entity cohort  --providers 'org.cancercelllines' --provider-table '/tmp/tmpuajbvyf0/job_working_directory/000/24/configs/tmpzime8njd' --credentials-file '/tmp/tmpuajbvyf0/job_working_directory/000/24/configs/tmplthktsed'  --granularity 'record' --limit 100 --skip 0    --results 'results.tsv' --outcomes 'outcomes.tsv'",
+                    "command_version": "",
+                    "copied_from_job_id": null,
+                    "create_time": "2026-10-08T12:14:08.062210",
+                    "dependencies": [],
+                    "exit_code": 0,
+                    "external_id": "31134",
+                    "galaxy_version": "26.1",
+                    "handler": null,
+                    "history_id": "004ad49825dce539",
+                    "id": "989e0faf14f4c4aa",
+                    "inputs": {},
+                    "job_messages": [],
+                    "job_metrics": [
+                        {
+                            "name": "galaxy_slots",
+                            "plugin": "core",
+                            "raw_value": "1.0000000",
+                            "title": "Cores Allocated",
+                            "value": "1"
+                        },
+                        {
+                            "name": "start_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461649.0000000",
+                            "title": "Job Start Time",
+                            "value": "2026-10-08 12:14:09"
+                        },
+                        {
+                            "name": "end_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461654.0000000",
+                            "title": "Job End Time",
+                            "value": "2026-10-08 12:14:14"
+                        },
+                        {
+                            "name": "runtime_seconds",
+                            "plugin": "core",
+                            "raw_value": "5.0000000",
+                            "title": "Job Runtime (Wall Clock)",
+                            "value": "5 seconds"
+                        }
+                    ],
+                    "job_runner_name": null,
+                    "job_stderr": "",
+                    "job_stdout": "",
+                    "model_class": "Job",
+                    "output_collections": {},
+                    "outputs": {
+                        "outcomes": {
+                            "id": "4466af04c5230297",
+                            "src": "hda",
+                            "uuid": "c4f8cd1d-d191-49fc-a665-ac9c7b0e29ea"
+                        },
+                        "results": {
+                            "id": "e6117f96be5c6277",
+                            "src": "hda",
+                            "uuid": "1bca0fde-e9cf-4182-8741-efbfa2b782b4"
+                        }
+                    },
+                    "params": {
+                        "__input_ext": "\"input\"",
+                        "chromInfo": "\"/tmp/tmpuajbvyf0/galaxy-dev/tool-data/shared/ucsc/chrom/?.len\"",
+                        "connection": "{\"__current_case__\": 0, \"filters\": [], \"granularity\": \"record\", \"lookup\": {\"__current_case__\": 0, \"mode\": \"query\"}, \"pagination\": {\"limit\": \"100\", \"sample\": \"\", \"skip\": \"0\"}, \"providers\": \"org.cancercelllines\", \"transport\": \"api\"}",
+                        "dbkey": "\"?\""
+                    },
+                    "state": "ok",
+                    "stderr": "",
+                    "stdout": "",
+                    "tool_id": "beacon2_cohorts",
+                    "tool_stderr": "",
+                    "tool_stdout": "",
+                    "update_time": "2026-10-08T12:14:14.918541",
+                    "user_email": "planemo@galaxyproject.org",
+                    "user_id": "95bd14c88742ea55"
+                },
+                "output_problems": null,
+                "problem_log": null,
+                "start_datetime": null,
+                "status": "success",
+                "test_index": 0,
+                "time_seconds": 7.001954078674316,
+                "tool_id": "beacon2_cohorts",
+                "tool_version": "3.0.0+galaxy0"
+            },
+            "doc": null,
+            "has_data": true,
+            "id": "beacon2_cohorts-0",
+            "test_type": null
+        },
+        {
+            "data": {
+                "end_datetime": null,
+                "execution_problem": null,
+                "inputs": {
+                    "connection|providers": "org.cancercelllines",
+                    "connection|transport": "api",
+                    "gene_id": "TP53",
+                    "variant_classes": "CNV"
+                },
+                "invocation_details": null,
+                "job": {
+                    "command_line": "beacon2-query gene  --providers 'org.cancercelllines' --provider-table '/tmp/tmpuajbvyf0/job_working_directory/000/25/configs/tmpe9v9dr__' --credentials-file '/tmp/tmpuajbvyf0/job_working_directory/000/25/configs/tmpyhohkhco'   --variant-classes 'CNV'  --gene-id 'TP53' --granularity 'record' --limit 100 --skip 0            --results 'results.tsv' --outcomes 'outcomes.tsv'",
+                    "command_version": "",
+                    "copied_from_job_id": null,
+                    "create_time": "2026-10-08T12:14:15.127296",
+                    "dependencies": [],
+                    "exit_code": 0,
+                    "external_id": "31321",
+                    "galaxy_version": "26.1",
+                    "handler": null,
+                    "history_id": "989e0faf14f4c4aa",
+                    "id": "b2d13293449fff65",
+                    "inputs": {},
+                    "job_messages": [],
+                    "job_metrics": [
+                        {
+                            "name": "galaxy_slots",
+                            "plugin": "core",
+                            "raw_value": "1.0000000",
+                            "title": "Cores Allocated",
+                            "value": "1"
+                        },
+                        {
+                            "name": "start_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461656.0000000",
+                            "title": "Job Start Time",
+                            "value": "2026-10-08 12:14:16"
+                        },
+                        {
+                            "name": "end_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461662.0000000",
+                            "title": "Job End Time",
+                            "value": "2026-10-08 12:14:22"
+                        },
+                        {
+                            "name": "runtime_seconds",
+                            "plugin": "core",
+                            "raw_value": "6.0000000",
+                            "title": "Job Runtime (Wall Clock)",
+                            "value": "6 seconds"
+                        }
+                    ],
+                    "job_runner_name": null,
+                    "job_stderr": "",
+                    "job_stdout": "",
+                    "model_class": "Job",
+                    "output_collections": {},
+                    "outputs": {
+                        "outcomes": {
+                            "id": "af5f1f96968c59d9",
+                            "src": "hda",
+                            "uuid": "101b29c8-62ad-48e6-b2a0-591e90e3ab43"
+                        },
+                        "results": {
+                            "id": "5d8812dcadf43632",
+                            "src": "hda",
+                            "uuid": "7bdd53bc-d1a3-49da-aebe-1d7ac15ef100"
+                        }
+                    },
+                    "params": {
+                        "__input_ext": "\"input\"",
+                        "advanced": "{\"variant_max_length\": \"\", \"variant_min_length\": \"\"}",
+                        "chromInfo": "\"/tmp/tmpuajbvyf0/galaxy-dev/tool-data/shared/ucsc/chrom/?.len\"",
+                        "cnv_terms": "{\"variant_type\": {\"__current_case__\": 0, \"mode\": \"none\"}}",
+                        "connection": "{\"__current_case__\": 0, \"providers\": \"org.cancercelllines\", \"transport\": \"api\"}",
+                        "dbkey": "\"?\"",
+                        "filters": "[]",
+                        "gene_id": "\"TP53\"",
+                        "granularity": "\"record\"",
+                        "pagination": "{\"limit\": \"100\", \"sample\": \"\", \"skip\": \"0\"}",
+                        "small_variant_terms": "{\"alternate_bases\": \"\", \"aminoacid_change\": \"\", \"reference_bases\": \"\", \"variant_type\": {\"__current_case__\": 0, \"mode\": \"none\"}}",
+                        "sv_terms": "{\"variant_type\": {\"__current_case__\": 0, \"mode\": \"none\"}}",
+                        "variant_classes": "\"CNV\""
+                    },
+                    "state": "ok",
+                    "stderr": "",
+                    "stdout": "",
+                    "tool_id": "beacon2_gene",
+                    "tool_stderr": "",
+                    "tool_stdout": "",
+                    "update_time": "2026-10-08T12:14:22.098321",
+                    "user_email": "planemo@galaxyproject.org",
+                    "user_id": "95bd14c88742ea55"
+                },
+                "output_problems": null,
+                "problem_log": null,
+                "start_datetime": null,
+                "status": "success",
+                "test_index": 0,
+                "time_seconds": 7.284673452377319,
+                "tool_id": "beacon2_gene",
+                "tool_version": "3.0.0+galaxy0"
+            },
+            "doc": null,
+            "has_data": true,
+            "id": "beacon2_gene-0",
+            "test_type": null
+        },
+        {
+            "data": {
+                "end_datetime": null,
+                "execution_problem": null,
+                "inputs": {
+                    "connection|end": "198169247",
+                    "connection|providers": "org.cancercelllines",
+                    "connection|reference_name": "3",
+                    "connection|start": "195728638",
+                    "connection|transport": "api"
+                },
+                "invocation_details": null,
+                "job": {
+                    "command_line": "beacon2-query cnv  --providers 'org.cancercelllines' --provider-table '/tmp/tmpuajbvyf0/job_working_directory/000/26/configs/tmpcy16posq' --credentials-file '/tmp/tmpuajbvyf0/job_working_directory/000/26/configs/tmpzy7uz56l'  --reference-name '3' --assembly 'GRCh38' --start 195728638 --end 198169247 --granularity 'record' --limit 100 --skip 0    --results 'results.tsv' --outcomes 'outcomes.tsv'",
+                    "command_version": "",
+                    "copied_from_job_id": null,
+                    "create_time": "2026-10-08T12:14:22.464112",
+                    "dependencies": [],
+                    "exit_code": 0,
+                    "external_id": "31507",
+                    "galaxy_version": "26.1",
+                    "handler": null,
+                    "history_id": "b2d13293449fff65",
+                    "id": "b7c06e6cfcacfc27",
+                    "inputs": {},
+                    "job_messages": [],
+                    "job_metrics": [
+                        {
+                            "name": "galaxy_slots",
+                            "plugin": "core",
+                            "raw_value": "1.0000000",
+                            "title": "Cores Allocated",
+                            "value": "1"
+                        },
+                        {
+                            "name": "start_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461663.0000000",
+                            "title": "Job Start Time",
+                            "value": "2026-10-08 12:14:23"
+                        },
+                        {
+                            "name": "end_epoch",
+                            "plugin": "core",
+                            "raw_value": "1791461669.0000000",
+                            "title": "Job End Time",
+                            "value": "2026-10-08 12:14:29"
+                        },
+                        {
+                            "name": "runtime_seconds",
+                            "plugin": "core",
+                            "raw_value": "6.0000000",
+                            "title": "Job Runtime (Wall Clock)",
+                            "value": "6 seconds"
+                        }
+                    ],
+                    "job_runner_name": null,
+                    "job_stderr": "",
+                    "job_stdout": "",
+                    "model_class": "Job",
+                    "output_collections": {},
+                    "outputs": {
+                        "outcomes": {
+                            "id": "1366c269402004b3",
+                            "src": "hda",
+                            "uuid": "14f9a1ae-f993-41b7-9804-d528b028f5d5"
+                        },
+                        "results": {
+                            "id": "658297f0fb4ffb53",
+                            "src": "hda",
+                            "uuid": "571f6b57-5198-4792-9107-2e6e4644bce2"
+                        }
+                    },
+                    "params": {
+                        "__input_ext": "\"input\"",
+                        "chromInfo": "\"/tmp/tmpuajbvyf0/galaxy-dev/tool-data/shared/ucsc/chrom/?.len\"",
+                        "connection": "{\"__current_case__\": 0, \"assembly\": \"GRCh38\", \"cnv_terms\": {\"variant_type\": {\"__current_case__\": 0, \"mode\": \"none\"}}, \"end\": \"198169247\", \"filters\": [], \"granularity\": \"record\", \"pagination\": {\"limit\": \"100\", \"sample\": \"\", \"skip\": \"0\"}, \"providers\": \"org.cancercelllines\", \"reference_name\": \"3\", \"start\": \"195728638\", \"transport\": \"api\"}",
+                        "dbkey": "\"?\""
+                    },
+                    "state": "ok",
+                    "stderr": "",
+                    "stdout": "",
+                    "tool_id": "beacon2_cnv",
+                    "tool_stderr": "",
+                    "tool_stdout": "",
+                    "update_time": "2026-10-08T12:14:29.246561",
+                    "user_email": "planemo@galaxyproject.org",
+                    "user_id": "95bd14c88742ea55"
+                },
+                "output_problems": null,
+                "problem_log": null,
+                "start_datetime": null,
+                "status": "success",
+                "test_index": 0,
+                "time_seconds": 6.981665134429932,
+                "tool_id": "beacon2_cnv",
+                "tool_version": "3.0.0+galaxy0"
+            },
+            "doc": null,
+            "has_data": true,
+            "id": "beacon2_cnv-0",
+            "test_type": null
+        }
+    ],
+    "version": "0.1"
+}

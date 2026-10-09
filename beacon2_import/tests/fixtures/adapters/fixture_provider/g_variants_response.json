@@ -1,0 +1,7 @@
+{
+  "_note": "Minimal recorded response for the FixtureClient round-trip test.",
+  "meta": {"apiVersion": "2.0", "returnedGranularity": "record"},
+  "responseSummary": {"exists": true, "numTotalResults": 1},
+  "response": {"resultSets": [{"id": "testset", "exists": true, "resultsCount": 1,
+    "countPrecision": "exact", "results": [{"variantInternalId": "fixture-1"}]}]}
+}

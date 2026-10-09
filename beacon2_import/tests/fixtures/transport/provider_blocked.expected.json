@@ -1,0 +1,6 @@
+{
+  "_note": "Expectations for provider_blocked.html, held alongside so the artifact stays free of this project's vocabulary.",
+  "_transport": {"status": 403, "content_type": "text/html", "bytes_received": 318},
+  "_expected": {"failure": "blocked", "retryable": false},
+  "_why_not_retryable": "Retrying a challenge is futile and counterproductive: it makes us look more like the automated traffic being challenged. This is the pairing that a single retryable/non-retryable flag on 'HTML body' would get backwards for one of the two cases."
+}

@@ -1,0 +1,60 @@
+<tool id="beacon2_service_info" name="Beacon2 Service Info" version="@TOOL_VERSION@+galaxy@VERSION_SUFFIX@" profile="@PROFILE@">
+    <description>describe each beacon and check it against the registry</description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <expand macro="creators"/>
+    <expand macro="xrefs"/>
+    <expand macro="requirements"/>
+    <command detect_errors="exit_code"><![CDATA[
+    beacon2-query service-info
+        @PROVIDER_ARGS@
+        --report 'service_info.tsv'
+        --outcomes 'outcomes.tsv'
+    ]]></command>
+    <expand macro="credentials_configfile"/>
+    <inputs>
+        <expand macro="beacon_api_connection"/>
+    </inputs>
+    <outputs>
+        <data name="report" format="tabular" label="${tool.name} on ${on_string}: report" from_work_dir="service_info.tsv"/>
+        <data name="outcomes" format="tabular" label="${tool.name} on ${on_string}: run report" from_work_dir="outcomes.tsv"/>
+    </outputs>
+    <tests>
+        <test expect_num_outputs="2">
+            <conditional name="connection">
+                <param name="providers" value="org.cancercelllines"/>
+            </conditional>
+            <output name="report">
+                <assert_contents>
+                    <has_text text="beacon_id_reported"/>
+                    <has_text text="production_status"/>
+                    <has_text text="PROD"/>
+                </assert_contents>
+            </output>
+        </test>
+    </tests>
+    <help><![CDATA[
+**What it does**
+
+@HELP_READS@
+
+Reads each selected beacon's informational endpoints -- info, configuration,
+entry types and its endpoint map -- and compares what the beacon reports with
+what the tool's provider registry records about it. The report has one row per
+beacon per checked field, with the recorded value, the observed value, and
+whether they agree, so a beacon that has changed shows up as data.
+
+The map is read from ``/map``, the endpoint the specification defines, and from
+``/beaconMap`` only if ``/map`` is missing.
+
+**What it cannot tell you**
+
+Which kinds of variant a beacon holds. Its metadata describes its interface,
+not its content: a beacon holding only copy number data and one holding only
+small variants describe themselves identically.
+
+The tool only reports. It never changes the registry.
+    ]]></help>
+    <expand macro="citations"/>
+</tool>

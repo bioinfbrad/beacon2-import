@@ -1,0 +1,101 @@
+<tool id="beacon2_gene" name="Beacon2 Gene Query" version="@TOOL_VERSION@+galaxy@VERSION_SUFFIX@" profile="@PROFILE@">
+    <description>find variants in a gene across federated beacons</description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <expand macro="creators"/>
+    <expand macro="xrefs"/>
+    <expand macro="requirements"/>
+    <command detect_errors="exit_code"><![CDATA[
+#if str($connection.transport) == "api"
+    beacon2-query gene
+        @PROVIDER_ARGS@
+        @VARIANT_CLASS_ARGS@
+        --gene-id '$gene_id'
+        --granularity '$granularity'
+        --limit $pagination.limit
+        --skip $pagination.skip
+        @SAMPLE_ARGS@
+        @CNV_TERM_ARGS@
+        @SMALL_VARIANT_TERM_ARGS@
+        @SV_TERM_ARGS@
+        #if str($advanced.variant_min_length)
+            --variant-min-length $advanced.variant_min_length
+        #end if
+        #if str($advanced.variant_max_length)
+            --variant-max-length $advanced.variant_max_length
+        #end if
+        @FILTER_ARGS@
+        @OUTPUT_ARGS@
+#else
+    beacon2-query gene
+        --transport mongodb
+        --db-host '$connection.db_host'
+        --db-port $connection.db_port
+        --database '$connection.database'
+        --collection '$connection.collection'
+        --credentials-file '$credentials'
+        @VARIANT_CLASS_ARGS@
+        --gene-id '$gene_id'
+        @CNV_TERM_ARGS@
+        @OUTPUT_ARGS@
+#end if
+    ]]></command>
+    <expand macro="credentials_configfile"/>
+    <inputs>
+        <expand macro="beacon_transport"/>
+        <expand macro="beacon_variant_class" cnv="false" small="true" sv="false"/>
+        <param argument="--gene-id" type="text" value="" optional="false" label="Gene"
+               help="An HGNC gene symbol, e.g. TP53. Whether a beacon matches by annotation or by position is up to that beacon.">
+            <validator type="regex" message="Enter a gene symbol such as TP53">^[A-Za-z0-9._-]+$</validator>
+        </param>
+        <expand macro="beacon_granularity"/>
+        <expand macro="beacon_filters"/>
+        <expand macro="beacon_pagination"/>
+        <expand macro="beacon_cnv_terms"/>
+        <expand macro="beacon_small_variant_terms"/>
+        <expand macro="beacon_sv_terms"/>
+        <section name="advanced" title="Length bounds" expanded="false">
+            <param argument="--variant-min-length" type="integer" value="" optional="true" min="0" label="Minimum variant length"/>
+            <param argument="--variant-max-length" type="integer" value="" optional="true" min="1" label="Maximum variant length"/>
+        </section>
+    </inputs>
+    <expand macro="beacon_outputs"/>
+    <tests>
+        <test expect_num_outputs="2">
+            <conditional name="connection">
+                <param name="transport" value="api"/>
+                <param name="providers" value="org.cancercelllines"/>
+            </conditional>
+            <param name="variant_classes" value="CNV"/>
+            <param name="gene_id" value="TP53"/>
+            <output name="results">
+                <assert_contents>
+                    <has_text text="beacon_id"/>
+                    <has_text text="CNV"/>
+                </assert_contents>
+            </output>
+            <output name="outcomes">
+                <assert_contents>
+                    <has_text text="ok"/>
+                    <has_n_lines n="2"/>
+                </assert_contents>
+            </output>
+        </test>
+    </tests>
+    <help><![CDATA[
+**What it does**
+
+@HELP_READS@
+
+Finds variants in a gene, given its HGNC symbol, across every beacon you select.
+Combine it with a variant class and a term to ask, for example, for deletions in
+TP53. Whether each beacon matches by gene annotation or by the gene's position
+is that beacon's choice.
+
+@HELP_VARIANT_CLASS@
+
+@HELP_OUTPUTS@
+    ]]></help>
+    <expand macro="citations"/>
+</tool>

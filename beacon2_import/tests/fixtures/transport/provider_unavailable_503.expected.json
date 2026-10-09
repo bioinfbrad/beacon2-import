@@ -1,0 +1,6 @@
+{
+  "_note": "Expectations for provider_unavailable_503.html, held alongside rather than inside so the artifact stays faithful. Captured from a real EGA demo outage: every endpoint returned this, and a follow-up diagnostic timed out entirely.",
+  "_transport": {"status": 503, "content_type": "text/html", "bytes_received": 212},
+  "_expected": {"failure": "unavailable", "retryable": true},
+  "_why_not_blocked": "Non-JSON body with no Beacon envelope, which is exactly the shape of an edge challenge -- so a content-type-only rule classifies this as BLOCKED and tells the user their Galaxy instance may need allow-listing, over a beacon that will be fine in an hour. Status class must be checked first: a 5xx is an outage whatever the body looks like."
+}

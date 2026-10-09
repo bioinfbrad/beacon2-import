@@ -1,0 +1,11 @@
+{
+  "_note": "Not a response. A record of a request that produced none: connection timed out after 20002 ms with 0 bytes received. There is no status code and no body, so nothing about the payload can classify it -- which is the point. Any rule that reaches for the body first has nothing to reach for.",
+  "_transport": {
+    "status": null,
+    "content_type": null,
+    "body": null,
+    "bytes_received": 0,
+    "error": "curl: (28) Operation timed out after 20002 milliseconds with 0 bytes received"
+  },
+  "_expected": {"failure": "unavailable", "retryable": true}
+}

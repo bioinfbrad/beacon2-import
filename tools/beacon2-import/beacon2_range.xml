@@ -1,0 +1,193 @@
+<tool id="beacon2_range" name="Beacon2 Range Query" version="@TOOL_VERSION@+galaxy@VERSION_SUFFIX@" profile="@PROFILE@">
+    <description>find variants overlapping a genomic region across federated beacons</description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <expand macro="creators"/>
+    <expand macro="xrefs"/>
+    <expand macro="requirements"/>
+    <command detect_errors="exit_code"><![CDATA[
+#if str($connection.transport) == "api"
+    beacon2-query range
+        @PROVIDER_ARGS@
+        @VARIANT_CLASS_ARGS@
+        --reference-name '$reference_name'
+        --assembly '$assembly'
+        --start $start
+        --end $end
+        --granularity '$granularity'
+        --limit $pagination.limit
+        --skip $pagination.skip
+        @SAMPLE_ARGS@
+        @CNV_TERM_ARGS@
+        @SMALL_VARIANT_TERM_ARGS@
+        @SV_TERM_ARGS@
+        #if str($advanced.variant_min_length)
+            --variant-min-length $advanced.variant_min_length
+        #end if
+        #if str($advanced.variant_max_length)
+            --variant-max-length $advanced.variant_max_length
+        #end if
+        @FILTER_ARGS@
+        @OUTPUT_ARGS@
+#else
+    beacon2-query range
+        --transport mongodb
+        --db-host '$connection.db_host'
+        --db-port $connection.db_port
+        --database '$connection.database'
+        --collection '$connection.collection'
+        --credentials-file '$credentials'
+        --reference-name '$reference_name'
+        --start $start
+        --end $end
+        @CNV_TERM_ARGS@
+        @OUTPUT_ARGS@
+#end if
+    ]]></command>
+    <expand macro="credentials_configfile"/>
+    <inputs>
+        <expand macro="beacon_transport"/>
+        <expand macro="beacon_variant_class" cnv="true" small="true" sv="false"/>
+        <expand macro="beacon_reference"/>
+        <param argument="--start" type="integer" value="" min="1" label="Start position"
+               help="1-based, as shown in a genome browser. Converted internally to the 0-based coordinates the API uses."/>
+        <param argument="--end" type="integer" value="" min="1" label="End position"
+               help="A range query matches any variant that overlaps this region even partially."/>
+        <expand macro="beacon_granularity"/>
+        <expand macro="beacon_filters"/>
+        <expand macro="beacon_pagination"/>
+        <expand macro="beacon_cnv_terms"/>
+        <expand macro="beacon_small_variant_terms"/>
+        <expand macro="beacon_sv_terms"/>
+        <section name="advanced" title="Length bounds" expanded="false">
+            <param argument="--variant-min-length" type="integer" value="" optional="true" min="0" label="Minimum variant length"/>
+            <param argument="--variant-max-length" type="integer" value="" optional="true" min="1" label="Maximum variant length"/>
+        </section>
+    </inputs>
+    <expand macro="beacon_outputs"/>
+    <tests>
+        <!-- Offline: base URLs resolve to recorded fixtures via the test data table. -->
+        <test expect_num_outputs="2">
+            <conditional name="connection">
+                <param name="transport" value="api"/>
+                <param name="providers" value="org.progenetix.beacon,org.cancercelllines"/>
+            </conditional>
+            <param name="variant_classes" value="CNV"/>
+            <param name="reference_name" value="17"/>
+            <param name="assembly" value="GRCh38"/>
+            <param name="start" value="7572837"/>
+            <param name="end" value="7578641"/>
+            <param name="granularity" value="record"/>
+            <output name="results">
+                <assert_contents>
+                    <has_text text="beacon_id"/>
+                    <has_text text="org.progenetix.beacon"/>
+                    <has_text text="variant_class"/>
+                </assert_contents>
+            </output>
+            <output name="outcomes">
+                <assert_contents>
+                    <has_text text="org.cancercelllines"/>
+                    <has_text text="ok"/>
+                    <has_n_lines n="3"/>
+                </assert_contents>
+            </output>
+        </test>
+        <!-- One provider unreachable: the job still succeeds, the report says why. -->
+        <test expect_num_outputs="2">
+            <conditional name="connection">
+                <param name="transport" value="api"/>
+                <param name="providers" value="org.progenetix.beacon,org.ega-archive.demo"/>
+            </conditional>
+            <param name="variant_classes" value="CNV"/>
+            <param name="reference_name" value="chr17"/>
+            <param name="start" value="7572837"/>
+            <param name="end" value="7578641"/>
+            <output name="outcomes">
+                <assert_contents>
+                    <has_text text="error"/>
+                    <has_n_lines n="3"/>
+                </assert_contents>
+            </output>
+        </test>
+        <!-- Count granularity yields one summary row per provider, never an empty table. -->
+        <test expect_num_outputs="2">
+            <conditional name="connection">
+                <param name="transport" value="api"/>
+                <param name="providers" value="org.cancercelllines"/>
+            </conditional>
+            <param name="variant_classes" value="CNV"/>
+            <param name="reference_name" value="17"/>
+            <param name="start" value="7572837"/>
+            <param name="end" value="7578641"/>
+            <param name="granularity" value="count"/>
+            <output name="results">
+                <assert_contents>
+                    <has_text text="count"/>
+                    <has_n_lines n="2"/>
+                </assert_contents>
+            </output>
+        </test>
+        <!-- Ontology filter, descendants disabled. -->
+        <test expect_num_outputs="2">
+            <conditional name="connection">
+                <param name="transport" value="api"/>
+                <param name="providers" value="org.progenetix.beacon"/>
+            </conditional>
+            <param name="variant_classes" value="CNV"/>
+            <param name="reference_name" value="17"/>
+            <param name="start" value="7572837"/>
+            <param name="end" value="7578641"/>
+            <repeat name="filters">
+                <conditional name="filter_type">
+                    <param name="kind" value="ontology"/>
+                    <param name="term" value="NCIT:C3058"/>
+                    <param name="include_descendant_terms" value="false"/>
+                </conditional>
+            </repeat>
+            <output name="results">
+                <assert_contents>
+                    <has_text text="beacon_id"/>
+                </assert_contents>
+            </output>
+        </test>
+    </tests>
+    <help><![CDATA[
+**What it does**
+
+@HELP_READS@
+
+Finds genomic variants that overlap a region, across every beacon you select.
+Each provider is queried independently and the results are combined into one
+table, with each row tagged by the beacon it came from.
+
+A range query matches any variant with *at least partial* overlap of the region
+you give. If you need control over where a variant starts and ends — the usual
+case for copy number and structural variants with imprecise breakpoints — use
+the Bracket Query tool instead.
+
+**Positions**
+
+Enter positions as you would read them in a genome browser (1-based). The tool
+converts them to the 0-based coordinates the Beacon API expects.
+
+@HELP_VARIANT_CLASS@
+
+@HELP_CNV_TERMS@
+
+@HELP_VARIANT_SIZE@
+
+@HELP_DEGRADATION@
+
+@HELP_OUTPUTS@
+
+**Credentials**
+
+Public beacons need none. For registered or controlled beacons, set the
+relevant key under *User → Preferences → Manage information*. If a credential
+is missing, that provider is reported as ``auth_missing`` in the run report,
+naming the preference key to set — the tool never echoes the value itself.
+    ]]></help>
+    <expand macro="citations"/>
+</tool>

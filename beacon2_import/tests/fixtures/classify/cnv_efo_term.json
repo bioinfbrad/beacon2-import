@@ -1,0 +1,20 @@
+{
+  "_note": "Classifiable from an explicit copy-number term. Also exercises the caseLevelData explosion: one variant, two observations, two rows.",
+  "variantInternalId": "pgxvar-cnv-0001",
+  "variation": {
+    "variantType": "EFO:0030067",
+    "location": {
+      "type": "SequenceLocation",
+      "sequence_id": "refseq:NC_000017.11",
+      "interval": {
+        "type": "SequenceInterval",
+        "start": {"type": "Number", "value": 7500000},
+        "end": {"type": "Number", "value": 7700000}
+      }
+    }
+  },
+  "caseLevelData": [
+    {"id": "cl-1", "biosampleId": "pgxbs-aaa001", "individualId": "pgxind-aaa001"},
+    {"id": "cl-2", "biosampleId": "pgxbs-aaa002", "individualId": "pgxind-aaa002"}
+  ]
+}

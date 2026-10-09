@@ -1,0 +1,59 @@
+{
+  "_note": "REAL record from cancercelllines.org /g_variants?testMode=true&limit=5, verbatim. Contradicts four assumptions at once: there is no variantType field anywhere, variation.copyChange is a plain label rather than a CURIE, the location is a fourth layout, and the entity type appears in a third place. Classified CNV via variation.type == CopyNumberChange and variation.variantState.id.",
+  "_requested_entity_type": "genomicVariant",
+  "_expected": {
+    "variant_class": "CNV",
+    "basis_contains": "EFO:0030070",
+    "variant_length": 2440610,
+    "efo_id": "EFO:0030070",
+    "chromosome": "3",
+    "start": 195728637,
+    "end": 198169247,
+    "case_level_rows": 1,
+    "biosample_id": "cellzbs-kftvksg5",
+    "response_entity_id": "genomicVariant",
+    "preferred_reference": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX"
+  },
+  "response": {
+    "resultSets": [
+      {
+        "exists": true,
+        "id": "cellz",
+        "info": {"counts": {"analyses": 2, "biosamples": 2, "individuals": 3, "variants": 2}},
+        "responseEntityId": "genomicVariant",
+        "results": [
+          {
+            "caseLevelData": [
+              {
+                "analysisId": "cellzcs-kftwtzhm",
+                "biosampleId": "cellzbs-kftvksg5",
+                "individualId": "cellzind-b13A4316",
+                "variantId": "bycvar-63d118c042040c6f3562e563"
+              }
+            ],
+            "identifiers": {},
+            "molecularAttributes": {},
+            "variantInternalId": "NC_000003.12:195728637-198169247:EFO_0030070",
+            "variantLevelData": {},
+            "variation": {
+              "copyChange": "gain",
+              "location": {
+                "chromosome": "3",
+                "end": 198169247,
+                "sequence_id": "refseq:NC_000003.12",
+                "sequenceReference": {
+                  "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+                  "type": "SequenceReference"
+                },
+                "start": 195728637,
+                "type": "SequenceLocation"
+              },
+              "type": "CopyNumberChange",
+              "variantState": {"id": "EFO:0030070", "label": "gain"}
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

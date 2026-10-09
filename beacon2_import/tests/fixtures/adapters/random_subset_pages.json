@@ -1,0 +1,9 @@
+{
+  "_note": "Three identical skip=0 limit=10 requests, testMode off, returning thirty DISTINCT records with zero overlap and the same total each time. Below the total this server returns a random subset, so pages are independent draws and paging is sampling WITH REPLACEMENT. Abbreviated to 3 records per page; the assertion is on the disjointness, not the count.",
+  "_expected": {"pages": 3, "overlap": 0, "num_total_results": 2591, "behaviour": "random_subset_below_total"},
+  "pages": [
+    {"ids": ["a1", "a2", "a3"], "numTotalResults": 2591},
+    {"ids": ["b1", "b2", "b3"], "numTotalResults": 2591},
+    {"ids": ["c1", "c2", "c3"], "numTotalResults": 2591}
+  ]
+}

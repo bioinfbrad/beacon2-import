@@ -1,0 +1,18 @@
+{
+  "_note": "Genuinely unclassifiable: a located record with no type term, no bases, no adjacency and no repeat fields. Must be KEPT and labelled `unclassified`, never dropped and never guessed.",
+  "variantInternalId": "var-unk-0001",
+  "variation": {
+    "location": {
+      "type": "SequenceLocation",
+      "sequence_id": "refseq:NC_000001.11",
+      "interval": {
+        "type": "SequenceInterval",
+        "start": {"type": "Number", "value": 1000000},
+        "end": {"type": "Number", "value": 1000500}
+      }
+    }
+  },
+  "caseLevelData": [
+    {"id": "cl-1", "biosampleId": "bios-ddd001"}
+  ]
+}

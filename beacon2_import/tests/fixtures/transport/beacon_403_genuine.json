@@ -1,0 +1,6 @@
+{
+  "_note": "The contrast case: a real Beacon authorisation refusal. Same 403 status, but a JSON envelope with a beaconError, so it maps to AUTH_MISSING (or ERROR when a credential was supplied and still rejected) rather than BLOCKED. The pair is what pins the content-type discrimination.",
+  "_expected": {"status": "auth_missing"},
+  "meta": {"apiVersion": "v2.0.0", "returnedGranularity": "boolean"},
+  "error": {"errorCode": 403, "errorMessage": "Unauthorized: this dataset requires an authenticated request."}
+}

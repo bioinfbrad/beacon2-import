@@ -1,0 +1,103 @@
+# Every 2.2.4 beacon2-search query option and what covers it in beacon2-query.
+# Generated from tests/v2_2_4_cli_inventory.json (live argparse of the published 2.2.4
+# wheel) and the 2.2.4 query dicts. Drives the coverage test, the MongoDB field-filter
+# forms of the entity and cnv tools, and the README's migration tables.
+#   kind=flag        a beacon2-query flag of the same meaning
+#   kind=field       --field <target>=VALUE, exact match, MongoDB transport only
+#   kind=entity_id   --entity-id
+# 2.2.4's own option strings, short flags included, are in the inventory.
+subcommand	dest	long	type	kind	target	3.0_subcommand	label	note
+sequence	alternateBases	--alternateBases	str	flag	--alternate-bases	sequence	Alternate bases	
+sequence	referenceBases	--referenceBases	str	flag	--reference-bases	sequence	Reference bases	
+sequence	referenceName	--referenceName	str	flag	--reference-name	sequence	Reference name	
+sequence	start	--start	int	flag	--start	sequence	Start	
+sequence	collectionIds	--collectionIds	str	flag	--biosample-ids	sequence	Collection ids	2.2.4 passed one string to $in, which MongoDB rejects; now a comma-separated list
+range	start	--start	int	flag	--start	range	Start	
+range	end	--end	int	flag	--end	range	End	
+range	referenceName	--referenceName	str	flag	--reference-name	range	Reference name	
+range	alternateBases	--alternateBases	str	flag	--alternate-bases	range	Alternate bases	
+range	variantType	--variantType	str	flag	--variant-type	range	Variant type	
+range	aminoacidChange	--aminoacidChange	str	flag	--aminoacid-change	range	Aminoacid change	
+range	variantMinLength	--variantMinLength	int	flag	--variant-min-length	range	Variant min length	2.2.4 attached -vmax to this option; scripts that swapped -vmin and -vmax to compensate must swap them back
+range	variantMaxLength	--variantMaxLength	int	flag	--variant-max-length	range	Variant max length	2.2.4 attached -vmin to this option; scripts that swapped -vmin and -vmax to compensate must swap them back
+gene	geneId	--geneId	str	flag	--gene-id	gene	Gene id	
+gene	alternateBases	--alternateBases	str	flag	--alternate-bases	gene	Alternate bases	
+gene	variantType	--variantType	str	flag	--variant-type	gene	Variant type	
+gene	aminoacidChange	--aminoacidChange	str	flag	--aminoacid-change	gene	Aminoacid change	
+gene	variantMinLength	--variantMinLength	int	flag	--variant-min-length	gene	Variant min length	2.2.4 attached -vmax to this option; scripts that swapped -vmin and -vmax to compensate must swap them back
+gene	variantMaxLength	--variantMaxLength	int	flag	--variant-max-length	gene	Variant max length	2.2.4 attached -vmin to this option; scripts that swapped -vmin and -vmax to compensate must swap them back
+bracket	start_minimum	--start-minimum	int	flag	--start-min	bracket	Start minimum	
+bracket	start_maximum	--start-maximum	int	flag	--start-max	bracket	Start maximum	
+bracket	end_minimum	--end-minimum	int	flag	--end-min	bracket	End minimum	
+bracket	end_maximum	--end-maximum	int	flag	--end-max	bracket	End maximum	
+bracket	referenceName	--referenceName	str	flag	--reference-name	bracket	Reference name	
+bracket	variantType	--variantType	str	flag	--variant-type	bracket	Variant type	
+analyses	aligner	--aligner	str	field	aligner	entity	Aligner	
+analyses	analysisDate	--analysisDate	str	field	analysisDate	entity	Analysis date	
+analyses	biosampleId	--biosampleId	str	field	biosampleId	entity	Biosample id	
+analyses	identification	--identification	str	entity_id	--entity-id	entity	Identification	
+analyses	individualId	--individualId	str	field	individualId	entity	Individual id	
+analyses	pipelineName	--pipelineName	str	field	pipelineName	entity	Pipeline name	
+analyses	pipelineRef	--pipelineRef	str	field	pipelineRef	entity	Pipeline ref	
+analyses	runId	--runId	str	field	runId	entity	Run id	
+analyses	variantCaller	--variantCaller	str	field	variantCaller	entity	Variant caller	
+biosamples	biosampleStatus	--biosampleStatus	str	field	biosampleStatus.label	entity	Biosample status	
+biosamples	collectionDate	--collectionDate	str	field	collectionDate	entity	Collection date	
+biosamples	collectionMoment	--collectionMoment	str	field	collectionMoment	entity	Collection moment	
+biosamples	identification	--identification	str	entity_id	--entity-id	entity	Identification	
+biosamples	diagnosticMarkers	--diagnosticMarkers	str	field	diagnosticMarkers.label	entity	Diagnostic markers	declared but ignored by 2.2.4: never added to its query
+biosamples	histologicalDiagnosis	--histologicalDiagnosis	str	field	histologicalDiagnosis.label	entity	Histological diagnosis	
+biosamples	obtentionProcedure	--obtentionProcedure	str	field	obtentionProcedure.procedureCode.label	entity	Obtention procedure	
+biosamples	pathologicalStage	--pathologicalStage	str	field	pathologicalStage.label	entity	Pathological stage	
+biosamples	pathologicalTnmFinding	--pathologicalTnmFinding	str	field	pathologicalTnmFinding.label	entity	Pathological tnm finding	
+biosamples	featureType	--featureType	str	field	phenotypicFeatures.featureType.label	entity	Feature type	
+biosamples	severity	--severity	str	field	phenotypicFeatures.severity.label	entity	Severity	
+biosamples	sampleOriginDetail	--sampleOriginDetail	str	field	sampleOriginDetail.label	entity	Sample origin detail	
+biosamples	sampleOriginType	--sampleOriginType	str	field	sampleOriginType.label	entity	Sample origin type	
+biosamples	sampleProcessing	--sampleProcessing	str	field	sampleProcessing.label	entity	Sample processing	
+biosamples	sampleStorage	--sampleStorage	str	field	sampleStorage.label	entity	Sample storage	
+biosamples	tumorGrade	--tumorGrade	str	field	tumorGrade.label	entity	Tumor grade	
+biosamples	tumorProgression	--tumorProgression	str	field	tumorProgression.label	entity	Tumor progression	
+cohorts	cohortDataTypes	--cohortDataTypes	str	field	cohortDataTypes.label	entity	Cohort data types	
+cohorts	cohortDesign	--cohortDesign	str	field	cohortDesign.label	entity	Cohort design	
+cohorts	cohortSize	--cohortSize	int	field	cohortSize	entity	Cohort size	
+cohorts	cohortType	--cohortType	str	field	cohortType	entity	Cohort type	
+cohorts	identification	--identification	str	entity_id	--entity-id	entity	Identification	
+cohorts	genders	--genders	str	field	inclusionCriteria.genders.label	entity	Genders	
+cohorts	name	--name	str	field	name	entity	Name	
+datasets	dataUseConditions	--dataUseConditions	str	field	dataUseConditions.duoDataUse.label	entity	Data use conditions	
+datasets	ontologyModifiers	--ontologyModifiers	str	field	dataUseConditions.duoDataUse.modifiers.label	entity	Ontology modifiers	
+datasets	identification	--identification	str	entity_id	--entity-id	entity	Identification	
+datasets	name	--name	str	field	name	entity	Name	
+individuals	ageGroup	--ageGroup	str	field	diseases.ageOfOnset.ageGroup.label	entity	Age group	
+individuals	diseaseCode	--diseaseCode	str	field	diseases.diseaseCode.label	entity	Disease code	
+individuals	familyHistory	--familyHistory	str	field	diseases.familyHistory	entity	Family history	
+individuals	severity	--severity	str	field	diseases.severity	entity	Severity	
+individuals	stage	--stage	str	field	diseases.stage	entity	Stage	
+individuals	ethnicity	--ethnicity	str	field	ethnicity.label	entity	Ethnicity	
+individuals	geographicOrigin	--geographicOrigin	str	field	geographicOrigin.label	entity	Geographic origin	
+individuals	identification	--identification	str	entity_id	--entity-id	entity	Identification	
+individuals	assayCode	--assayCode	str	field	measures.assayCode.label	entity	Assay code	
+individuals	sex	--sex	str	field	sex.label	entity	Sex	
+runs	identification	--identification	str	entity_id	--entity-id	entity	Identification	
+runs	individualId	--individualId	str	field	individualId	entity	Individual id	
+runs	libraryLayout	--libraryLayout	str	field	libraryLayout	entity	Library layout	
+runs	librarySelection	--librarySelection	str	field	librarySelection	entity	Library selection	
+runs	librarySource	--librarySource	str	field	librarySource.label	entity	Library source	
+runs	libraryStrategy	--libraryStrategy	str	field	libraryStrategy	entity	Library strategy	
+runs	platform	--platform	str	field	platform	entity	Platform	
+runs	platformModel	--platformModel	str	field	platformModel.label	entity	Platform model	
+runs	runDate	--runDate	str	field	runDate	entity	Run date	
+cnv	variantInternalId	--variantInternalId	str	field	variantInternalId	cnv	Variant internal id	
+cnv	analysisId	--analysisId	str	field	analysisId	cnv	Analysis id	
+cnv	individualId	--individualId	str	field	individualId	cnv	Individual id	
+cnv	start	--start	int	flag	--start	cnv	Start	
+cnv	end	--end	int	flag	--end	cnv	End	
+cnv	chromosome	--chromosome	str	flag	--reference-name	cnv	Chromosome	
+cnv	gene	--gene	str	field	gene	cnv	Gene	
+cnv	variantType	--variantType	str	flag	--variant-type	cnv	Variant type	
+cnv	primarySite	--primarySite	str	field	primarySite	cnv	Primary site	
+cnv	diseaseType	--diseaseType	str	field	diseaseType	cnv	Disease type	
+cnv	variantStateId	--variantStateId	str	field	variantState.id	cnv	Variant state id	
+cnv	variantState	--variantState	str	field	variantState.label	cnv	Variant state	
+cnv	sequenceId	--sequenceId	str	field	definitions.Location.sequenceId	cnv	Sequence id	

@@ -1,0 +1,24 @@
+categories:
+- Variant Analysis
+description: Query any GA4GH Beacon v2 conformant resource, and analyse the results.
+long_description: |
+  A general-purpose client for the GA4GH Beacon v2 API. Query one or many
+  federated beacons in a single run, with results combined and tagged by their
+  origin, plus a per-provider run report distinguishing "no matches" from
+  "never queried". Covers the four genomic query forms (sequence, range,
+  bracket, geneId), the entry types (biosamples, individuals, cohorts,
+  datasets, runs, analyses), discovery of each beacon's capabilities and filter
+  vocabulary, and an analysis layer for segments, per-sample statistics,
+  cohort frequencies, matrices and plots. Direct MongoDB access is retained as
+  a transport choice for self-hosted beacons.
+homepage_url: https://pypi.org/project/beacon2-import/
+name: Beacon2_Import
+owner: iuc
+remote_repository_url: https://github.com/galaxyproject/tools-iuc/tree/main/tools/beacon2-import
+auto_tool_repositories:
+  name_template: "{{ tool_id }}"
+  description_template: "Wrapper for {{ tool_name }}."
+suite:
+  name: "suite_beacon2_import"
+  description: "A suite of Galaxy tools for querying and analysing GA4GH Beacon v2 resources."
+  type: repository_suite_definition

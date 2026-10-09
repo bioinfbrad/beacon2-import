@@ -1,0 +1,24 @@
+{
+  "_note": "Adjacency evidence: a breakend with an explicit mate on another chromosome. Junction claim, so SV rather than CNV even though a deletion could produce it.",
+  "variantInternalId": "var-sv-0001",
+  "variation": {
+    "variantType": "BND",
+    "location": {
+      "type": "SequenceLocation",
+      "sequence_id": "refseq:NC_000009.12",
+      "interval": {
+        "type": "SequenceInterval",
+        "start": {"type": "Number", "value": 133729450},
+        "end": {"type": "Number", "value": 133729451}
+      }
+    },
+    "adjacency": {
+      "mateSequenceId": "refseq:NC_000022.11",
+      "matePosition": 23290413,
+      "orientation": "5to3"
+    }
+  },
+  "caseLevelData": [
+    {"id": "cl-1", "biosampleId": "bios-ccc001", "analysisId": "ana-ccc001"}
+  ]
+}

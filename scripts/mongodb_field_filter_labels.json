@@ -1,0 +1,288 @@
+{
+ "cnv": {
+  "--variantInternalId": {
+   "label": "VARIANT INTERNAL ID",
+   "help": "E.g. 11:52900000-134452384:DEL"
+  },
+  "--analysisId": {
+   "label": "ANALYSIS ID",
+   "help": ""
+  },
+  "--individualId": {
+   "label": "INDIVIDUAL ID",
+   "help": ""
+  },
+  "--start": {
+   "label": "START",
+   "help": "Start position"
+  },
+  "--end": {
+   "label": "END",
+   "help": "End position"
+  },
+  "--chromosome": {
+   "label": "CHROMOSOME",
+   "help": "Chromosome numbers (without chr)"
+  },
+  "variantStateId": {
+   "label": "VARIANT STATE",
+   "help": ""
+  },
+  "--sequenceId": {
+   "label": "SEQUENCE ID",
+   "help": "E.g. refseq:NC_000011.10"
+  },
+  "--gene": {
+   "label": "GENE NAME",
+   "help": "Gene name e.g. 'AL645728.1'"
+  },
+  "--variantType": {
+   "label": "VARIANT TYPE",
+   "help": "Variant Type 'DEL' or 'DUP'"
+  },
+  "--primarySite": {
+   "label": "PRIMARY SITE",
+   "help": "Primary Site, e.g. 'brain'"
+  },
+  "--diseaseType": {
+   "label": "DISEASE TYPE",
+   "help": "Disease Type, e.g. 'adnexal and skin appendage neoplasms'"
+  }
+ },
+ "analyses": {
+  "--aligner": {
+   "label": "ALIGNER",
+   "help": "Reference to mapping/alignment software. Example bwa-0.7.8"
+  },
+  "--analysisDate": {
+   "label": "ANALYSIS DATE",
+   "help": "Date at which analysis was performed. Example 2021-10-17  "
+  },
+  "--biosampleId": {
+   "label": "BIOSAMPLE ID",
+   "help": "Reference to the id of the biosample this analysis is reporting on. Example S0001 "
+  },
+  "--identification": {
+   "label": "ID",
+   "help": "Analysis reference ID (external accession or internal ID). Example GA.01234abcde"
+  },
+  "--individualId": {
+   "label": "INDIVIDUALID",
+   "help": "Reference to the id of the individual this analysis is reporting on. Example P0001 "
+  },
+  "--pipelineName": {
+   "label": "PIPELINE NAME",
+   "help": "Analysis pipeline and version if a standardized pipeline was used. Example Pipeline-panel-0001-v1  "
+  },
+  "--pipelineRef": {
+   "label": "PIPELINE REF",
+   "help": "Link to Analysis pipeline resource"
+  },
+  "--runId": {
+   "label": "RUNID",
+   "help": " Run identifier (external accession or internal ID). Example SRR10903401"
+  },
+  "--variantCaller": {
+   "label": "VARIANT CALLER",
+   "help": "Reference to variant calling software / pipeline. Example GATK4.0 "
+  }
+ },
+ "biosamples": {
+  "--biosampleStatus": {
+   "label": "BIOSAMPLE STATUS",
+   "help": "Ontology value for the classification of the sample in abnormal sample (EFO:0009655) or reference sample (EFO:0009654)"
+  },
+  "--collectionDate": {
+   "label": "COLLECTION DATE",
+   "help": "Date of biosample collection in ISO8601 format"
+  },
+  "--collectionMoment": {
+   "label": "COLLECTION MOMENT",
+   "help": "Individual's or cell culture age at the time of sample collection in the ISO8601 duration format P[n]Y[n]M[n]DT[n]H[n]M[n]S, e.g. P32Y6M1D, P7D"
+  },
+  "--identification": {
+   "label": "ID",
+   "help": "Biosample identifier (external accession or internal ID)"
+  },
+  "--diagnosticMarkers": {
+   "label": "DIAGNOSTIC MARKERS",
+   "help": "Clinically relevant bio markers, e.g. T2b Stage Finding"
+  },
+  "--histologicalDiagnosis": {
+   "label": "HISTOLOGICAL DIAGNOSIS",
+   "help": "Disease diagnosis that was inferred from the histological examination, e.g. Serous Cystadenocarcinoma"
+  },
+  "--obtentionProcedure": {
+   "label": "OBTENTION PROCEDURE",
+   "help": "Ontology value describing the procedure for sample obtention, e.g. biopsy"
+  },
+  "--pathologicalStage": {
+   "label": "PATHOLOGICAL STAGE",
+   "help": "Pathological stage, if applicable, e.g. Stage IIIA"
+  },
+  "--pathologicalTnmFinding": {
+   "label": "PATHOLOGICAL TNM FINDING",
+   "help": "T2b Stage Finding"
+  },
+  "--featureType": {
+   "label": "FEATURE TYPE",
+   "help": "Definition of an ontology term which describes the phenotype, e.g. Infantile spasms"
+  },
+  "--severity": {
+   "label": "SEVERITY",
+   "help": "Ontology class that describes the severity of the condition, e.g. Moderate"
+  },
+  "--sampleOriginDetail": {
+   "label": "SAMPLE ORIGIN DETAIL",
+   "help": "Tissue from which the sample was taken or sample origin matching the category set in 'sampleOriginType', e.g. wall of urinary bladder"
+  },
+  "--sampleOriginType": {
+   "label": "SAMPLE ORIGIN TYPE",
+   "help": "Category of sample origin. Value from Ontology for Biomedical Investigations (OBI) material entity, e.g abnormal sample"
+  },
+  "--sampleProcessing": {
+   "label": "SAMPLE PROCESSING",
+   "help": "Status of how the specimen was processed, e.g. mechanical dissociation"
+  },
+  "--sampleStorage": {
+   "label": "SAMPLE STORAGE",
+   "help": "Status of how the specimen was stored"
+  },
+  "--tumorGrade": {
+   "label": "TUMOR GRADE",
+   "help": "Term representing the tumor grade, e.g. Grade 3a"
+  },
+  "--tumorProgression": {
+   "label": "TUMOR PROGRESSION",
+   "help": "Tumor progression category indicating primary, metastatic or recurrent progression, e.g. Primary Malignant Neoplasm"
+  }
+ },
+ "cohorts": {
+  "--cohortDataTypes": {
+   "label": "COHORTDATA TYPES",
+   "help": "The type of data chorort, e.g. clinical history"
+  },
+  "--cohortDesign": {
+   "label": "COHORTDESIGN",
+   "help": "A plan specification comprised of protocols that are executed as part of an investigation, e.g. longitudinal study design"
+  },
+  "--cohortSize": {
+   "label": "COHORT SIZE",
+   "help": "Count of unique Individuals in cohort"
+  },
+  "--cohortType": {
+   "label": "COHORT TYPE",
+   "help": "Cohort type by its definition, e.g. study-defined"
+  },
+  "--identification": {
+   "label": "ID",
+   "help": "Cohort identifier, e.g. cohort0001"
+  },
+  "--genders": {
+   "label": "GENDERS",
+   "help": ""
+  },
+  "--name": {
+   "label": "NAME",
+   "help": "Name of the cohort"
+  }
+ },
+ "datasets": {
+  "--dataUseConditions": {
+   "label": "DATAUSECONDITIONS",
+   "help": "Data use conditions applying to this dataset, e.g. disease specific research"
+  },
+  "--ontologyModifiers": {
+   "label": "DATA USE CONDITIONS MODIFIERS",
+   "help": "Modifiers that further specify the datasets, e.g. coronary artery disease"
+  },
+  "--identification": {
+   "label": "ID",
+   "help": "Unique identifier of the dataset"
+  },
+  "--name": {
+   "label": "NAME",
+   "help": "Name of the dataset"
+  }
+ },
+ "individuals": {
+  "--ageGroup": {
+   "label": "AGE GROUP",
+   "help": "age af onset, e.g. Adult 18-65 Years Old"
+  },
+  "--diseaseCode": {
+   "label": "DISEASE CODE",
+   "help": "Disease code, Spinocerebellar ataxia 1"
+  },
+  "--familyHistory": {
+   "label": "FAMILY HISTORY",
+   "help": ""
+  },
+  "--severity": {
+   "label": "SEVERITY",
+   "help": "e.g. Profound"
+  },
+  "--stage": {
+   "label": "STAGE",
+   "help": "e.g. acute onset"
+  },
+  "--ethnicity": {
+   "label": "ETHNICITY",
+   "help": "e.g. European"
+  },
+  "--geographicOrigin": {
+   "label": "GEOGRAPHIC ORIGIN",
+   "help": "e.g. Slovenia"
+  },
+  "--identification": {
+   "label": "ID",
+   "help": "Individual identifier (internal ID)"
+  },
+  "--assayCode": {
+   "label": "ASSAY CODE",
+   "help": "e.g. Platelets [#/volume] in Blood"
+  },
+  "--sex": {
+   "label": "SEX",
+   "help": ""
+  }
+ },
+ "runs": {
+  "--identification": {
+   "label": "ID",
+   "help": "Run ID"
+  },
+  "--individualId": {
+   "label": "INDIVIDUAL ID",
+   "help": "Reference to the individual ID, e.g. TCGA-AO-A0JJ"
+  },
+  "--libraryLayout": {
+   "label": "LIBRARY LAYOUT",
+   "help": "Ontology value for the library layout e.g 'PAIRED', 'SINGLE'"
+  },
+  "--librarySelection": {
+   "label": "LIBRARY SELECTION",
+   "help": "Selection method for library preparation, e.g 'RANDOM', 'RT-PCR'"
+  },
+  "--librarySource": {
+   "label": "LIBRARY SOURCE",
+   "help": "Ontology value for the source of the sequencing or hybridization library, e.g 'genomic source', 'transcriptomic source'"
+  },
+  "--libraryStrategy": {
+   "label": "LIBRARY STRATEGY",
+   "help": "Library strategy, e.g. 'WGS'"
+  },
+  "--platform": {
+   "label": "PLATFORM",
+   "help": "General platform technology label where the specific model is not relevant, e.g. Illumina"
+  },
+  "--platformModel": {
+   "label": "PLATFORM MODEL",
+   "help": "Ontology value for experimental platform or methodology used, e.g. 'Illumina HiSeq 3000'"
+  },
+  "--runDate": {
+   "label": "RUN DATE",
+   "help": "Date at which the experiment was performed"
+  }
+ }
+}

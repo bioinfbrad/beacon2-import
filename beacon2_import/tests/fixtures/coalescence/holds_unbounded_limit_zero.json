@@ -1,0 +1,7833 @@
+{
+ "_note": "A `limit: 0` request echoed back as literally 0, with a complete exact retrieval of 2591 instances (1713 records -- the observed unfiltered scale). MUST coalesce. Zero means unbounded, not zero. _requested_limit is a DEFAULT PAGE SIZE of 100, modelling the `echoed or DEFAULT` trap: truthiness treats the echoed 0 as missing, substitutes 100, and rejects 2591 > 100 as truncated -- refusing a complete retrieval. An earlier version of this fixture set _requested_limit to 0, which masked the trap entirely: with echo and fallback both 0, the buggy and the correct code reach the same answer. A mutation check caught that.",
+ "_requested_limit": 100,
+ "_expected": {
+  "holds": true,
+  "has_total": true,
+  "within_limit": true,
+  "count_exact": true,
+  "not_test_mode": true,
+  "effective_limit": "unbounded",
+  "limit_source": "unbounded"
+ },
+ "meta": {
+  "apiVersion": "v2.3.0-beaconplus",
+  "returnedGranularity": "record",
+  "returnedSchemas": [
+   {
+    "entityType": "genomicVariant",
+    "schema": "beacon-g_variant-v2.0.0"
+   }
+  ],
+  "receivedRequestSummary": {
+   "requestedSchemas": [
+    {
+     "entityType": "genomicVariant"
+    }
+   ],
+   "pagination": {
+    "skip": 0,
+    "limit": 0
+   },
+   "requestedGranularity": "record",
+   "testMode": false
+  }
+ },
+ "responseSummary": {
+  "exists": true,
+  "numTotalResults": 2591
+ },
+ "response": {
+  "resultSets": [
+   {
+    "id": "cellz",
+    "setType": "dataset",
+    "exists": true,
+    "resultsCount": 1713,
+    "countPrecision": "exact",
+    "responseEntityId": "genomicVariant",
+    "results": [
+     {
+      "variantInternalId": "fixture:holds_unbounded_limit_zero.json",
+      "caseLevelData": [
+       {
+        "biosampleId": "fixture-bs-0"
+       },
+       {
+        "biosampleId": "fixture-bs-1"
+       },
+       {
+        "biosampleId": "fixture-bs-2"
+       },
+       {
+        "biosampleId": "fixture-bs-3"
+       },
+       {
+        "biosampleId": "fixture-bs-4"
+       },
+       {
+        "biosampleId": "fixture-bs-5"
+       },
+       {
+        "biosampleId": "fixture-bs-6"
+       },
+       {
+        "biosampleId": "fixture-bs-7"
+       },
+       {
+        "biosampleId": "fixture-bs-8"
+       },
+       {
+        "biosampleId": "fixture-bs-9"
+       },
+       {
+        "biosampleId": "fixture-bs-10"
+       },
+       {
+        "biosampleId": "fixture-bs-11"
+       },
+       {
+        "biosampleId": "fixture-bs-12"
+       },
+       {
+        "biosampleId": "fixture-bs-13"
+       },
+       {
+        "biosampleId": "fixture-bs-14"
+       },
+       {
+        "biosampleId": "fixture-bs-15"
+       },
+       {
+        "biosampleId": "fixture-bs-16"
+       },
+       {
+        "biosampleId": "fixture-bs-17"
+       },
+       {
+        "biosampleId": "fixture-bs-18"
+       },
+       {
+        "biosampleId": "fixture-bs-19"
+       },
+       {
+        "biosampleId": "fixture-bs-20"
+       },
+       {
+        "biosampleId": "fixture-bs-21"
+       },
+       {
+        "biosampleId": "fixture-bs-22"
+       },
+       {
+        "biosampleId": "fixture-bs-23"
+       },
+       {
+        "biosampleId": "fixture-bs-24"
+       },
+       {
+        "biosampleId": "fixture-bs-25"
+       },
+       {
+        "biosampleId": "fixture-bs-26"
+       },
+       {
+        "biosampleId": "fixture-bs-27"
+       },
+       {
+        "biosampleId": "fixture-bs-28"
+       },
+       {
+        "biosampleId": "fixture-bs-29"
+       },
+       {
+        "biosampleId": "fixture-bs-30"
+       },
+       {
+        "biosampleId": "fixture-bs-31"
+       },
+       {
+        "biosampleId": "fixture-bs-32"
+       },
+       {
+        "biosampleId": "fixture-bs-33"
+       },
+       {
+        "biosampleId": "fixture-bs-34"
+       },
+       {
+        "biosampleId": "fixture-bs-35"
+       },
+       {
+        "biosampleId": "fixture-bs-36"
+       },
+       {
+        "biosampleId": "fixture-bs-37"
+       },
+       {
+        "biosampleId": "fixture-bs-38"
+       },
+       {
+        "biosampleId": "fixture-bs-39"
+       },
+       {
+        "biosampleId": "fixture-bs-40"
+       },
+       {
+        "biosampleId": "fixture-bs-41"
+       },
+       {
+        "biosampleId": "fixture-bs-42"
+       },
+       {
+        "biosampleId": "fixture-bs-43"
+       },
+       {
+        "biosampleId": "fixture-bs-44"
+       },
+       {
+        "biosampleId": "fixture-bs-45"
+       },
+       {
+        "biosampleId": "fixture-bs-46"
+       },
+       {
+        "biosampleId": "fixture-bs-47"
+       },
+       {
+        "biosampleId": "fixture-bs-48"
+       },
+       {
+        "biosampleId": "fixture-bs-49"
+       },
+       {
+        "biosampleId": "fixture-bs-50"
+       },
+       {
+        "biosampleId": "fixture-bs-51"
+       },
+       {
+        "biosampleId": "fixture-bs-52"
+       },
+       {
+        "biosampleId": "fixture-bs-53"
+       },
+       {
+        "biosampleId": "fixture-bs-54"
+       },
+       {
+        "biosampleId": "fixture-bs-55"
+       },
+       {
+        "biosampleId": "fixture-bs-56"
+       },
+       {
+        "biosampleId": "fixture-bs-57"
+       },
+       {
+        "biosampleId": "fixture-bs-58"
+       },
+       {
+        "biosampleId": "fixture-bs-59"
+       },
+       {
+        "biosampleId": "fixture-bs-60"
+       },
+       {
+        "biosampleId": "fixture-bs-61"
+       },
+       {
+        "biosampleId": "fixture-bs-62"
+       },
+       {
+        "biosampleId": "fixture-bs-63"
+       },
+       {
+        "biosampleId": "fixture-bs-64"
+       },
+       {
+        "biosampleId": "fixture-bs-65"
+       },
+       {
+        "biosampleId": "fixture-bs-66"
+       },
+       {
+        "biosampleId": "fixture-bs-67"
+       },
+       {
+        "biosampleId": "fixture-bs-68"
+       },
+       {
+        "biosampleId": "fixture-bs-69"
+       },
+       {
+        "biosampleId": "fixture-bs-70"
+       },
+       {
+        "biosampleId": "fixture-bs-71"
+       },
+       {
+        "biosampleId": "fixture-bs-72"
+       },
+       {
+        "biosampleId": "fixture-bs-73"
+       },
+       {
+        "biosampleId": "fixture-bs-74"
+       },
+       {
+        "biosampleId": "fixture-bs-75"
+       },
+       {
+        "biosampleId": "fixture-bs-76"
+       },
+       {
+        "biosampleId": "fixture-bs-77"
+       },
+       {
+        "biosampleId": "fixture-bs-78"
+       },
+       {
+        "biosampleId": "fixture-bs-79"
+       },
+       {
+        "biosampleId": "fixture-bs-80"
+       },
+       {
+        "biosampleId": "fixture-bs-81"
+       },
+       {
+        "biosampleId": "fixture-bs-82"
+       },
+       {
+        "biosampleId": "fixture-bs-83"
+       },
+       {
+        "biosampleId": "fixture-bs-84"
+       },
+       {
+        "biosampleId": "fixture-bs-85"
+       },
+       {
+        "biosampleId": "fixture-bs-86"
+       },
+       {
+        "biosampleId": "fixture-bs-87"
+       },
+       {
+        "biosampleId": "fixture-bs-88"
+       },
+       {
+        "biosampleId": "fixture-bs-89"
+       },
+       {
+        "biosampleId": "fixture-bs-90"
+       },
+       {
+        "biosampleId": "fixture-bs-91"
+       },
+       {
+        "biosampleId": "fixture-bs-92"
+       },
+       {
+        "biosampleId": "fixture-bs-93"
+       },
+       {
+        "biosampleId": "fixture-bs-94"
+       },
+       {
+        "biosampleId": "fixture-bs-95"
+       },
+       {
+        "biosampleId": "fixture-bs-96"
+       },
+       {
+        "biosampleId": "fixture-bs-97"
+       },
+       {
+        "biosampleId": "fixture-bs-98"
+       },
+       {
+        "biosampleId": "fixture-bs-99"
+       },
+       {
+        "biosampleId": "fixture-bs-100"
+       },
+       {
+        "biosampleId": "fixture-bs-101"
+       },
+       {
+        "biosampleId": "fixture-bs-102"
+       },
+       {
+        "biosampleId": "fixture-bs-103"
+       },
+       {
+        "biosampleId": "fixture-bs-104"
+       },
+       {
+        "biosampleId": "fixture-bs-105"
+       },
+       {
+        "biosampleId": "fixture-bs-106"
+       },
+       {
+        "biosampleId": "fixture-bs-107"
+       },
+       {
+        "biosampleId": "fixture-bs-108"
+       },
+       {
+        "biosampleId": "fixture-bs-109"
+       },
+       {
+        "biosampleId": "fixture-bs-110"
+       },
+       {
+        "biosampleId": "fixture-bs-111"
+       },
+       {
+        "biosampleId": "fixture-bs-112"
+       },
+       {
+        "biosampleId": "fixture-bs-113"
+       },
+       {
+        "biosampleId": "fixture-bs-114"
+       },
+       {
+        "biosampleId": "fixture-bs-115"
+       },
+       {
+        "biosampleId": "fixture-bs-116"
+       },
+       {
+        "biosampleId": "fixture-bs-117"
+       },
+       {
+        "biosampleId": "fixture-bs-118"
+       },
+       {
+        "biosampleId": "fixture-bs-119"
+       },
+       {
+        "biosampleId": "fixture-bs-120"
+       },
+       {
+        "biosampleId": "fixture-bs-121"
+       },
+       {
+        "biosampleId": "fixture-bs-122"
+       },
+       {
+        "biosampleId": "fixture-bs-123"
+       },
+       {
+        "biosampleId": "fixture-bs-124"
+       },
+       {
+        "biosampleId": "fixture-bs-125"
+       },
+       {
+        "biosampleId": "fixture-bs-126"
+       },
+       {
+        "biosampleId": "fixture-bs-127"
+       },
+       {
+        "biosampleId": "fixture-bs-128"
+       },
+       {
+        "biosampleId": "fixture-bs-129"
+       },
+       {
+        "biosampleId": "fixture-bs-130"
+       },
+       {
+        "biosampleId": "fixture-bs-131"
+       },
+       {
+        "biosampleId": "fixture-bs-132"
+       },
+       {
+        "biosampleId": "fixture-bs-133"
+       },
+       {
+        "biosampleId": "fixture-bs-134"
+       },
+       {
+        "biosampleId": "fixture-bs-135"
+       },
+       {
+        "biosampleId": "fixture-bs-136"
+       },
+       {
+        "biosampleId": "fixture-bs-137"
+       },
+       {
+        "biosampleId": "fixture-bs-138"
+       },
+       {
+        "biosampleId": "fixture-bs-139"
+       },
+       {
+        "biosampleId": "fixture-bs-140"
+       },
+       {
+        "biosampleId": "fixture-bs-141"
+       },
+       {
+        "biosampleId": "fixture-bs-142"
+       },
+       {
+        "biosampleId": "fixture-bs-143"
+       },
+       {
+        "biosampleId": "fixture-bs-144"
+       },
+       {
+        "biosampleId": "fixture-bs-145"
+       },
+       {
+        "biosampleId": "fixture-bs-146"
+       },
+       {
+        "biosampleId": "fixture-bs-147"
+       },
+       {
+        "biosampleId": "fixture-bs-148"
+       },
+       {
+        "biosampleId": "fixture-bs-149"
+       },
+       {
+        "biosampleId": "fixture-bs-150"
+       },
+       {
+        "biosampleId": "fixture-bs-151"
+       },
+       {
+        "biosampleId": "fixture-bs-152"
+       },
+       {
+        "biosampleId": "fixture-bs-153"
+       },
+       {
+        "biosampleId": "fixture-bs-154"
+       },
+       {
+        "biosampleId": "fixture-bs-155"
+       },
+       {
+        "biosampleId": "fixture-bs-156"
+       },
+       {
+        "biosampleId": "fixture-bs-157"
+       },
+       {
+        "biosampleId": "fixture-bs-158"
+       },
+       {
+        "biosampleId": "fixture-bs-159"
+       },
+       {
+        "biosampleId": "fixture-bs-160"
+       },
+       {
+        "biosampleId": "fixture-bs-161"
+       },
+       {
+        "biosampleId": "fixture-bs-162"
+       },
+       {
+        "biosampleId": "fixture-bs-163"
+       },
+       {
+        "biosampleId": "fixture-bs-164"
+       },
+       {
+        "biosampleId": "fixture-bs-165"
+       },
+       {
+        "biosampleId": "fixture-bs-166"
+       },
+       {
+        "biosampleId": "fixture-bs-167"
+       },
+       {
+        "biosampleId": "fixture-bs-168"
+       },
+       {
+        "biosampleId": "fixture-bs-169"
+       },
+       {
+        "biosampleId": "fixture-bs-170"
+       },
+       {
+        "biosampleId": "fixture-bs-171"
+       },
+       {
+        "biosampleId": "fixture-bs-172"
+       },
+       {
+        "biosampleId": "fixture-bs-173"
+       },
+       {
+        "biosampleId": "fixture-bs-174"
+       },
+       {
+        "biosampleId": "fixture-bs-175"
+       },
+       {
+        "biosampleId": "fixture-bs-176"
+       },
+       {
+        "biosampleId": "fixture-bs-177"
+       },
+       {
+        "biosampleId": "fixture-bs-178"
+       },
+       {
+        "biosampleId": "fixture-bs-179"
+       },
+       {
+        "biosampleId": "fixture-bs-180"
+       },
+       {
+        "biosampleId": "fixture-bs-181"
+       },
+       {
+        "biosampleId": "fixture-bs-182"
+       },
+       {
+        "biosampleId": "fixture-bs-183"
+       },
+       {
+        "biosampleId": "fixture-bs-184"
+       },
+       {
+        "biosampleId": "fixture-bs-185"
+       },
+       {
+        "biosampleId": "fixture-bs-186"
+       },
+       {
+        "biosampleId": "fixture-bs-187"
+       },
+       {
+        "biosampleId": "fixture-bs-188"
+       },
+       {
+        "biosampleId": "fixture-bs-189"
+       },
+       {
+        "biosampleId": "fixture-bs-190"
+       },
+       {
+        "biosampleId": "fixture-bs-191"
+       },
+       {
+        "biosampleId": "fixture-bs-192"
+       },
+       {
+        "biosampleId": "fixture-bs-193"
+       },
+       {
+        "biosampleId": "fixture-bs-194"
+       },
+       {
+        "biosampleId": "fixture-bs-195"
+       },
+       {
+        "biosampleId": "fixture-bs-196"
+       },
+       {
+        "biosampleId": "fixture-bs-197"
+       },
+       {
+        "biosampleId": "fixture-bs-198"
+       },
+       {
+        "biosampleId": "fixture-bs-199"
+       },
+       {
+        "biosampleId": "fixture-bs-200"
+       },
+       {
+        "biosampleId": "fixture-bs-201"
+       },
+       {
+        "biosampleId": "fixture-bs-202"
+       },
+       {
+        "biosampleId": "fixture-bs-203"
+       },
+       {
+        "biosampleId": "fixture-bs-204"
+       },
+       {
+        "biosampleId": "fixture-bs-205"
+       },
+       {
+        "biosampleId": "fixture-bs-206"
+       },
+       {
+        "biosampleId": "fixture-bs-207"
+       },
+       {
+        "biosampleId": "fixture-bs-208"
+       },
+       {
+        "biosampleId": "fixture-bs-209"
+       },
+       {
+        "biosampleId": "fixture-bs-210"
+       },
+       {
+        "biosampleId": "fixture-bs-211"
+       },
+       {
+        "biosampleId": "fixture-bs-212"
+       },
+       {
+        "biosampleId": "fixture-bs-213"
+       },
+       {
+        "biosampleId": "fixture-bs-214"
+       },
+       {
+        "biosampleId": "fixture-bs-215"
+       },
+       {
+        "biosampleId": "fixture-bs-216"
+       },
+       {
+        "biosampleId": "fixture-bs-217"
+       },
+       {
+        "biosampleId": "fixture-bs-218"
+       },
+       {
+        "biosampleId": "fixture-bs-219"
+       },
+       {
+        "biosampleId": "fixture-bs-220"
+       },
+       {
+        "biosampleId": "fixture-bs-221"
+       },
+       {
+        "biosampleId": "fixture-bs-222"
+       },
+       {
+        "biosampleId": "fixture-bs-223"
+       },
+       {
+        "biosampleId": "fixture-bs-224"
+       },
+       {
+        "biosampleId": "fixture-bs-225"
+       },
+       {
+        "biosampleId": "fixture-bs-226"
+       },
+       {
+        "biosampleId": "fixture-bs-227"
+       },
+       {
+        "biosampleId": "fixture-bs-228"
+       },
+       {
+        "biosampleId": "fixture-bs-229"
+       },
+       {
+        "biosampleId": "fixture-bs-230"
+       },
+       {
+        "biosampleId": "fixture-bs-231"
+       },
+       {
+        "biosampleId": "fixture-bs-232"
+       },
+       {
+        "biosampleId": "fixture-bs-233"
+       },
+       {
+        "biosampleId": "fixture-bs-234"
+       },
+       {
+        "biosampleId": "fixture-bs-235"
+       },
+       {
+        "biosampleId": "fixture-bs-236"
+       },
+       {
+        "biosampleId": "fixture-bs-237"
+       },
+       {
+        "biosampleId": "fixture-bs-238"
+       },
+       {
+        "biosampleId": "fixture-bs-239"
+       },
+       {
+        "biosampleId": "fixture-bs-240"
+       },
+       {
+        "biosampleId": "fixture-bs-241"
+       },
+       {
+        "biosampleId": "fixture-bs-242"
+       },
+       {
+        "biosampleId": "fixture-bs-243"
+       },
+       {
+        "biosampleId": "fixture-bs-244"
+       },
+       {
+        "biosampleId": "fixture-bs-245"
+       },
+       {
+        "biosampleId": "fixture-bs-246"
+       },
+       {
+        "biosampleId": "fixture-bs-247"
+       },
+       {
+        "biosampleId": "fixture-bs-248"
+       },
+       {
+        "biosampleId": "fixture-bs-249"
+       },
+       {
+        "biosampleId": "fixture-bs-250"
+       },
+       {
+        "biosampleId": "fixture-bs-251"
+       },
+       {
+        "biosampleId": "fixture-bs-252"
+       },
+       {
+        "biosampleId": "fixture-bs-253"
+       },
+       {
+        "biosampleId": "fixture-bs-254"
+       },
+       {
+        "biosampleId": "fixture-bs-255"
+       },
+       {
+        "biosampleId": "fixture-bs-256"
+       },
+       {
+        "biosampleId": "fixture-bs-257"
+       },
+       {
+        "biosampleId": "fixture-bs-258"
+       },
+       {
+        "biosampleId": "fixture-bs-259"
+       },
+       {
+        "biosampleId": "fixture-bs-260"
+       },
+       {
+        "biosampleId": "fixture-bs-261"
+       },
+       {
+        "biosampleId": "fixture-bs-262"
+       },
+       {
+        "biosampleId": "fixture-bs-263"
+       },
+       {
+        "biosampleId": "fixture-bs-264"
+       },
+       {
+        "biosampleId": "fixture-bs-265"
+       },
+       {
+        "biosampleId": "fixture-bs-266"
+       },
+       {
+        "biosampleId": "fixture-bs-267"
+       },
+       {
+        "biosampleId": "fixture-bs-268"
+       },
+       {
+        "biosampleId": "fixture-bs-269"
+       },
+       {
+        "biosampleId": "fixture-bs-270"
+       },
+       {
+        "biosampleId": "fixture-bs-271"
+       },
+       {
+        "biosampleId": "fixture-bs-272"
+       },
+       {
+        "biosampleId": "fixture-bs-273"
+       },
+       {
+        "biosampleId": "fixture-bs-274"
+       },
+       {
+        "biosampleId": "fixture-bs-275"
+       },
+       {
+        "biosampleId": "fixture-bs-276"
+       },
+       {
+        "biosampleId": "fixture-bs-277"
+       },
+       {
+        "biosampleId": "fixture-bs-278"
+       },
+       {
+        "biosampleId": "fixture-bs-279"
+       },
+       {
+        "biosampleId": "fixture-bs-280"
+       },
+       {
+        "biosampleId": "fixture-bs-281"
+       },
+       {
+        "biosampleId": "fixture-bs-282"
+       },
+       {
+        "biosampleId": "fixture-bs-283"
+       },
+       {
+        "biosampleId": "fixture-bs-284"
+       },
+       {
+        "biosampleId": "fixture-bs-285"
+       },
+       {
+        "biosampleId": "fixture-bs-286"
+       },
+       {
+        "biosampleId": "fixture-bs-287"
+       },
+       {
+        "biosampleId": "fixture-bs-288"
+       },
+       {
+        "biosampleId": "fixture-bs-289"
+       },
+       {
+        "biosampleId": "fixture-bs-290"
+       },
+       {
+        "biosampleId": "fixture-bs-291"
+       },
+       {
+        "biosampleId": "fixture-bs-292"
+       },
+       {
+        "biosampleId": "fixture-bs-293"
+       },
+       {
+        "biosampleId": "fixture-bs-294"
+       },
+       {
+        "biosampleId": "fixture-bs-295"
+       },
+       {
+        "biosampleId": "fixture-bs-296"
+       },
+       {
+        "biosampleId": "fixture-bs-297"
+       },
+       {
+        "biosampleId": "fixture-bs-298"
+       },
+       {
+        "biosampleId": "fixture-bs-299"
+       },
+       {
+        "biosampleId": "fixture-bs-300"
+       },
+       {
+        "biosampleId": "fixture-bs-301"
+       },
+       {
+        "biosampleId": "fixture-bs-302"
+       },
+       {
+        "biosampleId": "fixture-bs-303"
+       },
+       {
+        "biosampleId": "fixture-bs-304"
+       },
+       {
+        "biosampleId": "fixture-bs-305"
+       },
+       {
+        "biosampleId": "fixture-bs-306"
+       },
+       {
+        "biosampleId": "fixture-bs-307"
+       },
+       {
+        "biosampleId": "fixture-bs-308"
+       },
+       {
+        "biosampleId": "fixture-bs-309"
+       },
+       {
+        "biosampleId": "fixture-bs-310"
+       },
+       {
+        "biosampleId": "fixture-bs-311"
+       },
+       {
+        "biosampleId": "fixture-bs-312"
+       },
+       {
+        "biosampleId": "fixture-bs-313"
+       },
+       {
+        "biosampleId": "fixture-bs-314"
+       },
+       {
+        "biosampleId": "fixture-bs-315"
+       },
+       {
+        "biosampleId": "fixture-bs-316"
+       },
+       {
+        "biosampleId": "fixture-bs-317"
+       },
+       {
+        "biosampleId": "fixture-bs-318"
+       },
+       {
+        "biosampleId": "fixture-bs-319"
+       },
+       {
+        "biosampleId": "fixture-bs-320"
+       },
+       {
+        "biosampleId": "fixture-bs-321"
+       },
+       {
+        "biosampleId": "fixture-bs-322"
+       },
+       {
+        "biosampleId": "fixture-bs-323"
+       },
+       {
+        "biosampleId": "fixture-bs-324"
+       },
+       {
+        "biosampleId": "fixture-bs-325"
+       },
+       {
+        "biosampleId": "fixture-bs-326"
+       },
+       {
+        "biosampleId": "fixture-bs-327"
+       },
+       {
+        "biosampleId": "fixture-bs-328"
+       },
+       {
+        "biosampleId": "fixture-bs-329"
+       },
+       {
+        "biosampleId": "fixture-bs-330"
+       },
+       {
+        "biosampleId": "fixture-bs-331"
+       },
+       {
+        "biosampleId": "fixture-bs-332"
+       },
+       {
+        "biosampleId": "fixture-bs-333"
+       },
+       {
+        "biosampleId": "fixture-bs-334"
+       },
+       {
+        "biosampleId": "fixture-bs-335"
+       },
+       {
+        "biosampleId": "fixture-bs-336"
+       },
+       {
+        "biosampleId": "fixture-bs-337"
+       },
+       {
+        "biosampleId": "fixture-bs-338"
+       },
+       {
+        "biosampleId": "fixture-bs-339"
+       },
+       {
+        "biosampleId": "fixture-bs-340"
+       },
+       {
+        "biosampleId": "fixture-bs-341"
+       },
+       {
+        "biosampleId": "fixture-bs-342"
+       },
+       {
+        "biosampleId": "fixture-bs-343"
+       },
+       {
+        "biosampleId": "fixture-bs-344"
+       },
+       {
+        "biosampleId": "fixture-bs-345"
+       },
+       {
+        "biosampleId": "fixture-bs-346"
+       },
+       {
+        "biosampleId": "fixture-bs-347"
+       },
+       {
+        "biosampleId": "fixture-bs-348"
+       },
+       {
+        "biosampleId": "fixture-bs-349"
+       },
+       {
+        "biosampleId": "fixture-bs-350"
+       },
+       {
+        "biosampleId": "fixture-bs-351"
+       },
+       {
+        "biosampleId": "fixture-bs-352"
+       },
+       {
+        "biosampleId": "fixture-bs-353"
+       },
+       {
+        "biosampleId": "fixture-bs-354"
+       },
+       {
+        "biosampleId": "fixture-bs-355"
+       },
+       {
+        "biosampleId": "fixture-bs-356"
+       },
+       {
+        "biosampleId": "fixture-bs-357"
+       },
+       {
+        "biosampleId": "fixture-bs-358"
+       },
+       {
+        "biosampleId": "fixture-bs-359"
+       },
+       {
+        "biosampleId": "fixture-bs-360"
+       },
+       {
+        "biosampleId": "fixture-bs-361"
+       },
+       {
+        "biosampleId": "fixture-bs-362"
+       },
+       {
+        "biosampleId": "fixture-bs-363"
+       },
+       {
+        "biosampleId": "fixture-bs-364"
+       },
+       {
+        "biosampleId": "fixture-bs-365"
+       },
+       {
+        "biosampleId": "fixture-bs-366"
+       },
+       {
+        "biosampleId": "fixture-bs-367"
+       },
+       {
+        "biosampleId": "fixture-bs-368"
+       },
+       {
+        "biosampleId": "fixture-bs-369"
+       },
+       {
+        "biosampleId": "fixture-bs-370"
+       },
+       {
+        "biosampleId": "fixture-bs-371"
+       },
+       {
+        "biosampleId": "fixture-bs-372"
+       },
+       {
+        "biosampleId": "fixture-bs-373"
+       },
+       {
+        "biosampleId": "fixture-bs-374"
+       },
+       {
+        "biosampleId": "fixture-bs-375"
+       },
+       {
+        "biosampleId": "fixture-bs-376"
+       },
+       {
+        "biosampleId": "fixture-bs-377"
+       },
+       {
+        "biosampleId": "fixture-bs-378"
+       },
+       {
+        "biosampleId": "fixture-bs-379"
+       },
+       {
+        "biosampleId": "fixture-bs-380"
+       },
+       {
+        "biosampleId": "fixture-bs-381"
+       },
+       {
+        "biosampleId": "fixture-bs-382"
+       },
+       {
+        "biosampleId": "fixture-bs-383"
+       },
+       {
+        "biosampleId": "fixture-bs-384"
+       },
+       {
+        "biosampleId": "fixture-bs-385"
+       },
+       {
+        "biosampleId": "fixture-bs-386"
+       },
+       {
+        "biosampleId": "fixture-bs-387"
+       },
+       {
+        "biosampleId": "fixture-bs-388"
+       },
+       {
+        "biosampleId": "fixture-bs-389"
+       },
+       {
+        "biosampleId": "fixture-bs-390"
+       },
+       {
+        "biosampleId": "fixture-bs-391"
+       },
+       {
+        "biosampleId": "fixture-bs-392"
+       },
+       {
+        "biosampleId": "fixture-bs-393"
+       },
+       {
+        "biosampleId": "fixture-bs-394"
+       },
+       {
+        "biosampleId": "fixture-bs-395"
+       },
+       {
+        "biosampleId": "fixture-bs-396"
+       },
+       {
+        "biosampleId": "fixture-bs-397"
+       },
+       {
+        "biosampleId": "fixture-bs-398"
+       },
+       {
+        "biosampleId": "fixture-bs-399"
+       },
+       {
+        "biosampleId": "fixture-bs-400"
+       },
+       {
+        "biosampleId": "fixture-bs-401"
+       },
+       {
+        "biosampleId": "fixture-bs-402"
+       },
+       {
+        "biosampleId": "fixture-bs-403"
+       },
+       {
+        "biosampleId": "fixture-bs-404"
+       },
+       {
+        "biosampleId": "fixture-bs-405"
+       },
+       {
+        "biosampleId": "fixture-bs-406"
+       },
+       {
+        "biosampleId": "fixture-bs-407"
+       },
+       {
+        "biosampleId": "fixture-bs-408"
+       },
+       {
+        "biosampleId": "fixture-bs-409"
+       },
+       {
+        "biosampleId": "fixture-bs-410"
+       },
+       {
+        "biosampleId": "fixture-bs-411"
+       },
+       {
+        "biosampleId": "fixture-bs-412"
+       },
+       {
+        "biosampleId": "fixture-bs-413"
+       },
+       {
+        "biosampleId": "fixture-bs-414"
+       },
+       {
+        "biosampleId": "fixture-bs-415"
+       },
+       {
+        "biosampleId": "fixture-bs-416"
+       },
+       {
+        "biosampleId": "fixture-bs-417"
+       },
+       {
+        "biosampleId": "fixture-bs-418"
+       },
+       {
+        "biosampleId": "fixture-bs-419"
+       },
+       {
+        "biosampleId": "fixture-bs-420"
+       },
+       {
+        "biosampleId": "fixture-bs-421"
+       },
+       {
+        "biosampleId": "fixture-bs-422"
+       },
+       {
+        "biosampleId": "fixture-bs-423"
+       },
+       {
+        "biosampleId": "fixture-bs-424"
+       },
+       {
+        "biosampleId": "fixture-bs-425"
+       },
+       {
+        "biosampleId": "fixture-bs-426"
+       },
+       {
+        "biosampleId": "fixture-bs-427"
+       },
+       {
+        "biosampleId": "fixture-bs-428"
+       },
+       {
+        "biosampleId": "fixture-bs-429"
+       },
+       {
+        "biosampleId": "fixture-bs-430"
+       },
+       {
+        "biosampleId": "fixture-bs-431"
+       },
+       {
+        "biosampleId": "fixture-bs-432"
+       },
+       {
+        "biosampleId": "fixture-bs-433"
+       },
+       {
+        "biosampleId": "fixture-bs-434"
+       },
+       {
+        "biosampleId": "fixture-bs-435"
+       },
+       {
+        "biosampleId": "fixture-bs-436"
+       },
+       {
+        "biosampleId": "fixture-bs-437"
+       },
+       {
+        "biosampleId": "fixture-bs-438"
+       },
+       {
+        "biosampleId": "fixture-bs-439"
+       },
+       {
+        "biosampleId": "fixture-bs-440"
+       },
+       {
+        "biosampleId": "fixture-bs-441"
+       },
+       {
+        "biosampleId": "fixture-bs-442"
+       },
+       {
+        "biosampleId": "fixture-bs-443"
+       },
+       {
+        "biosampleId": "fixture-bs-444"
+       },
+       {
+        "biosampleId": "fixture-bs-445"
+       },
+       {
+        "biosampleId": "fixture-bs-446"
+       },
+       {
+        "biosampleId": "fixture-bs-447"
+       },
+       {
+        "biosampleId": "fixture-bs-448"
+       },
+       {
+        "biosampleId": "fixture-bs-449"
+       },
+       {
+        "biosampleId": "fixture-bs-450"
+       },
+       {
+        "biosampleId": "fixture-bs-451"
+       },
+       {
+        "biosampleId": "fixture-bs-452"
+       },
+       {
+        "biosampleId": "fixture-bs-453"
+       },
+       {
+        "biosampleId": "fixture-bs-454"
+       },
+       {
+        "biosampleId": "fixture-bs-455"
+       },
+       {
+        "biosampleId": "fixture-bs-456"
+       },
+       {
+        "biosampleId": "fixture-bs-457"
+       },
+       {
+        "biosampleId": "fixture-bs-458"
+       },
+       {
+        "biosampleId": "fixture-bs-459"
+       },
+       {
+        "biosampleId": "fixture-bs-460"
+       },
+       {
+        "biosampleId": "fixture-bs-461"
+       },
+       {
+        "biosampleId": "fixture-bs-462"
+       },
+       {
+        "biosampleId": "fixture-bs-463"
+       },
+       {
+        "biosampleId": "fixture-bs-464"
+       },
+       {
+        "biosampleId": "fixture-bs-465"
+       },
+       {
+        "biosampleId": "fixture-bs-466"
+       },
+       {
+        "biosampleId": "fixture-bs-467"
+       },
+       {
+        "biosampleId": "fixture-bs-468"
+       },
+       {
+        "biosampleId": "fixture-bs-469"
+       },
+       {
+        "biosampleId": "fixture-bs-470"
+       },
+       {
+        "biosampleId": "fixture-bs-471"
+       },
+       {
+        "biosampleId": "fixture-bs-472"
+       },
+       {
+        "biosampleId": "fixture-bs-473"
+       },
+       {
+        "biosampleId": "fixture-bs-474"
+       },
+       {
+        "biosampleId": "fixture-bs-475"
+       },
+       {
+        "biosampleId": "fixture-bs-476"
+       },
+       {
+        "biosampleId": "fixture-bs-477"
+       },
+       {
+        "biosampleId": "fixture-bs-478"
+       },
+       {
+        "biosampleId": "fixture-bs-479"
+       },
+       {
+        "biosampleId": "fixture-bs-480"
+       },
+       {
+        "biosampleId": "fixture-bs-481"
+       },
+       {
+        "biosampleId": "fixture-bs-482"
+       },
+       {
+        "biosampleId": "fixture-bs-483"
+       },
+       {
+        "biosampleId": "fixture-bs-484"
+       },
+       {
+        "biosampleId": "fixture-bs-485"
+       },
+       {
+        "biosampleId": "fixture-bs-486"
+       },
+       {
+        "biosampleId": "fixture-bs-487"
+       },
+       {
+        "biosampleId": "fixture-bs-488"
+       },
+       {
+        "biosampleId": "fixture-bs-489"
+       },
+       {
+        "biosampleId": "fixture-bs-490"
+       },
+       {
+        "biosampleId": "fixture-bs-491"
+       },
+       {
+        "biosampleId": "fixture-bs-492"
+       },
+       {
+        "biosampleId": "fixture-bs-493"
+       },
+       {
+        "biosampleId": "fixture-bs-494"
+       },
+       {
+        "biosampleId": "fixture-bs-495"
+       },
+       {
+        "biosampleId": "fixture-bs-496"
+       },
+       {
+        "biosampleId": "fixture-bs-497"
+       },
+       {
+        "biosampleId": "fixture-bs-498"
+       },
+       {
+        "biosampleId": "fixture-bs-499"
+       },
+       {
+        "biosampleId": "fixture-bs-500"
+       },
+       {
+        "biosampleId": "fixture-bs-501"
+       },
+       {
+        "biosampleId": "fixture-bs-502"
+       },
+       {
+        "biosampleId": "fixture-bs-503"
+       },
+       {
+        "biosampleId": "fixture-bs-504"
+       },
+       {
+        "biosampleId": "fixture-bs-505"
+       },
+       {
+        "biosampleId": "fixture-bs-506"
+       },
+       {
+        "biosampleId": "fixture-bs-507"
+       },
+       {
+        "biosampleId": "fixture-bs-508"
+       },
+       {
+        "biosampleId": "fixture-bs-509"
+       },
+       {
+        "biosampleId": "fixture-bs-510"
+       },
+       {
+        "biosampleId": "fixture-bs-511"
+       },
+       {
+        "biosampleId": "fixture-bs-512"
+       },
+       {
+        "biosampleId": "fixture-bs-513"
+       },
+       {
+        "biosampleId": "fixture-bs-514"
+       },
+       {
+        "biosampleId": "fixture-bs-515"
+       },
+       {
+        "biosampleId": "fixture-bs-516"
+       },
+       {
+        "biosampleId": "fixture-bs-517"
+       },
+       {
+        "biosampleId": "fixture-bs-518"
+       },
+       {
+        "biosampleId": "fixture-bs-519"
+       },
+       {
+        "biosampleId": "fixture-bs-520"
+       },
+       {
+        "biosampleId": "fixture-bs-521"
+       },
+       {
+        "biosampleId": "fixture-bs-522"
+       },
+       {
+        "biosampleId": "fixture-bs-523"
+       },
+       {
+        "biosampleId": "fixture-bs-524"
+       },
+       {
+        "biosampleId": "fixture-bs-525"
+       },
+       {
+        "biosampleId": "fixture-bs-526"
+       },
+       {
+        "biosampleId": "fixture-bs-527"
+       },
+       {
+        "biosampleId": "fixture-bs-528"
+       },
+       {
+        "biosampleId": "fixture-bs-529"
+       },
+       {
+        "biosampleId": "fixture-bs-530"
+       },
+       {
+        "biosampleId": "fixture-bs-531"
+       },
+       {
+        "biosampleId": "fixture-bs-532"
+       },
+       {
+        "biosampleId": "fixture-bs-533"
+       },
+       {
+        "biosampleId": "fixture-bs-534"
+       },
+       {
+        "biosampleId": "fixture-bs-535"
+       },
+       {
+        "biosampleId": "fixture-bs-536"
+       },
+       {
+        "biosampleId": "fixture-bs-537"
+       },
+       {
+        "biosampleId": "fixture-bs-538"
+       },
+       {
+        "biosampleId": "fixture-bs-539"
+       },
+       {
+        "biosampleId": "fixture-bs-540"
+       },
+       {
+        "biosampleId": "fixture-bs-541"
+       },
+       {
+        "biosampleId": "fixture-bs-542"
+       },
+       {
+        "biosampleId": "fixture-bs-543"
+       },
+       {
+        "biosampleId": "fixture-bs-544"
+       },
+       {
+        "biosampleId": "fixture-bs-545"
+       },
+       {
+        "biosampleId": "fixture-bs-546"
+       },
+       {
+        "biosampleId": "fixture-bs-547"
+       },
+       {
+        "biosampleId": "fixture-bs-548"
+       },
+       {
+        "biosampleId": "fixture-bs-549"
+       },
+       {
+        "biosampleId": "fixture-bs-550"
+       },
+       {
+        "biosampleId": "fixture-bs-551"
+       },
+       {
+        "biosampleId": "fixture-bs-552"
+       },
+       {
+        "biosampleId": "fixture-bs-553"
+       },
+       {
+        "biosampleId": "fixture-bs-554"
+       },
+       {
+        "biosampleId": "fixture-bs-555"
+       },
+       {
+        "biosampleId": "fixture-bs-556"
+       },
+       {
+        "biosampleId": "fixture-bs-557"
+       },
+       {
+        "biosampleId": "fixture-bs-558"
+       },
+       {
+        "biosampleId": "fixture-bs-559"
+       },
+       {
+        "biosampleId": "fixture-bs-560"
+       },
+       {
+        "biosampleId": "fixture-bs-561"
+       },
+       {
+        "biosampleId": "fixture-bs-562"
+       },
+       {
+        "biosampleId": "fixture-bs-563"
+       },
+       {
+        "biosampleId": "fixture-bs-564"
+       },
+       {
+        "biosampleId": "fixture-bs-565"
+       },
+       {
+        "biosampleId": "fixture-bs-566"
+       },
+       {
+        "biosampleId": "fixture-bs-567"
+       },
+       {
+        "biosampleId": "fixture-bs-568"
+       },
+       {
+        "biosampleId": "fixture-bs-569"
+       },
+       {
+        "biosampleId": "fixture-bs-570"
+       },
+       {
+        "biosampleId": "fixture-bs-571"
+       },
+       {
+        "biosampleId": "fixture-bs-572"
+       },
+       {
+        "biosampleId": "fixture-bs-573"
+       },
+       {
+        "biosampleId": "fixture-bs-574"
+       },
+       {
+        "biosampleId": "fixture-bs-575"
+       },
+       {
+        "biosampleId": "fixture-bs-576"
+       },
+       {
+        "biosampleId": "fixture-bs-577"
+       },
+       {
+        "biosampleId": "fixture-bs-578"
+       },
+       {
+        "biosampleId": "fixture-bs-579"
+       },
+       {
+        "biosampleId": "fixture-bs-580"
+       },
+       {
+        "biosampleId": "fixture-bs-581"
+       },
+       {
+        "biosampleId": "fixture-bs-582"
+       },
+       {
+        "biosampleId": "fixture-bs-583"
+       },
+       {
+        "biosampleId": "fixture-bs-584"
+       },
+       {
+        "biosampleId": "fixture-bs-585"
+       },
+       {
+        "biosampleId": "fixture-bs-586"
+       },
+       {
+        "biosampleId": "fixture-bs-587"
+       },
+       {
+        "biosampleId": "fixture-bs-588"
+       },
+       {
+        "biosampleId": "fixture-bs-589"
+       },
+       {
+        "biosampleId": "fixture-bs-590"
+       },
+       {
+        "biosampleId": "fixture-bs-591"
+       },
+       {
+        "biosampleId": "fixture-bs-592"
+       },
+       {
+        "biosampleId": "fixture-bs-593"
+       },
+       {
+        "biosampleId": "fixture-bs-594"
+       },
+       {
+        "biosampleId": "fixture-bs-595"
+       },
+       {
+        "biosampleId": "fixture-bs-596"
+       },
+       {
+        "biosampleId": "fixture-bs-597"
+       },
+       {
+        "biosampleId": "fixture-bs-598"
+       },
+       {
+        "biosampleId": "fixture-bs-599"
+       },
+       {
+        "biosampleId": "fixture-bs-600"
+       },
+       {
+        "biosampleId": "fixture-bs-601"
+       },
+       {
+        "biosampleId": "fixture-bs-602"
+       },
+       {
+        "biosampleId": "fixture-bs-603"
+       },
+       {
+        "biosampleId": "fixture-bs-604"
+       },
+       {
+        "biosampleId": "fixture-bs-605"
+       },
+       {
+        "biosampleId": "fixture-bs-606"
+       },
+       {
+        "biosampleId": "fixture-bs-607"
+       },
+       {
+        "biosampleId": "fixture-bs-608"
+       },
+       {
+        "biosampleId": "fixture-bs-609"
+       },
+       {
+        "biosampleId": "fixture-bs-610"
+       },
+       {
+        "biosampleId": "fixture-bs-611"
+       },
+       {
+        "biosampleId": "fixture-bs-612"
+       },
+       {
+        "biosampleId": "fixture-bs-613"
+       },
+       {
+        "biosampleId": "fixture-bs-614"
+       },
+       {
+        "biosampleId": "fixture-bs-615"
+       },
+       {
+        "biosampleId": "fixture-bs-616"
+       },
+       {
+        "biosampleId": "fixture-bs-617"
+       },
+       {
+        "biosampleId": "fixture-bs-618"
+       },
+       {
+        "biosampleId": "fixture-bs-619"
+       },
+       {
+        "biosampleId": "fixture-bs-620"
+       },
+       {
+        "biosampleId": "fixture-bs-621"
+       },
+       {
+        "biosampleId": "fixture-bs-622"
+       },
+       {
+        "biosampleId": "fixture-bs-623"
+       },
+       {
+        "biosampleId": "fixture-bs-624"
+       },
+       {
+        "biosampleId": "fixture-bs-625"
+       },
+       {
+        "biosampleId": "fixture-bs-626"
+       },
+       {
+        "biosampleId": "fixture-bs-627"
+       },
+       {
+        "biosampleId": "fixture-bs-628"
+       },
+       {
+        "biosampleId": "fixture-bs-629"
+       },
+       {
+        "biosampleId": "fixture-bs-630"
+       },
+       {
+        "biosampleId": "fixture-bs-631"
+       },
+       {
+        "biosampleId": "fixture-bs-632"
+       },
+       {
+        "biosampleId": "fixture-bs-633"
+       },
+       {
+        "biosampleId": "fixture-bs-634"
+       },
+       {
+        "biosampleId": "fixture-bs-635"
+       },
+       {
+        "biosampleId": "fixture-bs-636"
+       },
+       {
+        "biosampleId": "fixture-bs-637"
+       },
+       {
+        "biosampleId": "fixture-bs-638"
+       },
+       {
+        "biosampleId": "fixture-bs-639"
+       },
+       {
+        "biosampleId": "fixture-bs-640"
+       },
+       {
+        "biosampleId": "fixture-bs-641"
+       },
+       {
+        "biosampleId": "fixture-bs-642"
+       },
+       {
+        "biosampleId": "fixture-bs-643"
+       },
+       {
+        "biosampleId": "fixture-bs-644"
+       },
+       {
+        "biosampleId": "fixture-bs-645"
+       },
+       {
+        "biosampleId": "fixture-bs-646"
+       },
+       {
+        "biosampleId": "fixture-bs-647"
+       },
+       {
+        "biosampleId": "fixture-bs-648"
+       },
+       {
+        "biosampleId": "fixture-bs-649"
+       },
+       {
+        "biosampleId": "fixture-bs-650"
+       },
+       {
+        "biosampleId": "fixture-bs-651"
+       },
+       {
+        "biosampleId": "fixture-bs-652"
+       },
+       {
+        "biosampleId": "fixture-bs-653"
+       },
+       {
+        "biosampleId": "fixture-bs-654"
+       },
+       {
+        "biosampleId": "fixture-bs-655"
+       },
+       {
+        "biosampleId": "fixture-bs-656"
+       },
+       {
+        "biosampleId": "fixture-bs-657"
+       },
+       {
+        "biosampleId": "fixture-bs-658"
+       },
+       {
+        "biosampleId": "fixture-bs-659"
+       },
+       {
+        "biosampleId": "fixture-bs-660"
+       },
+       {
+        "biosampleId": "fixture-bs-661"
+       },
+       {
+        "biosampleId": "fixture-bs-662"
+       },
+       {
+        "biosampleId": "fixture-bs-663"
+       },
+       {
+        "biosampleId": "fixture-bs-664"
+       },
+       {
+        "biosampleId": "fixture-bs-665"
+       },
+       {
+        "biosampleId": "fixture-bs-666"
+       },
+       {
+        "biosampleId": "fixture-bs-667"
+       },
+       {
+        "biosampleId": "fixture-bs-668"
+       },
+       {
+        "biosampleId": "fixture-bs-669"
+       },
+       {
+        "biosampleId": "fixture-bs-670"
+       },
+       {
+        "biosampleId": "fixture-bs-671"
+       },
+       {
+        "biosampleId": "fixture-bs-672"
+       },
+       {
+        "biosampleId": "fixture-bs-673"
+       },
+       {
+        "biosampleId": "fixture-bs-674"
+       },
+       {
+        "biosampleId": "fixture-bs-675"
+       },
+       {
+        "biosampleId": "fixture-bs-676"
+       },
+       {
+        "biosampleId": "fixture-bs-677"
+       },
+       {
+        "biosampleId": "fixture-bs-678"
+       },
+       {
+        "biosampleId": "fixture-bs-679"
+       },
+       {
+        "biosampleId": "fixture-bs-680"
+       },
+       {
+        "biosampleId": "fixture-bs-681"
+       },
+       {
+        "biosampleId": "fixture-bs-682"
+       },
+       {
+        "biosampleId": "fixture-bs-683"
+       },
+       {
+        "biosampleId": "fixture-bs-684"
+       },
+       {
+        "biosampleId": "fixture-bs-685"
+       },
+       {
+        "biosampleId": "fixture-bs-686"
+       },
+       {
+        "biosampleId": "fixture-bs-687"
+       },
+       {
+        "biosampleId": "fixture-bs-688"
+       },
+       {
+        "biosampleId": "fixture-bs-689"
+       },
+       {
+        "biosampleId": "fixture-bs-690"
+       },
+       {
+        "biosampleId": "fixture-bs-691"
+       },
+       {
+        "biosampleId": "fixture-bs-692"
+       },
+       {
+        "biosampleId": "fixture-bs-693"
+       },
+       {
+        "biosampleId": "fixture-bs-694"
+       },
+       {
+        "biosampleId": "fixture-bs-695"
+       },
+       {
+        "biosampleId": "fixture-bs-696"
+       },
+       {
+        "biosampleId": "fixture-bs-697"
+       },
+       {
+        "biosampleId": "fixture-bs-698"
+       },
+       {
+        "biosampleId": "fixture-bs-699"
+       },
+       {
+        "biosampleId": "fixture-bs-700"
+       },
+       {
+        "biosampleId": "fixture-bs-701"
+       },
+       {
+        "biosampleId": "fixture-bs-702"
+       },
+       {
+        "biosampleId": "fixture-bs-703"
+       },
+       {
+        "biosampleId": "fixture-bs-704"
+       },
+       {
+        "biosampleId": "fixture-bs-705"
+       },
+       {
+        "biosampleId": "fixture-bs-706"
+       },
+       {
+        "biosampleId": "fixture-bs-707"
+       },
+       {
+        "biosampleId": "fixture-bs-708"
+       },
+       {
+        "biosampleId": "fixture-bs-709"
+       },
+       {
+        "biosampleId": "fixture-bs-710"
+       },
+       {
+        "biosampleId": "fixture-bs-711"
+       },
+       {
+        "biosampleId": "fixture-bs-712"
+       },
+       {
+        "biosampleId": "fixture-bs-713"
+       },
+       {
+        "biosampleId": "fixture-bs-714"
+       },
+       {
+        "biosampleId": "fixture-bs-715"
+       },
+       {
+        "biosampleId": "fixture-bs-716"
+       },
+       {
+        "biosampleId": "fixture-bs-717"
+       },
+       {
+        "biosampleId": "fixture-bs-718"
+       },
+       {
+        "biosampleId": "fixture-bs-719"
+       },
+       {
+        "biosampleId": "fixture-bs-720"
+       },
+       {
+        "biosampleId": "fixture-bs-721"
+       },
+       {
+        "biosampleId": "fixture-bs-722"
+       },
+       {
+        "biosampleId": "fixture-bs-723"
+       },
+       {
+        "biosampleId": "fixture-bs-724"
+       },
+       {
+        "biosampleId": "fixture-bs-725"
+       },
+       {
+        "biosampleId": "fixture-bs-726"
+       },
+       {
+        "biosampleId": "fixture-bs-727"
+       },
+       {
+        "biosampleId": "fixture-bs-728"
+       },
+       {
+        "biosampleId": "fixture-bs-729"
+       },
+       {
+        "biosampleId": "fixture-bs-730"
+       },
+       {
+        "biosampleId": "fixture-bs-731"
+       },
+       {
+        "biosampleId": "fixture-bs-732"
+       },
+       {
+        "biosampleId": "fixture-bs-733"
+       },
+       {
+        "biosampleId": "fixture-bs-734"
+       },
+       {
+        "biosampleId": "fixture-bs-735"
+       },
+       {
+        "biosampleId": "fixture-bs-736"
+       },
+       {
+        "biosampleId": "fixture-bs-737"
+       },
+       {
+        "biosampleId": "fixture-bs-738"
+       },
+       {
+        "biosampleId": "fixture-bs-739"
+       },
+       {
+        "biosampleId": "fixture-bs-740"
+       },
+       {
+        "biosampleId": "fixture-bs-741"
+       },
+       {
+        "biosampleId": "fixture-bs-742"
+       },
+       {
+        "biosampleId": "fixture-bs-743"
+       },
+       {
+        "biosampleId": "fixture-bs-744"
+       },
+       {
+        "biosampleId": "fixture-bs-745"
+       },
+       {
+        "biosampleId": "fixture-bs-746"
+       },
+       {
+        "biosampleId": "fixture-bs-747"
+       },
+       {
+        "biosampleId": "fixture-bs-748"
+       },
+       {
+        "biosampleId": "fixture-bs-749"
+       },
+       {
+        "biosampleId": "fixture-bs-750"
+       },
+       {
+        "biosampleId": "fixture-bs-751"
+       },
+       {
+        "biosampleId": "fixture-bs-752"
+       },
+       {
+        "biosampleId": "fixture-bs-753"
+       },
+       {
+        "biosampleId": "fixture-bs-754"
+       },
+       {
+        "biosampleId": "fixture-bs-755"
+       },
+       {
+        "biosampleId": "fixture-bs-756"
+       },
+       {
+        "biosampleId": "fixture-bs-757"
+       },
+       {
+        "biosampleId": "fixture-bs-758"
+       },
+       {
+        "biosampleId": "fixture-bs-759"
+       },
+       {
+        "biosampleId": "fixture-bs-760"
+       },
+       {
+        "biosampleId": "fixture-bs-761"
+       },
+       {
+        "biosampleId": "fixture-bs-762"
+       },
+       {
+        "biosampleId": "fixture-bs-763"
+       },
+       {
+        "biosampleId": "fixture-bs-764"
+       },
+       {
+        "biosampleId": "fixture-bs-765"
+       },
+       {
+        "biosampleId": "fixture-bs-766"
+       },
+       {
+        "biosampleId": "fixture-bs-767"
+       },
+       {
+        "biosampleId": "fixture-bs-768"
+       },
+       {
+        "biosampleId": "fixture-bs-769"
+       },
+       {
+        "biosampleId": "fixture-bs-770"
+       },
+       {
+        "biosampleId": "fixture-bs-771"
+       },
+       {
+        "biosampleId": "fixture-bs-772"
+       },
+       {
+        "biosampleId": "fixture-bs-773"
+       },
+       {
+        "biosampleId": "fixture-bs-774"
+       },
+       {
+        "biosampleId": "fixture-bs-775"
+       },
+       {
+        "biosampleId": "fixture-bs-776"
+       },
+       {
+        "biosampleId": "fixture-bs-777"
+       },
+       {
+        "biosampleId": "fixture-bs-778"
+       },
+       {
+        "biosampleId": "fixture-bs-779"
+       },
+       {
+        "biosampleId": "fixture-bs-780"
+       },
+       {
+        "biosampleId": "fixture-bs-781"
+       },
+       {
+        "biosampleId": "fixture-bs-782"
+       },
+       {
+        "biosampleId": "fixture-bs-783"
+       },
+       {
+        "biosampleId": "fixture-bs-784"
+       },
+       {
+        "biosampleId": "fixture-bs-785"
+       },
+       {
+        "biosampleId": "fixture-bs-786"
+       },
+       {
+        "biosampleId": "fixture-bs-787"
+       },
+       {
+        "biosampleId": "fixture-bs-788"
+       },
+       {
+        "biosampleId": "fixture-bs-789"
+       },
+       {
+        "biosampleId": "fixture-bs-790"
+       },
+       {
+        "biosampleId": "fixture-bs-791"
+       },
+       {
+        "biosampleId": "fixture-bs-792"
+       },
+       {
+        "biosampleId": "fixture-bs-793"
+       },
+       {
+        "biosampleId": "fixture-bs-794"
+       },
+       {
+        "biosampleId": "fixture-bs-795"
+       },
+       {
+        "biosampleId": "fixture-bs-796"
+       },
+       {
+        "biosampleId": "fixture-bs-797"
+       },
+       {
+        "biosampleId": "fixture-bs-798"
+       },
+       {
+        "biosampleId": "fixture-bs-799"
+       },
+       {
+        "biosampleId": "fixture-bs-800"
+       },
+       {
+        "biosampleId": "fixture-bs-801"
+       },
+       {
+        "biosampleId": "fixture-bs-802"
+       },
+       {
+        "biosampleId": "fixture-bs-803"
+       },
+       {
+        "biosampleId": "fixture-bs-804"
+       },
+       {
+        "biosampleId": "fixture-bs-805"
+       },
+       {
+        "biosampleId": "fixture-bs-806"
+       },
+       {
+        "biosampleId": "fixture-bs-807"
+       },
+       {
+        "biosampleId": "fixture-bs-808"
+       },
+       {
+        "biosampleId": "fixture-bs-809"
+       },
+       {
+        "biosampleId": "fixture-bs-810"
+       },
+       {
+        "biosampleId": "fixture-bs-811"
+       },
+       {
+        "biosampleId": "fixture-bs-812"
+       },
+       {
+        "biosampleId": "fixture-bs-813"
+       },
+       {
+        "biosampleId": "fixture-bs-814"
+       },
+       {
+        "biosampleId": "fixture-bs-815"
+       },
+       {
+        "biosampleId": "fixture-bs-816"
+       },
+       {
+        "biosampleId": "fixture-bs-817"
+       },
+       {
+        "biosampleId": "fixture-bs-818"
+       },
+       {
+        "biosampleId": "fixture-bs-819"
+       },
+       {
+        "biosampleId": "fixture-bs-820"
+       },
+       {
+        "biosampleId": "fixture-bs-821"
+       },
+       {
+        "biosampleId": "fixture-bs-822"
+       },
+       {
+        "biosampleId": "fixture-bs-823"
+       },
+       {
+        "biosampleId": "fixture-bs-824"
+       },
+       {
+        "biosampleId": "fixture-bs-825"
+       },
+       {
+        "biosampleId": "fixture-bs-826"
+       },
+       {
+        "biosampleId": "fixture-bs-827"
+       },
+       {
+        "biosampleId": "fixture-bs-828"
+       },
+       {
+        "biosampleId": "fixture-bs-829"
+       },
+       {
+        "biosampleId": "fixture-bs-830"
+       },
+       {
+        "biosampleId": "fixture-bs-831"
+       },
+       {
+        "biosampleId": "fixture-bs-832"
+       },
+       {
+        "biosampleId": "fixture-bs-833"
+       },
+       {
+        "biosampleId": "fixture-bs-834"
+       },
+       {
+        "biosampleId": "fixture-bs-835"
+       },
+       {
+        "biosampleId": "fixture-bs-836"
+       },
+       {
+        "biosampleId": "fixture-bs-837"
+       },
+       {
+        "biosampleId": "fixture-bs-838"
+       },
+       {
+        "biosampleId": "fixture-bs-839"
+       },
+       {
+        "biosampleId": "fixture-bs-840"
+       },
+       {
+        "biosampleId": "fixture-bs-841"
+       },
+       {
+        "biosampleId": "fixture-bs-842"
+       },
+       {
+        "biosampleId": "fixture-bs-843"
+       },
+       {
+        "biosampleId": "fixture-bs-844"
+       },
+       {
+        "biosampleId": "fixture-bs-845"
+       },
+       {
+        "biosampleId": "fixture-bs-846"
+       },
+       {
+        "biosampleId": "fixture-bs-847"
+       },
+       {
+        "biosampleId": "fixture-bs-848"
+       },
+       {
+        "biosampleId": "fixture-bs-849"
+       },
+       {
+        "biosampleId": "fixture-bs-850"
+       },
+       {
+        "biosampleId": "fixture-bs-851"
+       },
+       {
+        "biosampleId": "fixture-bs-852"
+       },
+       {
+        "biosampleId": "fixture-bs-853"
+       },
+       {
+        "biosampleId": "fixture-bs-854"
+       },
+       {
+        "biosampleId": "fixture-bs-855"
+       },
+       {
+        "biosampleId": "fixture-bs-856"
+       },
+       {
+        "biosampleId": "fixture-bs-857"
+       },
+       {
+        "biosampleId": "fixture-bs-858"
+       },
+       {
+        "biosampleId": "fixture-bs-859"
+       },
+       {
+        "biosampleId": "fixture-bs-860"
+       },
+       {
+        "biosampleId": "fixture-bs-861"
+       },
+       {
+        "biosampleId": "fixture-bs-862"
+       },
+       {
+        "biosampleId": "fixture-bs-863"
+       },
+       {
+        "biosampleId": "fixture-bs-864"
+       },
+       {
+        "biosampleId": "fixture-bs-865"
+       },
+       {
+        "biosampleId": "fixture-bs-866"
+       },
+       {
+        "biosampleId": "fixture-bs-867"
+       },
+       {
+        "biosampleId": "fixture-bs-868"
+       },
+       {
+        "biosampleId": "fixture-bs-869"
+       },
+       {
+        "biosampleId": "fixture-bs-870"
+       },
+       {
+        "biosampleId": "fixture-bs-871"
+       },
+       {
+        "biosampleId": "fixture-bs-872"
+       },
+       {
+        "biosampleId": "fixture-bs-873"
+       },
+       {
+        "biosampleId": "fixture-bs-874"
+       },
+       {
+        "biosampleId": "fixture-bs-875"
+       },
+       {
+        "biosampleId": "fixture-bs-876"
+       },
+       {
+        "biosampleId": "fixture-bs-877"
+       },
+       {
+        "biosampleId": "fixture-bs-878"
+       },
+       {
+        "biosampleId": "fixture-bs-879"
+       },
+       {
+        "biosampleId": "fixture-bs-880"
+       },
+       {
+        "biosampleId": "fixture-bs-881"
+       },
+       {
+        "biosampleId": "fixture-bs-882"
+       },
+       {
+        "biosampleId": "fixture-bs-883"
+       },
+       {
+        "biosampleId": "fixture-bs-884"
+       },
+       {
+        "biosampleId": "fixture-bs-885"
+       },
+       {
+        "biosampleId": "fixture-bs-886"
+       },
+       {
+        "biosampleId": "fixture-bs-887"
+       },
+       {
+        "biosampleId": "fixture-bs-888"
+       },
+       {
+        "biosampleId": "fixture-bs-889"
+       },
+       {
+        "biosampleId": "fixture-bs-890"
+       },
+       {
+        "biosampleId": "fixture-bs-891"
+       },
+       {
+        "biosampleId": "fixture-bs-892"
+       },
+       {
+        "biosampleId": "fixture-bs-893"
+       },
+       {
+        "biosampleId": "fixture-bs-894"
+       },
+       {
+        "biosampleId": "fixture-bs-895"
+       },
+       {
+        "biosampleId": "fixture-bs-896"
+       },
+       {
+        "biosampleId": "fixture-bs-897"
+       },
+       {
+        "biosampleId": "fixture-bs-898"
+       },
+       {
+        "biosampleId": "fixture-bs-899"
+       },
+       {
+        "biosampleId": "fixture-bs-900"
+       },
+       {
+        "biosampleId": "fixture-bs-901"
+       },
+       {
+        "biosampleId": "fixture-bs-902"
+       },
+       {
+        "biosampleId": "fixture-bs-903"
+       },
+       {
+        "biosampleId": "fixture-bs-904"
+       },
+       {
+        "biosampleId": "fixture-bs-905"
+       },
+       {
+        "biosampleId": "fixture-bs-906"
+       },
+       {
+        "biosampleId": "fixture-bs-907"
+       },
+       {
+        "biosampleId": "fixture-bs-908"
+       },
+       {
+        "biosampleId": "fixture-bs-909"
+       },
+       {
+        "biosampleId": "fixture-bs-910"
+       },
+       {
+        "biosampleId": "fixture-bs-911"
+       },
+       {
+        "biosampleId": "fixture-bs-912"
+       },
+       {
+        "biosampleId": "fixture-bs-913"
+       },
+       {
+        "biosampleId": "fixture-bs-914"
+       },
+       {
+        "biosampleId": "fixture-bs-915"
+       },
+       {
+        "biosampleId": "fixture-bs-916"
+       },
+       {
+        "biosampleId": "fixture-bs-917"
+       },
+       {
+        "biosampleId": "fixture-bs-918"
+       },
+       {
+        "biosampleId": "fixture-bs-919"
+       },
+       {
+        "biosampleId": "fixture-bs-920"
+       },
+       {
+        "biosampleId": "fixture-bs-921"
+       },
+       {
+        "biosampleId": "fixture-bs-922"
+       },
+       {
+        "biosampleId": "fixture-bs-923"
+       },
+       {
+        "biosampleId": "fixture-bs-924"
+       },
+       {
+        "biosampleId": "fixture-bs-925"
+       },
+       {
+        "biosampleId": "fixture-bs-926"
+       },
+       {
+        "biosampleId": "fixture-bs-927"
+       },
+       {
+        "biosampleId": "fixture-bs-928"
+       },
+       {
+        "biosampleId": "fixture-bs-929"
+       },
+       {
+        "biosampleId": "fixture-bs-930"
+       },
+       {
+        "biosampleId": "fixture-bs-931"
+       },
+       {
+        "biosampleId": "fixture-bs-932"
+       },
+       {
+        "biosampleId": "fixture-bs-933"
+       },
+       {
+        "biosampleId": "fixture-bs-934"
+       },
+       {
+        "biosampleId": "fixture-bs-935"
+       },
+       {
+        "biosampleId": "fixture-bs-936"
+       },
+       {
+        "biosampleId": "fixture-bs-937"
+       },
+       {
+        "biosampleId": "fixture-bs-938"
+       },
+       {
+        "biosampleId": "fixture-bs-939"
+       },
+       {
+        "biosampleId": "fixture-bs-940"
+       },
+       {
+        "biosampleId": "fixture-bs-941"
+       },
+       {
+        "biosampleId": "fixture-bs-942"
+       },
+       {
+        "biosampleId": "fixture-bs-943"
+       },
+       {
+        "biosampleId": "fixture-bs-944"
+       },
+       {
+        "biosampleId": "fixture-bs-945"
+       },
+       {
+        "biosampleId": "fixture-bs-946"
+       },
+       {
+        "biosampleId": "fixture-bs-947"
+       },
+       {
+        "biosampleId": "fixture-bs-948"
+       },
+       {
+        "biosampleId": "fixture-bs-949"
+       },
+       {
+        "biosampleId": "fixture-bs-950"
+       },
+       {
+        "biosampleId": "fixture-bs-951"
+       },
+       {
+        "biosampleId": "fixture-bs-952"
+       },
+       {
+        "biosampleId": "fixture-bs-953"
+       },
+       {
+        "biosampleId": "fixture-bs-954"
+       },
+       {
+        "biosampleId": "fixture-bs-955"
+       },
+       {
+        "biosampleId": "fixture-bs-956"
+       },
+       {
+        "biosampleId": "fixture-bs-957"
+       },
+       {
+        "biosampleId": "fixture-bs-958"
+       },
+       {
+        "biosampleId": "fixture-bs-959"
+       },
+       {
+        "biosampleId": "fixture-bs-960"
+       },
+       {
+        "biosampleId": "fixture-bs-961"
+       },
+       {
+        "biosampleId": "fixture-bs-962"
+       },
+       {
+        "biosampleId": "fixture-bs-963"
+       },
+       {
+        "biosampleId": "fixture-bs-964"
+       },
+       {
+        "biosampleId": "fixture-bs-965"
+       },
+       {
+        "biosampleId": "fixture-bs-966"
+       },
+       {
+        "biosampleId": "fixture-bs-967"
+       },
+       {
+        "biosampleId": "fixture-bs-968"
+       },
+       {
+        "biosampleId": "fixture-bs-969"
+       },
+       {
+        "biosampleId": "fixture-bs-970"
+       },
+       {
+        "biosampleId": "fixture-bs-971"
+       },
+       {
+        "biosampleId": "fixture-bs-972"
+       },
+       {
+        "biosampleId": "fixture-bs-973"
+       },
+       {
+        "biosampleId": "fixture-bs-974"
+       },
+       {
+        "biosampleId": "fixture-bs-975"
+       },
+       {
+        "biosampleId": "fixture-bs-976"
+       },
+       {
+        "biosampleId": "fixture-bs-977"
+       },
+       {
+        "biosampleId": "fixture-bs-978"
+       },
+       {
+        "biosampleId": "fixture-bs-979"
+       },
+       {
+        "biosampleId": "fixture-bs-980"
+       },
+       {
+        "biosampleId": "fixture-bs-981"
+       },
+       {
+        "biosampleId": "fixture-bs-982"
+       },
+       {
+        "biosampleId": "fixture-bs-983"
+       },
+       {
+        "biosampleId": "fixture-bs-984"
+       },
+       {
+        "biosampleId": "fixture-bs-985"
+       },
+       {
+        "biosampleId": "fixture-bs-986"
+       },
+       {
+        "biosampleId": "fixture-bs-987"
+       },
+       {
+        "biosampleId": "fixture-bs-988"
+       },
+       {
+        "biosampleId": "fixture-bs-989"
+       },
+       {
+        "biosampleId": "fixture-bs-990"
+       },
+       {
+        "biosampleId": "fixture-bs-991"
+       },
+       {
+        "biosampleId": "fixture-bs-992"
+       },
+       {
+        "biosampleId": "fixture-bs-993"
+       },
+       {
+        "biosampleId": "fixture-bs-994"
+       },
+       {
+        "biosampleId": "fixture-bs-995"
+       },
+       {
+        "biosampleId": "fixture-bs-996"
+       },
+       {
+        "biosampleId": "fixture-bs-997"
+       },
+       {
+        "biosampleId": "fixture-bs-998"
+       },
+       {
+        "biosampleId": "fixture-bs-999"
+       },
+       {
+        "biosampleId": "fixture-bs-1000"
+       },
+       {
+        "biosampleId": "fixture-bs-1001"
+       },
+       {
+        "biosampleId": "fixture-bs-1002"
+       },
+       {
+        "biosampleId": "fixture-bs-1003"
+       },
+       {
+        "biosampleId": "fixture-bs-1004"
+       },
+       {
+        "biosampleId": "fixture-bs-1005"
+       },
+       {
+        "biosampleId": "fixture-bs-1006"
+       },
+       {
+        "biosampleId": "fixture-bs-1007"
+       },
+       {
+        "biosampleId": "fixture-bs-1008"
+       },
+       {
+        "biosampleId": "fixture-bs-1009"
+       },
+       {
+        "biosampleId": "fixture-bs-1010"
+       },
+       {
+        "biosampleId": "fixture-bs-1011"
+       },
+       {
+        "biosampleId": "fixture-bs-1012"
+       },
+       {
+        "biosampleId": "fixture-bs-1013"
+       },
+       {
+        "biosampleId": "fixture-bs-1014"
+       },
+       {
+        "biosampleId": "fixture-bs-1015"
+       },
+       {
+        "biosampleId": "fixture-bs-1016"
+       },
+       {
+        "biosampleId": "fixture-bs-1017"
+       },
+       {
+        "biosampleId": "fixture-bs-1018"
+       },
+       {
+        "biosampleId": "fixture-bs-1019"
+       },
+       {
+        "biosampleId": "fixture-bs-1020"
+       },
+       {
+        "biosampleId": "fixture-bs-1021"
+       },
+       {
+        "biosampleId": "fixture-bs-1022"
+       },
+       {
+        "biosampleId": "fixture-bs-1023"
+       },
+       {
+        "biosampleId": "fixture-bs-1024"
+       },
+       {
+        "biosampleId": "fixture-bs-1025"
+       },
+       {
+        "biosampleId": "fixture-bs-1026"
+       },
+       {
+        "biosampleId": "fixture-bs-1027"
+       },
+       {
+        "biosampleId": "fixture-bs-1028"
+       },
+       {
+        "biosampleId": "fixture-bs-1029"
+       },
+       {
+        "biosampleId": "fixture-bs-1030"
+       },
+       {
+        "biosampleId": "fixture-bs-1031"
+       },
+       {
+        "biosampleId": "fixture-bs-1032"
+       },
+       {
+        "biosampleId": "fixture-bs-1033"
+       },
+       {
+        "biosampleId": "fixture-bs-1034"
+       },
+       {
+        "biosampleId": "fixture-bs-1035"
+       },
+       {
+        "biosampleId": "fixture-bs-1036"
+       },
+       {
+        "biosampleId": "fixture-bs-1037"
+       },
+       {
+        "biosampleId": "fixture-bs-1038"
+       },
+       {
+        "biosampleId": "fixture-bs-1039"
+       },
+       {
+        "biosampleId": "fixture-bs-1040"
+       },
+       {
+        "biosampleId": "fixture-bs-1041"
+       },
+       {
+        "biosampleId": "fixture-bs-1042"
+       },
+       {
+        "biosampleId": "fixture-bs-1043"
+       },
+       {
+        "biosampleId": "fixture-bs-1044"
+       },
+       {
+        "biosampleId": "fixture-bs-1045"
+       },
+       {
+        "biosampleId": "fixture-bs-1046"
+       },
+       {
+        "biosampleId": "fixture-bs-1047"
+       },
+       {
+        "biosampleId": "fixture-bs-1048"
+       },
+       {
+        "biosampleId": "fixture-bs-1049"
+       },
+       {
+        "biosampleId": "fixture-bs-1050"
+       },
+       {
+        "biosampleId": "fixture-bs-1051"
+       },
+       {
+        "biosampleId": "fixture-bs-1052"
+       },
+       {
+        "biosampleId": "fixture-bs-1053"
+       },
+       {
+        "biosampleId": "fixture-bs-1054"
+       },
+       {
+        "biosampleId": "fixture-bs-1055"
+       },
+       {
+        "biosampleId": "fixture-bs-1056"
+       },
+       {
+        "biosampleId": "fixture-bs-1057"
+       },
+       {
+        "biosampleId": "fixture-bs-1058"
+       },
+       {
+        "biosampleId": "fixture-bs-1059"
+       },
+       {
+        "biosampleId": "fixture-bs-1060"
+       },
+       {
+        "biosampleId": "fixture-bs-1061"
+       },
+       {
+        "biosampleId": "fixture-bs-1062"
+       },
+       {
+        "biosampleId": "fixture-bs-1063"
+       },
+       {
+        "biosampleId": "fixture-bs-1064"
+       },
+       {
+        "biosampleId": "fixture-bs-1065"
+       },
+       {
+        "biosampleId": "fixture-bs-1066"
+       },
+       {
+        "biosampleId": "fixture-bs-1067"
+       },
+       {
+        "biosampleId": "fixture-bs-1068"
+       },
+       {
+        "biosampleId": "fixture-bs-1069"
+       },
+       {
+        "biosampleId": "fixture-bs-1070"
+       },
+       {
+        "biosampleId": "fixture-bs-1071"
+       },
+       {
+        "biosampleId": "fixture-bs-1072"
+       },
+       {
+        "biosampleId": "fixture-bs-1073"
+       },
+       {
+        "biosampleId": "fixture-bs-1074"
+       },
+       {
+        "biosampleId": "fixture-bs-1075"
+       },
+       {
+        "biosampleId": "fixture-bs-1076"
+       },
+       {
+        "biosampleId": "fixture-bs-1077"
+       },
+       {
+        "biosampleId": "fixture-bs-1078"
+       },
+       {
+        "biosampleId": "fixture-bs-1079"
+       },
+       {
+        "biosampleId": "fixture-bs-1080"
+       },
+       {
+        "biosampleId": "fixture-bs-1081"
+       },
+       {
+        "biosampleId": "fixture-bs-1082"
+       },
+       {
+        "biosampleId": "fixture-bs-1083"
+       },
+       {
+        "biosampleId": "fixture-bs-1084"
+       },
+       {
+        "biosampleId": "fixture-bs-1085"
+       },
+       {
+        "biosampleId": "fixture-bs-1086"
+       },
+       {
+        "biosampleId": "fixture-bs-1087"
+       },
+       {
+        "biosampleId": "fixture-bs-1088"
+       },
+       {
+        "biosampleId": "fixture-bs-1089"
+       },
+       {
+        "biosampleId": "fixture-bs-1090"
+       },
+       {
+        "biosampleId": "fixture-bs-1091"
+       },
+       {
+        "biosampleId": "fixture-bs-1092"
+       },
+       {
+        "biosampleId": "fixture-bs-1093"
+       },
+       {
+        "biosampleId": "fixture-bs-1094"
+       },
+       {
+        "biosampleId": "fixture-bs-1095"
+       },
+       {
+        "biosampleId": "fixture-bs-1096"
+       },
+       {
+        "biosampleId": "fixture-bs-1097"
+       },
+       {
+        "biosampleId": "fixture-bs-1098"
+       },
+       {
+        "biosampleId": "fixture-bs-1099"
+       },
+       {
+        "biosampleId": "fixture-bs-1100"
+       },
+       {
+        "biosampleId": "fixture-bs-1101"
+       },
+       {
+        "biosampleId": "fixture-bs-1102"
+       },
+       {
+        "biosampleId": "fixture-bs-1103"
+       },
+       {
+        "biosampleId": "fixture-bs-1104"
+       },
+       {
+        "biosampleId": "fixture-bs-1105"
+       },
+       {
+        "biosampleId": "fixture-bs-1106"
+       },
+       {
+        "biosampleId": "fixture-bs-1107"
+       },
+       {
+        "biosampleId": "fixture-bs-1108"
+       },
+       {
+        "biosampleId": "fixture-bs-1109"
+       },
+       {
+        "biosampleId": "fixture-bs-1110"
+       },
+       {
+        "biosampleId": "fixture-bs-1111"
+       },
+       {
+        "biosampleId": "fixture-bs-1112"
+       },
+       {
+        "biosampleId": "fixture-bs-1113"
+       },
+       {
+        "biosampleId": "fixture-bs-1114"
+       },
+       {
+        "biosampleId": "fixture-bs-1115"
+       },
+       {
+        "biosampleId": "fixture-bs-1116"
+       },
+       {
+        "biosampleId": "fixture-bs-1117"
+       },
+       {
+        "biosampleId": "fixture-bs-1118"
+       },
+       {
+        "biosampleId": "fixture-bs-1119"
+       },
+       {
+        "biosampleId": "fixture-bs-1120"
+       },
+       {
+        "biosampleId": "fixture-bs-1121"
+       },
+       {
+        "biosampleId": "fixture-bs-1122"
+       },
+       {
+        "biosampleId": "fixture-bs-1123"
+       },
+       {
+        "biosampleId": "fixture-bs-1124"
+       },
+       {
+        "biosampleId": "fixture-bs-1125"
+       },
+       {
+        "biosampleId": "fixture-bs-1126"
+       },
+       {
+        "biosampleId": "fixture-bs-1127"
+       },
+       {
+        "biosampleId": "fixture-bs-1128"
+       },
+       {
+        "biosampleId": "fixture-bs-1129"
+       },
+       {
+        "biosampleId": "fixture-bs-1130"
+       },
+       {
+        "biosampleId": "fixture-bs-1131"
+       },
+       {
+        "biosampleId": "fixture-bs-1132"
+       },
+       {
+        "biosampleId": "fixture-bs-1133"
+       },
+       {
+        "biosampleId": "fixture-bs-1134"
+       },
+       {
+        "biosampleId": "fixture-bs-1135"
+       },
+       {
+        "biosampleId": "fixture-bs-1136"
+       },
+       {
+        "biosampleId": "fixture-bs-1137"
+       },
+       {
+        "biosampleId": "fixture-bs-1138"
+       },
+       {
+        "biosampleId": "fixture-bs-1139"
+       },
+       {
+        "biosampleId": "fixture-bs-1140"
+       },
+       {
+        "biosampleId": "fixture-bs-1141"
+       },
+       {
+        "biosampleId": "fixture-bs-1142"
+       },
+       {
+        "biosampleId": "fixture-bs-1143"
+       },
+       {
+        "biosampleId": "fixture-bs-1144"
+       },
+       {
+        "biosampleId": "fixture-bs-1145"
+       },
+       {
+        "biosampleId": "fixture-bs-1146"
+       },
+       {
+        "biosampleId": "fixture-bs-1147"
+       },
+       {
+        "biosampleId": "fixture-bs-1148"
+       },
+       {
+        "biosampleId": "fixture-bs-1149"
+       },
+       {
+        "biosampleId": "fixture-bs-1150"
+       },
+       {
+        "biosampleId": "fixture-bs-1151"
+       },
+       {
+        "biosampleId": "fixture-bs-1152"
+       },
+       {
+        "biosampleId": "fixture-bs-1153"
+       },
+       {
+        "biosampleId": "fixture-bs-1154"
+       },
+       {
+        "biosampleId": "fixture-bs-1155"
+       },
+       {
+        "biosampleId": "fixture-bs-1156"
+       },
+       {
+        "biosampleId": "fixture-bs-1157"
+       },
+       {
+        "biosampleId": "fixture-bs-1158"
+       },
+       {
+        "biosampleId": "fixture-bs-1159"
+       },
+       {
+        "biosampleId": "fixture-bs-1160"
+       },
+       {
+        "biosampleId": "fixture-bs-1161"
+       },
+       {
+        "biosampleId": "fixture-bs-1162"
+       },
+       {
+        "biosampleId": "fixture-bs-1163"
+       },
+       {
+        "biosampleId": "fixture-bs-1164"
+       },
+       {
+        "biosampleId": "fixture-bs-1165"
+       },
+       {
+        "biosampleId": "fixture-bs-1166"
+       },
+       {
+        "biosampleId": "fixture-bs-1167"
+       },
+       {
+        "biosampleId": "fixture-bs-1168"
+       },
+       {
+        "biosampleId": "fixture-bs-1169"
+       },
+       {
+        "biosampleId": "fixture-bs-1170"
+       },
+       {
+        "biosampleId": "fixture-bs-1171"
+       },
+       {
+        "biosampleId": "fixture-bs-1172"
+       },
+       {
+        "biosampleId": "fixture-bs-1173"
+       },
+       {
+        "biosampleId": "fixture-bs-1174"
+       },
+       {
+        "biosampleId": "fixture-bs-1175"
+       },
+       {
+        "biosampleId": "fixture-bs-1176"
+       },
+       {
+        "biosampleId": "fixture-bs-1177"
+       },
+       {
+        "biosampleId": "fixture-bs-1178"
+       },
+       {
+        "biosampleId": "fixture-bs-1179"
+       },
+       {
+        "biosampleId": "fixture-bs-1180"
+       },
+       {
+        "biosampleId": "fixture-bs-1181"
+       },
+       {
+        "biosampleId": "fixture-bs-1182"
+       },
+       {
+        "biosampleId": "fixture-bs-1183"
+       },
+       {
+        "biosampleId": "fixture-bs-1184"
+       },
+       {
+        "biosampleId": "fixture-bs-1185"
+       },
+       {
+        "biosampleId": "fixture-bs-1186"
+       },
+       {
+        "biosampleId": "fixture-bs-1187"
+       },
+       {
+        "biosampleId": "fixture-bs-1188"
+       },
+       {
+        "biosampleId": "fixture-bs-1189"
+       },
+       {
+        "biosampleId": "fixture-bs-1190"
+       },
+       {
+        "biosampleId": "fixture-bs-1191"
+       },
+       {
+        "biosampleId": "fixture-bs-1192"
+       },
+       {
+        "biosampleId": "fixture-bs-1193"
+       },
+       {
+        "biosampleId": "fixture-bs-1194"
+       },
+       {
+        "biosampleId": "fixture-bs-1195"
+       },
+       {
+        "biosampleId": "fixture-bs-1196"
+       },
+       {
+        "biosampleId": "fixture-bs-1197"
+       },
+       {
+        "biosampleId": "fixture-bs-1198"
+       },
+       {
+        "biosampleId": "fixture-bs-1199"
+       },
+       {
+        "biosampleId": "fixture-bs-1200"
+       },
+       {
+        "biosampleId": "fixture-bs-1201"
+       },
+       {
+        "biosampleId": "fixture-bs-1202"
+       },
+       {
+        "biosampleId": "fixture-bs-1203"
+       },
+       {
+        "biosampleId": "fixture-bs-1204"
+       },
+       {
+        "biosampleId": "fixture-bs-1205"
+       },
+       {
+        "biosampleId": "fixture-bs-1206"
+       },
+       {
+        "biosampleId": "fixture-bs-1207"
+       },
+       {
+        "biosampleId": "fixture-bs-1208"
+       },
+       {
+        "biosampleId": "fixture-bs-1209"
+       },
+       {
+        "biosampleId": "fixture-bs-1210"
+       },
+       {
+        "biosampleId": "fixture-bs-1211"
+       },
+       {
+        "biosampleId": "fixture-bs-1212"
+       },
+       {
+        "biosampleId": "fixture-bs-1213"
+       },
+       {
+        "biosampleId": "fixture-bs-1214"
+       },
+       {
+        "biosampleId": "fixture-bs-1215"
+       },
+       {
+        "biosampleId": "fixture-bs-1216"
+       },
+       {
+        "biosampleId": "fixture-bs-1217"
+       },
+       {
+        "biosampleId": "fixture-bs-1218"
+       },
+       {
+        "biosampleId": "fixture-bs-1219"
+       },
+       {
+        "biosampleId": "fixture-bs-1220"
+       },
+       {
+        "biosampleId": "fixture-bs-1221"
+       },
+       {
+        "biosampleId": "fixture-bs-1222"
+       },
+       {
+        "biosampleId": "fixture-bs-1223"
+       },
+       {
+        "biosampleId": "fixture-bs-1224"
+       },
+       {
+        "biosampleId": "fixture-bs-1225"
+       },
+       {
+        "biosampleId": "fixture-bs-1226"
+       },
+       {
+        "biosampleId": "fixture-bs-1227"
+       },
+       {
+        "biosampleId": "fixture-bs-1228"
+       },
+       {
+        "biosampleId": "fixture-bs-1229"
+       },
+       {
+        "biosampleId": "fixture-bs-1230"
+       },
+       {
+        "biosampleId": "fixture-bs-1231"
+       },
+       {
+        "biosampleId": "fixture-bs-1232"
+       },
+       {
+        "biosampleId": "fixture-bs-1233"
+       },
+       {
+        "biosampleId": "fixture-bs-1234"
+       },
+       {
+        "biosampleId": "fixture-bs-1235"
+       },
+       {
+        "biosampleId": "fixture-bs-1236"
+       },
+       {
+        "biosampleId": "fixture-bs-1237"
+       },
+       {
+        "biosampleId": "fixture-bs-1238"
+       },
+       {
+        "biosampleId": "fixture-bs-1239"
+       },
+       {
+        "biosampleId": "fixture-bs-1240"
+       },
+       {
+        "biosampleId": "fixture-bs-1241"
+       },
+       {
+        "biosampleId": "fixture-bs-1242"
+       },
+       {
+        "biosampleId": "fixture-bs-1243"
+       },
+       {
+        "biosampleId": "fixture-bs-1244"
+       },
+       {
+        "biosampleId": "fixture-bs-1245"
+       },
+       {
+        "biosampleId": "fixture-bs-1246"
+       },
+       {
+        "biosampleId": "fixture-bs-1247"
+       },
+       {
+        "biosampleId": "fixture-bs-1248"
+       },
+       {
+        "biosampleId": "fixture-bs-1249"
+       },
+       {
+        "biosampleId": "fixture-bs-1250"
+       },
+       {
+        "biosampleId": "fixture-bs-1251"
+       },
+       {
+        "biosampleId": "fixture-bs-1252"
+       },
+       {
+        "biosampleId": "fixture-bs-1253"
+       },
+       {
+        "biosampleId": "fixture-bs-1254"
+       },
+       {
+        "biosampleId": "fixture-bs-1255"
+       },
+       {
+        "biosampleId": "fixture-bs-1256"
+       },
+       {
+        "biosampleId": "fixture-bs-1257"
+       },
+       {
+        "biosampleId": "fixture-bs-1258"
+       },
+       {
+        "biosampleId": "fixture-bs-1259"
+       },
+       {
+        "biosampleId": "fixture-bs-1260"
+       },
+       {
+        "biosampleId": "fixture-bs-1261"
+       },
+       {
+        "biosampleId": "fixture-bs-1262"
+       },
+       {
+        "biosampleId": "fixture-bs-1263"
+       },
+       {
+        "biosampleId": "fixture-bs-1264"
+       },
+       {
+        "biosampleId": "fixture-bs-1265"
+       },
+       {
+        "biosampleId": "fixture-bs-1266"
+       },
+       {
+        "biosampleId": "fixture-bs-1267"
+       },
+       {
+        "biosampleId": "fixture-bs-1268"
+       },
+       {
+        "biosampleId": "fixture-bs-1269"
+       },
+       {
+        "biosampleId": "fixture-bs-1270"
+       },
+       {
+        "biosampleId": "fixture-bs-1271"
+       },
+       {
+        "biosampleId": "fixture-bs-1272"
+       },
+       {
+        "biosampleId": "fixture-bs-1273"
+       },
+       {
+        "biosampleId": "fixture-bs-1274"
+       },
+       {
+        "biosampleId": "fixture-bs-1275"
+       },
+       {
+        "biosampleId": "fixture-bs-1276"
+       },
+       {
+        "biosampleId": "fixture-bs-1277"
+       },
+       {
+        "biosampleId": "fixture-bs-1278"
+       },
+       {
+        "biosampleId": "fixture-bs-1279"
+       },
+       {
+        "biosampleId": "fixture-bs-1280"
+       },
+       {
+        "biosampleId": "fixture-bs-1281"
+       },
+       {
+        "biosampleId": "fixture-bs-1282"
+       },
+       {
+        "biosampleId": "fixture-bs-1283"
+       },
+       {
+        "biosampleId": "fixture-bs-1284"
+       },
+       {
+        "biosampleId": "fixture-bs-1285"
+       },
+       {
+        "biosampleId": "fixture-bs-1286"
+       },
+       {
+        "biosampleId": "fixture-bs-1287"
+       },
+       {
+        "biosampleId": "fixture-bs-1288"
+       },
+       {
+        "biosampleId": "fixture-bs-1289"
+       },
+       {
+        "biosampleId": "fixture-bs-1290"
+       },
+       {
+        "biosampleId": "fixture-bs-1291"
+       },
+       {
+        "biosampleId": "fixture-bs-1292"
+       },
+       {
+        "biosampleId": "fixture-bs-1293"
+       },
+       {
+        "biosampleId": "fixture-bs-1294"
+       },
+       {
+        "biosampleId": "fixture-bs-1295"
+       },
+       {
+        "biosampleId": "fixture-bs-1296"
+       },
+       {
+        "biosampleId": "fixture-bs-1297"
+       },
+       {
+        "biosampleId": "fixture-bs-1298"
+       },
+       {
+        "biosampleId": "fixture-bs-1299"
+       },
+       {
+        "biosampleId": "fixture-bs-1300"
+       },
+       {
+        "biosampleId": "fixture-bs-1301"
+       },
+       {
+        "biosampleId": "fixture-bs-1302"
+       },
+       {
+        "biosampleId": "fixture-bs-1303"
+       },
+       {
+        "biosampleId": "fixture-bs-1304"
+       },
+       {
+        "biosampleId": "fixture-bs-1305"
+       },
+       {
+        "biosampleId": "fixture-bs-1306"
+       },
+       {
+        "biosampleId": "fixture-bs-1307"
+       },
+       {
+        "biosampleId": "fixture-bs-1308"
+       },
+       {
+        "biosampleId": "fixture-bs-1309"
+       },
+       {
+        "biosampleId": "fixture-bs-1310"
+       },
+       {
+        "biosampleId": "fixture-bs-1311"
+       },
+       {
+        "biosampleId": "fixture-bs-1312"
+       },
+       {
+        "biosampleId": "fixture-bs-1313"
+       },
+       {
+        "biosampleId": "fixture-bs-1314"
+       },
+       {
+        "biosampleId": "fixture-bs-1315"
+       },
+       {
+        "biosampleId": "fixture-bs-1316"
+       },
+       {
+        "biosampleId": "fixture-bs-1317"
+       },
+       {
+        "biosampleId": "fixture-bs-1318"
+       },
+       {
+        "biosampleId": "fixture-bs-1319"
+       },
+       {
+        "biosampleId": "fixture-bs-1320"
+       },
+       {
+        "biosampleId": "fixture-bs-1321"
+       },
+       {
+        "biosampleId": "fixture-bs-1322"
+       },
+       {
+        "biosampleId": "fixture-bs-1323"
+       },
+       {
+        "biosampleId": "fixture-bs-1324"
+       },
+       {
+        "biosampleId": "fixture-bs-1325"
+       },
+       {
+        "biosampleId": "fixture-bs-1326"
+       },
+       {
+        "biosampleId": "fixture-bs-1327"
+       },
+       {
+        "biosampleId": "fixture-bs-1328"
+       },
+       {
+        "biosampleId": "fixture-bs-1329"
+       },
+       {
+        "biosampleId": "fixture-bs-1330"
+       },
+       {
+        "biosampleId": "fixture-bs-1331"
+       },
+       {
+        "biosampleId": "fixture-bs-1332"
+       },
+       {
+        "biosampleId": "fixture-bs-1333"
+       },
+       {
+        "biosampleId": "fixture-bs-1334"
+       },
+       {
+        "biosampleId": "fixture-bs-1335"
+       },
+       {
+        "biosampleId": "fixture-bs-1336"
+       },
+       {
+        "biosampleId": "fixture-bs-1337"
+       },
+       {
+        "biosampleId": "fixture-bs-1338"
+       },
+       {
+        "biosampleId": "fixture-bs-1339"
+       },
+       {
+        "biosampleId": "fixture-bs-1340"
+       },
+       {
+        "biosampleId": "fixture-bs-1341"
+       },
+       {
+        "biosampleId": "fixture-bs-1342"
+       },
+       {
+        "biosampleId": "fixture-bs-1343"
+       },
+       {
+        "biosampleId": "fixture-bs-1344"
+       },
+       {
+        "biosampleId": "fixture-bs-1345"
+       },
+       {
+        "biosampleId": "fixture-bs-1346"
+       },
+       {
+        "biosampleId": "fixture-bs-1347"
+       },
+       {
+        "biosampleId": "fixture-bs-1348"
+       },
+       {
+        "biosampleId": "fixture-bs-1349"
+       },
+       {
+        "biosampleId": "fixture-bs-1350"
+       },
+       {
+        "biosampleId": "fixture-bs-1351"
+       },
+       {
+        "biosampleId": "fixture-bs-1352"
+       },
+       {
+        "biosampleId": "fixture-bs-1353"
+       },
+       {
+        "biosampleId": "fixture-bs-1354"
+       },
+       {
+        "biosampleId": "fixture-bs-1355"
+       },
+       {
+        "biosampleId": "fixture-bs-1356"
+       },
+       {
+        "biosampleId": "fixture-bs-1357"
+       },
+       {
+        "biosampleId": "fixture-bs-1358"
+       },
+       {
+        "biosampleId": "fixture-bs-1359"
+       },
+       {
+        "biosampleId": "fixture-bs-1360"
+       },
+       {
+        "biosampleId": "fixture-bs-1361"
+       },
+       {
+        "biosampleId": "fixture-bs-1362"
+       },
+       {
+        "biosampleId": "fixture-bs-1363"
+       },
+       {
+        "biosampleId": "fixture-bs-1364"
+       },
+       {
+        "biosampleId": "fixture-bs-1365"
+       },
+       {
+        "biosampleId": "fixture-bs-1366"
+       },
+       {
+        "biosampleId": "fixture-bs-1367"
+       },
+       {
+        "biosampleId": "fixture-bs-1368"
+       },
+       {
+        "biosampleId": "fixture-bs-1369"
+       },
+       {
+        "biosampleId": "fixture-bs-1370"
+       },
+       {
+        "biosampleId": "fixture-bs-1371"
+       },
+       {
+        "biosampleId": "fixture-bs-1372"
+       },
+       {
+        "biosampleId": "fixture-bs-1373"
+       },
+       {
+        "biosampleId": "fixture-bs-1374"
+       },
+       {
+        "biosampleId": "fixture-bs-1375"
+       },
+       {
+        "biosampleId": "fixture-bs-1376"
+       },
+       {
+        "biosampleId": "fixture-bs-1377"
+       },
+       {
+        "biosampleId": "fixture-bs-1378"
+       },
+       {
+        "biosampleId": "fixture-bs-1379"
+       },
+       {
+        "biosampleId": "fixture-bs-1380"
+       },
+       {
+        "biosampleId": "fixture-bs-1381"
+       },
+       {
+        "biosampleId": "fixture-bs-1382"
+       },
+       {
+        "biosampleId": "fixture-bs-1383"
+       },
+       {
+        "biosampleId": "fixture-bs-1384"
+       },
+       {
+        "biosampleId": "fixture-bs-1385"
+       },
+       {
+        "biosampleId": "fixture-bs-1386"
+       },
+       {
+        "biosampleId": "fixture-bs-1387"
+       },
+       {
+        "biosampleId": "fixture-bs-1388"
+       },
+       {
+        "biosampleId": "fixture-bs-1389"
+       },
+       {
+        "biosampleId": "fixture-bs-1390"
+       },
+       {
+        "biosampleId": "fixture-bs-1391"
+       },
+       {
+        "biosampleId": "fixture-bs-1392"
+       },
+       {
+        "biosampleId": "fixture-bs-1393"
+       },
+       {
+        "biosampleId": "fixture-bs-1394"
+       },
+       {
+        "biosampleId": "fixture-bs-1395"
+       },
+       {
+        "biosampleId": "fixture-bs-1396"
+       },
+       {
+        "biosampleId": "fixture-bs-1397"
+       },
+       {
+        "biosampleId": "fixture-bs-1398"
+       },
+       {
+        "biosampleId": "fixture-bs-1399"
+       },
+       {
+        "biosampleId": "fixture-bs-1400"
+       },
+       {
+        "biosampleId": "fixture-bs-1401"
+       },
+       {
+        "biosampleId": "fixture-bs-1402"
+       },
+       {
+        "biosampleId": "fixture-bs-1403"
+       },
+       {
+        "biosampleId": "fixture-bs-1404"
+       },
+       {
+        "biosampleId": "fixture-bs-1405"
+       },
+       {
+        "biosampleId": "fixture-bs-1406"
+       },
+       {
+        "biosampleId": "fixture-bs-1407"
+       },
+       {
+        "biosampleId": "fixture-bs-1408"
+       },
+       {
+        "biosampleId": "fixture-bs-1409"
+       },
+       {
+        "biosampleId": "fixture-bs-1410"
+       },
+       {
+        "biosampleId": "fixture-bs-1411"
+       },
+       {
+        "biosampleId": "fixture-bs-1412"
+       },
+       {
+        "biosampleId": "fixture-bs-1413"
+       },
+       {
+        "biosampleId": "fixture-bs-1414"
+       },
+       {
+        "biosampleId": "fixture-bs-1415"
+       },
+       {
+        "biosampleId": "fixture-bs-1416"
+       },
+       {
+        "biosampleId": "fixture-bs-1417"
+       },
+       {
+        "biosampleId": "fixture-bs-1418"
+       },
+       {
+        "biosampleId": "fixture-bs-1419"
+       },
+       {
+        "biosampleId": "fixture-bs-1420"
+       },
+       {
+        "biosampleId": "fixture-bs-1421"
+       },
+       {
+        "biosampleId": "fixture-bs-1422"
+       },
+       {
+        "biosampleId": "fixture-bs-1423"
+       },
+       {
+        "biosampleId": "fixture-bs-1424"
+       },
+       {
+        "biosampleId": "fixture-bs-1425"
+       },
+       {
+        "biosampleId": "fixture-bs-1426"
+       },
+       {
+        "biosampleId": "fixture-bs-1427"
+       },
+       {
+        "biosampleId": "fixture-bs-1428"
+       },
+       {
+        "biosampleId": "fixture-bs-1429"
+       },
+       {
+        "biosampleId": "fixture-bs-1430"
+       },
+       {
+        "biosampleId": "fixture-bs-1431"
+       },
+       {
+        "biosampleId": "fixture-bs-1432"
+       },
+       {
+        "biosampleId": "fixture-bs-1433"
+       },
+       {
+        "biosampleId": "fixture-bs-1434"
+       },
+       {
+        "biosampleId": "fixture-bs-1435"
+       },
+       {
+        "biosampleId": "fixture-bs-1436"
+       },
+       {
+        "biosampleId": "fixture-bs-1437"
+       },
+       {
+        "biosampleId": "fixture-bs-1438"
+       },
+       {
+        "biosampleId": "fixture-bs-1439"
+       },
+       {
+        "biosampleId": "fixture-bs-1440"
+       },
+       {
+        "biosampleId": "fixture-bs-1441"
+       },
+       {
+        "biosampleId": "fixture-bs-1442"
+       },
+       {
+        "biosampleId": "fixture-bs-1443"
+       },
+       {
+        "biosampleId": "fixture-bs-1444"
+       },
+       {
+        "biosampleId": "fixture-bs-1445"
+       },
+       {
+        "biosampleId": "fixture-bs-1446"
+       },
+       {
+        "biosampleId": "fixture-bs-1447"
+       },
+       {
+        "biosampleId": "fixture-bs-1448"
+       },
+       {
+        "biosampleId": "fixture-bs-1449"
+       },
+       {
+        "biosampleId": "fixture-bs-1450"
+       },
+       {
+        "biosampleId": "fixture-bs-1451"
+       },
+       {
+        "biosampleId": "fixture-bs-1452"
+       },
+       {
+        "biosampleId": "fixture-bs-1453"
+       },
+       {
+        "biosampleId": "fixture-bs-1454"
+       },
+       {
+        "biosampleId": "fixture-bs-1455"
+       },
+       {
+        "biosampleId": "fixture-bs-1456"
+       },
+       {
+        "biosampleId": "fixture-bs-1457"
+       },
+       {
+        "biosampleId": "fixture-bs-1458"
+       },
+       {
+        "biosampleId": "fixture-bs-1459"
+       },
+       {
+        "biosampleId": "fixture-bs-1460"
+       },
+       {
+        "biosampleId": "fixture-bs-1461"
+       },
+       {
+        "biosampleId": "fixture-bs-1462"
+       },
+       {
+        "biosampleId": "fixture-bs-1463"
+       },
+       {
+        "biosampleId": "fixture-bs-1464"
+       },
+       {
+        "biosampleId": "fixture-bs-1465"
+       },
+       {
+        "biosampleId": "fixture-bs-1466"
+       },
+       {
+        "biosampleId": "fixture-bs-1467"
+       },
+       {
+        "biosampleId": "fixture-bs-1468"
+       },
+       {
+        "biosampleId": "fixture-bs-1469"
+       },
+       {
+        "biosampleId": "fixture-bs-1470"
+       },
+       {
+        "biosampleId": "fixture-bs-1471"
+       },
+       {
+        "biosampleId": "fixture-bs-1472"
+       },
+       {
+        "biosampleId": "fixture-bs-1473"
+       },
+       {
+        "biosampleId": "fixture-bs-1474"
+       },
+       {
+        "biosampleId": "fixture-bs-1475"
+       },
+       {
+        "biosampleId": "fixture-bs-1476"
+       },
+       {
+        "biosampleId": "fixture-bs-1477"
+       },
+       {
+        "biosampleId": "fixture-bs-1478"
+       },
+       {
+        "biosampleId": "fixture-bs-1479"
+       },
+       {
+        "biosampleId": "fixture-bs-1480"
+       },
+       {
+        "biosampleId": "fixture-bs-1481"
+       },
+       {
+        "biosampleId": "fixture-bs-1482"
+       },
+       {
+        "biosampleId": "fixture-bs-1483"
+       },
+       {
+        "biosampleId": "fixture-bs-1484"
+       },
+       {
+        "biosampleId": "fixture-bs-1485"
+       },
+       {
+        "biosampleId": "fixture-bs-1486"
+       },
+       {
+        "biosampleId": "fixture-bs-1487"
+       },
+       {
+        "biosampleId": "fixture-bs-1488"
+       },
+       {
+        "biosampleId": "fixture-bs-1489"
+       },
+       {
+        "biosampleId": "fixture-bs-1490"
+       },
+       {
+        "biosampleId": "fixture-bs-1491"
+       },
+       {
+        "biosampleId": "fixture-bs-1492"
+       },
+       {
+        "biosampleId": "fixture-bs-1493"
+       },
+       {
+        "biosampleId": "fixture-bs-1494"
+       },
+       {
+        "biosampleId": "fixture-bs-1495"
+       },
+       {
+        "biosampleId": "fixture-bs-1496"
+       },
+       {
+        "biosampleId": "fixture-bs-1497"
+       },
+       {
+        "biosampleId": "fixture-bs-1498"
+       },
+       {
+        "biosampleId": "fixture-bs-1499"
+       },
+       {
+        "biosampleId": "fixture-bs-1500"
+       },
+       {
+        "biosampleId": "fixture-bs-1501"
+       },
+       {
+        "biosampleId": "fixture-bs-1502"
+       },
+       {
+        "biosampleId": "fixture-bs-1503"
+       },
+       {
+        "biosampleId": "fixture-bs-1504"
+       },
+       {
+        "biosampleId": "fixture-bs-1505"
+       },
+       {
+        "biosampleId": "fixture-bs-1506"
+       },
+       {
+        "biosampleId": "fixture-bs-1507"
+       },
+       {
+        "biosampleId": "fixture-bs-1508"
+       },
+       {
+        "biosampleId": "fixture-bs-1509"
+       },
+       {
+        "biosampleId": "fixture-bs-1510"
+       },
+       {
+        "biosampleId": "fixture-bs-1511"
+       },
+       {
+        "biosampleId": "fixture-bs-1512"
+       },
+       {
+        "biosampleId": "fixture-bs-1513"
+       },
+       {
+        "biosampleId": "fixture-bs-1514"
+       },
+       {
+        "biosampleId": "fixture-bs-1515"
+       },
+       {
+        "biosampleId": "fixture-bs-1516"
+       },
+       {
+        "biosampleId": "fixture-bs-1517"
+       },
+       {
+        "biosampleId": "fixture-bs-1518"
+       },
+       {
+        "biosampleId": "fixture-bs-1519"
+       },
+       {
+        "biosampleId": "fixture-bs-1520"
+       },
+       {
+        "biosampleId": "fixture-bs-1521"
+       },
+       {
+        "biosampleId": "fixture-bs-1522"
+       },
+       {
+        "biosampleId": "fixture-bs-1523"
+       },
+       {
+        "biosampleId": "fixture-bs-1524"
+       },
+       {
+        "biosampleId": "fixture-bs-1525"
+       },
+       {
+        "biosampleId": "fixture-bs-1526"
+       },
+       {
+        "biosampleId": "fixture-bs-1527"
+       },
+       {
+        "biosampleId": "fixture-bs-1528"
+       },
+       {
+        "biosampleId": "fixture-bs-1529"
+       },
+       {
+        "biosampleId": "fixture-bs-1530"
+       },
+       {
+        "biosampleId": "fixture-bs-1531"
+       },
+       {
+        "biosampleId": "fixture-bs-1532"
+       },
+       {
+        "biosampleId": "fixture-bs-1533"
+       },
+       {
+        "biosampleId": "fixture-bs-1534"
+       },
+       {
+        "biosampleId": "fixture-bs-1535"
+       },
+       {
+        "biosampleId": "fixture-bs-1536"
+       },
+       {
+        "biosampleId": "fixture-bs-1537"
+       },
+       {
+        "biosampleId": "fixture-bs-1538"
+       },
+       {
+        "biosampleId": "fixture-bs-1539"
+       },
+       {
+        "biosampleId": "fixture-bs-1540"
+       },
+       {
+        "biosampleId": "fixture-bs-1541"
+       },
+       {
+        "biosampleId": "fixture-bs-1542"
+       },
+       {
+        "biosampleId": "fixture-bs-1543"
+       },
+       {
+        "biosampleId": "fixture-bs-1544"
+       },
+       {
+        "biosampleId": "fixture-bs-1545"
+       },
+       {
+        "biosampleId": "fixture-bs-1546"
+       },
+       {
+        "biosampleId": "fixture-bs-1547"
+       },
+       {
+        "biosampleId": "fixture-bs-1548"
+       },
+       {
+        "biosampleId": "fixture-bs-1549"
+       },
+       {
+        "biosampleId": "fixture-bs-1550"
+       },
+       {
+        "biosampleId": "fixture-bs-1551"
+       },
+       {
+        "biosampleId": "fixture-bs-1552"
+       },
+       {
+        "biosampleId": "fixture-bs-1553"
+       },
+       {
+        "biosampleId": "fixture-bs-1554"
+       },
+       {
+        "biosampleId": "fixture-bs-1555"
+       },
+       {
+        "biosampleId": "fixture-bs-1556"
+       },
+       {
+        "biosampleId": "fixture-bs-1557"
+       },
+       {
+        "biosampleId": "fixture-bs-1558"
+       },
+       {
+        "biosampleId": "fixture-bs-1559"
+       },
+       {
+        "biosampleId": "fixture-bs-1560"
+       },
+       {
+        "biosampleId": "fixture-bs-1561"
+       },
+       {
+        "biosampleId": "fixture-bs-1562"
+       },
+       {
+        "biosampleId": "fixture-bs-1563"
+       },
+       {
+        "biosampleId": "fixture-bs-1564"
+       },
+       {
+        "biosampleId": "fixture-bs-1565"
+       },
+       {
+        "biosampleId": "fixture-bs-1566"
+       },
+       {
+        "biosampleId": "fixture-bs-1567"
+       },
+       {
+        "biosampleId": "fixture-bs-1568"
+       },
+       {
+        "biosampleId": "fixture-bs-1569"
+       },
+       {
+        "biosampleId": "fixture-bs-1570"
+       },
+       {
+        "biosampleId": "fixture-bs-1571"
+       },
+       {
+        "biosampleId": "fixture-bs-1572"
+       },
+       {
+        "biosampleId": "fixture-bs-1573"
+       },
+       {
+        "biosampleId": "fixture-bs-1574"
+       },
+       {
+        "biosampleId": "fixture-bs-1575"
+       },
+       {
+        "biosampleId": "fixture-bs-1576"
+       },
+       {
+        "biosampleId": "fixture-bs-1577"
+       },
+       {
+        "biosampleId": "fixture-bs-1578"
+       },
+       {
+        "biosampleId": "fixture-bs-1579"
+       },
+       {
+        "biosampleId": "fixture-bs-1580"
+       },
+       {
+        "biosampleId": "fixture-bs-1581"
+       },
+       {
+        "biosampleId": "fixture-bs-1582"
+       },
+       {
+        "biosampleId": "fixture-bs-1583"
+       },
+       {
+        "biosampleId": "fixture-bs-1584"
+       },
+       {
+        "biosampleId": "fixture-bs-1585"
+       },
+       {
+        "biosampleId": "fixture-bs-1586"
+       },
+       {
+        "biosampleId": "fixture-bs-1587"
+       },
+       {
+        "biosampleId": "fixture-bs-1588"
+       },
+       {
+        "biosampleId": "fixture-bs-1589"
+       },
+       {
+        "biosampleId": "fixture-bs-1590"
+       },
+       {
+        "biosampleId": "fixture-bs-1591"
+       },
+       {
+        "biosampleId": "fixture-bs-1592"
+       },
+       {
+        "biosampleId": "fixture-bs-1593"
+       },
+       {
+        "biosampleId": "fixture-bs-1594"
+       },
+       {
+        "biosampleId": "fixture-bs-1595"
+       },
+       {
+        "biosampleId": "fixture-bs-1596"
+       },
+       {
+        "biosampleId": "fixture-bs-1597"
+       },
+       {
+        "biosampleId": "fixture-bs-1598"
+       },
+       {
+        "biosampleId": "fixture-bs-1599"
+       },
+       {
+        "biosampleId": "fixture-bs-1600"
+       },
+       {
+        "biosampleId": "fixture-bs-1601"
+       },
+       {
+        "biosampleId": "fixture-bs-1602"
+       },
+       {
+        "biosampleId": "fixture-bs-1603"
+       },
+       {
+        "biosampleId": "fixture-bs-1604"
+       },
+       {
+        "biosampleId": "fixture-bs-1605"
+       },
+       {
+        "biosampleId": "fixture-bs-1606"
+       },
+       {
+        "biosampleId": "fixture-bs-1607"
+       },
+       {
+        "biosampleId": "fixture-bs-1608"
+       },
+       {
+        "biosampleId": "fixture-bs-1609"
+       },
+       {
+        "biosampleId": "fixture-bs-1610"
+       },
+       {
+        "biosampleId": "fixture-bs-1611"
+       },
+       {
+        "biosampleId": "fixture-bs-1612"
+       },
+       {
+        "biosampleId": "fixture-bs-1613"
+       },
+       {
+        "biosampleId": "fixture-bs-1614"
+       },
+       {
+        "biosampleId": "fixture-bs-1615"
+       },
+       {
+        "biosampleId": "fixture-bs-1616"
+       },
+       {
+        "biosampleId": "fixture-bs-1617"
+       },
+       {
+        "biosampleId": "fixture-bs-1618"
+       },
+       {
+        "biosampleId": "fixture-bs-1619"
+       },
+       {
+        "biosampleId": "fixture-bs-1620"
+       },
+       {
+        "biosampleId": "fixture-bs-1621"
+       },
+       {
+        "biosampleId": "fixture-bs-1622"
+       },
+       {
+        "biosampleId": "fixture-bs-1623"
+       },
+       {
+        "biosampleId": "fixture-bs-1624"
+       },
+       {
+        "biosampleId": "fixture-bs-1625"
+       },
+       {
+        "biosampleId": "fixture-bs-1626"
+       },
+       {
+        "biosampleId": "fixture-bs-1627"
+       },
+       {
+        "biosampleId": "fixture-bs-1628"
+       },
+       {
+        "biosampleId": "fixture-bs-1629"
+       },
+       {
+        "biosampleId": "fixture-bs-1630"
+       },
+       {
+        "biosampleId": "fixture-bs-1631"
+       },
+       {
+        "biosampleId": "fixture-bs-1632"
+       },
+       {
+        "biosampleId": "fixture-bs-1633"
+       },
+       {
+        "biosampleId": "fixture-bs-1634"
+       },
+       {
+        "biosampleId": "fixture-bs-1635"
+       },
+       {
+        "biosampleId": "fixture-bs-1636"
+       },
+       {
+        "biosampleId": "fixture-bs-1637"
+       },
+       {
+        "biosampleId": "fixture-bs-1638"
+       },
+       {
+        "biosampleId": "fixture-bs-1639"
+       },
+       {
+        "biosampleId": "fixture-bs-1640"
+       },
+       {
+        "biosampleId": "fixture-bs-1641"
+       },
+       {
+        "biosampleId": "fixture-bs-1642"
+       },
+       {
+        "biosampleId": "fixture-bs-1643"
+       },
+       {
+        "biosampleId": "fixture-bs-1644"
+       },
+       {
+        "biosampleId": "fixture-bs-1645"
+       },
+       {
+        "biosampleId": "fixture-bs-1646"
+       },
+       {
+        "biosampleId": "fixture-bs-1647"
+       },
+       {
+        "biosampleId": "fixture-bs-1648"
+       },
+       {
+        "biosampleId": "fixture-bs-1649"
+       },
+       {
+        "biosampleId": "fixture-bs-1650"
+       },
+       {
+        "biosampleId": "fixture-bs-1651"
+       },
+       {
+        "biosampleId": "fixture-bs-1652"
+       },
+       {
+        "biosampleId": "fixture-bs-1653"
+       },
+       {
+        "biosampleId": "fixture-bs-1654"
+       },
+       {
+        "biosampleId": "fixture-bs-1655"
+       },
+       {
+        "biosampleId": "fixture-bs-1656"
+       },
+       {
+        "biosampleId": "fixture-bs-1657"
+       },
+       {
+        "biosampleId": "fixture-bs-1658"
+       },
+       {
+        "biosampleId": "fixture-bs-1659"
+       },
+       {
+        "biosampleId": "fixture-bs-1660"
+       },
+       {
+        "biosampleId": "fixture-bs-1661"
+       },
+       {
+        "biosampleId": "fixture-bs-1662"
+       },
+       {
+        "biosampleId": "fixture-bs-1663"
+       },
+       {
+        "biosampleId": "fixture-bs-1664"
+       },
+       {
+        "biosampleId": "fixture-bs-1665"
+       },
+       {
+        "biosampleId": "fixture-bs-1666"
+       },
+       {
+        "biosampleId": "fixture-bs-1667"
+       },
+       {
+        "biosampleId": "fixture-bs-1668"
+       },
+       {
+        "biosampleId": "fixture-bs-1669"
+       },
+       {
+        "biosampleId": "fixture-bs-1670"
+       },
+       {
+        "biosampleId": "fixture-bs-1671"
+       },
+       {
+        "biosampleId": "fixture-bs-1672"
+       },
+       {
+        "biosampleId": "fixture-bs-1673"
+       },
+       {
+        "biosampleId": "fixture-bs-1674"
+       },
+       {
+        "biosampleId": "fixture-bs-1675"
+       },
+       {
+        "biosampleId": "fixture-bs-1676"
+       },
+       {
+        "biosampleId": "fixture-bs-1677"
+       },
+       {
+        "biosampleId": "fixture-bs-1678"
+       },
+       {
+        "biosampleId": "fixture-bs-1679"
+       },
+       {
+        "biosampleId": "fixture-bs-1680"
+       },
+       {
+        "biosampleId": "fixture-bs-1681"
+       },
+       {
+        "biosampleId": "fixture-bs-1682"
+       },
+       {
+        "biosampleId": "fixture-bs-1683"
+       },
+       {
+        "biosampleId": "fixture-bs-1684"
+       },
+       {
+        "biosampleId": "fixture-bs-1685"
+       },
+       {
+        "biosampleId": "fixture-bs-1686"
+       },
+       {
+        "biosampleId": "fixture-bs-1687"
+       },
+       {
+        "biosampleId": "fixture-bs-1688"
+       },
+       {
+        "biosampleId": "fixture-bs-1689"
+       },
+       {
+        "biosampleId": "fixture-bs-1690"
+       },
+       {
+        "biosampleId": "fixture-bs-1691"
+       },
+       {
+        "biosampleId": "fixture-bs-1692"
+       },
+       {
+        "biosampleId": "fixture-bs-1693"
+       },
+       {
+        "biosampleId": "fixture-bs-1694"
+       },
+       {
+        "biosampleId": "fixture-bs-1695"
+       },
+       {
+        "biosampleId": "fixture-bs-1696"
+       },
+       {
+        "biosampleId": "fixture-bs-1697"
+       },
+       {
+        "biosampleId": "fixture-bs-1698"
+       },
+       {
+        "biosampleId": "fixture-bs-1699"
+       },
+       {
+        "biosampleId": "fixture-bs-1700"
+       },
+       {
+        "biosampleId": "fixture-bs-1701"
+       },
+       {
+        "biosampleId": "fixture-bs-1702"
+       },
+       {
+        "biosampleId": "fixture-bs-1703"
+       },
+       {
+        "biosampleId": "fixture-bs-1704"
+       },
+       {
+        "biosampleId": "fixture-bs-1705"
+       },
+       {
+        "biosampleId": "fixture-bs-1706"
+       },
+       {
+        "biosampleId": "fixture-bs-1707"
+       },
+       {
+        "biosampleId": "fixture-bs-1708"
+       },
+       {
+        "biosampleId": "fixture-bs-1709"
+       },
+       {
+        "biosampleId": "fixture-bs-1710"
+       },
+       {
+        "biosampleId": "fixture-bs-1711"
+       },
+       {
+        "biosampleId": "fixture-bs-1712"
+       },
+       {
+        "biosampleId": "fixture-bs-1713"
+       },
+       {
+        "biosampleId": "fixture-bs-1714"
+       },
+       {
+        "biosampleId": "fixture-bs-1715"
+       },
+       {
+        "biosampleId": "fixture-bs-1716"
+       },
+       {
+        "biosampleId": "fixture-bs-1717"
+       },
+       {
+        "biosampleId": "fixture-bs-1718"
+       },
+       {
+        "biosampleId": "fixture-bs-1719"
+       },
+       {
+        "biosampleId": "fixture-bs-1720"
+       },
+       {
+        "biosampleId": "fixture-bs-1721"
+       },
+       {
+        "biosampleId": "fixture-bs-1722"
+       },
+       {
+        "biosampleId": "fixture-bs-1723"
+       },
+       {
+        "biosampleId": "fixture-bs-1724"
+       },
+       {
+        "biosampleId": "fixture-bs-1725"
+       },
+       {
+        "biosampleId": "fixture-bs-1726"
+       },
+       {
+        "biosampleId": "fixture-bs-1727"
+       },
+       {
+        "biosampleId": "fixture-bs-1728"
+       },
+       {
+        "biosampleId": "fixture-bs-1729"
+       },
+       {
+        "biosampleId": "fixture-bs-1730"
+       },
+       {
+        "biosampleId": "fixture-bs-1731"
+       },
+       {
+        "biosampleId": "fixture-bs-1732"
+       },
+       {
+        "biosampleId": "fixture-bs-1733"
+       },
+       {
+        "biosampleId": "fixture-bs-1734"
+       },
+       {
+        "biosampleId": "fixture-bs-1735"
+       },
+       {
+        "biosampleId": "fixture-bs-1736"
+       },
+       {
+        "biosampleId": "fixture-bs-1737"
+       },
+       {
+        "biosampleId": "fixture-bs-1738"
+       },
+       {
+        "biosampleId": "fixture-bs-1739"
+       },
+       {
+        "biosampleId": "fixture-bs-1740"
+       },
+       {
+        "biosampleId": "fixture-bs-1741"
+       },
+       {
+        "biosampleId": "fixture-bs-1742"
+       },
+       {
+        "biosampleId": "fixture-bs-1743"
+       },
+       {
+        "biosampleId": "fixture-bs-1744"
+       },
+       {
+        "biosampleId": "fixture-bs-1745"
+       },
+       {
+        "biosampleId": "fixture-bs-1746"
+       },
+       {
+        "biosampleId": "fixture-bs-1747"
+       },
+       {
+        "biosampleId": "fixture-bs-1748"
+       },
+       {
+        "biosampleId": "fixture-bs-1749"
+       },
+       {
+        "biosampleId": "fixture-bs-1750"
+       },
+       {
+        "biosampleId": "fixture-bs-1751"
+       },
+       {
+        "biosampleId": "fixture-bs-1752"
+       },
+       {
+        "biosampleId": "fixture-bs-1753"
+       },
+       {
+        "biosampleId": "fixture-bs-1754"
+       },
+       {
+        "biosampleId": "fixture-bs-1755"
+       },
+       {
+        "biosampleId": "fixture-bs-1756"
+       },
+       {
+        "biosampleId": "fixture-bs-1757"
+       },
+       {
+        "biosampleId": "fixture-bs-1758"
+       },
+       {
+        "biosampleId": "fixture-bs-1759"
+       },
+       {
+        "biosampleId": "fixture-bs-1760"
+       },
+       {
+        "biosampleId": "fixture-bs-1761"
+       },
+       {
+        "biosampleId": "fixture-bs-1762"
+       },
+       {
+        "biosampleId": "fixture-bs-1763"
+       },
+       {
+        "biosampleId": "fixture-bs-1764"
+       },
+       {
+        "biosampleId": "fixture-bs-1765"
+       },
+       {
+        "biosampleId": "fixture-bs-1766"
+       },
+       {
+        "biosampleId": "fixture-bs-1767"
+       },
+       {
+        "biosampleId": "fixture-bs-1768"
+       },
+       {
+        "biosampleId": "fixture-bs-1769"
+       },
+       {
+        "biosampleId": "fixture-bs-1770"
+       },
+       {
+        "biosampleId": "fixture-bs-1771"
+       },
+       {
+        "biosampleId": "fixture-bs-1772"
+       },
+       {
+        "biosampleId": "fixture-bs-1773"
+       },
+       {
+        "biosampleId": "fixture-bs-1774"
+       },
+       {
+        "biosampleId": "fixture-bs-1775"
+       },
+       {
+        "biosampleId": "fixture-bs-1776"
+       },
+       {
+        "biosampleId": "fixture-bs-1777"
+       },
+       {
+        "biosampleId": "fixture-bs-1778"
+       },
+       {
+        "biosampleId": "fixture-bs-1779"
+       },
+       {
+        "biosampleId": "fixture-bs-1780"
+       },
+       {
+        "biosampleId": "fixture-bs-1781"
+       },
+       {
+        "biosampleId": "fixture-bs-1782"
+       },
+       {
+        "biosampleId": "fixture-bs-1783"
+       },
+       {
+        "biosampleId": "fixture-bs-1784"
+       },
+       {
+        "biosampleId": "fixture-bs-1785"
+       },
+       {
+        "biosampleId": "fixture-bs-1786"
+       },
+       {
+        "biosampleId": "fixture-bs-1787"
+       },
+       {
+        "biosampleId": "fixture-bs-1788"
+       },
+       {
+        "biosampleId": "fixture-bs-1789"
+       },
+       {
+        "biosampleId": "fixture-bs-1790"
+       },
+       {
+        "biosampleId": "fixture-bs-1791"
+       },
+       {
+        "biosampleId": "fixture-bs-1792"
+       },
+       {
+        "biosampleId": "fixture-bs-1793"
+       },
+       {
+        "biosampleId": "fixture-bs-1794"
+       },
+       {
+        "biosampleId": "fixture-bs-1795"
+       },
+       {
+        "biosampleId": "fixture-bs-1796"
+       },
+       {
+        "biosampleId": "fixture-bs-1797"
+       },
+       {
+        "biosampleId": "fixture-bs-1798"
+       },
+       {
+        "biosampleId": "fixture-bs-1799"
+       },
+       {
+        "biosampleId": "fixture-bs-1800"
+       },
+       {
+        "biosampleId": "fixture-bs-1801"
+       },
+       {
+        "biosampleId": "fixture-bs-1802"
+       },
+       {
+        "biosampleId": "fixture-bs-1803"
+       },
+       {
+        "biosampleId": "fixture-bs-1804"
+       },
+       {
+        "biosampleId": "fixture-bs-1805"
+       },
+       {
+        "biosampleId": "fixture-bs-1806"
+       },
+       {
+        "biosampleId": "fixture-bs-1807"
+       },
+       {
+        "biosampleId": "fixture-bs-1808"
+       },
+       {
+        "biosampleId": "fixture-bs-1809"
+       },
+       {
+        "biosampleId": "fixture-bs-1810"
+       },
+       {
+        "biosampleId": "fixture-bs-1811"
+       },
+       {
+        "biosampleId": "fixture-bs-1812"
+       },
+       {
+        "biosampleId": "fixture-bs-1813"
+       },
+       {
+        "biosampleId": "fixture-bs-1814"
+       },
+       {
+        "biosampleId": "fixture-bs-1815"
+       },
+       {
+        "biosampleId": "fixture-bs-1816"
+       },
+       {
+        "biosampleId": "fixture-bs-1817"
+       },
+       {
+        "biosampleId": "fixture-bs-1818"
+       },
+       {
+        "biosampleId": "fixture-bs-1819"
+       },
+       {
+        "biosampleId": "fixture-bs-1820"
+       },
+       {
+        "biosampleId": "fixture-bs-1821"
+       },
+       {
+        "biosampleId": "fixture-bs-1822"
+       },
+       {
+        "biosampleId": "fixture-bs-1823"
+       },
+       {
+        "biosampleId": "fixture-bs-1824"
+       },
+       {
+        "biosampleId": "fixture-bs-1825"
+       },
+       {
+        "biosampleId": "fixture-bs-1826"
+       },
+       {
+        "biosampleId": "fixture-bs-1827"
+       },
+       {
+        "biosampleId": "fixture-bs-1828"
+       },
+       {
+        "biosampleId": "fixture-bs-1829"
+       },
+       {
+        "biosampleId": "fixture-bs-1830"
+       },
+       {
+        "biosampleId": "fixture-bs-1831"
+       },
+       {
+        "biosampleId": "fixture-bs-1832"
+       },
+       {
+        "biosampleId": "fixture-bs-1833"
+       },
+       {
+        "biosampleId": "fixture-bs-1834"
+       },
+       {
+        "biosampleId": "fixture-bs-1835"
+       },
+       {
+        "biosampleId": "fixture-bs-1836"
+       },
+       {
+        "biosampleId": "fixture-bs-1837"
+       },
+       {
+        "biosampleId": "fixture-bs-1838"
+       },
+       {
+        "biosampleId": "fixture-bs-1839"
+       },
+       {
+        "biosampleId": "fixture-bs-1840"
+       },
+       {
+        "biosampleId": "fixture-bs-1841"
+       },
+       {
+        "biosampleId": "fixture-bs-1842"
+       },
+       {
+        "biosampleId": "fixture-bs-1843"
+       },
+       {
+        "biosampleId": "fixture-bs-1844"
+       },
+       {
+        "biosampleId": "fixture-bs-1845"
+       },
+       {
+        "biosampleId": "fixture-bs-1846"
+       },
+       {
+        "biosampleId": "fixture-bs-1847"
+       },
+       {
+        "biosampleId": "fixture-bs-1848"
+       },
+       {
+        "biosampleId": "fixture-bs-1849"
+       },
+       {
+        "biosampleId": "fixture-bs-1850"
+       },
+       {
+        "biosampleId": "fixture-bs-1851"
+       },
+       {
+        "biosampleId": "fixture-bs-1852"
+       },
+       {
+        "biosampleId": "fixture-bs-1853"
+       },
+       {
+        "biosampleId": "fixture-bs-1854"
+       },
+       {
+        "biosampleId": "fixture-bs-1855"
+       },
+       {
+        "biosampleId": "fixture-bs-1856"
+       },
+       {
+        "biosampleId": "fixture-bs-1857"
+       },
+       {
+        "biosampleId": "fixture-bs-1858"
+       },
+       {
+        "biosampleId": "fixture-bs-1859"
+       },
+       {
+        "biosampleId": "fixture-bs-1860"
+       },
+       {
+        "biosampleId": "fixture-bs-1861"
+       },
+       {
+        "biosampleId": "fixture-bs-1862"
+       },
+       {
+        "biosampleId": "fixture-bs-1863"
+       },
+       {
+        "biosampleId": "fixture-bs-1864"
+       },
+       {
+        "biosampleId": "fixture-bs-1865"
+       },
+       {
+        "biosampleId": "fixture-bs-1866"
+       },
+       {
+        "biosampleId": "fixture-bs-1867"
+       },
+       {
+        "biosampleId": "fixture-bs-1868"
+       },
+       {
+        "biosampleId": "fixture-bs-1869"
+       },
+       {
+        "biosampleId": "fixture-bs-1870"
+       },
+       {
+        "biosampleId": "fixture-bs-1871"
+       },
+       {
+        "biosampleId": "fixture-bs-1872"
+       },
+       {
+        "biosampleId": "fixture-bs-1873"
+       },
+       {
+        "biosampleId": "fixture-bs-1874"
+       },
+       {
+        "biosampleId": "fixture-bs-1875"
+       },
+       {
+        "biosampleId": "fixture-bs-1876"
+       },
+       {
+        "biosampleId": "fixture-bs-1877"
+       },
+       {
+        "biosampleId": "fixture-bs-1878"
+       },
+       {
+        "biosampleId": "fixture-bs-1879"
+       },
+       {
+        "biosampleId": "fixture-bs-1880"
+       },
+       {
+        "biosampleId": "fixture-bs-1881"
+       },
+       {
+        "biosampleId": "fixture-bs-1882"
+       },
+       {
+        "biosampleId": "fixture-bs-1883"
+       },
+       {
+        "biosampleId": "fixture-bs-1884"
+       },
+       {
+        "biosampleId": "fixture-bs-1885"
+       },
+       {
+        "biosampleId": "fixture-bs-1886"
+       },
+       {
+        "biosampleId": "fixture-bs-1887"
+       },
+       {
+        "biosampleId": "fixture-bs-1888"
+       },
+       {
+        "biosampleId": "fixture-bs-1889"
+       },
+       {
+        "biosampleId": "fixture-bs-1890"
+       },
+       {
+        "biosampleId": "fixture-bs-1891"
+       },
+       {
+        "biosampleId": "fixture-bs-1892"
+       },
+       {
+        "biosampleId": "fixture-bs-1893"
+       },
+       {
+        "biosampleId": "fixture-bs-1894"
+       },
+       {
+        "biosampleId": "fixture-bs-1895"
+       },
+       {
+        "biosampleId": "fixture-bs-1896"
+       },
+       {
+        "biosampleId": "fixture-bs-1897"
+       },
+       {
+        "biosampleId": "fixture-bs-1898"
+       },
+       {
+        "biosampleId": "fixture-bs-1899"
+       },
+       {
+        "biosampleId": "fixture-bs-1900"
+       },
+       {
+        "biosampleId": "fixture-bs-1901"
+       },
+       {
+        "biosampleId": "fixture-bs-1902"
+       },
+       {
+        "biosampleId": "fixture-bs-1903"
+       },
+       {
+        "biosampleId": "fixture-bs-1904"
+       },
+       {
+        "biosampleId": "fixture-bs-1905"
+       },
+       {
+        "biosampleId": "fixture-bs-1906"
+       },
+       {
+        "biosampleId": "fixture-bs-1907"
+       },
+       {
+        "biosampleId": "fixture-bs-1908"
+       },
+       {
+        "biosampleId": "fixture-bs-1909"
+       },
+       {
+        "biosampleId": "fixture-bs-1910"
+       },
+       {
+        "biosampleId": "fixture-bs-1911"
+       },
+       {
+        "biosampleId": "fixture-bs-1912"
+       },
+       {
+        "biosampleId": "fixture-bs-1913"
+       },
+       {
+        "biosampleId": "fixture-bs-1914"
+       },
+       {
+        "biosampleId": "fixture-bs-1915"
+       },
+       {
+        "biosampleId": "fixture-bs-1916"
+       },
+       {
+        "biosampleId": "fixture-bs-1917"
+       },
+       {
+        "biosampleId": "fixture-bs-1918"
+       },
+       {
+        "biosampleId": "fixture-bs-1919"
+       },
+       {
+        "biosampleId": "fixture-bs-1920"
+       },
+       {
+        "biosampleId": "fixture-bs-1921"
+       },
+       {
+        "biosampleId": "fixture-bs-1922"
+       },
+       {
+        "biosampleId": "fixture-bs-1923"
+       },
+       {
+        "biosampleId": "fixture-bs-1924"
+       },
+       {
+        "biosampleId": "fixture-bs-1925"
+       },
+       {
+        "biosampleId": "fixture-bs-1926"
+       },
+       {
+        "biosampleId": "fixture-bs-1927"
+       },
+       {
+        "biosampleId": "fixture-bs-1928"
+       },
+       {
+        "biosampleId": "fixture-bs-1929"
+       },
+       {
+        "biosampleId": "fixture-bs-1930"
+       },
+       {
+        "biosampleId": "fixture-bs-1931"
+       },
+       {
+        "biosampleId": "fixture-bs-1932"
+       },
+       {
+        "biosampleId": "fixture-bs-1933"
+       },
+       {
+        "biosampleId": "fixture-bs-1934"
+       },
+       {
+        "biosampleId": "fixture-bs-1935"
+       },
+       {
+        "biosampleId": "fixture-bs-1936"
+       },
+       {
+        "biosampleId": "fixture-bs-1937"
+       },
+       {
+        "biosampleId": "fixture-bs-1938"
+       },
+       {
+        "biosampleId": "fixture-bs-1939"
+       },
+       {
+        "biosampleId": "fixture-bs-1940"
+       },
+       {
+        "biosampleId": "fixture-bs-1941"
+       },
+       {
+        "biosampleId": "fixture-bs-1942"
+       },
+       {
+        "biosampleId": "fixture-bs-1943"
+       },
+       {
+        "biosampleId": "fixture-bs-1944"
+       },
+       {
+        "biosampleId": "fixture-bs-1945"
+       },
+       {
+        "biosampleId": "fixture-bs-1946"
+       },
+       {
+        "biosampleId": "fixture-bs-1947"
+       },
+       {
+        "biosampleId": "fixture-bs-1948"
+       },
+       {
+        "biosampleId": "fixture-bs-1949"
+       },
+       {
+        "biosampleId": "fixture-bs-1950"
+       },
+       {
+        "biosampleId": "fixture-bs-1951"
+       },
+       {
+        "biosampleId": "fixture-bs-1952"
+       },
+       {
+        "biosampleId": "fixture-bs-1953"
+       },
+       {
+        "biosampleId": "fixture-bs-1954"
+       },
+       {
+        "biosampleId": "fixture-bs-1955"
+       },
+       {
+        "biosampleId": "fixture-bs-1956"
+       },
+       {
+        "biosampleId": "fixture-bs-1957"
+       },
+       {
+        "biosampleId": "fixture-bs-1958"
+       },
+       {
+        "biosampleId": "fixture-bs-1959"
+       },
+       {
+        "biosampleId": "fixture-bs-1960"
+       },
+       {
+        "biosampleId": "fixture-bs-1961"
+       },
+       {
+        "biosampleId": "fixture-bs-1962"
+       },
+       {
+        "biosampleId": "fixture-bs-1963"
+       },
+       {
+        "biosampleId": "fixture-bs-1964"
+       },
+       {
+        "biosampleId": "fixture-bs-1965"
+       },
+       {
+        "biosampleId": "fixture-bs-1966"
+       },
+       {
+        "biosampleId": "fixture-bs-1967"
+       },
+       {
+        "biosampleId": "fixture-bs-1968"
+       },
+       {
+        "biosampleId": "fixture-bs-1969"
+       },
+       {
+        "biosampleId": "fixture-bs-1970"
+       },
+       {
+        "biosampleId": "fixture-bs-1971"
+       },
+       {
+        "biosampleId": "fixture-bs-1972"
+       },
+       {
+        "biosampleId": "fixture-bs-1973"
+       },
+       {
+        "biosampleId": "fixture-bs-1974"
+       },
+       {
+        "biosampleId": "fixture-bs-1975"
+       },
+       {
+        "biosampleId": "fixture-bs-1976"
+       },
+       {
+        "biosampleId": "fixture-bs-1977"
+       },
+       {
+        "biosampleId": "fixture-bs-1978"
+       },
+       {
+        "biosampleId": "fixture-bs-1979"
+       },
+       {
+        "biosampleId": "fixture-bs-1980"
+       },
+       {
+        "biosampleId": "fixture-bs-1981"
+       },
+       {
+        "biosampleId": "fixture-bs-1982"
+       },
+       {
+        "biosampleId": "fixture-bs-1983"
+       },
+       {
+        "biosampleId": "fixture-bs-1984"
+       },
+       {
+        "biosampleId": "fixture-bs-1985"
+       },
+       {
+        "biosampleId": "fixture-bs-1986"
+       },
+       {
+        "biosampleId": "fixture-bs-1987"
+       },
+       {
+        "biosampleId": "fixture-bs-1988"
+       },
+       {
+        "biosampleId": "fixture-bs-1989"
+       },
+       {
+        "biosampleId": "fixture-bs-1990"
+       },
+       {
+        "biosampleId": "fixture-bs-1991"
+       },
+       {
+        "biosampleId": "fixture-bs-1992"
+       },
+       {
+        "biosampleId": "fixture-bs-1993"
+       },
+       {
+        "biosampleId": "fixture-bs-1994"
+       },
+       {
+        "biosampleId": "fixture-bs-1995"
+       },
+       {
+        "biosampleId": "fixture-bs-1996"
+       },
+       {
+        "biosampleId": "fixture-bs-1997"
+       },
+       {
+        "biosampleId": "fixture-bs-1998"
+       },
+       {
+        "biosampleId": "fixture-bs-1999"
+       },
+       {
+        "biosampleId": "fixture-bs-2000"
+       },
+       {
+        "biosampleId": "fixture-bs-2001"
+       },
+       {
+        "biosampleId": "fixture-bs-2002"
+       },
+       {
+        "biosampleId": "fixture-bs-2003"
+       },
+       {
+        "biosampleId": "fixture-bs-2004"
+       },
+       {
+        "biosampleId": "fixture-bs-2005"
+       },
+       {
+        "biosampleId": "fixture-bs-2006"
+       },
+       {
+        "biosampleId": "fixture-bs-2007"
+       },
+       {
+        "biosampleId": "fixture-bs-2008"
+       },
+       {
+        "biosampleId": "fixture-bs-2009"
+       },
+       {
+        "biosampleId": "fixture-bs-2010"
+       },
+       {
+        "biosampleId": "fixture-bs-2011"
+       },
+       {
+        "biosampleId": "fixture-bs-2012"
+       },
+       {
+        "biosampleId": "fixture-bs-2013"
+       },
+       {
+        "biosampleId": "fixture-bs-2014"
+       },
+       {
+        "biosampleId": "fixture-bs-2015"
+       },
+       {
+        "biosampleId": "fixture-bs-2016"
+       },
+       {
+        "biosampleId": "fixture-bs-2017"
+       },
+       {
+        "biosampleId": "fixture-bs-2018"
+       },
+       {
+        "biosampleId": "fixture-bs-2019"
+       },
+       {
+        "biosampleId": "fixture-bs-2020"
+       },
+       {
+        "biosampleId": "fixture-bs-2021"
+       },
+       {
+        "biosampleId": "fixture-bs-2022"
+       },
+       {
+        "biosampleId": "fixture-bs-2023"
+       },
+       {
+        "biosampleId": "fixture-bs-2024"
+       },
+       {
+        "biosampleId": "fixture-bs-2025"
+       },
+       {
+        "biosampleId": "fixture-bs-2026"
+       },
+       {
+        "biosampleId": "fixture-bs-2027"
+       },
+       {
+        "biosampleId": "fixture-bs-2028"
+       },
+       {
+        "biosampleId": "fixture-bs-2029"
+       },
+       {
+        "biosampleId": "fixture-bs-2030"
+       },
+       {
+        "biosampleId": "fixture-bs-2031"
+       },
+       {
+        "biosampleId": "fixture-bs-2032"
+       },
+       {
+        "biosampleId": "fixture-bs-2033"
+       },
+       {
+        "biosampleId": "fixture-bs-2034"
+       },
+       {
+        "biosampleId": "fixture-bs-2035"
+       },
+       {
+        "biosampleId": "fixture-bs-2036"
+       },
+       {
+        "biosampleId": "fixture-bs-2037"
+       },
+       {
+        "biosampleId": "fixture-bs-2038"
+       },
+       {
+        "biosampleId": "fixture-bs-2039"
+       },
+       {
+        "biosampleId": "fixture-bs-2040"
+       },
+       {
+        "biosampleId": "fixture-bs-2041"
+       },
+       {
+        "biosampleId": "fixture-bs-2042"
+       },
+       {
+        "biosampleId": "fixture-bs-2043"
+       },
+       {
+        "biosampleId": "fixture-bs-2044"
+       },
+       {
+        "biosampleId": "fixture-bs-2045"
+       },
+       {
+        "biosampleId": "fixture-bs-2046"
+       },
+       {
+        "biosampleId": "fixture-bs-2047"
+       },
+       {
+        "biosampleId": "fixture-bs-2048"
+       },
+       {
+        "biosampleId": "fixture-bs-2049"
+       },
+       {
+        "biosampleId": "fixture-bs-2050"
+       },
+       {
+        "biosampleId": "fixture-bs-2051"
+       },
+       {
+        "biosampleId": "fixture-bs-2052"
+       },
+       {
+        "biosampleId": "fixture-bs-2053"
+       },
+       {
+        "biosampleId": "fixture-bs-2054"
+       },
+       {
+        "biosampleId": "fixture-bs-2055"
+       },
+       {
+        "biosampleId": "fixture-bs-2056"
+       },
+       {
+        "biosampleId": "fixture-bs-2057"
+       },
+       {
+        "biosampleId": "fixture-bs-2058"
+       },
+       {
+        "biosampleId": "fixture-bs-2059"
+       },
+       {
+        "biosampleId": "fixture-bs-2060"
+       },
+       {
+        "biosampleId": "fixture-bs-2061"
+       },
+       {
+        "biosampleId": "fixture-bs-2062"
+       },
+       {
+        "biosampleId": "fixture-bs-2063"
+       },
+       {
+        "biosampleId": "fixture-bs-2064"
+       },
+       {
+        "biosampleId": "fixture-bs-2065"
+       },
+       {
+        "biosampleId": "fixture-bs-2066"
+       },
+       {
+        "biosampleId": "fixture-bs-2067"
+       },
+       {
+        "biosampleId": "fixture-bs-2068"
+       },
+       {
+        "biosampleId": "fixture-bs-2069"
+       },
+       {
+        "biosampleId": "fixture-bs-2070"
+       },
+       {
+        "biosampleId": "fixture-bs-2071"
+       },
+       {
+        "biosampleId": "fixture-bs-2072"
+       },
+       {
+        "biosampleId": "fixture-bs-2073"
+       },
+       {
+        "biosampleId": "fixture-bs-2074"
+       },
+       {
+        "biosampleId": "fixture-bs-2075"
+       },
+       {
+        "biosampleId": "fixture-bs-2076"
+       },
+       {
+        "biosampleId": "fixture-bs-2077"
+       },
+       {
+        "biosampleId": "fixture-bs-2078"
+       },
+       {
+        "biosampleId": "fixture-bs-2079"
+       },
+       {
+        "biosampleId": "fixture-bs-2080"
+       },
+       {
+        "biosampleId": "fixture-bs-2081"
+       },
+       {
+        "biosampleId": "fixture-bs-2082"
+       },
+       {
+        "biosampleId": "fixture-bs-2083"
+       },
+       {
+        "biosampleId": "fixture-bs-2084"
+       },
+       {
+        "biosampleId": "fixture-bs-2085"
+       },
+       {
+        "biosampleId": "fixture-bs-2086"
+       },
+       {
+        "biosampleId": "fixture-bs-2087"
+       },
+       {
+        "biosampleId": "fixture-bs-2088"
+       },
+       {
+        "biosampleId": "fixture-bs-2089"
+       },
+       {
+        "biosampleId": "fixture-bs-2090"
+       },
+       {
+        "biosampleId": "fixture-bs-2091"
+       },
+       {
+        "biosampleId": "fixture-bs-2092"
+       },
+       {
+        "biosampleId": "fixture-bs-2093"
+       },
+       {
+        "biosampleId": "fixture-bs-2094"
+       },
+       {
+        "biosampleId": "fixture-bs-2095"
+       },
+       {
+        "biosampleId": "fixture-bs-2096"
+       },
+       {
+        "biosampleId": "fixture-bs-2097"
+       },
+       {
+        "biosampleId": "fixture-bs-2098"
+       },
+       {
+        "biosampleId": "fixture-bs-2099"
+       },
+       {
+        "biosampleId": "fixture-bs-2100"
+       },
+       {
+        "biosampleId": "fixture-bs-2101"
+       },
+       {
+        "biosampleId": "fixture-bs-2102"
+       },
+       {
+        "biosampleId": "fixture-bs-2103"
+       },
+       {
+        "biosampleId": "fixture-bs-2104"
+       },
+       {
+        "biosampleId": "fixture-bs-2105"
+       },
+       {
+        "biosampleId": "fixture-bs-2106"
+       },
+       {
+        "biosampleId": "fixture-bs-2107"
+       },
+       {
+        "biosampleId": "fixture-bs-2108"
+       },
+       {
+        "biosampleId": "fixture-bs-2109"
+       },
+       {
+        "biosampleId": "fixture-bs-2110"
+       },
+       {
+        "biosampleId": "fixture-bs-2111"
+       },
+       {
+        "biosampleId": "fixture-bs-2112"
+       },
+       {
+        "biosampleId": "fixture-bs-2113"
+       },
+       {
+        "biosampleId": "fixture-bs-2114"
+       },
+       {
+        "biosampleId": "fixture-bs-2115"
+       },
+       {
+        "biosampleId": "fixture-bs-2116"
+       },
+       {
+        "biosampleId": "fixture-bs-2117"
+       },
+       {
+        "biosampleId": "fixture-bs-2118"
+       },
+       {
+        "biosampleId": "fixture-bs-2119"
+       },
+       {
+        "biosampleId": "fixture-bs-2120"
+       },
+       {
+        "biosampleId": "fixture-bs-2121"
+       },
+       {
+        "biosampleId": "fixture-bs-2122"
+       },
+       {
+        "biosampleId": "fixture-bs-2123"
+       },
+       {
+        "biosampleId": "fixture-bs-2124"
+       },
+       {
+        "biosampleId": "fixture-bs-2125"
+       },
+       {
+        "biosampleId": "fixture-bs-2126"
+       },
+       {
+        "biosampleId": "fixture-bs-2127"
+       },
+       {
+        "biosampleId": "fixture-bs-2128"
+       },
+       {
+        "biosampleId": "fixture-bs-2129"
+       },
+       {
+        "biosampleId": "fixture-bs-2130"
+       },
+       {
+        "biosampleId": "fixture-bs-2131"
+       },
+       {
+        "biosampleId": "fixture-bs-2132"
+       },
+       {
+        "biosampleId": "fixture-bs-2133"
+       },
+       {
+        "biosampleId": "fixture-bs-2134"
+       },
+       {
+        "biosampleId": "fixture-bs-2135"
+       },
+       {
+        "biosampleId": "fixture-bs-2136"
+       },
+       {
+        "biosampleId": "fixture-bs-2137"
+       },
+       {
+        "biosampleId": "fixture-bs-2138"
+       },
+       {
+        "biosampleId": "fixture-bs-2139"
+       },
+       {
+        "biosampleId": "fixture-bs-2140"
+       },
+       {
+        "biosampleId": "fixture-bs-2141"
+       },
+       {
+        "biosampleId": "fixture-bs-2142"
+       },
+       {
+        "biosampleId": "fixture-bs-2143"
+       },
+       {
+        "biosampleId": "fixture-bs-2144"
+       },
+       {
+        "biosampleId": "fixture-bs-2145"
+       },
+       {
+        "biosampleId": "fixture-bs-2146"
+       },
+       {
+        "biosampleId": "fixture-bs-2147"
+       },
+       {
+        "biosampleId": "fixture-bs-2148"
+       },
+       {
+        "biosampleId": "fixture-bs-2149"
+       },
+       {
+        "biosampleId": "fixture-bs-2150"
+       },
+       {
+        "biosampleId": "fixture-bs-2151"
+       },
+       {
+        "biosampleId": "fixture-bs-2152"
+       },
+       {
+        "biosampleId": "fixture-bs-2153"
+       },
+       {
+        "biosampleId": "fixture-bs-2154"
+       },
+       {
+        "biosampleId": "fixture-bs-2155"
+       },
+       {
+        "biosampleId": "fixture-bs-2156"
+       },
+       {
+        "biosampleId": "fixture-bs-2157"
+       },
+       {
+        "biosampleId": "fixture-bs-2158"
+       },
+       {
+        "biosampleId": "fixture-bs-2159"
+       },
+       {
+        "biosampleId": "fixture-bs-2160"
+       },
+       {
+        "biosampleId": "fixture-bs-2161"
+       },
+       {
+        "biosampleId": "fixture-bs-2162"
+       },
+       {
+        "biosampleId": "fixture-bs-2163"
+       },
+       {
+        "biosampleId": "fixture-bs-2164"
+       },
+       {
+        "biosampleId": "fixture-bs-2165"
+       },
+       {
+        "biosampleId": "fixture-bs-2166"
+       },
+       {
+        "biosampleId": "fixture-bs-2167"
+       },
+       {
+        "biosampleId": "fixture-bs-2168"
+       },
+       {
+        "biosampleId": "fixture-bs-2169"
+       },
+       {
+        "biosampleId": "fixture-bs-2170"
+       },
+       {
+        "biosampleId": "fixture-bs-2171"
+       },
+       {
+        "biosampleId": "fixture-bs-2172"
+       },
+       {
+        "biosampleId": "fixture-bs-2173"
+       },
+       {
+        "biosampleId": "fixture-bs-2174"
+       },
+       {
+        "biosampleId": "fixture-bs-2175"
+       },
+       {
+        "biosampleId": "fixture-bs-2176"
+       },
+       {
+        "biosampleId": "fixture-bs-2177"
+       },
+       {
+        "biosampleId": "fixture-bs-2178"
+       },
+       {
+        "biosampleId": "fixture-bs-2179"
+       },
+       {
+        "biosampleId": "fixture-bs-2180"
+       },
+       {
+        "biosampleId": "fixture-bs-2181"
+       },
+       {
+        "biosampleId": "fixture-bs-2182"
+       },
+       {
+        "biosampleId": "fixture-bs-2183"
+       },
+       {
+        "biosampleId": "fixture-bs-2184"
+       },
+       {
+        "biosampleId": "fixture-bs-2185"
+       },
+       {
+        "biosampleId": "fixture-bs-2186"
+       },
+       {
+        "biosampleId": "fixture-bs-2187"
+       },
+       {
+        "biosampleId": "fixture-bs-2188"
+       },
+       {
+        "biosampleId": "fixture-bs-2189"
+       },
+       {
+        "biosampleId": "fixture-bs-2190"
+       },
+       {
+        "biosampleId": "fixture-bs-2191"
+       },
+       {
+        "biosampleId": "fixture-bs-2192"
+       },
+       {
+        "biosampleId": "fixture-bs-2193"
+       },
+       {
+        "biosampleId": "fixture-bs-2194"
+       },
+       {
+        "biosampleId": "fixture-bs-2195"
+       },
+       {
+        "biosampleId": "fixture-bs-2196"
+       },
+       {
+        "biosampleId": "fixture-bs-2197"
+       },
+       {
+        "biosampleId": "fixture-bs-2198"
+       },
+       {
+        "biosampleId": "fixture-bs-2199"
+       },
+       {
+        "biosampleId": "fixture-bs-2200"
+       },
+       {
+        "biosampleId": "fixture-bs-2201"
+       },
+       {
+        "biosampleId": "fixture-bs-2202"
+       },
+       {
+        "biosampleId": "fixture-bs-2203"
+       },
+       {
+        "biosampleId": "fixture-bs-2204"
+       },
+       {
+        "biosampleId": "fixture-bs-2205"
+       },
+       {
+        "biosampleId": "fixture-bs-2206"
+       },
+       {
+        "biosampleId": "fixture-bs-2207"
+       },
+       {
+        "biosampleId": "fixture-bs-2208"
+       },
+       {
+        "biosampleId": "fixture-bs-2209"
+       },
+       {
+        "biosampleId": "fixture-bs-2210"
+       },
+       {
+        "biosampleId": "fixture-bs-2211"
+       },
+       {
+        "biosampleId": "fixture-bs-2212"
+       },
+       {
+        "biosampleId": "fixture-bs-2213"
+       },
+       {
+        "biosampleId": "fixture-bs-2214"
+       },
+       {
+        "biosampleId": "fixture-bs-2215"
+       },
+       {
+        "biosampleId": "fixture-bs-2216"
+       },
+       {
+        "biosampleId": "fixture-bs-2217"
+       },
+       {
+        "biosampleId": "fixture-bs-2218"
+       },
+       {
+        "biosampleId": "fixture-bs-2219"
+       },
+       {
+        "biosampleId": "fixture-bs-2220"
+       },
+       {
+        "biosampleId": "fixture-bs-2221"
+       },
+       {
+        "biosampleId": "fixture-bs-2222"
+       },
+       {
+        "biosampleId": "fixture-bs-2223"
+       },
+       {
+        "biosampleId": "fixture-bs-2224"
+       },
+       {
+        "biosampleId": "fixture-bs-2225"
+       },
+       {
+        "biosampleId": "fixture-bs-2226"
+       },
+       {
+        "biosampleId": "fixture-bs-2227"
+       },
+       {
+        "biosampleId": "fixture-bs-2228"
+       },
+       {
+        "biosampleId": "fixture-bs-2229"
+       },
+       {
+        "biosampleId": "fixture-bs-2230"
+       },
+       {
+        "biosampleId": "fixture-bs-2231"
+       },
+       {
+        "biosampleId": "fixture-bs-2232"
+       },
+       {
+        "biosampleId": "fixture-bs-2233"
+       },
+       {
+        "biosampleId": "fixture-bs-2234"
+       },
+       {
+        "biosampleId": "fixture-bs-2235"
+       },
+       {
+        "biosampleId": "fixture-bs-2236"
+       },
+       {
+        "biosampleId": "fixture-bs-2237"
+       },
+       {
+        "biosampleId": "fixture-bs-2238"
+       },
+       {
+        "biosampleId": "fixture-bs-2239"
+       },
+       {
+        "biosampleId": "fixture-bs-2240"
+       },
+       {
+        "biosampleId": "fixture-bs-2241"
+       },
+       {
+        "biosampleId": "fixture-bs-2242"
+       },
+       {
+        "biosampleId": "fixture-bs-2243"
+       },
+       {
+        "biosampleId": "fixture-bs-2244"
+       },
+       {
+        "biosampleId": "fixture-bs-2245"
+       },
+       {
+        "biosampleId": "fixture-bs-2246"
+       },
+       {
+        "biosampleId": "fixture-bs-2247"
+       },
+       {
+        "biosampleId": "fixture-bs-2248"
+       },
+       {
+        "biosampleId": "fixture-bs-2249"
+       },
+       {
+        "biosampleId": "fixture-bs-2250"
+       },
+       {
+        "biosampleId": "fixture-bs-2251"
+       },
+       {
+        "biosampleId": "fixture-bs-2252"
+       },
+       {
+        "biosampleId": "fixture-bs-2253"
+       },
+       {
+        "biosampleId": "fixture-bs-2254"
+       },
+       {
+        "biosampleId": "fixture-bs-2255"
+       },
+       {
+        "biosampleId": "fixture-bs-2256"
+       },
+       {
+        "biosampleId": "fixture-bs-2257"
+       },
+       {
+        "biosampleId": "fixture-bs-2258"
+       },
+       {
+        "biosampleId": "fixture-bs-2259"
+       },
+       {
+        "biosampleId": "fixture-bs-2260"
+       },
+       {
+        "biosampleId": "fixture-bs-2261"
+       },
+       {
+        "biosampleId": "fixture-bs-2262"
+       },
+       {
+        "biosampleId": "fixture-bs-2263"
+       },
+       {
+        "biosampleId": "fixture-bs-2264"
+       },
+       {
+        "biosampleId": "fixture-bs-2265"
+       },
+       {
+        "biosampleId": "fixture-bs-2266"
+       },
+       {
+        "biosampleId": "fixture-bs-2267"
+       },
+       {
+        "biosampleId": "fixture-bs-2268"
+       },
+       {
+        "biosampleId": "fixture-bs-2269"
+       },
+       {
+        "biosampleId": "fixture-bs-2270"
+       },
+       {
+        "biosampleId": "fixture-bs-2271"
+       },
+       {
+        "biosampleId": "fixture-bs-2272"
+       },
+       {
+        "biosampleId": "fixture-bs-2273"
+       },
+       {
+        "biosampleId": "fixture-bs-2274"
+       },
+       {
+        "biosampleId": "fixture-bs-2275"
+       },
+       {
+        "biosampleId": "fixture-bs-2276"
+       },
+       {
+        "biosampleId": "fixture-bs-2277"
+       },
+       {
+        "biosampleId": "fixture-bs-2278"
+       },
+       {
+        "biosampleId": "fixture-bs-2279"
+       },
+       {
+        "biosampleId": "fixture-bs-2280"
+       },
+       {
+        "biosampleId": "fixture-bs-2281"
+       },
+       {
+        "biosampleId": "fixture-bs-2282"
+       },
+       {
+        "biosampleId": "fixture-bs-2283"
+       },
+       {
+        "biosampleId": "fixture-bs-2284"
+       },
+       {
+        "biosampleId": "fixture-bs-2285"
+       },
+       {
+        "biosampleId": "fixture-bs-2286"
+       },
+       {
+        "biosampleId": "fixture-bs-2287"
+       },
+       {
+        "biosampleId": "fixture-bs-2288"
+       },
+       {
+        "biosampleId": "fixture-bs-2289"
+       },
+       {
+        "biosampleId": "fixture-bs-2290"
+       },
+       {
+        "biosampleId": "fixture-bs-2291"
+       },
+       {
+        "biosampleId": "fixture-bs-2292"
+       },
+       {
+        "biosampleId": "fixture-bs-2293"
+       },
+       {
+        "biosampleId": "fixture-bs-2294"
+       },
+       {
+        "biosampleId": "fixture-bs-2295"
+       },
+       {
+        "biosampleId": "fixture-bs-2296"
+       },
+       {
+        "biosampleId": "fixture-bs-2297"
+       },
+       {
+        "biosampleId": "fixture-bs-2298"
+       },
+       {
+        "biosampleId": "fixture-bs-2299"
+       },
+       {
+        "biosampleId": "fixture-bs-2300"
+       },
+       {
+        "biosampleId": "fixture-bs-2301"
+       },
+       {
+        "biosampleId": "fixture-bs-2302"
+       },
+       {
+        "biosampleId": "fixture-bs-2303"
+       },
+       {
+        "biosampleId": "fixture-bs-2304"
+       },
+       {
+        "biosampleId": "fixture-bs-2305"
+       },
+       {
+        "biosampleId": "fixture-bs-2306"
+       },
+       {
+        "biosampleId": "fixture-bs-2307"
+       },
+       {
+        "biosampleId": "fixture-bs-2308"
+       },
+       {
+        "biosampleId": "fixture-bs-2309"
+       },
+       {
+        "biosampleId": "fixture-bs-2310"
+       },
+       {
+        "biosampleId": "fixture-bs-2311"
+       },
+       {
+        "biosampleId": "fixture-bs-2312"
+       },
+       {
+        "biosampleId": "fixture-bs-2313"
+       },
+       {
+        "biosampleId": "fixture-bs-2314"
+       },
+       {
+        "biosampleId": "fixture-bs-2315"
+       },
+       {
+        "biosampleId": "fixture-bs-2316"
+       },
+       {
+        "biosampleId": "fixture-bs-2317"
+       },
+       {
+        "biosampleId": "fixture-bs-2318"
+       },
+       {
+        "biosampleId": "fixture-bs-2319"
+       },
+       {
+        "biosampleId": "fixture-bs-2320"
+       },
+       {
+        "biosampleId": "fixture-bs-2321"
+       },
+       {
+        "biosampleId": "fixture-bs-2322"
+       },
+       {
+        "biosampleId": "fixture-bs-2323"
+       },
+       {
+        "biosampleId": "fixture-bs-2324"
+       },
+       {
+        "biosampleId": "fixture-bs-2325"
+       },
+       {
+        "biosampleId": "fixture-bs-2326"
+       },
+       {
+        "biosampleId": "fixture-bs-2327"
+       },
+       {
+        "biosampleId": "fixture-bs-2328"
+       },
+       {
+        "biosampleId": "fixture-bs-2329"
+       },
+       {
+        "biosampleId": "fixture-bs-2330"
+       },
+       {
+        "biosampleId": "fixture-bs-2331"
+       },
+       {
+        "biosampleId": "fixture-bs-2332"
+       },
+       {
+        "biosampleId": "fixture-bs-2333"
+       },
+       {
+        "biosampleId": "fixture-bs-2334"
+       },
+       {
+        "biosampleId": "fixture-bs-2335"
+       },
+       {
+        "biosampleId": "fixture-bs-2336"
+       },
+       {
+        "biosampleId": "fixture-bs-2337"
+       },
+       {
+        "biosampleId": "fixture-bs-2338"
+       },
+       {
+        "biosampleId": "fixture-bs-2339"
+       },
+       {
+        "biosampleId": "fixture-bs-2340"
+       },
+       {
+        "biosampleId": "fixture-bs-2341"
+       },
+       {
+        "biosampleId": "fixture-bs-2342"
+       },
+       {
+        "biosampleId": "fixture-bs-2343"
+       },
+       {
+        "biosampleId": "fixture-bs-2344"
+       },
+       {
+        "biosampleId": "fixture-bs-2345"
+       },
+       {
+        "biosampleId": "fixture-bs-2346"
+       },
+       {
+        "biosampleId": "fixture-bs-2347"
+       },
+       {
+        "biosampleId": "fixture-bs-2348"
+       },
+       {
+        "biosampleId": "fixture-bs-2349"
+       },
+       {
+        "biosampleId": "fixture-bs-2350"
+       },
+       {
+        "biosampleId": "fixture-bs-2351"
+       },
+       {
+        "biosampleId": "fixture-bs-2352"
+       },
+       {
+        "biosampleId": "fixture-bs-2353"
+       },
+       {
+        "biosampleId": "fixture-bs-2354"
+       },
+       {
+        "biosampleId": "fixture-bs-2355"
+       },
+       {
+        "biosampleId": "fixture-bs-2356"
+       },
+       {
+        "biosampleId": "fixture-bs-2357"
+       },
+       {
+        "biosampleId": "fixture-bs-2358"
+       },
+       {
+        "biosampleId": "fixture-bs-2359"
+       },
+       {
+        "biosampleId": "fixture-bs-2360"
+       },
+       {
+        "biosampleId": "fixture-bs-2361"
+       },
+       {
+        "biosampleId": "fixture-bs-2362"
+       },
+       {
+        "biosampleId": "fixture-bs-2363"
+       },
+       {
+        "biosampleId": "fixture-bs-2364"
+       },
+       {
+        "biosampleId": "fixture-bs-2365"
+       },
+       {
+        "biosampleId": "fixture-bs-2366"
+       },
+       {
+        "biosampleId": "fixture-bs-2367"
+       },
+       {
+        "biosampleId": "fixture-bs-2368"
+       },
+       {
+        "biosampleId": "fixture-bs-2369"
+       },
+       {
+        "biosampleId": "fixture-bs-2370"
+       },
+       {
+        "biosampleId": "fixture-bs-2371"
+       },
+       {
+        "biosampleId": "fixture-bs-2372"
+       },
+       {
+        "biosampleId": "fixture-bs-2373"
+       },
+       {
+        "biosampleId": "fixture-bs-2374"
+       },
+       {
+        "biosampleId": "fixture-bs-2375"
+       },
+       {
+        "biosampleId": "fixture-bs-2376"
+       },
+       {
+        "biosampleId": "fixture-bs-2377"
+       },
+       {
+        "biosampleId": "fixture-bs-2378"
+       },
+       {
+        "biosampleId": "fixture-bs-2379"
+       },
+       {
+        "biosampleId": "fixture-bs-2380"
+       },
+       {
+        "biosampleId": "fixture-bs-2381"
+       },
+       {
+        "biosampleId": "fixture-bs-2382"
+       },
+       {
+        "biosampleId": "fixture-bs-2383"
+       },
+       {
+        "biosampleId": "fixture-bs-2384"
+       },
+       {
+        "biosampleId": "fixture-bs-2385"
+       },
+       {
+        "biosampleId": "fixture-bs-2386"
+       },
+       {
+        "biosampleId": "fixture-bs-2387"
+       },
+       {
+        "biosampleId": "fixture-bs-2388"
+       },
+       {
+        "biosampleId": "fixture-bs-2389"
+       },
+       {
+        "biosampleId": "fixture-bs-2390"
+       },
+       {
+        "biosampleId": "fixture-bs-2391"
+       },
+       {
+        "biosampleId": "fixture-bs-2392"
+       },
+       {
+        "biosampleId": "fixture-bs-2393"
+       },
+       {
+        "biosampleId": "fixture-bs-2394"
+       },
+       {
+        "biosampleId": "fixture-bs-2395"
+       },
+       {
+        "biosampleId": "fixture-bs-2396"
+       },
+       {
+        "biosampleId": "fixture-bs-2397"
+       },
+       {
+        "biosampleId": "fixture-bs-2398"
+       },
+       {
+        "biosampleId": "fixture-bs-2399"
+       },
+       {
+        "biosampleId": "fixture-bs-2400"
+       },
+       {
+        "biosampleId": "fixture-bs-2401"
+       },
+       {
+        "biosampleId": "fixture-bs-2402"
+       },
+       {
+        "biosampleId": "fixture-bs-2403"
+       },
+       {
+        "biosampleId": "fixture-bs-2404"
+       },
+       {
+        "biosampleId": "fixture-bs-2405"
+       },
+       {
+        "biosampleId": "fixture-bs-2406"
+       },
+       {
+        "biosampleId": "fixture-bs-2407"
+       },
+       {
+        "biosampleId": "fixture-bs-2408"
+       },
+       {
+        "biosampleId": "fixture-bs-2409"
+       },
+       {
+        "biosampleId": "fixture-bs-2410"
+       },
+       {
+        "biosampleId": "fixture-bs-2411"
+       },
+       {
+        "biosampleId": "fixture-bs-2412"
+       },
+       {
+        "biosampleId": "fixture-bs-2413"
+       },
+       {
+        "biosampleId": "fixture-bs-2414"
+       },
+       {
+        "biosampleId": "fixture-bs-2415"
+       },
+       {
+        "biosampleId": "fixture-bs-2416"
+       },
+       {
+        "biosampleId": "fixture-bs-2417"
+       },
+       {
+        "biosampleId": "fixture-bs-2418"
+       },
+       {
+        "biosampleId": "fixture-bs-2419"
+       },
+       {
+        "biosampleId": "fixture-bs-2420"
+       },
+       {
+        "biosampleId": "fixture-bs-2421"
+       },
+       {
+        "biosampleId": "fixture-bs-2422"
+       },
+       {
+        "biosampleId": "fixture-bs-2423"
+       },
+       {
+        "biosampleId": "fixture-bs-2424"
+       },
+       {
+        "biosampleId": "fixture-bs-2425"
+       },
+       {
+        "biosampleId": "fixture-bs-2426"
+       },
+       {
+        "biosampleId": "fixture-bs-2427"
+       },
+       {
+        "biosampleId": "fixture-bs-2428"
+       },
+       {
+        "biosampleId": "fixture-bs-2429"
+       },
+       {
+        "biosampleId": "fixture-bs-2430"
+       },
+       {
+        "biosampleId": "fixture-bs-2431"
+       },
+       {
+        "biosampleId": "fixture-bs-2432"
+       },
+       {
+        "biosampleId": "fixture-bs-2433"
+       },
+       {
+        "biosampleId": "fixture-bs-2434"
+       },
+       {
+        "biosampleId": "fixture-bs-2435"
+       },
+       {
+        "biosampleId": "fixture-bs-2436"
+       },
+       {
+        "biosampleId": "fixture-bs-2437"
+       },
+       {
+        "biosampleId": "fixture-bs-2438"
+       },
+       {
+        "biosampleId": "fixture-bs-2439"
+       },
+       {
+        "biosampleId": "fixture-bs-2440"
+       },
+       {
+        "biosampleId": "fixture-bs-2441"
+       },
+       {
+        "biosampleId": "fixture-bs-2442"
+       },
+       {
+        "biosampleId": "fixture-bs-2443"
+       },
+       {
+        "biosampleId": "fixture-bs-2444"
+       },
+       {
+        "biosampleId": "fixture-bs-2445"
+       },
+       {
+        "biosampleId": "fixture-bs-2446"
+       },
+       {
+        "biosampleId": "fixture-bs-2447"
+       },
+       {
+        "biosampleId": "fixture-bs-2448"
+       },
+       {
+        "biosampleId": "fixture-bs-2449"
+       },
+       {
+        "biosampleId": "fixture-bs-2450"
+       },
+       {
+        "biosampleId": "fixture-bs-2451"
+       },
+       {
+        "biosampleId": "fixture-bs-2452"
+       },
+       {
+        "biosampleId": "fixture-bs-2453"
+       },
+       {
+        "biosampleId": "fixture-bs-2454"
+       },
+       {
+        "biosampleId": "fixture-bs-2455"
+       },
+       {
+        "biosampleId": "fixture-bs-2456"
+       },
+       {
+        "biosampleId": "fixture-bs-2457"
+       },
+       {
+        "biosampleId": "fixture-bs-2458"
+       },
+       {
+        "biosampleId": "fixture-bs-2459"
+       },
+       {
+        "biosampleId": "fixture-bs-2460"
+       },
+       {
+        "biosampleId": "fixture-bs-2461"
+       },
+       {
+        "biosampleId": "fixture-bs-2462"
+       },
+       {
+        "biosampleId": "fixture-bs-2463"
+       },
+       {
+        "biosampleId": "fixture-bs-2464"
+       },
+       {
+        "biosampleId": "fixture-bs-2465"
+       },
+       {
+        "biosampleId": "fixture-bs-2466"
+       },
+       {
+        "biosampleId": "fixture-bs-2467"
+       },
+       {
+        "biosampleId": "fixture-bs-2468"
+       },
+       {
+        "biosampleId": "fixture-bs-2469"
+       },
+       {
+        "biosampleId": "fixture-bs-2470"
+       },
+       {
+        "biosampleId": "fixture-bs-2471"
+       },
+       {
+        "biosampleId": "fixture-bs-2472"
+       },
+       {
+        "biosampleId": "fixture-bs-2473"
+       },
+       {
+        "biosampleId": "fixture-bs-2474"
+       },
+       {
+        "biosampleId": "fixture-bs-2475"
+       },
+       {
+        "biosampleId": "fixture-bs-2476"
+       },
+       {
+        "biosampleId": "fixture-bs-2477"
+       },
+       {
+        "biosampleId": "fixture-bs-2478"
+       },
+       {
+        "biosampleId": "fixture-bs-2479"
+       },
+       {
+        "biosampleId": "fixture-bs-2480"
+       },
+       {
+        "biosampleId": "fixture-bs-2481"
+       },
+       {
+        "biosampleId": "fixture-bs-2482"
+       },
+       {
+        "biosampleId": "fixture-bs-2483"
+       },
+       {
+        "biosampleId": "fixture-bs-2484"
+       },
+       {
+        "biosampleId": "fixture-bs-2485"
+       },
+       {
+        "biosampleId": "fixture-bs-2486"
+       },
+       {
+        "biosampleId": "fixture-bs-2487"
+       },
+       {
+        "biosampleId": "fixture-bs-2488"
+       },
+       {
+        "biosampleId": "fixture-bs-2489"
+       },
+       {
+        "biosampleId": "fixture-bs-2490"
+       },
+       {
+        "biosampleId": "fixture-bs-2491"
+       },
+       {
+        "biosampleId": "fixture-bs-2492"
+       },
+       {
+        "biosampleId": "fixture-bs-2493"
+       },
+       {
+        "biosampleId": "fixture-bs-2494"
+       },
+       {
+        "biosampleId": "fixture-bs-2495"
+       },
+       {
+        "biosampleId": "fixture-bs-2496"
+       },
+       {
+        "biosampleId": "fixture-bs-2497"
+       },
+       {
+        "biosampleId": "fixture-bs-2498"
+       },
+       {
+        "biosampleId": "fixture-bs-2499"
+       },
+       {
+        "biosampleId": "fixture-bs-2500"
+       },
+       {
+        "biosampleId": "fixture-bs-2501"
+       },
+       {
+        "biosampleId": "fixture-bs-2502"
+       },
+       {
+        "biosampleId": "fixture-bs-2503"
+       },
+       {
+        "biosampleId": "fixture-bs-2504"
+       },
+       {
+        "biosampleId": "fixture-bs-2505"
+       },
+       {
+        "biosampleId": "fixture-bs-2506"
+       },
+       {
+        "biosampleId": "fixture-bs-2507"
+       },
+       {
+        "biosampleId": "fixture-bs-2508"
+       },
+       {
+        "biosampleId": "fixture-bs-2509"
+       },
+       {
+        "biosampleId": "fixture-bs-2510"
+       },
+       {
+        "biosampleId": "fixture-bs-2511"
+       },
+       {
+        "biosampleId": "fixture-bs-2512"
+       },
+       {
+        "biosampleId": "fixture-bs-2513"
+       },
+       {
+        "biosampleId": "fixture-bs-2514"
+       },
+       {
+        "biosampleId": "fixture-bs-2515"
+       },
+       {
+        "biosampleId": "fixture-bs-2516"
+       },
+       {
+        "biosampleId": "fixture-bs-2517"
+       },
+       {
+        "biosampleId": "fixture-bs-2518"
+       },
+       {
+        "biosampleId": "fixture-bs-2519"
+       },
+       {
+        "biosampleId": "fixture-bs-2520"
+       },
+       {
+        "biosampleId": "fixture-bs-2521"
+       },
+       {
+        "biosampleId": "fixture-bs-2522"
+       },
+       {
+        "biosampleId": "fixture-bs-2523"
+       },
+       {
+        "biosampleId": "fixture-bs-2524"
+       },
+       {
+        "biosampleId": "fixture-bs-2525"
+       },
+       {
+        "biosampleId": "fixture-bs-2526"
+       },
+       {
+        "biosampleId": "fixture-bs-2527"
+       },
+       {
+        "biosampleId": "fixture-bs-2528"
+       },
+       {
+        "biosampleId": "fixture-bs-2529"
+       },
+       {
+        "biosampleId": "fixture-bs-2530"
+       },
+       {
+        "biosampleId": "fixture-bs-2531"
+       },
+       {
+        "biosampleId": "fixture-bs-2532"
+       },
+       {
+        "biosampleId": "fixture-bs-2533"
+       },
+       {
+        "biosampleId": "fixture-bs-2534"
+       },
+       {
+        "biosampleId": "fixture-bs-2535"
+       },
+       {
+        "biosampleId": "fixture-bs-2536"
+       },
+       {
+        "biosampleId": "fixture-bs-2537"
+       },
+       {
+        "biosampleId": "fixture-bs-2538"
+       },
+       {
+        "biosampleId": "fixture-bs-2539"
+       },
+       {
+        "biosampleId": "fixture-bs-2540"
+       },
+       {
+        "biosampleId": "fixture-bs-2541"
+       },
+       {
+        "biosampleId": "fixture-bs-2542"
+       },
+       {
+        "biosampleId": "fixture-bs-2543"
+       },
+       {
+        "biosampleId": "fixture-bs-2544"
+       },
+       {
+        "biosampleId": "fixture-bs-2545"
+       },
+       {
+        "biosampleId": "fixture-bs-2546"
+       },
+       {
+        "biosampleId": "fixture-bs-2547"
+       },
+       {
+        "biosampleId": "fixture-bs-2548"
+       },
+       {
+        "biosampleId": "fixture-bs-2549"
+       },
+       {
+        "biosampleId": "fixture-bs-2550"
+       },
+       {
+        "biosampleId": "fixture-bs-2551"
+       },
+       {
+        "biosampleId": "fixture-bs-2552"
+       },
+       {
+        "biosampleId": "fixture-bs-2553"
+       },
+       {
+        "biosampleId": "fixture-bs-2554"
+       },
+       {
+        "biosampleId": "fixture-bs-2555"
+       },
+       {
+        "biosampleId": "fixture-bs-2556"
+       },
+       {
+        "biosampleId": "fixture-bs-2557"
+       },
+       {
+        "biosampleId": "fixture-bs-2558"
+       },
+       {
+        "biosampleId": "fixture-bs-2559"
+       },
+       {
+        "biosampleId": "fixture-bs-2560"
+       },
+       {
+        "biosampleId": "fixture-bs-2561"
+       },
+       {
+        "biosampleId": "fixture-bs-2562"
+       },
+       {
+        "biosampleId": "fixture-bs-2563"
+       },
+       {
+        "biosampleId": "fixture-bs-2564"
+       },
+       {
+        "biosampleId": "fixture-bs-2565"
+       },
+       {
+        "biosampleId": "fixture-bs-2566"
+       },
+       {
+        "biosampleId": "fixture-bs-2567"
+       },
+       {
+        "biosampleId": "fixture-bs-2568"
+       },
+       {
+        "biosampleId": "fixture-bs-2569"
+       },
+       {
+        "biosampleId": "fixture-bs-2570"
+       },
+       {
+        "biosampleId": "fixture-bs-2571"
+       },
+       {
+        "biosampleId": "fixture-bs-2572"
+       },
+       {
+        "biosampleId": "fixture-bs-2573"
+       },
+       {
+        "biosampleId": "fixture-bs-2574"
+       },
+       {
+        "biosampleId": "fixture-bs-2575"
+       },
+       {
+        "biosampleId": "fixture-bs-2576"
+       },
+       {
+        "biosampleId": "fixture-bs-2577"
+       },
+       {
+        "biosampleId": "fixture-bs-2578"
+       },
+       {
+        "biosampleId": "fixture-bs-2579"
+       },
+       {
+        "biosampleId": "fixture-bs-2580"
+       },
+       {
+        "biosampleId": "fixture-bs-2581"
+       },
+       {
+        "biosampleId": "fixture-bs-2582"
+       },
+       {
+        "biosampleId": "fixture-bs-2583"
+       },
+       {
+        "biosampleId": "fixture-bs-2584"
+       },
+       {
+        "biosampleId": "fixture-bs-2585"
+       },
+       {
+        "biosampleId": "fixture-bs-2586"
+       },
+       {
+        "biosampleId": "fixture-bs-2587"
+       },
+       {
+        "biosampleId": "fixture-bs-2588"
+       },
+       {
+        "biosampleId": "fixture-bs-2589"
+       },
+       {
+        "biosampleId": "fixture-bs-2590"
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "_delivery_note": "CONSTRUCTED: 2591 instance(s) delivered against a reported total of 2591. Until 3.0.0's partiality fix these fixtures delivered no records at all, which the coalescence check never compared against the total; a record-granularity response is complete only if it delivers what it reports."
+}

@@ -1,0 +1,231 @@
+<tool id="beacon2_bracket" name="Beacon2 Bracket Query" version="@TOOL_VERSION@+galaxy@VERSION_SUFFIX@" profile="@PROFILE@">
+    <description>find copy number and structural variants with imprecise breakpoints</description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <expand macro="creators"/>
+    <expand macro="xrefs"/>
+    <expand macro="requirements"/>
+    <command detect_errors="exit_code"><![CDATA[
+#if str($connection.transport) == "api"
+    beacon2-query bracket
+        @PROVIDER_ARGS@
+        @VARIANT_CLASS_ARGS@
+        --reference-name '$reference_name'
+        --assembly '$assembly'
+        --start-min $start_min
+        --start-max $start_max
+        --end-min $end_min
+        --end-max $end_max
+        --granularity '$granularity'
+        --limit $pagination.limit
+        --skip $pagination.skip
+        @SAMPLE_ARGS@
+        @CNV_TERM_ARGS@
+        @SV_TERM_ARGS@
+        #if str($advanced.variant_min_length)
+            --variant-min-length $advanced.variant_min_length
+        #end if
+        #if str($advanced.variant_max_length)
+            --variant-max-length $advanced.variant_max_length
+        #end if
+        #if str($advanced.allow_degradation) == "false"
+            --no-degradation
+        #end if
+        @FILTER_ARGS@
+        @OUTPUT_ARGS@
+#else
+    beacon2-query bracket
+        --transport mongodb
+        --db-host '$connection.db_host'
+        --db-port $connection.db_port
+        --database '$connection.database'
+        --collection '$connection.collection'
+        --credentials-file '$credentials'
+        --reference-name '$reference_name'
+        --start-min $start_min
+        --start-max $start_max
+        --end-min $end_min
+        --end-max $end_max
+        @CNV_TERM_ARGS@
+        @OUTPUT_ARGS@
+#end if
+    ]]></command>
+    <expand macro="credentials_configfile"/>
+    <inputs>
+        <expand macro="beacon_transport"/>
+        <expand macro="beacon_variant_class" cnv="true" small="false" sv="true"/>
+        <expand macro="beacon_reference"/>
+        <param argument="--start-min" type="integer" value="" min="1" label="Start of the start window"
+               help="The variant's start must fall between this and the next value. Positions are 1-based."/>
+        <param argument="--start-max" type="integer" value="" min="1" label="End of the start window"/>
+        <param argument="--end-min" type="integer" value="" min="1" label="Start of the end window"
+               help="The variant's end must fall between this and the next value."/>
+        <param argument="--end-max" type="integer" value="" min="1" label="End of the end window"/>
+        <expand macro="beacon_cnv_terms"/>
+        <expand macro="beacon_sv_terms"/>
+        <expand macro="beacon_granularity"/>
+        <expand macro="beacon_filters"/>
+        <expand macro="beacon_pagination"/>
+        <section name="advanced" title="Advanced" expanded="false">
+            <param argument="--variant-min-length" type="integer" value="" optional="true" min="0" label="Minimum variant length"/>
+            <param argument="--variant-max-length" type="integer" value="" optional="true" min="1" label="Maximum variant length"/>
+            <param name="allow_degradation" type="boolean" checked="true" truevalue="true" falsevalue="false"
+                   label="Query beacons that lack bracket support"
+                   help="On: such beacons receive a widened range query instead, and every affected row is marked. Off: they are skipped and listed in the run report. Turn this off when comparing results between providers, because a widened query matches more variants."/>
+        </section>
+    </inputs>
+    <expand macro="beacon_outputs"/>
+    <tests>
+        <!-- The canonical focal TP53 deletion query. -->
+        <test expect_num_outputs="2">
+            <conditional name="connection">
+                <param name="transport" value="api"/>
+                <param name="providers" value="org.progenetix.beacon,org.cancercelllines"/>
+            </conditional>
+            <param name="variant_classes" value="CNV"/>
+            <param name="reference_name" value="17"/>
+            <param name="assembly" value="GRCh38"/>
+            <param name="start_min" value="5000000"/>
+            <param name="start_max" value="7676592"/>
+            <param name="end_min" value="7669607"/>
+            <param name="end_max" value="10000000"/>
+            <section name="cnv_terms">
+                <conditional name="variant_type">
+                    <param name="mode" value="efo"/>
+                    <param name="term" value="EFO:0030067"/>
+                    <param name="expand_hierarchy" value="always"/>
+                </conditional>
+            </section>
+            <output name="results">
+                <assert_contents>
+                    <has_text text="beacon_id"/>
+                    <has_text text="expansion_notes"/>
+                </assert_contents>
+            </output>
+            <output name="outcomes">
+                <assert_contents>
+                    <has_n_lines n="3"/>
+                </assert_contents>
+            </output>
+        </test>
+        <!--
+            Degradation: a provider without bracket support is widened and marked.
+            Uses a FIXTURE provider that declares CNV yes, so the test asserts
+            degradation behaviour without also depending on a partner's content
+            composition. That coupling is what broke the earlier version.
+        -->
+        <test expect_num_outputs="2">
+            <conditional name="connection">
+                <param name="transport" value="api"/>
+                <param name="providers" value="test.fixture.bracketless"/>
+            </conditional>
+            <param name="variant_classes" value="CNV"/>
+            <param name="reference_name" value="17"/>
+            <param name="start_min" value="5000000"/>
+            <param name="start_max" value="7676592"/>
+            <param name="end_min" value="7669607"/>
+            <param name="end_max" value="10000000"/>
+            <output name="outcomes">
+                <assert_contents>
+                    <has_text text="bracket"/>
+                    <has_text text="range"/>
+                </assert_contents>
+            </output>
+        </test>
+        <!-- Same fixture, degradation refused: skipped rather than silently widened. -->
+        <test expect_num_outputs="2">
+            <conditional name="connection">
+                <param name="transport" value="api"/>
+                <param name="providers" value="test.fixture.bracketless"/>
+            </conditional>
+            <param name="variant_classes" value="CNV"/>
+            <param name="reference_name" value="17"/>
+            <param name="start_min" value="5000000"/>
+            <param name="start_max" value="7676592"/>
+            <param name="end_min" value="7669607"/>
+            <param name="end_max" value="10000000"/>
+            <section name="advanced">
+                <param name="allow_degradation" value="false"/>
+            </section>
+            <output name="outcomes">
+                <assert_contents>
+                    <has_text text="skipped"/>
+                </assert_contents>
+            </output>
+        </test>
+        <!-- DEL, a variantType value the specification marks LEGACY, for a beacon holding VCF-derived terms. -->
+        <test expect_num_outputs="2">
+            <conditional name="connection">
+                <param name="transport" value="api"/>
+                <param name="providers" value="org.cancercelllines"/>
+            </conditional>
+            <param name="variant_classes" value="CNV"/>
+            <param name="reference_name" value="9"/>
+            <param name="start_min" value="21500001"/>
+            <param name="start_max" value="21975098"/>
+            <param name="end_min" value="21967753"/>
+            <param name="end_max" value="22500000"/>
+            <section name="cnv_terms">
+                <conditional name="variant_type">
+                    <param name="mode" value="legacy"/>
+                    <param name="term" value="DEL"/>
+                </conditional>
+            </section>
+            <output name="results">
+                <assert_contents>
+                    <has_text text="beacon_id"/>
+                </assert_contents>
+            </output>
+        </test>
+    </tests>
+    <help><![CDATA[
+**What it does**
+
+@HELP_READS@
+
+Finds variants whose start falls in one window and whose end falls in another.
+This is the query form for copy number and structural variants, where two
+samples can carry the same biological event with breakpoints hundreds of
+kilobases apart.
+
+**Worked example: focal deletions of TP53**
+
+To find deletions that overlap the TP53 locus but are not much larger than it,
+allow the start anywhere from roughly 2.5 Mb upstream to just before the gene
+ends, and the end anywhere from the gene's start to roughly 2.5 Mb downstream:
+
+::
+
+    Chromosome:              17
+    Start window:  5,000,000 – 7,676,592
+    End window:    7,669,607 – 10,000,000
+    Variant type:  copy number loss (EFO:0030067)
+
+That matches deletions with some overlap of the locus while excluding those
+larger than about 5 Mb. Definitions of "focal" vary between 1 and 5 Mb, so
+adjust the windows to your own.
+
+To pin one side precisely, set its two values one apart — a start window of
+7,676,592 to 7,676,593 matches only that position.
+
+@HELP_VARIANT_CLASS@
+
+@HELP_CNV_TERMS@
+
+**Beacons without bracket support**
+
+Not every beacon implements bracket queries, and the specification gives a
+client no way to ask. Providers are therefore listed in a registry shipped with
+the tool. Where bracket support is not declared, the query is either widened to
+a range or the provider is skipped, depending on the advanced setting — and
+either way the run report says which happened. A widened query matches more
+variants than you asked for, so counts from a degraded provider are not
+comparable with counts from one that ran the query as written.
+
+@HELP_VARIANT_SIZE@
+
+@HELP_OUTPUTS@
+    ]]></help>
+    <expand macro="citations"/>
+</tool>

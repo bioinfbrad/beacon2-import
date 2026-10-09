@@ -1,0 +1,8 @@
+{
+  "_note": "The three representations testMode takes in receivedRequestSummary, observed across GET and POST. Truthiness happens to work on all three; type checks do not. An `is True` or an `isinstance(v, bool)` guard would misread the GET-unset case.",
+  "_expected": [
+    {"label": "GET, unset",  "echo": {},    "parsed": false},
+    {"label": "POST, unset", "echo": false, "parsed": false},
+    {"label": "set",         "echo": true,  "parsed": true}
+  ]
+}

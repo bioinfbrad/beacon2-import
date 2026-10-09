@@ -1,0 +1,4 @@
+{
+  "GET /g_variants": "g_variants_response.json",
+  "POST /g_variants": "g_variants_response.json"
+}

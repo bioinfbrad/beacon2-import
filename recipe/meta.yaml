@@ -1,0 +1,62 @@
+{% set name = "beacon2-import" %}
+{% set version = "3.0.0" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/beacon2_import-{{ version }}.tar.gz
+  sha256: efc4f7cf3e759f3ea46815575d439a4fe78cfa4ddaa9eb7028c811409b04b2e7
+
+build:
+  entry_points:
+    - beacon2-query = beacon2_import.cli.main:main
+    - beacon2-import = beacon2_import.cli.import_command:main
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vvv --no-deps --no-build-isolation --no-cache-dir
+  number: 0
+  run_exports:
+    - {{ pin_subpackage('beacon2-import', max_pin="x") }}
+
+requirements:
+  host:
+    - python >=3.10
+    - pip
+    # --no-build-isolation means pyproject.toml's build-system.requires is never
+    # installed, so the backend must come from here. The SPDX licence string
+    # (license = "MIT") needs setuptools 77 or later.
+    - setuptools >=77
+  run:
+    - python >=3.10
+    - requests
+    - pyyaml
+    - pymongo
+    # A pip extra in pyproject.toml, but conda has no extras and 2.2.4's conda
+    # package shipped it: beacon2-import --galaxy needs it.
+    - bioblend
+
+test:
+  imports:
+    - beacon2_import
+  commands:
+    - beacon2-query --help
+    - beacon2-import --help
+
+about:
+  home: https://github.com/bioinfbrad/beacon2-import
+  dev_url: https://github.com/bioinfbrad/beacon2-import
+  summary: Load Beacon JSON into a self-hosted beacon's MongoDB, and search one or many GA4GH Beacon v2 beacons, over the API or MongoDB
+  description: |
+    Two jobs, two commands. beacon2-import loads (writes) Beacon JSON into a
+    self-hosted beacon's MongoDB. beacon2-query searches (reads) one or many
+    beacons: registered providers over the Beacon v2 API, or your own beacon
+    over MongoDB. beacon2-query replaces the 2.x beacon2-search command.
+    Releases up to and including 2.2.4 remain under CC-BY-NC-4.0.
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - khaled196

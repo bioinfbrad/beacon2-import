@@ -1,0 +1,21 @@
+# Expected classification per fixture. classification_basis is asserted as a
+# substring, so wording may be refined without breaking the test, while the
+# class and the REASON CATEGORY stay pinned.
+#
+# large_indel_boundary.json and large_no_sequence_no_junction.json are BOTH
+# 120 bp. Holding size constant is the entire point of the pair: identical
+# size, different claim, different class. Any difference in these two lengths
+# would let a reader wonder whether the boundary mattered after all.
+#
+# bycon_cnv_live.json is a REAL record and the most important row here: it has
+# no variantType field at all, so an abundance rule looking only there would
+# drop every CNV this live provider holds straight through to unclassified.
+fixture	expected_class	basis_contains	expected_variant_length
+cnv_efo_term.json	CNV	EFO:0030067	200000
+small_variant_ref_alt.json	SMALL_VARIANT	sequence-specified	1
+sv_junction.json	SV	adjacency	1
+unclassifiable.json	unclassified	no claim evidence	500
+large_indel_boundary.json	SMALL_VARIANT	exceeds the 50 bp convention	120
+large_no_sequence_no_junction.json	unclassified	no claim evidence	120
+bycon_cnv_live.json	CNV	EFO:0030070	2440610
+progenetix_rle_deletion.json	SMALL_VARIANT	ReferenceLengthExpression	1

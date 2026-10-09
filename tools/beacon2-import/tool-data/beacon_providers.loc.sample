@@ -1,0 +1,29 @@
+# Beacon v2 providers available to this Galaxy instance.
+#
+# Columns: id <TAB> name <TAB> base_url <TAB> enabled <TAB> tier <TAB> credential_key
+#
+#   id             must match a key in the packaged beacon_registry.yaml. An id
+#                  with no registry entry is listed but not queryable: selecting
+#                  it yields one `skipped` row naming the missing entry.
+#   enabled        1 or 0. Only enabled providers appear in the tool form.
+#   tier           public | registered | controlled
+#   credential_key blank for public providers. Otherwise `section|input` naming
+#                  a key in user_preferences_extra_conf.yml. Public beacons must
+#                  work with a completely empty credential vault.
+#
+# Public providers, enabled. Both were queried live from a datacenter (AWS)
+# address, as a Galaxy server's would be. Progenetix's Cloudflare challenge
+# stops Linux curl but not this tool, so a failing curl is no evidence about
+# the tool: check a provider with beacon2_service_info instead.
+org.progenetix.beacon	Progenetix Beacon+	https://progenetix.org/beacon	1	public	
+org.cancercelllines	Cancer Cell Line Genomics Beacon+	https://cancercelllines.org/beacon	1	public	
+#
+# EGA Beacon RI demo: unreachable when last tested (a maintenance page, then a
+# diagnostic that timed out after 20 s). Uncomment once it answers again.
+#org.ega-archive.demo	EGA Beacon RI demo (synthetic data)	https://beacon.ega-archive.org/api	1	public	
+#
+# Registered / controlled tier. Each needs a credential and a dialect check
+# before it will run; see beacon_registry.yaml.
+#org.ega-archive.production	EGA production Beacon		0	controlled	beacon2_credentials|ega_token
+#org.cafevariome.rdnexus	Cafe Variome / RD Discovery Nexus		0	registered	beacon2_credentials|cafevariome_token
+#org.rd-connect.gpap	RD-Connect GPAP		0	controlled	beacon2_credentials|rdconnect_token

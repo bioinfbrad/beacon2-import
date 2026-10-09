@@ -1,0 +1,2693 @@
+{
+  "source": "beacon2_import-2.2.4-py3-none-any.whl (PyPI), live argparse objects",
+  "console_scripts": {
+    "beacon2-import": "beacon2_import.beacon2_import:beacon2_import",
+    "beacon2-search": "beacon2_search.beacon2_search:beacon_query"
+  },
+  "importable_modules": [
+    "beacon2_import",
+    "beacon2_search",
+    "search",
+    "utils"
+  ],
+  "beacon2_search": {
+    "sequence": {
+      "connection_options": [
+        {
+          "dest": "database_host",
+          "option_strings": [
+            "-H",
+            "--db-host"
+          ],
+          "type": "str",
+          "default": "127.0.0.1",
+          "required": false,
+          "help": "hostname/IP of the beacon database"
+        },
+        {
+          "dest": "database_port",
+          "option_strings": [
+            "-P",
+            "--db-port"
+          ],
+          "type": "int",
+          "default": 27017,
+          "required": false,
+          "help": "port of the beacon database"
+        },
+        {
+          "dest": "advance",
+          "option_strings": [
+            "-a",
+            "--advance-connection"
+          ],
+          "type": null,
+          "default": false,
+          "required": false,
+          "help": "Connect to beacon database with authentication"
+        },
+        {
+          "dest": "database_auth_config",
+          "option_strings": [
+            "-A",
+            "--db-auth-config"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "JSON file containing credentials/config e.g.{'db_auth_source':'admin','db_user':'root','db_password':'example'}"
+        },
+        {
+          "dest": "database",
+          "option_strings": [
+            "-d",
+            "--database"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "The targeted beacon database"
+        },
+        {
+          "dest": "collection",
+          "option_strings": [
+            "-c",
+            "--collection"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "The targeted beacon collection from the desired database"
+        }
+      ],
+      "query_options": [
+        {
+          "dest": "alternateBases",
+          "option_strings": [
+            "-ab",
+            "--alternateBases"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Alternate bases"
+        },
+        {
+          "dest": "referenceBases",
+          "option_strings": [
+            "-rb",
+            "--referenceBases"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Reference bases"
+        },
+        {
+          "dest": "referenceName",
+          "option_strings": [
+            "-rn",
+            "--referenceName"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Reference name"
+        },
+        {
+          "dest": "start",
+          "option_strings": [
+            "-s",
+            "--start"
+          ],
+          "type": "int",
+          "default": null,
+          "required": false,
+          "help": "Start position"
+        },
+        {
+          "dest": "collectionIds",
+          "option_strings": [
+            "-id",
+            "--collectionIds"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Collection ID"
+        }
+      ]
+    },
+    "range": {
+      "connection_options": [
+        {
+          "dest": "database_host",
+          "option_strings": [
+            "-H",
+            "--db-host"
+          ],
+          "type": "str",
+          "default": "127.0.0.1",
+          "required": false,
+          "help": "hostname/IP of the beacon database"
+        },
+        {
+          "dest": "database_port",
+          "option_strings": [
+            "-P",
+            "--db-port"
+          ],
+          "type": "int",
+          "default": 27017,
+          "required": false,
+          "help": "port of the beacon database"
+        },
+        {
+          "dest": "advance",
+          "option_strings": [
+            "-a",
+            "--advance-connection"
+          ],
+          "type": null,
+          "default": false,
+          "required": false,
+          "help": "Connect to beacon database with authentication"
+        },
+        {
+          "dest": "database_auth_config",
+          "option_strings": [
+            "-A",
+            "--db-auth-config"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "JSON file containing credentials/config e.g.{'db_auth_source':'admin','db_user':'root','db_password':'example'}"
+        },
+        {
+          "dest": "database",
+          "option_strings": [
+            "-d",
+            "--database"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "The targeted beacon database"
+        },
+        {
+          "dest": "collection",
+          "option_strings": [
+            "-c",
+            "--collection"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "The targeted beacon collection from the desired database"
+        }
+      ],
+      "query_options": [
+        {
+          "dest": "start",
+          "option_strings": [
+            "-s",
+            "--start"
+          ],
+          "type": "int",
+          "default": null,
+          "required": false,
+          "help": "Start position"
+        },
+        {
+          "dest": "end",
+          "option_strings": [
+            "-e",
+            "--end"
+          ],
+          "type": "int",
+          "default": null,
+          "required": false,
+          "help": "End position"
+        },
+        {
+          "dest": "referenceName",
+          "option_strings": [
+            "-rn",
+            "--referenceName"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Reference name"
+        },
+        {
+          "dest": "alternateBases",
+          "option_strings": [
+            "-ab",
+            "--alternateBases"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Alternate bases"
+        },
+        {
+          "dest": "variantType",
+          "option_strings": [
+            "-v",
+            "--variantType"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Variant type"
+        },
+        {
+          "dest": "aminoacidChange",
+          "option_strings": [
+            "-ac",
+            "--aminoacidChange"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Amino acid change"
+        },
+        {
+          "dest": "variantMinLength",
+          "option_strings": [
+            "-vmax",
+            "--variantMinLength"
+          ],
+          "type": "int",
+          "default": null,
+          "required": false,
+          "help": "Variant minimum length"
+        },
+        {
+          "dest": "variantMaxLength",
+          "option_strings": [
+            "-vmin",
+            "--variantMaxLength"
+          ],
+          "type": "int",
+          "default": null,
+          "required": false,
+          "help": "Variant maximum length"
+        }
+      ]
+    },
+    "gene": {
+      "connection_options": [
+        {
+          "dest": "database_host",
+          "option_strings": [
+            "-H",
+            "--db-host"
+          ],
+          "type": "str",
+          "default": "127.0.0.1",
+          "required": false,
+          "help": "hostname/IP of the beacon database"
+        },
+        {
+          "dest": "database_port",
+          "option_strings": [
+            "-P",
+            "--db-port"
+          ],
+          "type": "int",
+          "default": 27017,
+          "required": false,
+          "help": "port of the beacon database"
+        },
+        {
+          "dest": "advance",
+          "option_strings": [
+            "-a",
+            "--advance-connection"
+          ],
+          "type": null,
+          "default": false,
+          "required": false,
+          "help": "Connect to beacon database with authentication"
+        },
+        {
+          "dest": "database_auth_config",
+          "option_strings": [
+            "-A",
+            "--db-auth-config"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "JSON file containing credentials/config e.g.{'db_auth_source':'admin','db_user':'root','db_password':'example'}"
+        },
+        {
+          "dest": "database",
+          "option_strings": [
+            "-d",
+            "--database"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "The targeted beacon database"
+        },
+        {
+          "dest": "collection",
+          "option_strings": [
+            "-c",
+            "--collection"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "The targeted beacon collection from the desired database"
+        }
+      ],
+      "query_options": [
+        {
+          "dest": "geneId",
+          "option_strings": [
+            "-g",
+            "--geneId"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Gene ID"
+        },
+        {
+          "dest": "alternateBases",
+          "option_strings": [
+            "-ab",
+            "--alternateBases"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Alternate bases"
+        },
+        {
+          "dest": "variantType",
+          "option_strings": [
+            "-v",
+            "--variantType"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Variant type"
+        },
+        {
+          "dest": "aminoacidChange",
+          "option_strings": [
+            "-ac",
+            "--aminoacidChange"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Amino acid change"
+        },
+        {
+          "dest": "variantMinLength",
+          "option_strings": [
+            "-vmax",
+            "--variantMinLength"
+          ],
+          "type": "int",
+          "default": null,
+          "required": false,
+          "help": "Variant minimum length"
+        },
+        {
+          "dest": "variantMaxLength",
+          "option_strings": [
+            "-vmin",
+            "--variantMaxLength"
+          ],
+          "type": "int",
+          "default": null,
+          "required": false,
+          "help": "Variant maximum length"
+        }
+      ]
+    },
+    "bracket": {
+      "connection_options": [
+        {
+          "dest": "database_host",
+          "option_strings": [
+            "-H",
+            "--db-host"
+          ],
+          "type": "str",
+          "default": "127.0.0.1",
+          "required": false,
+          "help": "hostname/IP of the beacon database"
+        },
+        {
+          "dest": "database_port",
+          "option_strings": [
+            "-P",
+            "--db-port"
+          ],
+          "type": "int",
+          "default": 27017,
+          "required": false,
+          "help": "port of the beacon database"
+        },
+        {
+          "dest": "advance",
+          "option_strings": [
+            "-a",
+            "--advance-connection"
+          ],
+          "type": null,
+          "default": false,
+          "required": false,
+          "help": "Connect to beacon database with authentication"
+        },
+        {
+          "dest": "database_auth_config",
+          "option_strings": [
+            "-A",
+            "--db-auth-config"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "JSON file containing credentials/config e.g.{'db_auth_source':'admin','db_user':'root','db_password':'example'}"
+        },
+        {
+          "dest": "database",
+          "option_strings": [
+            "-d",
+            "--database"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "The targeted beacon database"
+        },
+        {
+          "dest": "collection",
+          "option_strings": [
+            "-c",
+            "--collection"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "The targeted beacon collection from the desired database"
+        }
+      ],
+      "query_options": [
+        {
+          "dest": "start_minimum",
+          "option_strings": [
+            "-smin",
+            "--start-minimum"
+          ],
+          "type": "int",
+          "default": null,
+          "required": false,
+          "help": "Start minimum position"
+        },
+        {
+          "dest": "start_maximum",
+          "option_strings": [
+            "-smax",
+            "--start-maximum"
+          ],
+          "type": "int",
+          "default": null,
+          "required": false,
+          "help": "Start maximum position"
+        },
+        {
+          "dest": "end_minimum",
+          "option_strings": [
+            "-emin",
+            "--end-minimum"
+          ],
+          "type": "int",
+          "default": null,
+          "required": false,
+          "help": "End minimum position"
+        },
+        {
+          "dest": "end_maximum",
+          "option_strings": [
+            "-emax",
+            "--end-maximum"
+          ],
+          "type": "int",
+          "default": null,
+          "required": false,
+          "help": "End maximum position"
+        },
+        {
+          "dest": "referenceName",
+          "option_strings": [
+            "-rn",
+            "--referenceName"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Reference name"
+        },
+        {
+          "dest": "variantType",
+          "option_strings": [
+            "-v",
+            "--variantType"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Variant type"
+        }
+      ]
+    },
+    "analyses": {
+      "connection_options": [
+        {
+          "dest": "database_host",
+          "option_strings": [
+            "-H",
+            "--db-host"
+          ],
+          "type": "str",
+          "default": "127.0.0.1",
+          "required": false,
+          "help": "hostname/IP of the beacon database"
+        },
+        {
+          "dest": "database_port",
+          "option_strings": [
+            "-P",
+            "--db-port"
+          ],
+          "type": "int",
+          "default": 27017,
+          "required": false,
+          "help": "port of the beacon database"
+        },
+        {
+          "dest": "advance",
+          "option_strings": [
+            "-a",
+            "--advance-connection"
+          ],
+          "type": null,
+          "default": false,
+          "required": false,
+          "help": "Connect to beacon database with authentication"
+        },
+        {
+          "dest": "database_auth_config",
+          "option_strings": [
+            "-A",
+            "--db-auth-config"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "JSON file containing credentials/config e.g.{'db_auth_source':'admin','db_user':'root','db_password':'example'}"
+        },
+        {
+          "dest": "database",
+          "option_strings": [
+            "-d",
+            "--database"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "The targeted beacon database"
+        },
+        {
+          "dest": "collection",
+          "option_strings": [
+            "-c",
+            "--collection"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "The targeted beacon collection from the desired database"
+        }
+      ],
+      "query_options": [
+        {
+          "dest": "aligner",
+          "option_strings": [
+            "-al",
+            "--aligner"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Aligner"
+        },
+        {
+          "dest": "analysisDate",
+          "option_strings": [
+            "-ad",
+            "--analysisDate"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Analysis Date"
+        },
+        {
+          "dest": "biosampleId",
+          "option_strings": [
+            "-bi",
+            "--biosampleId"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Biosample ID"
+        },
+        {
+          "dest": "identification",
+          "option_strings": [
+            "-id",
+            "--identification"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Identification"
+        },
+        {
+          "dest": "individualId",
+          "option_strings": [
+            "-ii",
+            "--individualId"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Individual ID"
+        },
+        {
+          "dest": "pipelineName",
+          "option_strings": [
+            "-pn",
+            "--pipelineName"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Pipeline Name"
+        },
+        {
+          "dest": "pipelineRef",
+          "option_strings": [
+            "-pr",
+            "--pipelineRef"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Pipeline Reference"
+        },
+        {
+          "dest": "runId",
+          "option_strings": [
+            "-ri",
+            "--runId"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Run ID"
+        },
+        {
+          "dest": "variantCaller",
+          "option_strings": [
+            "-vc",
+            "--variantCaller"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Variant Caller"
+        }
+      ]
+    },
+    "biosamples": {
+      "connection_options": [
+        {
+          "dest": "database_host",
+          "option_strings": [
+            "-H",
+            "--db-host"
+          ],
+          "type": "str",
+          "default": "127.0.0.1",
+          "required": false,
+          "help": "hostname/IP of the beacon database"
+        },
+        {
+          "dest": "database_port",
+          "option_strings": [
+            "-P",
+            "--db-port"
+          ],
+          "type": "int",
+          "default": 27017,
+          "required": false,
+          "help": "port of the beacon database"
+        },
+        {
+          "dest": "advance",
+          "option_strings": [
+            "-a",
+            "--advance-connection"
+          ],
+          "type": null,
+          "default": false,
+          "required": false,
+          "help": "Connect to beacon database with authentication"
+        },
+        {
+          "dest": "database_auth_config",
+          "option_strings": [
+            "-A",
+            "--db-auth-config"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "JSON file containing credentials/config e.g.{'db_auth_source':'admin','db_user':'root','db_password':'example'}"
+        },
+        {
+          "dest": "database",
+          "option_strings": [
+            "-d",
+            "--database"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "The targeted beacon database"
+        },
+        {
+          "dest": "collection",
+          "option_strings": [
+            "-c",
+            "--collection"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "The targeted beacon collection from the desired database"
+        }
+      ],
+      "query_options": [
+        {
+          "dest": "biosampleStatus",
+          "option_strings": [
+            "-bs",
+            "--biosampleStatus"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Biosample Status"
+        },
+        {
+          "dest": "collectionDate",
+          "option_strings": [
+            "-cd",
+            "--collectionDate"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Collection Date"
+        },
+        {
+          "dest": "collectionMoment",
+          "option_strings": [
+            "-cm",
+            "--collectionMoment"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Mollection Moment"
+        },
+        {
+          "dest": "identification",
+          "option_strings": [
+            "-id",
+            "--identification"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Identification"
+        },
+        {
+          "dest": "diagnosticMarkers",
+          "option_strings": [
+            "-dm",
+            "--diagnosticMarkers"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Diagnostic Markers"
+        },
+        {
+          "dest": "histologicalDiagnosis",
+          "option_strings": [
+            "-hd",
+            "--histologicalDiagnosis"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Histological Diagnosis"
+        },
+        {
+          "dest": "obtentionProcedure",
+          "option_strings": [
+            "-op",
+            "--obtentionProcedure"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Obtention Procedure"
+        },
+        {
+          "dest": "pathologicalStage",
+          "option_strings": [
+            "-ps",
+            "--pathologicalStage"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Pathological Stage"
+        },
+        {
+          "dest": "pathologicalTnmFinding",
+          "option_strings": [
+            "-pf",
+            "--pathologicalTnmFinding"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Pathological Tnm Finding"
+        },
+        {
+          "dest": "featureType",
+          "option_strings": [
+            "-ft",
+            "--featureType"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Feature Type"
+        },
+        {
+          "dest": "severity",
+          "option_strings": [
+            "-s",
+            "--severity"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "s"
+        },
+        {
+          "dest": "sampleOriginDetail",
+          "option_strings": [
+            "-sd",
+            "--sampleOriginDetail"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Sample Origin Detail"
+        },
+        {
+          "dest": "sampleOriginType",
+          "option_strings": [
+            "-so",
+            "--sampleOriginType"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Sample Origin Type"
+        },
+        {
+          "dest": "sampleProcessing",
+          "option_strings": [
+            "-sp",
+            "--sampleProcessing"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Sample Processing"
+        },
+        {
+          "dest": "sampleStorage",
+          "option_strings": [
+            "-ss",
+            "--sampleStorage"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Sample Storage"
+        },
+        {
+          "dest": "tumorGrade",
+          "option_strings": [
+            "-tg",
+            "--tumorGrade"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Tumor Grade"
+        },
+        {
+          "dest": "tumorProgression",
+          "option_strings": [
+            "-tp",
+            "--tumorProgression"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Tumor Progression"
+        }
+      ]
+    },
+    "cohorts": {
+      "connection_options": [
+        {
+          "dest": "database_host",
+          "option_strings": [
+            "-H",
+            "--db-host"
+          ],
+          "type": "str",
+          "default": "127.0.0.1",
+          "required": false,
+          "help": "hostname/IP of the beacon database"
+        },
+        {
+          "dest": "database_port",
+          "option_strings": [
+            "-P",
+            "--db-port"
+          ],
+          "type": "int",
+          "default": 27017,
+          "required": false,
+          "help": "port of the beacon database"
+        },
+        {
+          "dest": "advance",
+          "option_strings": [
+            "-a",
+            "--advance-connection"
+          ],
+          "type": null,
+          "default": false,
+          "required": false,
+          "help": "Connect to beacon database with authentication"
+        },
+        {
+          "dest": "database_auth_config",
+          "option_strings": [
+            "-A",
+            "--db-auth-config"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "JSON file containing credentials/config e.g.{'db_auth_source':'admin','db_user':'root','db_password':'example'}"
+        },
+        {
+          "dest": "database",
+          "option_strings": [
+            "-d",
+            "--database"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "The targeted beacon database"
+        },
+        {
+          "dest": "collection",
+          "option_strings": [
+            "-c",
+            "--collection"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "The targeted beacon collection from the desired database"
+        }
+      ],
+      "query_options": [
+        {
+          "dest": "cohortDataTypes",
+          "option_strings": [
+            "-ct",
+            "--cohortDataTypes"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Cohort Data Types"
+        },
+        {
+          "dest": "cohortDesign",
+          "option_strings": [
+            "-cd",
+            "--cohortDesign"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Cohort Design"
+        },
+        {
+          "dest": "cohortSize",
+          "option_strings": [
+            "-cz",
+            "--cohortSize"
+          ],
+          "type": "int",
+          "default": null,
+          "required": false,
+          "help": "Cohort Size"
+        },
+        {
+          "dest": "cohortType",
+          "option_strings": [
+            "-t",
+            "--cohortType"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Cohort Type"
+        },
+        {
+          "dest": "identification",
+          "option_strings": [
+            "-id",
+            "--identification"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Identification"
+        },
+        {
+          "dest": "genders",
+          "option_strings": [
+            "-g",
+            "--genders"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Genders"
+        },
+        {
+          "dest": "name",
+          "option_strings": [
+            "-n",
+            "--name"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Name"
+        }
+      ]
+    },
+    "datasets": {
+      "connection_options": [
+        {
+          "dest": "database_host",
+          "option_strings": [
+            "-H",
+            "--db-host"
+          ],
+          "type": "str",
+          "default": "127.0.0.1",
+          "required": false,
+          "help": "hostname/IP of the beacon database"
+        },
+        {
+          "dest": "database_port",
+          "option_strings": [
+            "-P",
+            "--db-port"
+          ],
+          "type": "int",
+          "default": 27017,
+          "required": false,
+          "help": "port of the beacon database"
+        },
+        {
+          "dest": "advance",
+          "option_strings": [
+            "-a",
+            "--advance-connection"
+          ],
+          "type": null,
+          "default": false,
+          "required": false,
+          "help": "Connect to beacon database with authentication"
+        },
+        {
+          "dest": "database_auth_config",
+          "option_strings": [
+            "-A",
+            "--db-auth-config"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "JSON file containing credentials/config e.g.{'db_auth_source':'admin','db_user':'root','db_password':'example'}"
+        },
+        {
+          "dest": "database",
+          "option_strings": [
+            "-d",
+            "--database"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "The targeted beacon database"
+        },
+        {
+          "dest": "collection",
+          "option_strings": [
+            "-c",
+            "--collection"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "The targeted beacon collection from the desired database"
+        }
+      ],
+      "query_options": [
+        {
+          "dest": "dataUseConditions",
+          "option_strings": [
+            "-du",
+            "--dataUseConditions"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Data Use Conditions"
+        },
+        {
+          "dest": "ontologyModifiers",
+          "option_strings": [
+            "-om",
+            "--ontologyModifiers"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Data Use Conditions Modifiers"
+        },
+        {
+          "dest": "identification",
+          "option_strings": [
+            "-id",
+            "--identification"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Identification"
+        },
+        {
+          "dest": "name",
+          "option_strings": [
+            "-n",
+            "--name"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Name"
+        }
+      ]
+    },
+    "individuals": {
+      "connection_options": [
+        {
+          "dest": "database_host",
+          "option_strings": [
+            "-H",
+            "--db-host"
+          ],
+          "type": "str",
+          "default": "127.0.0.1",
+          "required": false,
+          "help": "hostname/IP of the beacon database"
+        },
+        {
+          "dest": "database_port",
+          "option_strings": [
+            "-P",
+            "--db-port"
+          ],
+          "type": "int",
+          "default": 27017,
+          "required": false,
+          "help": "port of the beacon database"
+        },
+        {
+          "dest": "advance",
+          "option_strings": [
+            "-a",
+            "--advance-connection"
+          ],
+          "type": null,
+          "default": false,
+          "required": false,
+          "help": "Connect to beacon database with authentication"
+        },
+        {
+          "dest": "database_auth_config",
+          "option_strings": [
+            "-A",
+            "--db-auth-config"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "JSON file containing credentials/config e.g.{'db_auth_source':'admin','db_user':'root','db_password':'example'}"
+        },
+        {
+          "dest": "database",
+          "option_strings": [
+            "-d",
+            "--database"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "The targeted beacon database"
+        },
+        {
+          "dest": "collection",
+          "option_strings": [
+            "-c",
+            "--collection"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "The targeted beacon collection from the desired database"
+        }
+      ],
+      "query_options": [
+        {
+          "dest": "ageGroup",
+          "option_strings": [
+            "-g",
+            "--ageGroup"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Age Group"
+        },
+        {
+          "dest": "diseaseCode",
+          "option_strings": [
+            "-do",
+            "--diseaseCode"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Disease Code"
+        },
+        {
+          "dest": "familyHistory",
+          "option_strings": [
+            "-f",
+            "--familyHistory"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Family History"
+        },
+        {
+          "dest": "severity",
+          "option_strings": [
+            "-se",
+            "--severity"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Severity"
+        },
+        {
+          "dest": "stage",
+          "option_strings": [
+            "-st",
+            "--stage"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Stage"
+        },
+        {
+          "dest": "ethnicity",
+          "option_strings": [
+            "-e",
+            "--ethnicity"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Ethnicity"
+        },
+        {
+          "dest": "geographicOrigin",
+          "option_strings": [
+            "-go",
+            "--geographicOrigin"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Geographic Origin"
+        },
+        {
+          "dest": "identification",
+          "option_strings": [
+            "-id",
+            "--identification"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Identification"
+        },
+        {
+          "dest": "assayCode",
+          "option_strings": [
+            "-as",
+            "--assayCode"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Measures Ontology"
+        },
+        {
+          "dest": "sex",
+          "option_strings": [
+            "-s",
+            "--sex"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "sex"
+        }
+      ]
+    },
+    "runs": {
+      "connection_options": [
+        {
+          "dest": "database_host",
+          "option_strings": [
+            "-H",
+            "--db-host"
+          ],
+          "type": "str",
+          "default": "127.0.0.1",
+          "required": false,
+          "help": "hostname/IP of the beacon database"
+        },
+        {
+          "dest": "database_port",
+          "option_strings": [
+            "-P",
+            "--db-port"
+          ],
+          "type": "int",
+          "default": 27017,
+          "required": false,
+          "help": "port of the beacon database"
+        },
+        {
+          "dest": "advance",
+          "option_strings": [
+            "-a",
+            "--advance-connection"
+          ],
+          "type": null,
+          "default": false,
+          "required": false,
+          "help": "Connect to beacon database with authentication"
+        },
+        {
+          "dest": "database_auth_config",
+          "option_strings": [
+            "-A",
+            "--db-auth-config"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "JSON file containing credentials/config e.g.{'db_auth_source':'admin','db_user':'root','db_password':'example'}"
+        },
+        {
+          "dest": "database",
+          "option_strings": [
+            "-d",
+            "--database"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "The targeted beacon database"
+        },
+        {
+          "dest": "collection",
+          "option_strings": [
+            "-c",
+            "--collection"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "The targeted beacon collection from the desired database"
+        }
+      ],
+      "query_options": [
+        {
+          "dest": "identification",
+          "option_strings": [
+            "-id",
+            "--identification"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Identification"
+        },
+        {
+          "dest": "individualId",
+          "option_strings": [
+            "-ii",
+            "--individualId"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Individual Id"
+        },
+        {
+          "dest": "libraryLayout",
+          "option_strings": [
+            "-ll",
+            "--libraryLayout"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Library Layout"
+        },
+        {
+          "dest": "librarySelection",
+          "option_strings": [
+            "-ls",
+            "--librarySelection"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Library Selection"
+        },
+        {
+          "dest": "librarySource",
+          "option_strings": [
+            "-s",
+            "--librarySource"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Library Source"
+        },
+        {
+          "dest": "libraryStrategy",
+          "option_strings": [
+            "-st",
+            "--libraryStrategy"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Library Strategy"
+        },
+        {
+          "dest": "platform",
+          "option_strings": [
+            "-p",
+            "--platform"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "platform"
+        },
+        {
+          "dest": "platformModel",
+          "option_strings": [
+            "-pm",
+            "--platformModel"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Platform Model"
+        },
+        {
+          "dest": "runDate",
+          "option_strings": [
+            "-r",
+            "--runDate"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Run Date"
+        }
+      ]
+    },
+    "cnv": {
+      "connection_options": [
+        {
+          "dest": "database_host",
+          "option_strings": [
+            "-H",
+            "--db-host"
+          ],
+          "type": "str",
+          "default": "127.0.0.1",
+          "required": false,
+          "help": "hostname/IP of the beacon database"
+        },
+        {
+          "dest": "database_port",
+          "option_strings": [
+            "-P",
+            "--db-port"
+          ],
+          "type": "int",
+          "default": 27017,
+          "required": false,
+          "help": "port of the beacon database"
+        },
+        {
+          "dest": "advance",
+          "option_strings": [
+            "-a",
+            "--advance-connection"
+          ],
+          "type": null,
+          "default": false,
+          "required": false,
+          "help": "Connect to beacon database with authentication"
+        },
+        {
+          "dest": "database_auth_config",
+          "option_strings": [
+            "-A",
+            "--db-auth-config"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "JSON file containing credentials/config e.g.{'db_auth_source':'admin','db_user':'root','db_password':'example'}"
+        },
+        {
+          "dest": "database",
+          "option_strings": [
+            "-d",
+            "--database"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "The targeted beacon database"
+        },
+        {
+          "dest": "collection",
+          "option_strings": [
+            "-c",
+            "--collection"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "The targeted beacon collection from the desired database"
+        }
+      ],
+      "query_options": [
+        {
+          "dest": "variantInternalId",
+          "option_strings": [
+            "-vi",
+            "--variantInternalId"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "VariantInternal Id"
+        },
+        {
+          "dest": "analysisId",
+          "option_strings": [
+            "-ai",
+            "--analysisId"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Analysis Id"
+        },
+        {
+          "dest": "individualId",
+          "option_strings": [
+            "-ii",
+            "--individualId"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Individual Id"
+        },
+        {
+          "dest": "start",
+          "option_strings": [
+            "-s",
+            "--start"
+          ],
+          "type": "int",
+          "default": null,
+          "required": false,
+          "help": "start"
+        },
+        {
+          "dest": "end",
+          "option_strings": [
+            "-e",
+            "--end"
+          ],
+          "type": "int",
+          "default": null,
+          "required": false,
+          "help": "end"
+        },
+        {
+          "dest": "chromosome",
+          "option_strings": [
+            "-ch",
+            "--chromosome"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Chromosome"
+        },
+        {
+          "dest": "gene",
+          "option_strings": [
+            "-g",
+            "--gene"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Gene name e.g. 'AL645728.1' ."
+        },
+        {
+          "dest": "variantType",
+          "option_strings": [
+            "-vt",
+            "--variantType"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Variant Type 'DEL' or 'DUP'"
+        },
+        {
+          "dest": "primarySite",
+          "option_strings": [
+            "-p",
+            "--primarySite"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Primary Site, e.g. 'brain'"
+        },
+        {
+          "dest": "diseaseType",
+          "option_strings": [
+            "-dt",
+            "--diseaseType"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Disease Type, e.g. 'adnexal and skin appendage neoplasms'"
+        },
+        {
+          "dest": "variantStateId",
+          "option_strings": [
+            "-si",
+            "--variantStateId"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Variant State Id"
+        },
+        {
+          "dest": "variantState",
+          "option_strings": [
+            "-vs",
+            "--variantState"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Variant State"
+        },
+        {
+          "dest": "sequenceId",
+          "option_strings": [
+            "-sd",
+            "--sequenceId"
+          ],
+          "type": "str",
+          "default": "",
+          "required": false,
+          "help": "Sequence Id"
+        }
+      ]
+    }
+  },
+  "beacon2_import": [
+    {
+      "dest": "database_host",
+      "option_strings": [
+        "-H",
+        "--db-host"
+      ],
+      "type": "str",
+      "default": "127.0.0.1",
+      "required": false,
+      "help": "Hostname/IP of the beacon database"
+    },
+    {
+      "dest": "database_port",
+      "option_strings": [
+        "-P",
+        "--db-port"
+      ],
+      "type": "int",
+      "default": 27017,
+      "required": false,
+      "help": "Port of the beacon database"
+    },
+    {
+      "dest": "advance",
+      "option_strings": [
+        "-a",
+        "--advance-connection"
+      ],
+      "type": null,
+      "default": false,
+      "required": false,
+      "help": "Connect to beacon database with authentication"
+    },
+    {
+      "dest": "database_auth_config",
+      "option_strings": [
+        "-A",
+        "--db-auth-config"
+      ],
+      "type": "str",
+      "default": "",
+      "required": false,
+      "help": "JSON file containing credentials/config e.g.{'db_auth_source':'admin','db_user':'root','db_password':'example'}"
+    },
+    {
+      "dest": "galaxy",
+      "option_strings": [
+        "-g",
+        "--galaxy"
+      ],
+      "type": null,
+      "default": false,
+      "required": false,
+      "help": "Import data from Galaxy"
+    },
+    {
+      "dest": "galaxy_url",
+      "option_strings": [
+        "-u",
+        "--galaxy-url"
+      ],
+      "type": "str",
+      "default": "",
+      "required": false,
+      "help": "Galaxy hostname or IP"
+    },
+    {
+      "dest": "galaxy_key",
+      "option_strings": [
+        "-k",
+        "--galaxy-key"
+      ],
+      "type": "str",
+      "default": "",
+      "required": false,
+      "help": "API key of a galaxy user WITH ADMIN PRIVILEGES"
+    },
+    {
+      "dest": "database",
+      "option_strings": [
+        "-d",
+        "--database "
+      ],
+      "type": "str",
+      "default": "",
+      "required": false,
+      "help": "The targeted beacon database"
+    },
+    {
+      "dest": "collection",
+      "option_strings": [
+        "-c",
+        "--collection"
+      ],
+      "type": "str",
+      "default": "",
+      "required": false,
+      "help": "The targeted beacon collection from the desired database"
+    },
+    {
+      "dest": "input_json_file",
+      "option_strings": [
+        "-i",
+        "--input_json_file"
+      ],
+      "type": "str",
+      "default": "",
+      "required": false,
+      "help": "Input the local path to the JSON file or it's name on your Galaxy Hitory to import to beacon"
+    },
+    {
+      "dest": "store_origins",
+      "option_strings": [
+        "-s",
+        "--store-origins"
+      ],
+      "type": null,
+      "default": false,
+      "required": false,
+      "help": "Make a local file containing variantIDs with the dataset they stem from"
+    },
+    {
+      "dest": "origins_file",
+      "option_strings": [
+        "-o",
+        "--origins-file"
+      ],
+      "type": "str",
+      "default": "/tmp/variant-origins.txt",
+      "required": false,
+      "help": "Full file path of where variant origins should be stored (if enabled)"
+    },
+    {
+      "dest": "loglevel",
+      "option_strings": [
+        "-D",
+        "--debug"
+      ],
+      "type": null,
+      "default": 30,
+      "required": false,
+      "help": null
+    },
+    {
+      "dest": "loglevel",
+      "option_strings": [
+        "-V",
+        "--verbose"
+      ],
+      "type": null,
+      "default": null,
+      "required": false,
+      "help": "Be verbose"
+    },
+    {
+      "dest": "clear_all",
+      "option_strings": [
+        "-ca",
+        "--clearAll"
+      ],
+      "type": null,
+      "default": false,
+      "required": false,
+      "help": "Delete all data before the new import"
+    },
+    {
+      "dest": "clear_coll",
+      "option_strings": [
+        "-cc",
+        "--clearColl"
+      ],
+      "type": null,
+      "default": false,
+      "required": false,
+      "help": "Delete specific collection before the new import"
+    },
+    {
+      "dest": "removed_coll_name",
+      "option_strings": [
+        "-r",
+        "--removeCollection"
+      ],
+      "type": "str",
+      "default": "",
+      "required": false,
+      "help": "Define the collection name for deletion"
+    }
+  ],
+  "beacon2_search_query_paths": {
+    "sequence": [
+      {
+        "path": "variation.location.sequence_id",
+        "dests": [
+          "referenceName"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "variation.location.interval.start.value",
+        "dests": [
+          "start"
+        ],
+        "operator": "range"
+      },
+      {
+        "path": "variation.alternateBases",
+        "dests": [
+          "alternateBases"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "variation.referenceBases",
+        "dests": [
+          "referenceBases"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "caseLevelData.biosampleId",
+        "dests": [
+          "collectionIds"
+        ],
+        "operator": "range"
+      }
+    ],
+    "range": [
+      {
+        "path": "variation.location.sequence_id",
+        "dests": [
+          "referenceName"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "variation.location.interval.start.value",
+        "dests": [
+          "start"
+        ],
+        "operator": "range"
+      },
+      {
+        "path": "variation.location.interval.end.value",
+        "dests": [
+          "end"
+        ],
+        "operator": "range"
+      },
+      {
+        "path": "variation.variantType",
+        "dests": [
+          "variantType"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "variation.alternateBases",
+        "dests": [
+          "alternateBases"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "molecularAttributes.aminoacidChanges",
+        "dests": [
+          "aminoacidChange"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "variation.location.interval.start.value",
+        "dests": [
+          "variantMinLength"
+        ],
+        "operator": "range"
+      },
+      {
+        "path": "variation.location.interval.end.value",
+        "dests": [
+          "variantMaxLength"
+        ],
+        "operator": "range"
+      }
+    ],
+    "gene": [
+      {
+        "path": "molecularAttributes.geneIds",
+        "dests": [
+          "geneId"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "variation.variantType",
+        "dests": [
+          "variantType"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "variation.alternateBases",
+        "dests": [
+          "alternateBases"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "molecularAttributes.aminoacidChanges",
+        "dests": [
+          "aminoacidChange"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "variation.location.interval.start.value",
+        "dests": [
+          "variantMinLength"
+        ],
+        "operator": "range"
+      },
+      {
+        "path": "variation.location.interval.end.value",
+        "dests": [
+          "variantMaxLength"
+        ],
+        "operator": "range"
+      }
+    ],
+    "bracket": [
+      {
+        "path": "variation.location.sequence_id",
+        "dests": [
+          "referenceName"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "variation.location.interval.start.value",
+        "dests": [
+          "start_maximum",
+          "start_minimum"
+        ],
+        "operator": "range"
+      },
+      {
+        "path": "variation.location.interval.end.value",
+        "dests": [
+          "end_maximum",
+          "end_minimum"
+        ],
+        "operator": "range"
+      },
+      {
+        "path": "variation.variantType",
+        "dests": [
+          "variantType"
+        ],
+        "operator": "eq"
+      }
+    ],
+    "analyses": [
+      {
+        "path": "aligner",
+        "dests": [
+          "aligner"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "analysisDate",
+        "dests": [
+          "analysisDate"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "biosampleId",
+        "dests": [
+          "biosampleId"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "id",
+        "dests": [
+          "identification"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "individualId",
+        "dests": [
+          "individualId"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "pipelineName",
+        "dests": [
+          "pipelineName"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "pipelineRef",
+        "dests": [
+          "pipelineRef"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "runId",
+        "dests": [
+          "runId"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "variantCaller",
+        "dests": [
+          "variantCaller"
+        ],
+        "operator": "eq"
+      }
+    ],
+    "biosamples": [
+      {
+        "path": "biosampleStatus.label",
+        "dests": [
+          "biosampleStatus"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "collectionDate",
+        "dests": [
+          "collectionDate"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "collectionMoment",
+        "dests": [
+          "collectionMoment"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "id",
+        "dests": [
+          "identification"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "obtentionProcedure.procedureCode.label",
+        "dests": [
+          "obtentionProcedure"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "sampleOriginType.label",
+        "dests": [
+          "sampleOriginType"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "histologicalDiagnosis.label",
+        "dests": [
+          "histologicalDiagnosis"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "pathologicalStage.label",
+        "dests": [
+          "pathologicalStage"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "pathologicalTnmFinding.label",
+        "dests": [
+          "pathologicalTnmFinding"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "phenotypicFeatures.featureType.label",
+        "dests": [
+          "featureType"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "phenotypicFeatures.severity.label",
+        "dests": [
+          "severity"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "sampleOriginDetail.label",
+        "dests": [
+          "sampleOriginDetail"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "sampleProcessing.label",
+        "dests": [
+          "sampleProcessing"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "sampleStorage.label",
+        "dests": [
+          "sampleStorage"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "tumorGrade.label",
+        "dests": [
+          "tumorGrade"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "tumorProgression.label",
+        "dests": [
+          "tumorProgression"
+        ],
+        "operator": "eq"
+      }
+    ],
+    "cohorts": [
+      {
+        "path": "cohortDataTypes.label",
+        "dests": [
+          "cohortDataTypes"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "cohortDesign.label",
+        "dests": [
+          "cohortDesign"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "cohortSize",
+        "dests": [
+          "cohortSize"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "cohortType",
+        "dests": [
+          "cohortType"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "id",
+        "dests": [
+          "identification"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "inclusionCriteria.genders.label",
+        "dests": [
+          "genders"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "name",
+        "dests": [
+          "name"
+        ],
+        "operator": "eq"
+      }
+    ],
+    "datasets": [
+      {
+        "path": "dataUseConditions.duoDataUse.label",
+        "dests": [
+          "dataUseConditions"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "dataUseConditions.duoDataUse.modifiers.label",
+        "dests": [
+          "ontologyModifiers"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "id",
+        "dests": [
+          "identification"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "name",
+        "dests": [
+          "name"
+        ],
+        "operator": "eq"
+      }
+    ],
+    "individuals": [
+      {
+        "path": "diseases.ageOfOnset.ageGroup.label",
+        "dests": [
+          "ageGroup"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "diseases.diseaseCode.label",
+        "dests": [
+          "diseaseCode"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "diseases.familyHistory",
+        "dests": [
+          "familyHistory"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "diseases.severity",
+        "dests": [
+          "severity"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "diseases.stage",
+        "dests": [
+          "stage"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "ethnicity.label",
+        "dests": [
+          "ethnicity"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "geographicOrigin.label",
+        "dests": [
+          "geographicOrigin"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "id",
+        "dests": [
+          "identification"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "measures.assayCode.label",
+        "dests": [
+          "assayCode"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "sex.label",
+        "dests": [
+          "sex"
+        ],
+        "operator": "eq"
+      }
+    ],
+    "runs": [
+      {
+        "path": "id",
+        "dests": [
+          "identification"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "individualId",
+        "dests": [
+          "individualId"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "libraryLayout",
+        "dests": [
+          "libraryLayout"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "librarySelection",
+        "dests": [
+          "librarySelection"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "librarySource.label",
+        "dests": [
+          "librarySource"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "libraryStrategy",
+        "dests": [
+          "libraryStrategy"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "platform",
+        "dests": [
+          "platform"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "platformModel.label",
+        "dests": [
+          "platformModel"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "runDate",
+        "dests": [
+          "runDate"
+        ],
+        "operator": "eq"
+      }
+    ],
+    "cnv": [
+      {
+        "path": "variantInternalId",
+        "dests": [
+          "variantInternalId"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "analysisId",
+        "dests": [
+          "analysisId"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "individualId",
+        "dests": [
+          "individualId"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "definitions.Location.start",
+        "dests": [
+          "start"
+        ],
+        "operator": "range"
+      },
+      {
+        "path": "definitions.Location.end",
+        "dests": [
+          "end"
+        ],
+        "operator": "range"
+      },
+      {
+        "path": "definitions.Location.chromosome",
+        "dests": [
+          "chromosome"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "variantState.id",
+        "dests": [
+          "variantStateId"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "variantState.label",
+        "dests": [
+          "variantState"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "definitions.Location.sequenceId",
+        "dests": [
+          "sequenceId"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "gene",
+        "dests": [
+          "gene"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "diseaseType",
+        "dests": [
+          "diseaseType"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "primarySite",
+        "dests": [
+          "primarySite"
+        ],
+        "operator": "eq"
+      },
+      {
+        "path": "variantType",
+        "dests": [
+          "variantType"
+        ],
+        "operator": "eq"
+      }
+    ]
+  }
+}

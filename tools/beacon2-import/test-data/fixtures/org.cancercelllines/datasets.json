@@ -1,0 +1,39 @@
+{
+ "_note": "CONSTRUCTED from the default dataset schema for the Galaxy tool tests; not a capture.",
+ "meta": {
+  "apiVersion": "v2.3.0-beaconplus",
+  "returnedGranularity": "record",
+  "returnedSchemas": [
+   {
+    "id": "dataset"
+   }
+  ],
+  "receivedRequestSummary": {
+   "pagination": {
+    "skip": 0,
+    "limit": 0
+   },
+   "testMode": false
+  }
+ },
+ "responseSummary": {
+  "exists": true,
+  "numTotalResults": 1
+ },
+ "response": {
+  "resultSets": [
+   {
+    "id": "cellz",
+    "exists": true,
+    "resultsCount": 1,
+    "responseEntityId": "dataset",
+    "results": [
+     {
+      "id": "cellz",
+      "name": "cancercelllines.org"
+     }
+    ]
+   }
+  ]
+ }
+}

@@ -1,0 +1,3 @@
+include LICENSE README.md CHANGELOG.md
+graft beacon2_import/tests
+global-exclude __pycache__ *.py[cod] .pytest_cache

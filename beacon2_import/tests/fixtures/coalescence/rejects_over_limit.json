@@ -1,0 +1,360 @@
+{
+ "_note": "Truncated: 4820 total against a limit of 100. The response cannot speak for classes that were never separately requested, so coalescing is discarded and each class is queried on its own.",
+ "_requested_limit": 100,
+ "_expected": {
+  "holds": false,
+  "has_total": true,
+  "within_limit": false,
+  "count_exact": false,
+  "effective_limit": 100,
+  "limit_source": "response",
+  "not_test_mode": true
+ },
+ "meta": {
+  "apiVersion": "2.0",
+  "returnedGranularity": "record",
+  "returnedSchemas": [
+   {
+    "entityType": "genomicVariant",
+    "schema": "beacon-g_variant-v2.0.0"
+   }
+  ],
+  "receivedRequestSummary": {
+   "apiVersion": "2.0",
+   "requestedSchemas": [
+    {
+     "entityType": "genomicVariant"
+    }
+   ],
+   "pagination": {
+    "skip": 0,
+    "limit": 100
+   },
+   "requestedGranularity": "record",
+   "testMode": false
+  }
+ },
+ "responseSummary": {
+  "exists": true,
+  "numTotalResults": 4820
+ },
+ "response": {
+  "resultSets": [
+   {
+    "id": "ds-1",
+    "setType": "dataset",
+    "exists": true,
+    "resultsCount": 100,
+    "countPrecision": "exact",
+    "results": [
+     {
+      "variantInternalId": "fixture:rejects_over_limit.json",
+      "caseLevelData": [
+       {
+        "biosampleId": "fixture-bs-0"
+       },
+       {
+        "biosampleId": "fixture-bs-1"
+       },
+       {
+        "biosampleId": "fixture-bs-2"
+       },
+       {
+        "biosampleId": "fixture-bs-3"
+       },
+       {
+        "biosampleId": "fixture-bs-4"
+       },
+       {
+        "biosampleId": "fixture-bs-5"
+       },
+       {
+        "biosampleId": "fixture-bs-6"
+       },
+       {
+        "biosampleId": "fixture-bs-7"
+       },
+       {
+        "biosampleId": "fixture-bs-8"
+       },
+       {
+        "biosampleId": "fixture-bs-9"
+       },
+       {
+        "biosampleId": "fixture-bs-10"
+       },
+       {
+        "biosampleId": "fixture-bs-11"
+       },
+       {
+        "biosampleId": "fixture-bs-12"
+       },
+       {
+        "biosampleId": "fixture-bs-13"
+       },
+       {
+        "biosampleId": "fixture-bs-14"
+       },
+       {
+        "biosampleId": "fixture-bs-15"
+       },
+       {
+        "biosampleId": "fixture-bs-16"
+       },
+       {
+        "biosampleId": "fixture-bs-17"
+       },
+       {
+        "biosampleId": "fixture-bs-18"
+       },
+       {
+        "biosampleId": "fixture-bs-19"
+       },
+       {
+        "biosampleId": "fixture-bs-20"
+       },
+       {
+        "biosampleId": "fixture-bs-21"
+       },
+       {
+        "biosampleId": "fixture-bs-22"
+       },
+       {
+        "biosampleId": "fixture-bs-23"
+       },
+       {
+        "biosampleId": "fixture-bs-24"
+       },
+       {
+        "biosampleId": "fixture-bs-25"
+       },
+       {
+        "biosampleId": "fixture-bs-26"
+       },
+       {
+        "biosampleId": "fixture-bs-27"
+       },
+       {
+        "biosampleId": "fixture-bs-28"
+       },
+       {
+        "biosampleId": "fixture-bs-29"
+       },
+       {
+        "biosampleId": "fixture-bs-30"
+       },
+       {
+        "biosampleId": "fixture-bs-31"
+       },
+       {
+        "biosampleId": "fixture-bs-32"
+       },
+       {
+        "biosampleId": "fixture-bs-33"
+       },
+       {
+        "biosampleId": "fixture-bs-34"
+       },
+       {
+        "biosampleId": "fixture-bs-35"
+       },
+       {
+        "biosampleId": "fixture-bs-36"
+       },
+       {
+        "biosampleId": "fixture-bs-37"
+       },
+       {
+        "biosampleId": "fixture-bs-38"
+       },
+       {
+        "biosampleId": "fixture-bs-39"
+       },
+       {
+        "biosampleId": "fixture-bs-40"
+       },
+       {
+        "biosampleId": "fixture-bs-41"
+       },
+       {
+        "biosampleId": "fixture-bs-42"
+       },
+       {
+        "biosampleId": "fixture-bs-43"
+       },
+       {
+        "biosampleId": "fixture-bs-44"
+       },
+       {
+        "biosampleId": "fixture-bs-45"
+       },
+       {
+        "biosampleId": "fixture-bs-46"
+       },
+       {
+        "biosampleId": "fixture-bs-47"
+       },
+       {
+        "biosampleId": "fixture-bs-48"
+       },
+       {
+        "biosampleId": "fixture-bs-49"
+       },
+       {
+        "biosampleId": "fixture-bs-50"
+       },
+       {
+        "biosampleId": "fixture-bs-51"
+       },
+       {
+        "biosampleId": "fixture-bs-52"
+       },
+       {
+        "biosampleId": "fixture-bs-53"
+       },
+       {
+        "biosampleId": "fixture-bs-54"
+       },
+       {
+        "biosampleId": "fixture-bs-55"
+       },
+       {
+        "biosampleId": "fixture-bs-56"
+       },
+       {
+        "biosampleId": "fixture-bs-57"
+       },
+       {
+        "biosampleId": "fixture-bs-58"
+       },
+       {
+        "biosampleId": "fixture-bs-59"
+       },
+       {
+        "biosampleId": "fixture-bs-60"
+       },
+       {
+        "biosampleId": "fixture-bs-61"
+       },
+       {
+        "biosampleId": "fixture-bs-62"
+       },
+       {
+        "biosampleId": "fixture-bs-63"
+       },
+       {
+        "biosampleId": "fixture-bs-64"
+       },
+       {
+        "biosampleId": "fixture-bs-65"
+       },
+       {
+        "biosampleId": "fixture-bs-66"
+       },
+       {
+        "biosampleId": "fixture-bs-67"
+       },
+       {
+        "biosampleId": "fixture-bs-68"
+       },
+       {
+        "biosampleId": "fixture-bs-69"
+       },
+       {
+        "biosampleId": "fixture-bs-70"
+       },
+       {
+        "biosampleId": "fixture-bs-71"
+       },
+       {
+        "biosampleId": "fixture-bs-72"
+       },
+       {
+        "biosampleId": "fixture-bs-73"
+       },
+       {
+        "biosampleId": "fixture-bs-74"
+       },
+       {
+        "biosampleId": "fixture-bs-75"
+       },
+       {
+        "biosampleId": "fixture-bs-76"
+       },
+       {
+        "biosampleId": "fixture-bs-77"
+       },
+       {
+        "biosampleId": "fixture-bs-78"
+       },
+       {
+        "biosampleId": "fixture-bs-79"
+       },
+       {
+        "biosampleId": "fixture-bs-80"
+       },
+       {
+        "biosampleId": "fixture-bs-81"
+       },
+       {
+        "biosampleId": "fixture-bs-82"
+       },
+       {
+        "biosampleId": "fixture-bs-83"
+       },
+       {
+        "biosampleId": "fixture-bs-84"
+       },
+       {
+        "biosampleId": "fixture-bs-85"
+       },
+       {
+        "biosampleId": "fixture-bs-86"
+       },
+       {
+        "biosampleId": "fixture-bs-87"
+       },
+       {
+        "biosampleId": "fixture-bs-88"
+       },
+       {
+        "biosampleId": "fixture-bs-89"
+       },
+       {
+        "biosampleId": "fixture-bs-90"
+       },
+       {
+        "biosampleId": "fixture-bs-91"
+       },
+       {
+        "biosampleId": "fixture-bs-92"
+       },
+       {
+        "biosampleId": "fixture-bs-93"
+       },
+       {
+        "biosampleId": "fixture-bs-94"
+       },
+       {
+        "biosampleId": "fixture-bs-95"
+       },
+       {
+        "biosampleId": "fixture-bs-96"
+       },
+       {
+        "biosampleId": "fixture-bs-97"
+       },
+       {
+        "biosampleId": "fixture-bs-98"
+       },
+       {
+        "biosampleId": "fixture-bs-99"
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "_delivery_note": "CONSTRUCTED: 100 instance(s) delivered against a reported total of 4820. Until 3.0.0's partiality fix these fixtures delivered no records at all, which the coalescence check never compared against the total; a record-granularity response is complete only if it delivers what it reports. This one reports 4820 under a limit of 100, so a real server delivers at most 100: the page is PARTIAL by observation, and so not count-exact. Its expectation was count_exact true only under the old, unobserved semantics."
+}

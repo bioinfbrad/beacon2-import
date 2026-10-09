@@ -1,0 +1,7 @@
+{
+  "GET /info": "info.json",
+  "GET /configuration": "configuration.json",
+  "GET /entry_types": "entry_types.json",
+  "GET /map": "map.json",
+  "GET /filtering_terms": "filtering_terms.json"
+}
