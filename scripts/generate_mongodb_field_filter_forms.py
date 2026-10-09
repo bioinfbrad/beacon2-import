@@ -360,10 +360,17 @@ window can therefore return more on the API than from MongoDB.
 
 
 def main() -> None:
+    import re
+
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from galaxy_tests import render_tests  # the one source of every Galaxy test
+
     labels = json.loads(LABELS.read_text())
-    for subcommand in ENTITIES:
-        (HERE / f"beacon2_{subcommand}.xml").write_text(entity_tool(subcommand, labels))
-    (HERE / "beacon2_cnv.xml").write_text(cnv_tool(labels))
+    outputs = {f"beacon2_{s}": entity_tool(s, labels) for s in ENTITIES}
+    outputs["beacon2_cnv"] = cnv_tool(labels)
+    for tool, xml in outputs.items():
+        xml = re.sub(r"    <tests>.*?</tests>", lambda _: render_tests(tool), xml, count=1, flags=re.S)
+        (HERE / f"{tool}.xml").write_text(xml)
     print("generated:", [f"beacon2_{s}.xml" for s in ENTITIES] + ["beacon2_cnv.xml"])
 
 

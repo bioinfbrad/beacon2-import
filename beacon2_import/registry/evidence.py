@@ -97,6 +97,7 @@ def suggestion_from_run(provider_id: str, variant_class: VariantClass,
         return None
     return upgrade_to_yes(
         provider_id, variant_class, current, EvidenceSource.QUERY_OBSERVATION,
-        f"{row_count} {variant_class.value} records returned by a query on {observed}",
+        f"{row_count} records classified as {variant_class.value} from their own "
+        f"structure, returned on {observed}",
         observed,
     )

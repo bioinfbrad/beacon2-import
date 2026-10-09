@@ -225,6 +225,10 @@ def read_json_file(file_path):
 def connect_arguments(parser):
     connection_group = parser.add_argument_group("Connection to MongoDB")
     connection_group.add_argument("-H", "--db-host", type=str, default="127.0.0.1", dest="database_host", help="Hostname/IP of the beacon database")
+    connection_group.add_argument("--server-selection-timeout-ms", type=int, default=30000,
+                                  dest="server_selection_timeout_ms",
+                                  help="How long to wait for the database before giving up "
+                                       "(milliseconds; 30000 is the driver's own default)")
     connection_group.add_argument("-P", "--db-port", type=int, default=27017, dest="database_port", help="Port of the beacon database")
     
     advance_connection_group = parser.add_argument_group("Addvanced Connection to MongoDB")
@@ -265,15 +269,18 @@ def connect_to_mongodb(args, parser):
             print("No database user is configured, so connecting without "
                   "authentication. Set the beacon2_account preferences to "
                   "authenticate.", file=sys.stderr)
-            client = MongoClient(args.database_host, args.database_port)
+            client = MongoClient(args.database_host, args.database_port,
+                                 serverSelectionTimeoutMS=args.server_selection_timeout_ms)
         else:
             client = MongoClient(args.database_host, args.database_port,
+                                 serverSelectionTimeoutMS=args.server_selection_timeout_ms,
                                  username=credentials.db_user,
                                  password=credentials.db_password,
                                  authSource=credentials.db_auth_source or "admin")
     else:
         # Connect to MongoDB database without authentication
-        client = MongoClient(args.database_host, args.database_port)
+        client = MongoClient(args.database_host, args.database_port,
+                                 serverSelectionTimeoutMS=args.server_selection_timeout_ms)
     return client
 
 def clear_collections(db, args):

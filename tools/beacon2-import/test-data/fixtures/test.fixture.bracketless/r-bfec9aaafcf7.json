@@ -1,0 +1,52 @@
+{
+ "meta": {
+  "apiVersion": "v2.0.0",
+  "receivedRequestSummary": {
+   "pagination": {
+    "limit": 1,
+    "skip": 0
+   },
+   "testMode": false
+  },
+  "returnedGranularity": "record",
+  "returnedSchemas": [
+   {
+    "entityType": "genomicVariant"
+   }
+  ]
+ },
+ "response": {
+  "resultSets": [
+   {
+    "exists": true,
+    "id": "synthetic",
+    "results": [
+     {
+      "caseLevelData": [
+       {
+        "biosampleId": "synthetic-bs-0"
+       }
+      ],
+      "variantInternalId": "synthetic:17:5000099-9999900:EFO_0030067",
+      "variation": {
+       "location": {
+        "chromosome": "17",
+        "end": 9999900,
+        "start": 5000099
+       },
+       "variantState": {
+        "id": "EFO:0030067",
+        "label": "copy number loss"
+       }
+      }
+     }
+    ],
+    "resultsCount": 2
+   }
+  ]
+ },
+ "responseSummary": {
+  "exists": true,
+  "numTotalResults": 2
+ }
+}

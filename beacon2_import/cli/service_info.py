@@ -30,16 +30,28 @@ from . import common
 COLUMNS = ("beacon_id", "field", "declared", "observed", "agrees", "endpoint", "note")
 
 
-def _get(client, path: str) -> dict[str, Any] | None:
+def _get(client, path: str, failures: list | None = None) -> dict[str, Any] | None:
+    """One informational endpoint. A failure is tolerated here -- /map may be
+    missing where /beaconMap is not -- but recorded, so that a provider where
+    NOTHING answered is reported as failing rather than as healthy."""
     try:
         return client.get(path).body
-    except (FixtureMiss, BeaconHttpError):
+    except (FixtureMiss, BeaconHttpError) as exc:
+        if failures is not None:
+            failures.append(exc)
         return None
 
 
 def _probe(provider, client, adapter) -> list[tuple[str, ...]]:
     paths = adapter.informational_paths()
     rows: list[tuple[str, ...]] = []
+    failures: list[Exception] = []
+    asked = 0
+
+    def get(path):
+        nonlocal asked
+        asked += 1
+        return _get(client, path, failures)
 
     def row(field, declared, observed, endpoint, note=""):
         agrees = ("" if observed in (None, "") or declared in (None, "")
@@ -47,7 +59,7 @@ def _probe(provider, client, adapter) -> list[tuple[str, ...]]:
         rows.append((provider.id, field, "" if declared is None else str(declared),
                      "" if observed is None else str(observed), agrees, endpoint, note))
 
-    info = _get(client, paths["info"]) or _get(client, paths["root"]) or {}
+    info = get(paths["info"]) or get(paths["root"]) or {}
     meta = info.get("meta") or {}
     response = info.get("response") or {}
     row("beacon_id_reported", provider.beacon_id_reported,
@@ -56,7 +68,7 @@ def _probe(provider, client, adapter) -> list[tuple[str, ...]]:
     row("api_version_reported", provider.api_version_reported, meta.get("apiVersion"),
         paths["info"], "compared verbatim, never as semver")
 
-    configuration = (_get(client, paths["configuration"]) or {}).get("response") or {}
+    configuration = (get(paths["configuration"]) or {}).get("response") or {}
     maturity = (configuration.get("maturityAttributes") or {}).get("productionStatus")
     row("production_status", None, maturity, paths["configuration"],
         "DEV or TEST data should not be reported as findings")
@@ -67,18 +79,21 @@ def _probe(provider, client, adapter) -> list[tuple[str, ...]]:
     row("security_levels", provider.tier.value.upper(),
         ",".join(levels) if isinstance(levels, list) else levels, paths["configuration"])
 
-    entry_types = (_get(client, paths["entry_types"]) or {}).get("response") or {}
+    entry_types = (get(paths["entry_types"]) or {}).get("response") or {}
     observed_types = sorted((entry_types.get("entryTypes") or {}).keys())
     row("entry_types", None, ",".join(observed_types), paths["entry_types"],
         "says nothing about which variant classes are held")
 
-    beacon_map = _get(client, paths["map"])
+    beacon_map = get(paths["map"])
     endpoint = paths["map"]
     if beacon_map is None:
-        beacon_map, endpoint = _get(client, paths["map_fallback"]), paths["map_fallback"]
+        beacon_map, endpoint = get(paths["map_fallback"]), paths["map_fallback"]
     sets = ((beacon_map or {}).get("response") or {}).get("endpointSets") or {}
     row("map_endpoint_sets", None, ",".join(sorted(sets)), endpoint,
         "" if beacon_map else "neither /map nor /beaconMap answered")
+    if failures and len(failures) == asked:
+        # Every endpoint failed: this provider answered nothing at all.
+        raise failures[0]
     return rows
 
 

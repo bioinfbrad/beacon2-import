@@ -1,0 +1,63 @@
+{
+ "entries": [
+  {
+   "note": "The RESPONSE is a real cancercelllines recording (55 records, 60 instances), but it was recorded at limit 100. These KEYS are the pre-flight and full retrieval the CLI sends for the same region and filter, so the pairing is reconstructed, not recorded.",
+   "origin": "constructed",
+   "request": {
+    "method": "POST",
+    "path": "/genomicVariations",
+    "query": {
+     "end": [
+      198169247
+     ],
+     "filters": [
+      {
+       "id": "NCIT:C3058",
+       "includeDescendantTerms": true
+      }
+     ],
+     "pagination": {
+      "limit": 1,
+      "skip": 0
+     },
+     "referenceName": "3",
+     "requestedGranularity": "record",
+     "start": [
+      195728637
+     ]
+    }
+   },
+   "response": "../../adapters/g_limit100_run1.json"
+  },
+  {
+   "note": "The RESPONSE is a real cancercelllines recording (55 records, 60 instances), but it was recorded at limit 100. These KEYS are the pre-flight and full retrieval the CLI sends for the same region and filter, so the pairing is reconstructed, not recorded.",
+   "origin": "constructed",
+   "request": {
+    "method": "POST",
+    "path": "/genomicVariations",
+    "query": {
+     "end": [
+      198169247
+     ],
+     "filters": [
+      {
+       "id": "NCIT:C3058",
+       "includeDescendantTerms": true
+      }
+     ],
+     "pagination": {
+      "limit": 0,
+      "skip": 0
+     },
+     "referenceName": "3",
+     "requestedGranularity": "record",
+     "start": [
+      195728637
+     ]
+    }
+   },
+   "response": "../../adapters/g_limit100_run1.json"
+  }
+ ],
+ "format": "beacon2-fixtures/2"
+}

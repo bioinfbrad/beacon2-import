@@ -30,17 +30,24 @@
         <data name="outcomes" format="tabular" label="${tool.name} on ${on_string}: run report" from_work_dir="outcomes.tsv"/>
     </outputs>
     <tests>
+        <!-- Every term, from a live provider. -->
         <test expect_num_outputs="2">
             <conditional name="connection">
                 <param name="providers" value="org.cancercelllines"/>
             </conditional>
             <output name="terms">
                 <assert_contents>
-                    <has_text text="EDAM:operation_3961"/>
                     <has_text text="shared_with"/>
+                    <has_text text="NCIT:"/>
+                </assert_contents>
+            </output>
+            <output name="outcomes">
+                <assert_contents>
+                    <has_line_matching expression="^org\.cancercelllines\t[^\t]*\tn/a\t[^\t]*\tok\t.*"/>
                 </assert_contents>
             </output>
         </test>
+        <!-- A prefix is applied client-side, and the report says so. -->
         <test expect_num_outputs="2">
             <conditional name="connection">
                 <param name="providers" value="org.cancercelllines"/>
@@ -48,6 +55,7 @@
             <param name="prefixes" value="EFO"/>
             <output name="outcomes">
                 <assert_contents>
+                    <has_line_matching expression="^org\.cancercelllines\t[^\t]*\tn/a\t[^\t]*\tok\t.*"/>
                     <has_text text="selected client-side"/>
                 </assert_contents>
             </output>

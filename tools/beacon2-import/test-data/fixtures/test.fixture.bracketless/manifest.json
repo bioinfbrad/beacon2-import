@@ -1,0 +1,51 @@
+{
+ "entries": [
+  {
+   "note": "CONSTRUCTED: a synthetic provider by definition; used by beacon2_bracket#2",
+   "origin": "constructed",
+   "request": {
+    "method": "POST",
+    "path": "/g_variants",
+    "query": {
+     "end": [
+      10000000
+     ],
+     "pagination": {
+      "limit": 1,
+      "skip": 0
+     },
+     "referenceName": "refseq:NC_000017.11",
+     "requestedGranularity": "record",
+     "start": [
+      4999999
+     ]
+    }
+   },
+   "response": "r-bfec9aaafcf7.json"
+  },
+  {
+   "note": "CONSTRUCTED: a synthetic provider by definition; used by beacon2_bracket#2",
+   "origin": "constructed",
+   "request": {
+    "method": "POST",
+    "path": "/g_variants",
+    "query": {
+     "end": [
+      10000000
+     ],
+     "pagination": {
+      "limit": 100,
+      "skip": 0
+     },
+     "referenceName": "refseq:NC_000017.11",
+     "requestedGranularity": "record",
+     "start": [
+      4999999
+     ]
+    }
+   },
+   "response": "r-4add29ae9b85.json"
+  }
+ ],
+ "format": "beacon2-fixtures/2"
+}

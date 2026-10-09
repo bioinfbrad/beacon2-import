@@ -65,18 +65,14 @@ def test_reserved_words_only_in_their_reserved_meaning():
         "actually for:\n  " + "\n  ".join(violations))
 
 
+#: The ONLY trees this test reads. It never walks the repository root: a
+#: developer's .venv holds dependency files with "legacy" in their names, which
+#: are not this project's to rename.
+SCANNED_TREES = ("beacon2_import", "tools", "scripts", "recipe")
+
+
 def test_no_module_or_folder_is_named_legacy():
-    ignored = {
-        ".git", ".venv", "venv", "env",
-        "build", "dist", "__pycache__",
-        ".pytest_cache", ".tox"
-    }
-
-    named = [
-        p for p in ROOT.rglob("*")
-        if "legacy" in p.name.lower()
-        and "fixtures" not in p.parts
-        and not any(part in ignored for part in p.relative_to(ROOT).parts)
-    ]
-
+    named = [p for tree in SCANNED_TREES if (ROOT / tree).is_dir()
+             for p in (ROOT / tree).rglob("*")
+             if "legacy" in p.name.lower() and "fixtures" not in p.parts]
     assert not named, f"named legacy: {named}"

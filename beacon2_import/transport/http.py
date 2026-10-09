@@ -347,6 +347,98 @@ class BeaconClient:
         return AuthRequired(detail)
 
 
+#: The request fields that decide what a beacon returns, and so key a fixture.
+FIXTURE_QUERY_FIELDS = (
+    "referenceName", "assemblyId", "start", "end", "referenceBases", "alternateBases",
+    "variantType", "geneId", "aminoacidChange", "variantMinLength", "variantMaxLength",
+    "mateName", "requestedGranularity", "testMode", "datasetIds", "datasets",
+)
+MANIFEST_FORMAT = "beacon2-fixtures/2"
+
+
+def _find(container: Any, key: str) -> Any:
+    if isinstance(container, dict):
+        if key in container:
+            return container[key]
+        for value in container.values():
+            found = _find(value, key)
+            if found is not None:
+                return found
+    elif isinstance(container, list):
+        for value in container:
+            found = _find(value, key)
+            if found is not None:
+                return found
+    return None
+
+
+def _canonical_value(name: str, value: Any) -> Any:
+    if name in ("start", "end"):
+        values = value if isinstance(value, list) else str(value).split(",")
+        return [int(v) for v in values]
+    if name in ("variantMinLength", "variantMaxLength"):
+        return int(value)
+    if name == "testMode":
+        return str(value).lower() in ("true", "1")
+    if isinstance(value, (dict, list)):
+        return json.loads(json.dumps(value, sort_keys=True))
+    return str(value)
+
+
+def canonical_request(method: str, path: str, params=None, body=None) -> dict[str, Any]:
+    """A request as a fixture KEY: method, path, and the fields that decide the answer.
+
+    Keyed on what was asked, never on the endpoint alone. One canned response
+    per endpoint once answered a chromosome 17 query with chromosome 3 records
+    and a SMALL_VARIANT query with copy-number records, and every test still
+    passed. Reference name, coordinates, variant type, filters, granularity and
+    pagination are read from a POST body (either request layout) or GET
+    parameters, and put in one canonical form, so the key is the same however
+    the request was spelled.
+    """
+    source = body.get("query", body) if isinstance(body, dict) else dict(params or {})
+    query: dict[str, Any] = {}
+    for name in FIXTURE_QUERY_FIELDS:
+        value = _find(source, name)
+        if value not in (None, "", []):
+            query[name] = _canonical_value(name, value)
+    filters = _find(source, "filters")
+    if filters:
+        items = filters if isinstance(filters, list) else str(filters).split(",")
+        items = [f if isinstance(f, dict) else {"id": str(f).strip()} for f in items]
+        query["filters"] = sorted((json.loads(json.dumps(f, sort_keys=True)) for f in items),
+                                  key=lambda f: json.dumps(f, sort_keys=True))
+    pagination = _find(source, "pagination") if isinstance(body, dict) else None
+    skip = (pagination or {}).get("skip", _find(source, "skip"))
+    limit = (pagination or {}).get("limit", _find(source, "limit"))
+    if skip is not None or limit is not None:
+        query["pagination"] = {k: int(v) for k, v in (("skip", skip), ("limit", limit))
+                               if v is not None}
+    return {"method": method.upper(), "path": "/" + str(path).strip("/"), "query": query}
+
+
+def load_manifest(path: Path) -> list[dict[str, Any]]:
+    """Read and validate a keyed manifest. Fails loudly on the retired format."""
+    data = json.loads(Path(path).read_text())
+    if not isinstance(data, dict) or data.get("format") != MANIFEST_FORMAT:
+        raise FixtureMiss(
+            f"{path} is not a {MANIFEST_FORMAT} manifest. The retired format keyed "
+            f"fixtures on the endpoint alone, so every request to it got the same "
+            f"answer; re-record with scripts/record_fixtures.py.")
+    entries = data.get("entries") or []
+    seen = set()
+    for entry in entries:
+        if set(entry) < {"request", "response", "origin"}:
+            raise FixtureMiss(f"{path}: an entry lacks request, response or origin: {entry}")
+        if entry["origin"] not in ("recorded", "constructed"):
+            raise FixtureMiss(f"{path}: origin must be recorded or constructed: {entry}")
+        key = json.dumps(entry["request"], sort_keys=True)
+        if key in seen:
+            raise FixtureMiss(f"{path}: two entries for one request: {entry['request']}")
+        seen.add(key)
+    return entries
+
+
 class FixtureClient(BeaconClient):
     """Serves recorded responses from a directory for offline tests.
 
@@ -371,37 +463,22 @@ class FixtureClient(BeaconClient):
         """Fixture providers are exactly what this client is for."""
         return None
 
-    @staticmethod
-    def signature(method: str, path: str, params=None, body=None) -> str:
-        """Build the manifest key for a request."""
-        key = f"{method.upper()} /{str(path).lstrip('/')}"
-        if params:
-            pairs = sorted((k, str(v)) for k, v in params.items())
-            key += "?" + "&".join(f"{k}={v}" for k, v in pairs)
-        if body is not None:
-            digest = hashlib.sha256(
-                json.dumps(body, sort_keys=True, separators=(",", ":")).encode()
-            ).hexdigest()[:8]
-            key += f" {digest}"
-        return key
-
-    def _manifest(self) -> dict[str, str]:
+    def _manifest(self) -> list[dict[str, Any]]:
         path = self.fixture_dir / "manifest.json"
         if not path.is_file():
             raise FixtureMiss(f"no manifest.json in {self.fixture_dir}")
-        return json.loads(path.read_text())
+        return load_manifest(path)
 
     def _request(self, method: str, path: str, params=None, body=None) -> Response:
-        manifest = self._manifest()
-        signature = self.signature(method, path, params, body)
-        filename = manifest.get(signature)
-        if filename is None:
-            filename = manifest.get(f"{method.upper()} /{str(path).lstrip('/')}")
-        if filename is None:
+        key = canonical_request(method, path, params, body)
+        matches = [e for e in self._manifest() if e["request"] == key]
+        if not matches:
             raise FixtureMiss(
-                f"no fixture for {signature!r} in {self.fixture_dir}. "
-                f"Known: {sorted(manifest)}"
-            )
+                f"no fixture in {self.fixture_dir} for this request:\n"
+                f"{json.dumps(key, indent=1, sort_keys=True)}\n"
+                f"There is no fallback: a request without its own recorded response "
+                f"fails. Record it with scripts/record_fixtures.py.")
+        filename = matches[0]["response"]
         payload = json.loads((self.fixture_dir / filename).read_text())
         return Response(
             status=int(payload.get("_status", 200)),

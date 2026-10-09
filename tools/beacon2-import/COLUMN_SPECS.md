@@ -27,7 +27,7 @@ tool for any of them.
 | 5 | `classification_basis` | string | free text | How column 4 was decided. `pinned by query` when the class came from the request; otherwise the evidence used, e.g. `EFO:0030067 copy-number term`, `ref/alt length 1 <= 50 (convention)`. |
 | 6 | `granularity_returned` | enum | `record` `count` `boolean` | From `meta.returnedGranularity`, which overrides anything the registry declares. |
 | 7 | `count_precision` | enum | `exact` `imprecise` `rounded` | Defaults to `imprecise`, matching the specification's own default. |
-| 8 | `count_precision_basis` | enum | `partial_retrieval` `declared` `declared_adjustment` `inferred_from_complete_retrieval` `normative_default` | How column 7 was decided. See below. |
+| 8 | `count_precision_basis` | enum | `partial_retrieval` `failed_verification` `declared` `declared_adjustment` `inferred_from_complete_retrieval` `normative_default` | How column 7 was decided. See below. |
 | 9 | `count_adjusted_to` | integer or empty | | Present only when the beacon declares rounding. |
 | 10 | `query_degraded` | boolean | `true` `false` | True if the query was weakened for this beacon, or the rows are a random sample. |
 | 11 | `degradation_notes` | string | free text | Semicolon-separated. Empty when column 10 is false. |
@@ -44,6 +44,12 @@ each response, never taken from the registry or from the server's own
 declarations, and it always overrides them: such rows are never `exact`. In
 `outcomes.tsv` the note states how many of how many, for every request behind
 that row.
+
+`failed_verification` means the response held records outside the requested
+region, or of a class the request itself excluded: the provider did not apply
+what was sent, so its total no longer counts answers to the query. Such
+records are excluded from the results and reported in `outcomes.tsv`; the rows
+that remain carry this basis too.
 
 bycon sends neither `countPrecision` nor
 `countAdjustedTo`, so under the specification's default every bycon count would

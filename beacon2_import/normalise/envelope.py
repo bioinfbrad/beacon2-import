@@ -337,6 +337,10 @@ PRECISION_INFERRED = "inferred_from_complete_retrieval"
 PRECISION_DEFAULT = "normative_default"
 #: OBSERVED in the response: fewer instances delivered than numTotalResults.
 PRECISION_PARTIAL = "partial_retrieval"
+#: OBSERVED in the response: records outside the requested region, or of a
+#: class the request excluded -- the provider did not apply what was sent, so
+#: its total no longer counts answers to this query. See normalise/verify.py.
+PRECISION_FAILED_VERIFICATION = "failed_verification"
 
 
 def effective_count_precision(envelope: Envelope) -> tuple[str, str]:

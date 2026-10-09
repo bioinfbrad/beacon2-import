@@ -1,1 +1,19 @@
-{"GET /filtering_terms": "filtering_terms.json"}
+{
+ "entries": [
+  {
+   "note": "CONSTRUCTED from the framework schemas; see README.md. filtering_terms.json in agrees/ is the real cancercelllines response.",
+   "origin": "constructed",
+   "request": {
+    "method": "GET",
+    "path": "/filtering_terms",
+    "query": {
+     "pagination": {
+      "limit": 2000
+     }
+    }
+   },
+   "response": "filtering_terms.json"
+  }
+ ],
+ "format": "beacon2-fixtures/2"
+}

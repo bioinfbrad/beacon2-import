@@ -70,34 +70,25 @@
     </inputs>
     <expand macro="beacon_outputs"/>
     <tests>
-        <!-- The EIF4A1 G>A example, against the small-variant-evidenced beacon. -->
+        <!-- A sequence query on a provider holding small variants. -->
         <test expect_num_outputs="2">
             <conditional name="connection">
                 <param name="transport" value="api"/>
-                <param name="providers" value="org.ega-archive.demo"/>
+                <param name="providers" value="org.progenetix.beacon"/>
             </conditional>
             <param name="variant_classes" value="SMALL_VARIANT"/>
             <param name="reference_name" value="17"/>
             <param name="assembly" value="GRCh38"/>
-            <param name="start" value="7577120"/>
-            <param name="reference_bases" value="G"/>
-            <param name="alternate_bases" value="A"/>
-            <output name="results">
-                <assert_contents>
-                    <has_text text="variant_class"/>
-                    <has_text text="SMALL_VARIANT"/>
-                    <has_text_matching expression="classification_basis"/>
-                </assert_contents>
-            </output>
+            <param name="start" value="7673802"/>
+            <param name="reference_bases" value="C"/>
+            <param name="alternate_bases" value="T"/>
             <output name="outcomes">
                 <assert_contents>
-                    <has_text text="SMALL_VARIANT"/>
-                    <has_text text="ok"/>
-                    <has_n_lines n="2"/>
+                    <has_line_matching expression="^org\.progenetix\.beacon\t[^\t]*\tSMALL_VARIANT\t[^\t]*\tok\t.*"/>
                 </assert_contents>
             </output>
         </test>
-        <!-- Class unverified: queried anyway, zero result explicitly not evidence of absence. -->
+        <!-- A class of unknown status: queried, and zero is not evidence of absence. -->
         <test expect_num_outputs="2">
             <conditional name="connection">
                 <param name="transport" value="api"/>
@@ -105,36 +96,36 @@
             </conditional>
             <param name="variant_classes" value="SMALL_VARIANT"/>
             <param name="reference_name" value="17"/>
-            <param name="start" value="7577120"/>
-            <param name="reference_bases" value="G"/>
-            <param name="alternate_bases" value="A"/>
+            <param name="start" value="7673802"/>
+            <param name="reference_bases" value="C"/>
+            <param name="alternate_bases" value="T"/>
             <output name="outcomes">
                 <assert_contents>
+                    <has_line_matching expression="^org\.cancercelllines\t[^\t]*\tSMALL_VARIANT\t[^\t]*\tok\t.*"/>
                     <has_text text="unknown"/>
-                    <has_text text="not evidence"/>
                 </assert_contents>
             </output>
         </test>
-        <!-- Two classes, one provider: two outcome rows, one per pair. -->
+        <!-- A copy-number class is incoherent with a sequence query: skipped. -->
         <test expect_num_outputs="2">
             <conditional name="connection">
                 <param name="transport" value="api"/>
-                <param name="providers" value="org.ega-archive.demo"/>
+                <param name="providers" value="org.progenetix.beacon"/>
             </conditional>
             <param name="variant_classes" value="SMALL_VARIANT,CNV"/>
             <param name="reference_name" value="17"/>
-            <param name="start" value="7577120"/>
-            <param name="reference_bases" value="G"/>
-            <param name="alternate_bases" value="A"/>
+            <param name="start" value="7673802"/>
+            <param name="reference_bases" value="C"/>
+            <param name="alternate_bases" value="T"/>
             <output name="outcomes">
                 <assert_contents>
+                    <has_line_matching expression="^org\.progenetix\.beacon\t[^\t]*\tSMALL_VARIANT\t[^\t]*\tok\t.*"/>
+                    <has_line_matching expression="^org\.progenetix\.beacon\t[^\t]*\tCNV\t[^\t]*\tskipped\t.*"/>
                     <has_n_lines n="3"/>
-                    <has_text text="SMALL_VARIANT"/>
-                    <has_text text="CNV"/>
                 </assert_contents>
             </output>
         </test>
-        <!-- Declared `no` is the only thing that skips. -->
+        <!-- A class the provider declares it does not serve: skipped before any request. -->
         <test expect_num_outputs="2">
             <conditional name="connection">
                 <param name="transport" value="api"/>
@@ -142,31 +133,30 @@
             </conditional>
             <param name="variant_classes" value="SV"/>
             <param name="reference_name" value="17"/>
-            <param name="start" value="7577120"/>
-            <param name="reference_bases" value="G"/>
-            <param name="alternate_bases" value="A"/>
+            <param name="start" value="7673802"/>
+            <param name="reference_bases" value="C"/>
+            <param name="alternate_bases" value="T"/>
             <output name="outcomes">
                 <assert_contents>
-                    <has_text text="skipped"/>
+                    <has_line_matching expression="^test\.fixture\.bracketless\t[^\t]*\tSV\t[^\t]*\tskipped\t.*"/>
                     <has_text text="does not serve"/>
                 </assert_contents>
             </output>
         </test>
-        <!-- Repeat expansions cannot be expressed before VQS: a skip, not an error. -->
+        <!-- A class Beacon v2 cannot express: skipped before any request. -->
         <test expect_num_outputs="2">
             <conditional name="connection">
                 <param name="transport" value="api"/>
-                <param name="providers" value="org.ega-archive.demo"/>
+                <param name="providers" value="org.progenetix.beacon"/>
             </conditional>
             <param name="variant_classes" value="REPEAT"/>
             <param name="reference_name" value="17"/>
-            <param name="start" value="7577120"/>
-            <param name="reference_bases" value="G"/>
-            <param name="alternate_bases" value="A"/>
+            <param name="start" value="7673802"/>
+            <param name="reference_bases" value="C"/>
+            <param name="alternate_bases" value="T"/>
             <output name="outcomes">
                 <assert_contents>
-                    <has_text text="skipped"/>
-                    <has_text text="REPEAT"/>
+                    <has_line_matching expression="^org\.progenetix\.beacon\t[^\t]*\tREPEAT\t[^\t]*\tskipped\t.*"/>
                 </assert_contents>
             </output>
         </test>

@@ -29,11 +29,13 @@ from ..formats import results as results_format
 from ..formats.outcomes import Outcome, OutcomeRecorder, Status, note_for
 from ..normalise.classify import classify
 from ..normalise.envelope import (
-    EntityTypeMismatch, MalformedEnvelope, assert_entity_type, combined_precision,
+    PRECISION_FAILED_VERIFICATION, PRECISION_PARTIAL, EntityTypeMismatch, MalformedEnvelope,
+    assert_entity_type, combined_precision,
     effective_count_precision, instance_count, is_complete_retrieval, parse, summary_row,
 )
 from ..normalise.provenance import Provenance, label_random_sample
 from ..normalise.variants import deduplicate, flatten_variant, instance_id_anomalies
+from ..normalise.verify import class_constrained, region_for, verify_records
 from ..query.classes import VariantClass
 from ..query.filters import build_alphanumeric_filter, build_ontology_filter, years_to_iso8601
 from ..query.model import CustomFilter, Query
@@ -338,33 +340,28 @@ def failure_outcome(provider, klass, class_status, exc, credentials) -> Outcome:
                    notes=redact(note, credentials))
 
 
-def variant_rows(records, provider, envelope, pinned_class, degradations,
-                 sample: tuple[int, int | None] | None = None) -> list[dict[str, Any]]:
-    """Flatten variant records into provenance-carrying rows.
+def variant_rows(checked, provider, envelope, degradations,
+                 sample: tuple[int, int | None] | None = None,
+                 parameter_ignored: bool = False) -> list[dict[str, Any]]:
+    """Flatten VERIFIED records into provenance-carrying rows.
 
-    With ``pinned_class`` the class came from the query; a record whose content
-    says otherwise keeps the pinned class and says so in its basis. Without it
-    -- a coalesced or nested lookup -- each record is filed by its own content.
+    ``checked`` comes from normalise.verify.verify_records: every record's class
+    and basis are from its own structure, never from the class the query asked
+    for, and records that do not answer the query are already gone. A response
+    showing a parameter was ignored is labelled so on every row, as on the
+    outcome, so the two levels cannot disagree.
     """
     precision, basis = effective_count_precision(envelope)
+    if parameter_ignored and basis != PRECISION_PARTIAL:
+        precision, basis = "imprecise", PRECISION_FAILED_VERIFICATION
     notes = "; ".join(d.render() for d in degradations)
     expansion = "; ".join(d.render() for d in degradations if "expan" in d.kind.value)
     rows = []
-    for record in records:
-        content_class, evidence = classify(record)
-        if pinned_class is not None:
-            row_class = pinned_class.value
-            if content_class in (pinned_class, VariantClass.UNCLASSIFIED):
-                row_basis = f"pinned by query; {evidence}"
-            else:
-                row_basis = (f"pinned by query ({pinned_class.value}); record content "
-                             f"indicates {content_class.value}: {evidence}")
-        else:
-            row_class, row_basis = content_class.value, evidence
+    for item in checked:
         provenance = Provenance(
             beacon_id=provider.id, beacon_name=provider.name,
-            access_tier=provider.tier.value, variant_class=row_class,
-            classification_basis=row_basis,
+            access_tier=provider.tier.value, variant_class=item.variant_class.value,
+            classification_basis=item.basis,
             granularity_returned=str(envelope.returned_granularity or ""),
             count_precision=precision, count_precision_basis=basis,
             query_degraded=bool(degradations), degradation_notes=notes,
@@ -372,15 +369,17 @@ def variant_rows(records, provider, envelope, pinned_class, degradations,
         )
         if sample is not None:
             provenance = label_random_sample(provenance, *sample)
-        for row in flatten_variant(record):
+        for row in flatten_variant(item.record):
             rows.append({**provenance.as_columns(), **row})
     return rows
 
 
 def summary_rows(provider, envelope, klass) -> list[dict[str, Any]]:
     precision, basis = effective_count_precision(envelope)
-    provenance = Provenance(provider.id, provider.name, provider.tier.value,
-                            klass.value if klass else "n/a", "pinned by query",
+    what = klass.value if klass else "n/a"
+    provenance = Provenance(provider.id, provider.name, provider.tier.value, what,
+                            f"a count the provider reported for a {what} query; no records "
+                            f"were returned, so nothing was classified",
                             str(envelope.returned_granularity or ""), precision, basis)
     return [{**provenance.as_columns(), **summary_row(envelope)}]
 
@@ -427,6 +426,7 @@ def run_pair(execution: ExecutionPlan, args, credentials, results, recorder,
         notes: list[str] = [d.render() for d in execution.degradations] + list(extra_notes)
         envelope = None
         envelopes = []
+        parameter_ignored = False
         sampled = False
         for query in execution.queries:
             envelope, records, result = execute_query(query, provider, adapter, client,
@@ -448,8 +448,13 @@ def run_pair(execution: ExecutionPlan, args, credentials, results, recorder,
                 sample = (instance_count(records), envelope.num_total_results)
                 notes.append(note_for("random_sample", retrieved=sample[0],
                                       total=sample[1]))
-            rows += variant_rows(records, provider, envelope, klass,
-                                 execution.degradations, sample)
+            verification = verify_records(records, [klass], region_for(query),
+                                          class_constrained(query))
+            notes += verification.notes()
+            parameter_ignored = parameter_ignored or verification.parameter_ignored
+            rows += variant_rows(verification.kept, provider, envelope,
+                                 execution.degradations, sample,
+                                 verification.parameter_ignored)
 
         rows, removed = deduplicate(rows)
         if removed:
@@ -460,6 +465,8 @@ def run_pair(execution: ExecutionPlan, args, credentials, results, recorder,
             notes.append(note_for("synthetic_data"))
         # EVERY query's envelope, never just the last one's.
         precision, basis, shortfalls = combined_precision(envelopes)
+        if parameter_ignored and not shortfalls:
+            precision, basis = "imprecise", PRECISION_FAILED_VERIFICATION
         if shortfalls:
             notes.append(note_for("partial_retrieval", shortfall=", ".join(
                 f"{got} of {total}" for got, total in shortfalls)))
@@ -517,18 +524,20 @@ def run_group(group: CoalescedGroup, args, credentials, results, recorder) -> No
         return
 
     entity_notes = assert_entity_type(envelope, adapter.requested_entity_type(query))
-    rows = variant_rows(records, provider, envelope, None, representative.degradations)
+    # One request answered several classes, so it carried no class constraint:
+    # records of other classes are expected, but they answer none of these.
+    verification = verify_records(records, [m.variant_class for m in group.members],
+                                  region_for(query), constrained=False)
+    rows = variant_rows(verification.kept, provider, envelope, representative.degradations,
+                        parameter_ignored=verification.parameter_ignored)
     rows, _ = deduplicate(rows)
-    member_classes = {m.variant_class.value for m in group.members}
-    unclassified = [r for r in rows if r["variant_class"] not in member_classes]
     results.extend(rows)
     precision, basis = effective_count_precision(envelope)
+    if verification.parameter_ignored and basis != PRECISION_PARTIAL:
+        precision, basis = "imprecise", PRECISION_FAILED_VERIFICATION
     for member in group.members:
         mine = [r for r in rows if r["variant_class"] == member.variant_class.value]
-        notes = [note_for("coalesced_complete")] + entity_notes
-        if unclassified:
-            notes.append(f"{len(unclassified)} returned records could not be filed under "
-                         f"any requested class and are labelled unclassified")
+        notes = [note_for("coalesced_complete")] + entity_notes + verification.notes()
         notes += class_notes(member, len(mine), provider)
         recorder.record(Outcome(
             provider.id, provider.name, member.variant_class, member.class_status,
@@ -632,14 +641,18 @@ def run_mongo(args: argparse.Namespace, base: Query, classes: list[VariantClass]
                 filter_for(query, reference, parse_fields(args.fields), ids), args.limit)
         except MongoFiltersUnsupported as exc:
             raise QueryUsageError(str(exc)) from exc
-        provenance = Provenance("local.mongodb", "Self-hosted MongoDB", "controlled",
-                                klass.value, "pinned by query", "record")
-        mine = [{**provenance.as_columns(), **row}
-                for doc in documents for row in flatten_variant(doc)]
+        verification = verify_records(documents, [klass], region_for(query),
+                                      class_constrained(query))
+        mine = []
+        for item in verification.kept:
+            provenance = Provenance("local.mongodb", "Self-hosted MongoDB", "controlled",
+                                    item.variant_class.value, item.basis, "record")
+            mine += [{**provenance.as_columns(), **row} for row in flatten_variant(item.record)]
         rows += mine
         recorder.record(Outcome("local.mongodb", "Self-hosted MongoDB", klass, "",
                                 Status.OK, row_count=len(mine),
                                 granularity_requested="record",
-                                granularity_returned="record"))
+                                granularity_returned="record",
+                                notes=join_notes(verification.notes())))
     write_outputs(rows, recorder, args.results, args.outcomes, entity)
     return 0

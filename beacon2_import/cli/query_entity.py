@@ -103,7 +103,13 @@ def _run_entities(args, base: Query) -> int:
         if base.requested_granularity != "record":
             batch = common.summary_rows(provider, envelope, None)
         elif nested_variants:
-            batch, _ = deduplicate(common.variant_rows(records, provider, envelope, None, ()))
+            from ..normalise.verify import verify_records
+
+            # No region, and no class constraint on the wire: with classes
+            # selected, records of other classes are excluded and counted.
+            verification = verify_records(records, classes or None, None, constrained=False)
+            notes += verification.notes()
+            batch, _ = deduplicate(common.variant_rows(verification.kept, provider, envelope, ()))
         else:
             flatten = FLATTENERS[base.nested_entity or base.entity]
             provenance = Provenance(provider.id, provider.name, provider.tier.value, "n/a",

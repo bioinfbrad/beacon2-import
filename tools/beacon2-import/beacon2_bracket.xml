@@ -77,7 +77,7 @@
     </inputs>
     <expand macro="beacon_outputs"/>
     <tests>
-        <!-- The canonical focal TP53 deletion query. -->
+        <!-- Bracket query on two live providers, with client- or server-side expansion. -->
         <test expect_num_outputs="2">
             <conditional name="connection">
                 <param name="transport" value="api"/>
@@ -97,24 +97,28 @@
                     <param name="expand_hierarchy" value="always"/>
                 </conditional>
             </section>
+            <repeat name="filters">
+                <conditional name="filter_type">
+                    <param name="kind" value="ontology"/>
+                    <param name="term" value="NCIT:C3058"/>
+                    <param name="include_descendant_terms" value="true"/>
+                </conditional>
+            </repeat>
             <output name="results">
                 <assert_contents>
-                    <has_text text="beacon_id"/>
-                    <has_text text="expansion_notes"/>
+                    <has_line_matching expression="^org\.progenetix\.beacon\t(?:[^\t]*\t){2}CNV\t(?:[^\t]*\t){9}17\t.*"/>
+                    <has_line_matching expression="^org\.cancercelllines\t(?:[^\t]*\t){2}CNV\t(?:[^\t]*\t){9}17\t.*"/>
                 </assert_contents>
             </output>
             <output name="outcomes">
                 <assert_contents>
+                    <has_line_matching expression="^org\.progenetix\.beacon\t[^\t]*\tCNV\t[^\t]*\tok\t.*"/>
+                    <has_line_matching expression="^org\.cancercelllines\t[^\t]*\tCNV\t[^\t]*\tok\t.*"/>
                     <has_n_lines n="3"/>
                 </assert_contents>
             </output>
         </test>
-        <!--
-            Degradation: a provider without bracket support is widened and marked.
-            Uses a FIXTURE provider that declares CNV yes, so the test asserts
-            degradation behaviour without also depending on a partner's content
-            composition. That coupling is what broke the earlier version.
-        -->
+        <!-- No bracket support: degraded to a range query, and labelled so. -->
         <test expect_num_outputs="2">
             <conditional name="connection">
                 <param name="transport" value="api"/>
@@ -126,14 +130,20 @@
             <param name="start_max" value="7676592"/>
             <param name="end_min" value="7669607"/>
             <param name="end_max" value="10000000"/>
+            <output name="results">
+                <assert_contents>
+                    <has_line_matching expression="^test\.fixture\.bracketless\t(?:[^\t]*\t){2}CNV\t(?:[^\t]*\t){9}17\t.*"/>
+                </assert_contents>
+            </output>
             <output name="outcomes">
                 <assert_contents>
+                    <has_line_matching expression="^test\.fixture\.bracketless\t[^\t]*\tCNV\t[^\t]*\tok\t.*"/>
                     <has_text text="bracket"/>
                     <has_text text="range"/>
                 </assert_contents>
             </output>
         </test>
-        <!-- Same fixture, degradation refused: skipped rather than silently widened. -->
+        <!-- Degradation refused: skipped before any request. -->
         <test expect_num_outputs="2">
             <conditional name="connection">
                 <param name="transport" value="api"/>
@@ -150,11 +160,11 @@
             </section>
             <output name="outcomes">
                 <assert_contents>
-                    <has_text text="skipped"/>
+                    <has_line_matching expression="^test\.fixture\.bracketless\t[^\t]*\tCNV\t[^\t]*\tskipped\t.*"/>
                 </assert_contents>
             </output>
         </test>
-        <!-- DEL, a variantType value the specification marks LEGACY, for a beacon holding VCF-derived terms. -->
+        <!-- A DEL/DUP variant type, which the specification marks LEGACY. -->
         <test expect_num_outputs="2">
             <conditional name="connection">
                 <param name="transport" value="api"/>
@@ -174,7 +184,12 @@
             </section>
             <output name="results">
                 <assert_contents>
-                    <has_text text="beacon_id"/>
+                    <has_line_matching expression="^org\.cancercelllines\t(?:[^\t]*\t){2}CNV\t(?:[^\t]*\t){9}9\t.*"/>
+                </assert_contents>
+            </output>
+            <output name="outcomes">
+                <assert_contents>
+                    <has_line_matching expression="^org\.cancercelllines\t[^\t]*\tCNV\t[^\t]*\tok\t.*"/>
                 </assert_contents>
             </output>
         </test>

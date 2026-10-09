@@ -120,3 +120,15 @@ def test_a_failing_provider_is_a_row_not_a_crash(tmp_path):
     by_id = {o["beacon_id"]: o for o in _read(outcomes)}
     assert by_id["org.cancercelllines"]["status"] == "ok"
     assert by_id["org.progenetix.beacon"]["status"] == "error"
+
+
+def test_a_provider_where_nothing_answers_is_not_reported_healthy(tmp_path):
+    """Found by replaying the Galaxy tests with no fixtures: service-info wrote
+    its rows with empty observed values and reported the provider `ok`."""
+    table = tmp_path / "providers.loc"
+    table.write_text(f"org.cancercelllines\t\tfile://{tmp_path / 'nothing'}\t1\t\t\n")
+    report, outcomes = tmp_path / "report.tsv", tmp_path / "outcomes.tsv"
+    assert main(["service-info", "--providers", "org.cancercelllines", "--provider-table", str(table),
+                 "--report", str(report), "--outcomes", str(outcomes)]) == 0
+    outcome = _read(outcomes)[0]
+    assert outcome["status"] == "error" and "no manifest" in outcome["notes"]

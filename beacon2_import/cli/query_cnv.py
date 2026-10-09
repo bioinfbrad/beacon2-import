@@ -23,6 +23,7 @@ from ..formats.outcomes import Outcome, OutcomeRecorder, Status
 from ..auth.resolver import load_credentials
 from ..normalise.provenance import Provenance
 from ..normalise.variants import flatten_variant
+from ..normalise.verify import Region, verify_records
 from ..query.classes import VariantClass
 from ..query.coordinates import normalise_chromosome, one_based_to_interbase
 from ..query.model import Pagination, Position, Query, QueryForm
@@ -65,15 +66,21 @@ def _mongo(args: argparse.Namespace) -> int:
         args.db_host, args.db_port, args.database, args.collection,
         load_credentials(args.credentials_file))
     documents = transport.find(clauses, args.limit)
-    provenance = Provenance("local.mongodb", "Self-hosted MongoDB", "controlled", "CNV",
-                            "pinned by query", "record")
-    rows = [{**provenance.as_columns(), **row}
-            for document in documents for row in flatten_variant(document)]
+    region = Region(normalise_chromosome(args.reference_name) if args.reference_name else None,
+                    "containment", (start,), (args.end,))
+    verification = verify_records(documents, [VariantClass.CNV], region,
+                                  constrained=bool(args.variant_type))
+    rows = []
+    for item in verification.kept:
+        provenance = Provenance("local.mongodb", "Self-hosted MongoDB", "controlled",
+                                item.variant_class.value, item.basis, "record")
+        rows += [{**provenance.as_columns(), **row} for row in flatten_variant(item.record)]
     recorder = OutcomeRecorder([("local.mongodb", VariantClass.CNV)])
     recorder.record(Outcome("local.mongodb", "Self-hosted MongoDB", VariantClass.CNV, "",
                             Status.OK, row_count=len(rows), granularity_requested="record",
                             granularity_returned="record",
-                            notes="start/end matched as containment, as in 2.2.4"))
+                            notes=common.join_notes(["start/end matched as containment, as in 2.2.4"]
+                                                    + verification.notes())))
     common.write_outputs(rows, recorder, args.results, args.outcomes, "genomicVariant")
     return 0
 

@@ -1,37 +1,25 @@
-# Recorded HTTP fixtures
+# Galaxy tool-test fixtures
 
-The standard test suite never touches a partner service. Each provider
-directory holds a `manifest.json` mapping a request signature to a response
-file:
+One directory per provider in `../beacon_providers.loc`, each with a
+`manifest.json` in the keyed format `beacon2-fixtures/2`:
 
-```json
-{
-  "POST /g_variants 8f3c1a2b": "range_query_record.json",
-  "GET  /map":                 "map.json"
-}
-```
+    {"format": "beacon2-fixtures/2",
+     "entries": [{"request": {"method": ..., "path": ..., "query": {...}},
+                  "response": "<file>.json",
+                  "origin": "recorded" | "constructed",
+                  "note": "..."}]}
 
-The signature is `METHOD path [body-digest]`. A request with no manifest entry
-raises, so an unmatched request fails the test loudly instead of returning an
-empty result that looks like "no matches".
+A fixture is keyed on the REQUEST -- method, path, and the query-relevant
+fields: reference name, coordinates, variant type, filters, granularity,
+pagination, datasets, testMode -- never on the endpoint alone. A request with no
+entry fails loudly (FixtureMiss); there is no fallback response. One canned
+response per endpoint once answered a chromosome 17 query with chromosome 3
+records, and the tests passed.
 
-Regenerate with `testMode=true`, which a beacon must answer with real or fake
-content while skipping authentication — that is the mechanism the spec provides
-for exactly this purpose, and it avoids replaying real queries at a partner.
+RECORD, DON'T CONSTRUCT. `scripts/record_fixtures.py` runs every Galaxy test's
+query against the live providers and writes the request -> response pairs here.
+Only `test.fixture.bracketless`, synthetic by definition, is constructed.
 
-Required coverage (§17):
-all four query forms; EFO and legacy `variantType`; ontology filter with
-`includeDescendantTerms` true and false; alphanumeric filter with an ISO 8601
-period; boolean response; count response; empty `resultSets` with a valid
-`responseSummary`; `resultSets[].results` layout; flat `response.results`
-layout; nested path `/biosamples/{id}/g_variants`; 401; timeout; malformed
-JSON; a multi-page response exercising `skip` as a page index; a 403 with an
-HTML body (an edge bot-block, which must map to `blocked` rather than `error`);
-a genuine Beacon 403 with a JSON error envelope, as the contrast case; and a
-response whose `returnedSchemas[0].entityType` differs from the one requested.
-
-The last three exist because each is a failure that arrives looking like a
-success or like something else entirely: an HTML block that is not an
-authentication problem, a JSON 403 that is, and a well-formed 200 carrying the
-wrong kind of record. Unit-level copies live in
-`beacon2_import/tests/fixtures/transport/`.
+`beacon2_import/tests/test_galaxy_fixtures.py` checks this tree statically:
+every provider in the test .loc has a directory with a valid manifest, every
+entry's file exists, no file is unreferenced, and no directory is empty.

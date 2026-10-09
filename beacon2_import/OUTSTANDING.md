@@ -25,6 +25,27 @@ setuptools still accepts, though it warns that support will be removed.
 
 ---
 
+## The principle: trust the response, not the query or the declaration
+
+Three instances, each learned from a real failure, all enforced:
+
+- **Partiality**, judged from the instances returned against `numTotalResults`
+  -- never from the registry's pagination claim (normalise/envelope.py).
+- **Class**, judged from each record's own structure -- never from the class
+  the query asked for. Sixty CNV records once came back to a SMALL_VARIANT
+  query, were stamped SMALL_VARIANT ("pinned by query"), and were offered as
+  evidence to upgrade the registry to `yes`.
+- **Region**, judged from each record's coordinates, with the semantics of the
+  form sent -- never assumed from the request. Chromosome 3 records once came
+  back as answers to a chromosome 17 query.
+
+Class and region are checked in ONE place, normalise/verify.py, which every
+runner calls. A record that fails is excluded from results and counts and
+reported, with its reason, in outcomes.tsv. No existing test noticed the
+pinning, because every one sent queries whose answers already matched.
+
+---
+
 ## Lesson: how a 7% random sample passed as exact
 
 Live against Progenetix, 297 rows from a random 100 of each of 4182, 2831 and
@@ -59,6 +80,17 @@ why it does not.
 
 ---
 
+## Not a Galaxy tool test: a real insert
+
+`import.xml`'s test is deliberately self-contained: it points at a closed port
+on the loopback address and asserts the clean failure, exercising the wiring,
+the credentials file and the error path without any database. A genuine insert
+needs a MongoDB service, which a standard Galaxy tool test cannot provide, and a
+test must never depend on an external server (the previous one connected to a
+real database by hardcoded address). Inserts stay covered at the Python level.
+
+---
+
 ## Unverified
 
 - **`planemo test`.** `planemo lint` passes on all 14 tools with zero warnings
@@ -70,11 +102,23 @@ why it does not.
   `$connection.providers.fields.base_url` of a multiple select returning the
   comma-joined column. Without it, no tool passes base URLs to the CLI, and tool
   tests would reach the network. Needs a planemo run.
-- **Tool fixture directories** for `org.progenetix.beacon`,
-  `org.ega-archive.demo` and `test.fixture.bracketless` are empty. Every tool
-  test uses `org.cancercelllines`, which now serves recorded responses for
-  variants, all six entity types and the informational endpoints. The entity and
-  informational ones are constructed, not captured.
+- **Galaxy fixtures for cancercelllines and Progenetix are awaiting a live
+  recording** (`scripts/record_fixtures.py --record`, run from AWS). Until then
+  their 20 Galaxy tests fail with FixtureMiss, and `test_galaxy_fixtures.py`
+  skips the two providers by name (galaxy_fixtures_awaiting.txt). The
+  bracketless provider's fixture is constructed, as a synthetic provider must be.
+- **Verified before recording, so the AWS session is not wasted:** for all 24
+  spec tests, Galaxy's rendered `<command>` sends exactly the requests the
+  recorder records (`tests/test_galaxy_command_keys.py`, which renders each
+  command with Galaxy's own macro loader and skips without galaxy-tool-util);
+  and `--record` then `--check` completes against a stand-in network with no
+  FixtureMiss on replay. The dry run also found, and fixed, the recorder
+  leaving its client factory patched after `--record`.
+- **No Galaxy test asserts a count yet.** Counts can only come from a recording;
+  `--record` prints each test's row count, and those become `row_count`
+  assertions once recorded. Row assertions (beacon, class, chromosome) are in
+  place but depend on the recorded queries returning rows, which `--check`
+  reports before Galaxy is run.
 - **The bioblend check is static.** All seven call sites bind against bioblend
   1.9.0's signatures; none was exercised against a live Galaxy server.
 - **The recipe sha256 is for the shipped sdist only.** Two builds of an

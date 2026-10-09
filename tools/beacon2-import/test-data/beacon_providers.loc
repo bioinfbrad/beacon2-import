@@ -1,4 +1,3 @@
 org.progenetix.beacon	Progenetix Beacon+ (fixture)	file://${__HERE__}/fixtures/org.progenetix.beacon	1	public	
 org.cancercelllines	Cancer Cell Line Beacon+ (fixture)	file://${__HERE__}/fixtures/org.cancercelllines	1	public	
-org.ega-archive.demo	EGA RI demo (fixture)	file://${__HERE__}/fixtures/org.ega-archive.demo	1	public	
 test.fixture.bracketless	Test fixture — CNV beacon, no bracket support	file://${__HERE__}/fixtures/test.fixture.bracketless	1	public	

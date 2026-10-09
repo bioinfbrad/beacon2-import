@@ -18,13 +18,18 @@ from beacon2_import.cli.main import main
 
 PACKAGE = Path(__file__).resolve().parent.parent
 TEST_DATA = PACKAGE.parent / "tools" / "beacon2-import" / "test-data"
-pytestmark = pytest.mark.skipif(not TEST_DATA.is_dir(), reason="tool test-data not present")
+
+
+FIXTURES = Path(__file__).resolve().parent / "fixtures" / "end_to_end"
 
 
 def _run(tmp_path, providers, classes):
+    """Python-suite fixtures, keyed on the request. Progenetix and the bracketless
+    provider point at directories with no manifest, so they fail loudly."""
     table = tmp_path / "providers.loc"
-    table.write_text((TEST_DATA / "beacon_providers.loc").read_text()
-                     .replace("${__HERE__}", str(TEST_DATA)))
+    table.write_text("".join(
+        f"{pid}\t\tfile://{FIXTURES / pid}\t1\t\t\n"
+        for pid in ("org.cancercelllines", "org.progenetix.beacon", "test.fixture.bracketless")))
     results, outcomes = tmp_path / "results.tsv", tmp_path / "outcomes.tsv"
     code = main(["range", "--providers", providers, "--variant-class", classes,
                  "--provider-table", str(table), "--reference-name", "3",

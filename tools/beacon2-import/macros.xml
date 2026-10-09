@@ -634,6 +634,7 @@ found through our inference from one found through a published hierarchy.
     <xml name="Connection_to_MongoDB">
         <param argument="--db-host" type="text" label="DATABASE HOST" value="127.0.0.1" help="Hostname/IP of the beacon database" />
         <param argument="--db-port" type="integer" label="DATABASE PORT" value="27017" help="Port of the beacon database" />
+        <param argument="--server-selection-timeout-ms" type="integer" label="CONNECTION TIMEOUT (MS)" value="30000" min="500" help="How long to wait for the database before giving up" />
     </xml>
 
     <xml name="Database_Configuration">

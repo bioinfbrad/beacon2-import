@@ -72,7 +72,7 @@ def _connect(tmp_path, monkeypatch, config: dict):
     monkeypatch.setattr(importer, "MongoClient", _Recorder)
     args = types.SimpleNamespace(advance=True, database_auth_config=str(path),
                                  database_host="db.example", database_port=27017,
-                                 database="beacon")
+                                 database="beacon", server_selection_timeout_ms=30000)
     importer.connect_to_mongodb(args, parser=None)
     return _Recorder.calls[0]
 
@@ -81,12 +81,13 @@ def test_credentials_go_to_the_driver_as_keywords_not_a_uri(tmp_path, monkeypatc
     args, kwargs = _connect(tmp_path, monkeypatch, {
         "db_auth_source": "admin", "db_user": "beacon", "db_password": "p@ss:w/rd%"})
     assert args == ("db.example", 27017)
-    assert kwargs == {"username": "beacon", "password": "p@ss:w/rd%", "authSource": "admin"}
+    assert kwargs == {"username": "beacon", "password": "p@ss:w/rd%", "authSource": "admin",
+                      "serverSelectionTimeoutMS": 30000}
     assert not any("mongodb://" in str(a) for a in args)
 
 
 def test_no_user_connects_unauthenticated_and_says_so(tmp_path, monkeypatch, capsys):
     args, kwargs = _connect(tmp_path, monkeypatch, {
         "db_auth_source": "admin", "db_user": "", "db_password": ""})
-    assert args == ("db.example", 27017) and kwargs == {}
+    assert args == ("db.example", 27017) and kwargs == {"serverSelectionTimeoutMS": 30000}
     assert "without authentication" in capsys.readouterr().err

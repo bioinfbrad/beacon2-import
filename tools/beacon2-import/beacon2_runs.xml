@@ -103,21 +103,28 @@
     </inputs>
     <expand macro="beacon_outputs"/>
     <tests>
+        <!-- Runs matching a filter, from a live provider. -->
         <test expect_num_outputs="2">
             <conditional name="connection">
                 <param name="transport" value="api"/>
                 <param name="providers" value="org.cancercelllines"/>
+                <repeat name="filters">
+                    <conditional name="filter_type">
+                        <param name="kind" value="ontology"/>
+                        <param name="term" value="NCIT:C3058"/>
+                        <param name="include_descendant_terms" value="true"/>
+                    </conditional>
+                </repeat>
             </conditional>
             <output name="results">
                 <assert_contents>
+                    <has_line_matching expression="^org\.cancercelllines\t.*"/>
                     <has_text text="run_id"/>
-                    <has_text text="cellzrun-0001"/>
                 </assert_contents>
             </output>
             <output name="outcomes">
                 <assert_contents>
-                    <has_text text="org.cancercelllines"/>
-                    <has_text text="ok"/>
+                    <has_line_matching expression="^org\.cancercelllines\t[^\t]*\tn/a\t[^\t]*\tok\t.*"/>
                     <has_n_lines n="2"/>
                 </assert_contents>
             </output>

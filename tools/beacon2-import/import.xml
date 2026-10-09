@@ -11,6 +11,7 @@
         --input_json_file ./input.json
         --db-host $db_host
         --db-port $db_port
+        --server-selection-timeout-ms $server_selection_timeout_ms
         --database '$database'
         --collection '$collection'
         --advance-connection
@@ -37,14 +38,26 @@
         <data name="out_logs" format="txt" label="${tool.name} on ${on_string}: Log file" from_work_dir="logs.txt" />
     </outputs>
     <tests>
-        <test expect_num_outputs="1">
-            <param name="input_json_file" ftype="json" value="HG00096.json" />
-            <param name="db_host" value="20.108.51.167" />
-            <param name="database" value="beacon" />
-            <param name="collection" value="test" />
-            <output name="out_logs">
-                <assert_contents><has_text_matching expression="inserted"/></assert_contents>
-            </output>
+        <!--
+            Self-contained and deterministic: no database is involved. Port 9 on
+            the loopback address is closed, so the connection fails within the
+            short timeout, exercising the wiring, the credentials file and the
+            error path. A genuine insert needs a database service, which a
+            standard Galaxy tool test cannot provide: the Python-level importer
+            tests cover inserts (see OUTSTANDING.md).
+        -->
+        <test expect_failure="true" expect_exit_code="1">
+            <param name="input_json_file" ftype="json" value="HG00096.json"/>
+            <param name="db_host" value="127.0.0.1"/>
+            <param name="db_port" value="9"/>
+            <param name="server_selection_timeout_ms" value="1000"/>
+            <param name="database" value="beacon"/>
+            <param name="collection" value="genomicVariations"/>
+            <assert_stderr>
+                <has_text text="Could not connect to MongoDB at 127.0.0.1:9"/>
+                <has_text text="check the host, port and that the server is running"/>
+                <not_has_text text="Traceback"/>
+            </assert_stderr>
         </test>
     </tests>
     <help><![CDATA[

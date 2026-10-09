@@ -1,4 +1,15 @@
 {
-  "GET /g_variants": "g_variants_response.json",
-  "POST /g_variants": "g_variants_response.json"
+ "entries": [
+  {
+   "note": "Minimal response for the FixtureClient round-trip test.",
+   "origin": "constructed",
+   "request": {
+    "method": "POST",
+    "path": "/g_variants",
+    "query": {}
+   },
+   "response": "g_variants_response.json"
+  }
+ ],
+ "format": "beacon2-fixtures/2"
 }
