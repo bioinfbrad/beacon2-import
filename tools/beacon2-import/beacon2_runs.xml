@@ -118,14 +118,13 @@
             </conditional>
             <output name="results">
                 <assert_contents>
-                    <has_line_matching expression="^org\.cancercelllines\t.*"/>
-                    <has_text text="run_id"/>
-                    <has_n_lines n="279"/>
+                    <has_n_lines n="1"/>
                 </assert_contents>
             </output>
             <output name="outcomes">
                 <assert_contents>
-                    <has_line_matching expression="^org\.cancercelllines\t[^\t]*\tn/a\t[^\t]*\tok\t278\t.*"/>
+                    <has_line_matching expression="^org\.cancercelllines\t[^\t]*\tn/a\t[^\t]*\tskipped\t0\t.*"/>
+                    <has_text text="observed not to apply filters"/>
                     <has_n_lines n="2"/>
                 </assert_contents>
             </output>

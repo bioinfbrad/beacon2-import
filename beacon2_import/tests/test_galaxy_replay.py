@@ -115,3 +115,34 @@ def test_a_recorded_collections_response_is_parsed():
     envelope = parse(body)
     assert len(envelope.records) == 6 == envelope.num_total_results
     assert instance_count(list(envelope.records)) == 6
+
+
+def test_check_reads_assertions_as_galaxy_does():
+    """--check must decode an assertion exactly as Galaxy does, or the two disagree."""
+    import xml.etree.ElementTree as ET
+
+    for test in TESTS:
+        for check in test.outcomes + test.results:
+            assert "&#" not in check, f"{test.id}: a character reference in {check}"
+            ET.fromstring(check)  # every assertion is well-formed XML
+    probe = '<has_line_matching expression="^a&#9;b$"/>'
+    assert recorder._assertion_failures(
+        type("T", (), {"outcomes": [probe], "results": [], "output_names": ("results", "outcomes")})(),
+        {"results": "", "outcomes": "a\tb"}) == []
+
+
+def test_recording_one_test_keeps_the_others_fixtures(tmp_path, monkeypatch):
+    import json as _json
+
+    monkeypatch.setattr(recorder, "FIXTURES", tmp_path)
+    keep = {"method": "GET", "path": "/info", "query": {}}
+    redo = {"method": "GET", "path": "/datasets", "query": {}}
+    entry = lambda req, body: (_json.dumps(req, sort_keys=True),
+                               {"request": req, "body": body, "tests": {"t"}})
+    recorder.write_fixtures("p", dict([entry(keep, {"a": 1}), entry(redo, {"b": 1})]), "recorded", "n")
+    recorder.write_fixtures("p", dict([entry(redo, {"b": 2})]), "recorded", "n", merge=True)
+    entries = _json.loads((tmp_path / "p" / "manifest.json").read_text())["entries"]
+    assert sorted(e["request"]["path"] for e in entries) == ["/datasets", "/info"]
+    redone = next(e for e in entries if e["request"]["path"] == "/datasets")
+    assert _json.loads((tmp_path / "p" / redone["response"]).read_text()) == {"b": 2}
+    assert len(list((tmp_path / "p").glob("r-*"))) == 2

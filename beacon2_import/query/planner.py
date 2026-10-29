@@ -78,6 +78,9 @@ class SkipKind(str, Enum):
     #: A gene query to a provider that resolves genes only by GET, carrying an
     #: alphanumeric filter, which only POST can encode.
     GENE_FILTER_UNSUPPORTED = "gene_filter_unsupported"
+    #: The provider is OBSERVED not to apply filters: a filtered query would
+    #: return near-unrestricted data labelled as filtered.
+    FILTERS_NOT_APPLIED = "filters_not_applied"
 
 
 @dataclass(frozen=True)
@@ -255,6 +258,14 @@ def plan(
     return PlanSet(plans=tuple(plans), skips=tuple(skips), coalesced=tuple(groups))
 
 
+def filters_refusal(provider: ProviderCapability, query: Query) -> str:
+    """The one message for a provider observed not to apply filters, on every path."""
+    terms = ", ".join(getattr(f, "id", str(f)) for f in query.filters)
+    return (f"{provider.name} is observed not to apply filters "
+            f"({provider.filters_note or 'see the registry'}), so results would not be "
+            f"restricted to {terms}. Refused rather than returned unrestricted as if filtered.")
+
+
 def _skip(query: Query, provider: ProviderCapability, kind: SkipKind,
           message: str) -> SkipReason:
     return SkipReason(provider.id, query.variant_class, kind, message)
@@ -268,6 +279,9 @@ def plan_pair(
     Checks run from the most fundamental reason not to query to the least, so
     the skip a user reads is the one that actually decided it.
     """
+    if query.filters and provider.filters_effective == "no":
+        return _skip(query, provider, SkipKind.FILTERS_NOT_APPLIED,
+                     filters_refusal(provider, query))
     if (getattr(query.form, "value", query.form) == "geneId"
             and provider.gene_query_transport == "get" and requires_post(query.filters)):
         return _skip(query, provider, SkipKind.GENE_FILTER_UNSUPPORTED,

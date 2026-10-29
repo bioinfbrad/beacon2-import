@@ -95,13 +95,14 @@
             </repeat>
             <output name="results">
                 <assert_contents>
-                    <has_line_matching expression="^org\.progenetix\.beacon\t(?:[^\t]*\t){2}CNV\t(?:[^\t]*\t){9}17\t.*"/>
+                    <has_n_lines n="1"/>
                 </assert_contents>
             </output>
             <output name="outcomes">
                 <assert_contents>
-                    <has_line_matching expression="^org\.progenetix\.beacon\t[^\t]*\tCNV\t[^\t]*\tok\t.*"/>
-                    <has_line_matching expression="^org\.cancercelllines\t[^\t]*\tCNV\t[^\t]*\tok\t.*"/>
+                    <has_line_matching expression="^org\.progenetix\.beacon\t[^\t]*\tCNV\t[^\t]*\tskipped\t0\t.*"/>
+                    <has_line_matching expression="^org\.cancercelllines\t[^\t]*\tCNV\t[^\t]*\tskipped\t0\t.*"/>
+                    <has_text text="observed not to apply filters"/>
                     <has_n_lines n="3"/>
                 </assert_contents>
             </output>
@@ -173,16 +174,18 @@
             </repeat>
             <output name="results">
                 <assert_contents>
-                    <has_line_matching expression="^org\.progenetix\.beacon\t(?:[^\t]*\t){2}CNV\t(?:[^\t]*\t){9}17\t.*"/>
+                    <has_n_lines n="1"/>
                 </assert_contents>
             </output>
             <output name="outcomes">
                 <assert_contents>
-                    <has_line_matching expression="^org\.progenetix\.beacon\t[^\t]*\tCNV\t[^\t]*\tok\t.*"/>
+                    <has_line_matching expression="^org\.progenetix\.beacon\t[^\t]*\tCNV\t[^\t]*\tskipped\t0\t.*"/>
+                    <has_text text="observed not to apply filters"/>
+                    <has_n_lines n="2"/>
                 </assert_contents>
             </output>
         </test>
-        <!-- The positional twin of gene #1: its counts must equal the gene query's. -->
+        <!-- The positional twin of gene #1, unfiltered: its counts must equal the gene query's. -->
         <test expect_num_outputs="2">
             <conditional name="connection">
                 <param name="transport" value="api"/>
@@ -192,21 +195,15 @@
             <param name="reference_name" value="17"/>
             <param name="start" value="7668421"/>
             <param name="end" value="7687490"/>
-            <repeat name="filters">
-                <conditional name="filter_type">
-                    <param name="kind" value="ontology"/>
-                    <param name="term" value="NCIT:C3058"/>
-                    <param name="include_descendant_terms" value="true"/>
-                </conditional>
-            </repeat>
             <output name="results">
                 <assert_contents>
-                    <has_line_matching expression="^org\.progenetix\.beacon\t(?:[^\t]*\t){2}CNV\t(?:[^\t]*\t){9}17\t.*"/>
+                    <has_line_matching expression="^org\.cancercelllines\t(?:[^\t]*\t){2}CNV\t(?:[^\t]*\t){9}17\t.*"/>
                 </assert_contents>
             </output>
             <output name="outcomes">
                 <assert_contents>
-                    <has_line_matching expression="^org\.progenetix\.beacon\t[^\t]*\tCNV\t[^\t]*\tok\t.*"/>
+                    <has_line_matching expression="^org\.progenetix\.beacon\t[^\t]*\tCNV\t[^\t]*\tskipped\t0\t.*"/>
+                    <has_text text="ceiling"/>
                     <has_line_matching expression="^org\.cancercelllines\t[^\t]*\tCNV\t[^\t]*\tok\t.*"/>
                     <has_n_lines n="3"/>
                 </assert_contents>

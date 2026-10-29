@@ -83,8 +83,13 @@ class ProgenetixLike:
     def post(self, path, body):
         term = _find(body, "variantType")
         limit = int(_find(body, "limit") if _find(body, "limit") is not None else PAGE)
-        self.requests.append((term, limit))
         total = TOTALS[term]
+        if _find(body, "requestedGranularity") == "count":
+            # The filter-efficacy check's count requests: the filter restricts
+            # (no filter means a 10x larger universe). Not retrieval; not logged.
+            universe = total if _find(body, "filters") else total * 10 + 1
+            return Response(200, _envelope(term, universe, 0), f"stub://{path}", "POST", 0.0)
+        self.requests.append((term, limit))
         delivered = min(total, total if limit == 0 else limit, self.cap or total)
         return Response(200, _envelope(term, total, delivered), f"stub://{path}", "POST", 0.0)
 
@@ -104,10 +109,16 @@ def run(monkeypatch, tmp_path):
         def resolve(ids, table, registry):
             providers, unresolvable = original(ids, table, registry)
             return [dataclasses.replace(p, pagination_behaviour=pagination,
-                                        copy_change_expansion=expansion) for p in providers], unresolvable
+                                        copy_change_expansion=expansion,
+                                        filters_effective="unknown") for p in providers], unresolvable
 
-        if not real_registry:
-            monkeypatch.setattr(common, "resolve", resolve)
+        def filters_checked(ids, table, registry):
+            # The observed registry, but with the filter checked at run time
+            # rather than refused: this file is about retrieval, not filters.
+            providers, unresolvable = original(ids, table, registry)
+            return [dataclasses.replace(p, filters_effective="unknown") for p in providers], unresolvable
+
+        monkeypatch.setattr(common, "resolve", filters_checked if real_registry else resolve)
         monkeypatch.setattr(common, "make_client", lambda provider, credentials: client)
         results, outcomes = tmp_path / "results.tsv", tmp_path / "outcomes.tsv"
         code = main(["range", "--providers", "org.progenetix.beacon", "--variant-class", "CNV",

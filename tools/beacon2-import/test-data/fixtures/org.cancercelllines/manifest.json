@@ -638,6 +638,86 @@
     }
    },
    "response": "r-50779db3d9ff.json"
+  },
+  {
+   "note": "recorded 2026-10-29T17:51Z from https://cancercelllines.org/beacon; used by beacon2_gene#1",
+   "origin": "recorded",
+   "request": {
+    "method": "GET",
+    "path": "/genomicVariations",
+    "query": {
+     "geneId": "TP53",
+     "pagination": {
+      "limit": 0,
+      "skip": 0
+     },
+     "requestedGranularity": "record"
+    }
+   },
+   "response": "r-a3a79404a8f8.json.gz"
+  },
+  {
+   "note": "recorded 2026-10-29T17:51Z from https://cancercelllines.org/beacon; used by beacon2_gene#1",
+   "origin": "recorded",
+   "request": {
+    "method": "GET",
+    "path": "/genomicVariations",
+    "query": {
+     "geneId": "TP53",
+     "pagination": {
+      "limit": 1,
+      "skip": 0
+     },
+     "requestedGranularity": "record"
+    }
+   },
+   "response": "r-8b340ba28df5.json"
+  },
+  {
+   "note": "recorded 2026-10-29T17:51Z from https://cancercelllines.org/beacon; used by beacon2_range#5",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/genomicVariations",
+    "query": {
+     "end": [
+      7687490
+     ],
+     "pagination": {
+      "limit": 0,
+      "skip": 0
+     },
+     "referenceName": "17",
+     "requestedGranularity": "record",
+     "start": [
+      7668420
+     ]
+    }
+   },
+   "response": "r-fac49523077f.json.gz"
+  },
+  {
+   "note": "recorded 2026-10-29T17:51Z from https://cancercelllines.org/beacon; used by beacon2_range#5",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/genomicVariations",
+    "query": {
+     "end": [
+      7687490
+     ],
+     "pagination": {
+      "limit": 1,
+      "skip": 0
+     },
+     "referenceName": "17",
+     "requestedGranularity": "record",
+     "start": [
+      7668420
+     ]
+    }
+   },
+   "response": "r-b17406352414.json"
   }
  ],
  "format": "beacon2-fixtures/2"

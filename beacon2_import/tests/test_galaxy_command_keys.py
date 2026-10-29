@@ -205,8 +205,9 @@ def test_galaxy_sends_what_the_recorder_records(test):
 
 
 def test_the_renderer_notices_a_changed_value():
-    """Guards the guard: a renderer that dropped parameters would agree trivially."""
-    tool, index = "beacon2_range", 1
+    """Guards the guard: a renderer that dropped parameters would agree trivially.
+    Uses an UNFILTERED test: a filtered one is refused before any request."""
+    tool, index = "beacon2_range", 3
     root = _expanded(tool)
     param = next(p for p in root.find("tests").findall("test")[index - 1].iter("param")
                  if p.get("name") == "reference_name")

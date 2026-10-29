@@ -106,16 +106,15 @@
             </repeat>
             <output name="results">
                 <assert_contents>
-                    <has_line_matching expression="^org\.progenetix\.beacon\t(?:[^\t]*\t){2}CNV\t(?:[^\t]*\t){9}17\t.*"/>
-                    <has_line_matching expression="^org\.cancercelllines\t(?:[^\t]*\t){2}CNV\t(?:[^\t]*\t){9}17\t.*"/>
+                    <has_n_lines n="1"/>
                 </assert_contents>
             </output>
             <output name="outcomes">
                 <assert_contents>
-                    <has_line_matching expression="^org\.progenetix\.beacon\t[^\t]*\tCNV\t[^\t]*\tok\t313\t.*"/>
-                    <has_line_matching expression="^org\.cancercelllines\t[^\t]*\tCNV\t[^\t]*\tok\t1\t.*"/>
+                    <has_line_matching expression="^org\.progenetix\.beacon\t[^\t]*\tCNV\t[^\t]*\tskipped\t0\t.*"/>
+                    <has_line_matching expression="^org\.cancercelllines\t[^\t]*\tCNV\t[^\t]*\tskipped\t0\t.*"/>
+                    <has_text text="observed not to apply filters"/>
                     <has_n_lines n="3"/>
-                    <has_text text="304 duplicate observations removed"/>
                 </assert_contents>
             </output>
         </test>

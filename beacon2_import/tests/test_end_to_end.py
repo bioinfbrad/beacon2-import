@@ -23,7 +23,24 @@ TEST_DATA = PACKAGE.parent / "tools" / "beacon2-import" / "test-data"
 FIXTURES = Path(__file__).resolve().parent / "fixtures" / "end_to_end"
 
 
-def _run(tmp_path, providers, classes):
+@pytest.fixture(autouse=True)
+def _filters_checked_at_run_time(monkeypatch):
+    """The milestone predates the observed filter failure: keep its filter
+    checked at run time instead of refused by the registry."""
+    import dataclasses
+
+    from beacon2_import.cli import common
+
+    original = common.resolve
+
+    def resolve(ids, table, registry):
+        providers, unresolvable = original(ids, table, registry)
+        return [dataclasses.replace(p, filters_effective="unknown") for p in providers], unresolvable
+
+    monkeypatch.setattr(common, "resolve", resolve)
+
+
+def _run(tmp_path, providers, classes, monkeypatch=None):
     """Python-suite fixtures, keyed on the request. Progenetix and the bracketless
     provider point at directories with no manifest, so they fail loudly."""
     table = tmp_path / "providers.loc"

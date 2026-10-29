@@ -257,6 +257,10 @@ class ProviderCapability:
     #: variants by. cancercelllines returns 0 for SO:0001483 and SO:0001059
     #: although it labels its own small variants SO:0001059.
     small_variant_type_filter: str = ""
+    #: yes | no | unknown. OBSERVED, never assumed: whether filters actually
+    #: restrict results. "no" refuses every filtered query at plan time.
+    filters_effective: str = "unknown"
+    filters_note: str = ""
     #: OBSERVED: limit 0 is honoured as "all".
     full_retrieval: str = "unknown"            # limit_0_honoured | unknown
     #: OBSERVED: numTotalResults counts caseLevelData ENTRIES (per-sample

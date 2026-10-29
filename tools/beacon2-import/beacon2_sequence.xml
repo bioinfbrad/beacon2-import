@@ -103,12 +103,12 @@
             <param name="alternate_bases" value="T"/>
             <output name="results">
                 <assert_contents>
-                    <has_line_matching expression="^org\.cancercelllines\t[^&#9;]*\t[^&#9;]*\tSMALL_VARIANT\t[^&#9;]*\t[^&#9;]*\t[^&#9;]*\t[^&#9;]*\t[^&#9;]*\t[^&#9;]*\t[^&#9;]*\t[^&#9;]*\t[^&#9;]*\t17\t7673802\t[^&#9;]*\t[^&#9;]*\tC\tT\t.*"/>
+                    <has_line_matching expression="^org\.cancercelllines\t[^\t]*\t[^\t]*\tSMALL_VARIANT\t[^\t]*\t[^\t]*\t[^\t]*\t[^\t]*\t[^\t]*\t[^\t]*\t[^\t]*\t[^\t]*\t[^\t]*\t17\t7673802\t[^\t]*\t[^\t]*\tC\tT\t.*"/>
                 </assert_contents>
             </output>
             <output name="outcomes">
                 <assert_contents>
-                    <has_line_matching expression="^org\.cancercelllines\t[^\t]*\tSMALL_VARIANT\t[^\t]*\tok\t.*"/>
+                    <has_line_matching expression="^org\.cancercelllines\t[^\t]*\tSMALL_VARIANT\t[^\t]*\tok\t6\t.*"/>
                     <has_text text="matched client-side"/>
                 </assert_contents>
             </output>

@@ -58,7 +58,7 @@ def allele_row(beacon: str, klass: str, chromosome: str, start: int, ref: str, a
     want = {cols.index("beacon_id"): re.escape(beacon), cols.index("variant_class"): klass,
             cols.index("chromosome"): chromosome, cols.index("start"): str(start),
             cols.index("reference_bases"): ref, cols.index("alternate_bases"): alt}
-    expr = "^" + r"\t".join(want.get(i, "[^\t]*") for i in range(max(want) + 1)) + r"\t.*"
+    expr = "^" + r"\t".join(want.get(i, r"[^\t]*") for i in range(max(want) + 1)) + r"\t.*"
     return f'<has_line_matching expression={quoteattr(expr)}/>'
 
 
@@ -200,14 +200,14 @@ TESTS: list[GalaxyTest] = [
                 *arg_filter(GBM, descendants=False)],
                [outcome(PGX, "CNV", "ok")], [row(PGX, "CNV", "17")],
                requests_to=[PGX], expects_rows=[(PGX, "CNV", "17")]),
-    GalaxyTest("beacon2_range", 5, "The positional twin of gene #1: its counts must equal the gene query's.",
+    GalaxyTest("beacon2_range", 5, "The positional twin of gene #1, unfiltered: its counts must equal the gene query's.",
                [connection([PGX, CCL]), p("variant_classes", "CNV"), p("reference_name", "17"),
-                p("start", TP53_START), p("end", TP53_END), ontology_filter(GBM)],
+                p("start", TP53_START), p("end", TP53_END)],
                ["range", "--providers", f"{PGX},{CCL}", "--variant-classes", "CNV",
-                "--reference-name", "17", *TP53_SPAN, *arg_filter(GBM)],
-               [outcome(PGX, "CNV", "ok"), outcome(CCL, "CNV", "ok"), lines(3)],
-               [row(PGX, "CNV", "17")],
-               requests_to=[PGX, CCL], expects_rows=[(PGX, "CNV", "17")]),
+                "--reference-name", "17", *TP53_SPAN],
+               [outcome(PGX, "CNV", "skipped", 0), text("ceiling"), outcome(CCL, "CNV", "ok"), lines(3)],
+               [row(CCL, "CNV", "17")],
+               requests_to=[PGX, CCL], expects_rows=[(CCL, "CNV", "17")]),
     # ---------------- beacon2_bracket ----------------
     GalaxyTest("beacon2_bracket", 1, "Bracket query on two live providers, with client- or server-side expansion.",
                [connection([PGX, CCL]), p("variant_classes", "CNV"), p("reference_name", "17"),
@@ -267,7 +267,7 @@ TESTS: list[GalaxyTest] = [
                ["sequence", "--providers", CCL, "--variant-classes", "SMALL_VARIANT",
                 "--reference-name", "17", "--start", "7673802", "--reference-bases", "C",
                 "--alternate-bases", "T"],
-               [outcome(CCL, "SMALL_VARIANT", "ok"), text("matched client-side")],
+               [outcome(CCL, "SMALL_VARIANT", "ok", 6), text("matched client-side")],
                [allele_row(CCL, "SMALL_VARIANT", "17", 7673802, "C", "T")],
                requests_to=[CCL], expects_rows=[(CCL, "SMALL_VARIANT", "17")]),
     GalaxyTest("beacon2_sequence", 3, "A copy-number class is incoherent with a sequence query: skipped.",
@@ -292,14 +292,12 @@ TESTS: list[GalaxyTest] = [
                 "--start", "7673802", "--reference-bases", "C", "--alternate-bases", "T"],
                [outcome(PGX, "REPEAT", "skipped", 0)]),
     # ---------------- beacon2_gene ----------------
-    GalaxyTest("beacon2_gene", 1, "TP53 by gene symbol, sent by GET to bycon: counts equal range #5's positional counts.",
-               [connection([PGX, CCL]), p("variant_classes", "CNV"), p("gene_id", "TP53"),
-                ontology_filter(GBM)],
-               ["gene", "--providers", f"{PGX},{CCL}", "--variant-classes", "CNV", "--gene-id", "TP53",
-                *arg_filter(GBM)],
-               [outcome(PGX, "CNV", "ok"), outcome(CCL, "CNV", "ok"), lines(3)],
-               [row(PGX, "CNV", "17")],
-               requests_to=[PGX, CCL], expects_rows=[(PGX, "CNV", "17")]),
+    GalaxyTest("beacon2_gene", 1, "TP53 by gene symbol, unfiltered, sent by GET to bycon: counts equal range #5's.",
+               [connection([PGX, CCL]), p("variant_classes", "CNV"), p("gene_id", "TP53")],
+               ["gene", "--providers", f"{PGX},{CCL}", "--variant-classes", "CNV", "--gene-id", "TP53"],
+               [outcome(PGX, "CNV", "skipped", 0), text("ceiling"), outcome(CCL, "CNV", "ok"), lines(3)],
+               [row(CCL, "CNV", "17")],
+               requests_to=[PGX, CCL], expects_rows=[(CCL, "CNV", "17")]),
     # ---------------- beacon2_cnv ----------------
     GalaxyTest("beacon2_cnv", 1, "CNVs from two live providers in one region: 60 from Progenetix, none from cancercelllines.",
                [connection([PGX, CCL], p("reference_name", "3"), p("start", 195728638),
@@ -368,6 +366,27 @@ for entity, plural, column, filtered in (
          "--limit", "100", "--skip", "0", *(arg_filter(GBM) if filtered else [])],
         *ENTITY_EXPECTATIONS[entity],
         requests_to=[CCL]))
+
+
+#: Both bycon providers are OBSERVED not to apply filters (registry:
+#: filters_effective "no"), so every filtered query is refused at plan time:
+#: no request, no rows, the reason in the outcome. These tests assert exactly
+#: that. Each kept its query, so lifting the observation restores them.
+FILTER_REFUSAL = "observed not to apply filters"
+ENTITY_TOOLS = ("biosamples", "individuals", "analyses", "runs", "cohorts", "datasets")
+
+
+def _refused_by_filters(test: GalaxyTest) -> GalaxyTest:
+    from dataclasses import replace
+
+    providers = test.argv[test.argv.index("--providers") + 1].split(",")
+    klass = "n/a" if test.tool.split("_", 1)[1] in ENTITY_TOOLS else "CNV"
+    return replace(test, outcomes=[*(outcome(p, klass, "skipped", 0) for p in providers),
+                                   text(FILTER_REFUSAL), lines(len(providers) + 1)],
+                   results=[lines(1)], requests_to=[], expects_rows=[])
+
+
+TESTS = [_refused_by_filters(t) if "--filter" in t.argv else t for t in TESTS]
 
 
 def tests_for(tool: str) -> list[GalaxyTest]:

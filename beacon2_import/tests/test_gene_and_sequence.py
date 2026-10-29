@@ -71,7 +71,12 @@ class LikeBycon:
         gene = key["query"].get("geneId")
         if gene == "NOTAREALGENE1":
             raise RequestRejected(f"{path} returned 422", 422)
-        records = [_cnv(i) for i in range(3)] if gene == "TP53" else []
+        # A filter that restricts: without one, the universe is larger.
+        n = 3 if key["query"].get("filters") else 30
+        records = [_cnv(i) for i in range(n)] if gene == "TP53" else []
+        if key["query"].get("requestedGranularity") == "count":
+            env = _envelope(records); env["response"]["resultSets"][0]["results"] = []
+            return Response(200, env, path, "GET", 0.0)
         return Response(200, _envelope(records), path, "GET", 0.0)
 
     def post(self, path, body):
@@ -112,7 +117,7 @@ GENE = ["gene", "--variant-classes", "CNV", "--gene-id"]
 R273H = ["sequence", "--variant-classes", "SMALL_VARIANT", "--reference-name", "17",
          "--start", "7673802", "--reference-bases", "C", "--alternate-bases", "T"]
 BYCON = dict(gene_query_transport="get", sequence_query_mode="range_then_filter",
-             small_variant_type_filter="unsupported")
+             small_variant_type_filter="unsupported", filters_effective="unknown")
 
 
 # ---------------- A: gene queries by GET ----------------
@@ -121,7 +126,7 @@ def test_a_bycon_gene_query_goes_by_get_and_finds_the_records(run):
     client = LikeBycon()
     rows, outcome = run(client, [*GENE, "TP53"], **BYCON)
     assert {r["method"] for r in client.requests} == {"GET"}
-    assert outcome["status"] == "ok" and outcome["row_count"] == "3" and len(rows) == 3
+    assert outcome["status"] == "ok" and outcome["row_count"] == "30" and len(rows) == 30
 
 
 def test_the_same_query_by_post_was_the_silent_zero(run):
@@ -133,7 +138,9 @@ def test_the_same_query_by_post_was_the_silent_zero(run):
 def test_ontology_filters_go_comma_separated_on_get(run):
     client = LikeBycon()
     run(client, [*GENE, "TP53", "--filter", "NCIT:C3058", "--filter", "NCIT:C4017"], **BYCON)
-    assert {f["id"] for f in client.requests[0]["query"]["filters"]} == {"NCIT:C3058", "NCIT:C4017"}
+    filtered = [r for r in client.requests if r["query"].get("filters")]
+    assert filtered and all(r["method"] == "GET" for r in filtered)
+    assert {f["id"] for f in filtered[-1]["query"]["filters"]} == {"NCIT:C3058", "NCIT:C4017"}
 
 
 def test_an_alphanumeric_filter_with_a_bycon_gene_query_is_refused(run):
@@ -277,3 +284,18 @@ def test_a_label_its_structure_agrees_with_is_not_flagged():
     from beacon2_import.normalise.classify import label_conflict
 
     assert label_conflict(_snv(7673801, "C", "T", label="SO:0001483")) is None
+
+
+def test_a_vrs_form_row_carries_its_alleles():
+    """bycon small variants are VRS-form: referenceSequence plus a state."""
+    from beacon2_import.normalise.variants import flatten_variant
+
+    vrs = {"variantInternalId": "NC_000017.11:7673801:T",
+           "variation": {"location": {"chromosome": "17", "start": 7673801, "end": 7673802},
+                         "referenceSequence": "C",
+                         "state": {"type": "LiteralSequenceExpression", "sequence": "T"}},
+           "caseLevelData": [{"biosampleId": "b1"}]}
+    row = flatten_variant(vrs)[0]
+    assert (row["reference_bases"], row["alternate_bases"]) == ("C", "T")
+    row = flatten_variant(NO_ALTERNATE)[0]
+    assert (row["reference_bases"], row["alternate_bases"]) == ("C", "")

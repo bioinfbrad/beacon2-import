@@ -66,7 +66,7 @@ USER_AGENT = f"GalaxyBeacon2/{__version__} (+https://github.com/galaxyproject/to
 #: ValueError from our own code is a BUG and must not be dressed up as a
 #: provider error.
 PROVIDER_FAILURES = (BeaconHttpError, CredentialMissing, EntityTypeMismatch,
-                     MalformedEnvelope)
+                     MalformedEnvelope)  # FilterNotApplied is added below, once defined
 
 
 # --------------------------------------------------------------------------
@@ -320,6 +320,9 @@ def make_client(provider, credentials):
 
 def failure_outcome(provider, klass, class_status, exc, credentials, query=None) -> Outcome:
     """Map a provider-level failure onto its status and an actionable note."""
+    if isinstance(exc, FilterNotApplied):
+        return Outcome(provider.id, provider.name, klass, class_status, Status.SKIPPED,
+                       notes=redact(str(exc), credentials))
     if isinstance(exc, RequestRejected):
         form = getattr(getattr(query, "form", None), "value", getattr(query, "form", None))
         if exc.status == 422 and form == "geneId":
@@ -400,11 +403,55 @@ def summary_rows(provider, envelope, klass) -> list[dict[str, Any]]:
     return [{**provenance.as_columns(), **summary_row(envelope)}]
 
 
+class FilterNotApplied(Exception):
+    """A filtered total no smaller than the unfiltered one: the filter did nothing."""
+
+
+def filter_efficacy(query: Query, adapter, client) -> str:
+    """One count request with the filters and one without; refuse if no restriction.
+
+    The server's echo proves only that it RECEIVED the filter. If the filtered
+    total is at least the unfiltered total, the filter demonstrably had no
+    effect, and the results would not be restricted to it -- no plausible
+    wrong answer. Returns the note to record; raises FilterNotApplied to refuse.
+    A filtered total merely SMALLER passes: that alone cannot prove the filter
+    applied (bycon, observed: glioblastoma 2,934 of 3,401, breast 2,772), which
+    is why the registry's observed `filters_effective` is the second line.
+    """
+    if not query.filters:
+        return ""
+    if adapter.provider.filters_effective == "no":
+        # Entity queries do not pass through the planner: refuse here too,
+        # before any request, with the planner's own message.
+        from ..query.planner import filters_refusal
+
+        raise FilterNotApplied(filters_refusal(adapter.provider, query))
+    terms = ", ".join(getattr(f, "id", str(f)) for f in query.filters)
+    counted = replace(query, requested_granularity="count")
+    try:
+        unfiltered = parse(adapter.send(client, replace(counted, filters=())).body).num_total_results
+        filtered = parse(adapter.send(client, counted).body).num_total_results
+    except BeaconHttpError as exc:
+        return f"filter efficacy for {terms} could not be verified: {exc}"
+    if unfiltered and filtered is not None and filtered >= unfiltered:
+        raise FilterNotApplied(
+            f"{adapter.provider.name} returned the same total with and without filter {terms} "
+            f"({filtered} vs {unfiltered}), so the filter was not applied; results would not "
+            f"be restricted to {terms}.")
+    return f"filter {terms} restricted the total from {unfiltered} to {filtered}"
+
+
+PROVIDER_FAILURES = PROVIDER_FAILURES + (FilterNotApplied,)
+
+
 def execute_query(query: Query, provider, adapter, client, sample_size):
     """One Query: complete-or-refuse where pages are random, a single call otherwise.
 
-    Returns ``(envelope, records, retrieval_result_or_None)``.
+    Returns ``(envelope, records, retrieval_result_or_None)``; a filtered query
+    is first checked for efficacy (FilterNotApplied refuses it), and the note is
+    on ``execute_query.last_filter_note``.
     """
+    execute_query.last_filter_note = filter_efficacy(query, adapter, client)
     if query.requested_granularity != "record":
         envelope = parse(adapter.send(client, query).body)
         return envelope, [], None
@@ -447,6 +494,7 @@ def run_pair(execution: ExecutionPlan, args, credentials, results, recorder,
             envelope, records, result = execute_query(query, provider, adapter, client,
                                                       getattr(args, "sample", None))
             envelopes.append(envelope)
+            notes.append(execute_query.last_filter_note)
             if result is not None and result.refusal:
                 recorder.record(Outcome(
                     provider.id, provider.name, klass, execution.class_status,

@@ -125,13 +125,27 @@ def _selected(args) -> list:
     return [t for t in tests if not args.only or t.id in args.only]
 
 
-def write_fixtures(provider_id: str, entries: dict, origin: str, note: str) -> list[str]:
-    """Replace one provider's fixture directory with these request -> response pairs."""
+def write_fixtures(provider_id: str, entries: dict, origin: str, note: str,
+                   merge: bool = False) -> list[str]:
+    """Write one provider's request -> response pairs.
+
+    A full run REPLACES the directory. With --only (merge), entries for the
+    requests just recorded are replaced and every other entry is kept, so one
+    test can be re-recorded without deleting the others' fixtures.
+    """
     directory = FIXTURES / provider_id
-    if directory.exists():
+    kept: list = []
+    if merge and (directory / "manifest.json").is_file():
+        recorded = {json.dumps(e["request"], sort_keys=True) for e in entries.values()}
+        kept = [e for e in json.loads((directory / "manifest.json").read_text())["entries"]
+                if json.dumps(e["request"], sort_keys=True) not in recorded]
+        for old in directory.glob("r-*"):
+            if old.name not in {e["response"] for e in kept}:
+                old.unlink()
+    elif directory.exists():
         shutil.rmtree(directory)
-    directory.mkdir(parents=True)
-    manifest, warnings = [], []
+    directory.mkdir(parents=True, exist_ok=True)
+    manifest, warnings = list(kept), []
     for key, entry in sorted(entries.items()):
         name = "r-" + hashlib.sha256(key.encode()).hexdigest()[:12] + ".json"
         data = (json.dumps(entry["body"], indent=1, sort_keys=True) + "\n").encode()
@@ -194,7 +208,7 @@ def record(args, construct: bool) -> int:
 
             note = f"recorded {stamp} from {load_registry()[provider_id].base_url}"
             origin = "recorded"
-        warnings += write_fixtures(provider_id, entries, origin, note)
+        warnings += write_fixtures(provider_id, entries, origin, note, merge=bool(args.only))
         print(f"wrote {len(entries)} request(s) for {provider_id}")
     for warning in warnings:
         print("WARNING:", warning)
@@ -207,9 +221,13 @@ def _assertion_failures(test, files: dict[str, str]) -> list[str]:
     for name, checks in zip(test.output_names, (test.results, test.outcomes)):
         content = files.get(name, "")
         for check in checks:
-            kind = check.split()[0].lstrip("<")
-            value = re.search(r'(?:expression|text|n)="([^"]*)"', check).group(1)
-            value = value.replace("&quot;", '"').replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&")
+            # Parsed as XML, as Galaxy does: character references such as &#9;
+            # decode exactly as in Galaxy, so --check and planemo cannot disagree.
+            import xml.etree.ElementTree as ET
+
+            element = ET.fromstring(check)
+            kind = element.tag
+            value = element.get("expression") or element.get("text") or element.get("n")
             if kind == "has_line_matching":
                 ok = re.search(f"^{value}$", content, re.M) is not None
             elif kind == "has_text":

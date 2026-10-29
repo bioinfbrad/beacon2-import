@@ -141,6 +141,8 @@ def _capability(provider_id: str, raw: dict[str, Any],
         gene_query_transport=str(raw.get("gene_query_transport") or "post"),
         sequence_query_mode=str(raw.get("sequence_query_mode") or "server"),
         small_variant_type_filter=str(raw.get("small_variant_type_filter") or ""),
+        filters_effective=str(raw.get("filters_effective") or "unknown"),
+        filters_note=str(raw.get("filters_note") or ""),
         full_retrieval=str(raw.get("full_retrieval") or "unknown"),
         total_counts_unit=str(raw.get("total_counts_unit") or "records"),
         info_counts_individuals_reliable=bool(

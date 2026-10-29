@@ -102,16 +102,20 @@ def flatten_variant(record: dict[str, Any]) -> list[dict[str, Any]]:
     # unaffected.
     display_start, display_end = interbase_to_one_based(location.get("start"),
                                                         location.get("end"))
+    from .verify import record_alleles
+
+    alleles = record_alleles(record)
     base = {
         "variant_internal_id": str(record.get("variantInternalId") or ""),
         "chromosome": location.get("chromosome") or "",
         "start": "" if display_start is None else display_start,
         "end": "" if display_end is None else display_end,
         "variant_length": "" if length is None else length,
-        "reference_bases": str(variation.get("referenceBases")
-                               or record.get("referenceBases") or ""),
-        "alternate_bases": str(variation.get("alternateBases")
-                               or record.get("alternateBases") or ""),
+        # The sequence matcher's own derivation, so VRS-form records
+        # (referenceSequence + state) carry their alleles too. Every bycon
+        # small variant is VRS-form; these columns were blank on all of them.
+        "reference_bases": alleles[0] or "",
+        "alternate_bases": "" if alleles[1] is None else alleles[1],
         "variant_type_raw": raw_type or "",
         "efo_id": efo_id or normalise_efo_term(raw_type) or "",
     }

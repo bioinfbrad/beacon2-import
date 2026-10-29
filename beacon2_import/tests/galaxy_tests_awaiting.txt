@@ -1,15 +1,9 @@
-# Galaxy tests whose requests changed and whose fixtures await a re-recording.
+# Galaxy tests whose fixtures await a recording.
 #
 # Enforced BOTH ways by tests/test_galaxy_replay.py: a listed test must still
 # miss its fixtures; once recorded, it must be removed from this list.
 #
-# test<TAB>why its request changed
-beacon2_range#1	TP53's GRCh38 span replaces the GRCh37 coordinates
-beacon2_range#2	TP53's GRCh38 span replaces the GRCh37 coordinates
-beacon2_range#3	TP53's GRCh38 span replaces the GRCh37 coordinates
-beacon2_range#4	TP53's GRCh38 span replaces the GRCh37 coordinates
-beacon2_range#5	new: the positional twin of gene #1
-beacon2_gene#1	gene queries go by GET on bycon; Progenetix and a filter added
-beacon2_sequence#1	sequence queries go as a range on bycon, alleles matched client-side
-beacon2_sequence#2	sequence queries go as a range on bycon, alleles matched client-side
-beacon2_sequence#3	sequence queries go as a range on bycon, alleles matched client-side
+# test<TAB>why
+beacon2_range#5	unfiltered now, so the gene-equals-positional behaviour stays testable
+beacon2_gene#1	unfiltered now, so the gene-equals-positional behaviour stays testable
+beacon2_datasets#1	the 26 October recording met an outage; nothing was stored
