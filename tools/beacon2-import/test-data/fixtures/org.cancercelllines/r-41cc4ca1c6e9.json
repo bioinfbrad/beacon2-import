@@ -3,8 +3,7 @@
   "apiVersion": "v2.3.0-beaconplus",
   "beaconId": "org.cancercelllines",
   "receivedRequestSummary": {
-   "apiVersion": "v2.3.0-beaconplus",
-   "beaconId": "org.cancercelllines",
+   "apiVersion": "v2",
    "datasetIds": [
     "cellz"
    ],
@@ -48,10 +47,10 @@
     "id": "cellz",
     "info": {
      "counts": {
-      "analyses": 1,
-      "biosamples": 1,
-      "individuals": 1,
-      "variants": 1
+      "analyses": 97,
+      "biosamples": 97,
+      "individuals": 70,
+      "variants": 102
      }
     },
     "responseEntityId": "genomicVariant",
@@ -59,30 +58,31 @@
      {
       "caseLevelData": [
        {
-        "analysisId": "cellzcs-kftwu40j",
-        "biosampleId": "cellzbs-kftvksub",
-        "individualId": "cellzind-cf5c05ED",
-        "variantId": "bycvar-63d118c642040c6f3565a529"
+        "variantId": "bycvar-63d118c242040c6f35636a19"
        }
       ],
+      "frequencyInPopulations": [],
       "identifiers": {},
       "molecularAttributes": {},
-      "variantInternalId": "NC_000017.11:6197723-9412739:EFO_0030067",
+      "variantInternalId": "NC_000017.11:7675327-7679972:EFO_0030067",
       "variantLevelData": {},
       "variation": {
+       "_id": "63d118c242040c6f35636a19",
        "copyChange": "loss",
+       "id": "bycvar-63d118c242040c6f35636a19",
        "location": {
         "chromosome": "17",
-        "end": 9412739,
+        "end": 7679972,
+        "sequenceId": "refseq:NC_000017.11",
         "sequenceReference": {
          "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
          "type": "SequenceReference"
         },
-        "sequence_id": "refseq:NC_000017.11",
-        "start": 6197723,
+        "start": 7675327,
         "type": "SequenceLocation"
        },
        "type": "CopyNumberChange",
+       "updated": "2025-08-21T17:46:10.778924",
        "variantState": {
         "id": "EFO:0030067",
         "label": "loss"
@@ -90,7 +90,7 @@
       }
      }
     ],
-    "resultsCount": 1,
+    "resultsCount": 102,
     "resultsHandovers": [],
     "setType": "dataset"
    }
@@ -98,6 +98,6 @@
  },
  "responseSummary": {
   "exists": true,
-  "numTotalResults": 1
+  "numTotalResults": 102
  }
 }

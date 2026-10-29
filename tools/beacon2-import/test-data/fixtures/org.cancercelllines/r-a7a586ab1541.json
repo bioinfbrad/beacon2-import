@@ -1,0 +1,97 @@
+{
+ "meta": {
+  "apiVersion": "v2.3.0-beaconplus",
+  "beaconId": "org.cancercelllines",
+  "receivedRequestSummary": {
+   "apiVersion": "v2",
+   "datasetIds": [
+    "cellz"
+   ],
+   "includeResultsetResponses": "HIT",
+   "pagination": {
+    "limit": 1,
+    "skip": 0
+   },
+   "requestedGranularity": "record",
+   "requestedSchemas": [
+    {
+     "id": "genomicVariant",
+     "name": "Default schema for a genomic variation",
+     "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/genomicVariant",
+     "schemaVersion": "v2.2.0"
+    }
+   ],
+   "testMode": false
+  },
+  "returnedGranularity": "record",
+  "returnedSchemas": [
+   {
+    "id": "genomicVariant",
+    "name": "Default schema for a genomic variation",
+    "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/genomicVariant",
+    "schemaVersion": "v2.2.0"
+   }
+  ],
+  "testMode": false
+ },
+ "response": {
+  "resultSets": [
+   {
+    "exists": true,
+    "id": "cellz",
+    "info": {
+     "counts": {
+      "analyses": 1706,
+      "biosamples": 1916,
+      "individuals": 2231,
+      "variants": 1712
+     }
+    },
+    "responseEntityId": "genomicVariant",
+    "results": [
+     {
+      "caseLevelData": [
+       {
+        "variantId": "bycvar-63d118c842040c6f3566518b"
+       }
+      ],
+      "frequencyInPopulations": [],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:497601-15739232:EFO_0030070",
+      "variantLevelData": {},
+      "variation": {
+       "_id": "63d118c842040c6f3566518b",
+       "copyChange": "gain",
+       "id": "bycvar-63d118c842040c6f3566518b",
+       "location": {
+        "chromosome": "17",
+        "end": 15739232,
+        "sequenceId": "refseq:NC_000017.11",
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "start": 497601,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "updated": "2025-08-21T17:46:39.114973",
+       "variantState": {
+        "id": "EFO:0030070",
+        "label": "gain"
+       }
+      }
+     }
+    ],
+    "resultsCount": 1712,
+    "resultsHandovers": [],
+    "setType": "dataset"
+   }
+  ]
+ },
+ "responseSummary": {
+  "exists": true,
+  "numTotalResults": 1712
+ }
+}

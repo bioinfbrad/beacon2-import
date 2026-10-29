@@ -3,8 +3,7 @@
   "apiVersion": "v2.3.0-beaconplus",
   "beaconId": "org.cancercelllines",
   "receivedRequestSummary": {
-   "apiVersion": "v2.3.0-beaconplus",
-   "beaconId": "org.cancercelllines",
+   "apiVersion": "v2",
    "datasetIds": [
     "cellz"
    ],
@@ -48,21 +47,21 @@
     "id": "cellz",
     "info": {
      "counts": {
-      "analyses": 278,
-      "biosamples": 400,
-      "individuals": 184
+      "analyses": 16235,
+      "biosamples": 21594,
+      "individuals": 4171
      }
     },
     "responseEntityId": "run",
     "results": [
      {
-      "biosampleId": "cellzbs-d1eBCde6",
-      "id": "cellzcs-09onkm2e",
-      "individualId": "cellzind-F2c1FD3d",
-      "runDate": "2026-10-09T11:03:44.419802"
+      "biosampleId": "cellzbs-Ef5A3bBd",
+      "id": "cellzcs-003CD1eE",
+      "individualId": "cellzind-cC88c1d4",
+      "runDate": "2026-10-29T15:01:24.362430"
      }
     ],
-    "resultsCount": 278,
+    "resultsCount": 16235,
     "resultsHandovers": [],
     "setType": "dataset"
    }
@@ -70,6 +69,6 @@
  },
  "responseSummary": {
   "exists": true,
-  "numTotalResults": 278
+  "numTotalResults": 16235
  }
 }

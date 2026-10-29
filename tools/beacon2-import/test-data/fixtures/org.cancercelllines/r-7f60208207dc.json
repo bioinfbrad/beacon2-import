@@ -3,8 +3,7 @@
   "apiVersion": "v2.3.0-beaconplus",
   "beaconId": "org.cancercelllines",
   "receivedRequestSummary": {
-   "apiVersion": "v2.3.0-beaconplus",
-   "beaconId": "org.cancercelllines",
+   "apiVersion": "v2",
    "datasetIds": [
     "cellz"
    ],

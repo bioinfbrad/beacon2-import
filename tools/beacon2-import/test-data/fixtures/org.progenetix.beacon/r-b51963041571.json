@@ -3,8 +3,7 @@
   "apiVersion": "v2.3.0-beaconplus",
   "beaconId": "org.progenetix",
   "receivedRequestSummary": {
-   "apiVersion": "v2.3.0-beaconplus",
-   "beaconId": "org.progenetix",
+   "apiVersion": "v2",
    "datasetIds": [
     "progenetix"
    ],
@@ -48,10 +47,10 @@
     "id": "progenetix",
     "info": {
      "counts": {
-      "analyses": 304,
-      "biosamples": 304,
-      "individuals": 293,
-      "variants": 313
+      "analyses": 5325,
+      "biosamples": 5119,
+      "individuals": 5022,
+      "variants": 5581
      }
     },
     "responseEntityId": "genomicVariant",
@@ -59,38 +58,39 @@
      {
       "caseLevelData": [
        {
-        "analysisId": "pgxcs-kftvmocr",
-        "biosampleId": "pgxbs-kftvgkfu",
-        "individualId": "pgxind-kftx2av9",
-        "variantId": "bycvar-5bab57b0727983b2e00dc873"
+        "variantId": "bycvar-684ae04b7c14849849d20f94"
        }
       ],
+      "frequencyInPopulations": [],
       "identifiers": {},
       "molecularAttributes": {},
-      "variantInternalId": "NC_000017.11:7562270-7674884:EFO_0030067",
+      "variantInternalId": "NC_000017.11:7666225-7677333:EFO_0020073",
       "variantLevelData": {},
       "variation": {
-       "copyChange": "loss",
+       "_id": "684ae04b7c14849849d20f94",
+       "copyChange": "high-level loss",
+       "id": "bycvar-684ae04b7c14849849d20f94",
        "location": {
         "chromosome": "17",
-        "end": 7674884,
+        "end": 7677333,
+        "sequenceId": "refseq:NC_000017.11",
         "sequenceReference": {
          "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
          "type": "SequenceReference"
         },
-        "sequence_id": "refseq:NC_000017.11",
-        "start": 7562270,
+        "start": 7666225,
         "type": "SequenceLocation"
        },
        "type": "CopyNumberChange",
+       "updated": "2025-08-21T18:16:07.511500",
        "variantState": {
-        "id": "EFO:0030067",
-        "label": "loss"
+        "id": "EFO:0020073",
+        "label": "high-level loss"
        }
       }
      }
     ],
-    "resultsCount": 313,
+    "resultsCount": 5581,
     "resultsHandovers": [],
     "setType": "dataset"
    }
@@ -98,6 +98,6 @@
  },
  "responseSummary": {
   "exists": true,
-  "numTotalResults": 313
+  "numTotalResults": 5581
  }
 }

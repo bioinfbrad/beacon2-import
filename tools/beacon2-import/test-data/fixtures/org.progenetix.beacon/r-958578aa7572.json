@@ -1,0 +1,106 @@
+{
+ "meta": {
+  "apiVersion": "v2.3.0-beaconplus",
+  "beaconId": "org.progenetix",
+  "receivedRequestSummary": {
+   "apiVersion": "v2",
+   "datasetIds": [
+    "progenetix"
+   ],
+   "includeResultsetResponses": "HIT",
+   "pagination": {
+    "limit": 1,
+    "skip": 0
+   },
+   "requestedGranularity": "record",
+   "requestedSchemas": [
+    {
+     "id": "genomicVariant",
+     "name": "Default schema for a genomic variation",
+     "referenceToSchemaDefinition": "https://progenetix.org/services/schemas/genomicVariant",
+     "schemaVersion": "v2.2.0"
+    }
+   ],
+   "testMode": false
+  },
+  "returnedGranularity": "record",
+  "returnedSchemas": [
+   {
+    "id": "genomicVariant",
+    "name": "Default schema for a genomic variation",
+    "referenceToSchemaDefinition": "https://progenetix.org/services/schemas/genomicVariant",
+    "schemaVersion": "v2.2.0"
+   }
+  ],
+  "testMode": false
+ },
+ "response": {
+  "resultSets": [
+   {
+    "exists": true,
+    "id": "progenetix",
+    "info": {
+     "counts": {
+      "analyses": 67,
+      "biosamples": 67,
+      "individuals": 67,
+      "variants": 2
+     }
+    },
+    "responseEntityId": "genomicVariant",
+    "results": [
+     {
+      "caseLevelData": [
+       {
+        "variantId": "ga4gh:VA.bhPrkoZrA5LesRLszKSvzHKliWv8Ia3L"
+       }
+      ],
+      "frequencyInPopulations": [],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:7673782:",
+      "variantLevelData": {},
+      "variation": {
+       "_id": "681b46fbb574466f9ce3a5a9",
+       "digest": "bhPrkoZrA5LesRLszKSvzHKliWv8Ia3L",
+       "id": "ga4gh:VA.bhPrkoZrA5LesRLszKSvzHKliWv8Ia3L",
+       "location": {
+        "chromosome": "17",
+        "digest": "YSoZiXH5Cmv4cphHZoj_xgiU6lzrXWLv",
+        "end": 7673810,
+        "id": "ga4gh:SL.YSoZiXH5Cmv4cphHZoj_xgiU6lzrXWLv",
+        "sequenceId": "refseq:NC_000017.11",
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "start": 7673782,
+        "type": "SequenceLocation"
+       },
+       "referenceSequence": "CCCAGGACAGGCACAAACACGCACCTCA",
+       "state": {
+        "length": 0,
+        "repeatSubunitLength": 28,
+        "sequence": "",
+        "type": "ReferenceLengthExpression"
+       },
+       "type": "Allele",
+       "updated": "2025-08-21T17:58:24.224154",
+       "variantState": {
+        "id": "SO:0000159",
+        "label": "deletion"
+       }
+      }
+     }
+    ],
+    "resultsCount": 2,
+    "resultsHandovers": [],
+    "setType": "dataset"
+   }
+  ]
+ },
+ "responseSummary": {
+  "exists": true,
+  "numTotalResults": 2
+ }
+}

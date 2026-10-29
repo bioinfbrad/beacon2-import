@@ -3,8 +3,7 @@
   "apiVersion": "v2.3.0-beaconplus",
   "beaconId": "org.cancercelllines",
   "receivedRequestSummary": {
-   "apiVersion": "v2.3.0-beaconplus",
-   "beaconId": "org.cancercelllines",
+   "apiVersion": "v2",
    "datasetIds": [
     "cellz"
    ],
@@ -320,8 +319,24 @@
    },
    "info": {
     "content": {
-     "alternativeUrl": "https://cancercelllines.org",
      "apiVersion": "v2.3.0-beaconplus",
+     "beaconId": "org.progenetix.bycon",
+     "type": {
+      "artifact": "beacon",
+      "group": "org.ga4gh",
+      "version": "v2.3.0-beaconplus"
+     },
+     "version": "v2.3.0-beaconplus"
+    },
+    "defaultSchema": {
+     "id": "configuration",
+     "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/beaconInfoResults/"
+    },
+    "description": "Information about the beacon instance.",
+    "id": "info",
+    "isBeaconEntity": true,
+    "payload": {
+     "alternativeUrl": "https://cancercelllines.org",
      "beaconId": "org.cancercelllines",
      "contactUrl": "mailto:contact@progenetix.org",
      "createdAt": "2023-07-01 00:00:00",
@@ -332,9 +347,6 @@
      "name": "Cancer Cell Line Genomics Beacon+",
      "organization": {
       "contactUrl": "mailto:contact@progenetix.org",
-      "info": {
-       "updateDateTime": "2024-02-24 12:45:00"
-      },
       "location": {
        "geometry": {
         "coordinates": [
@@ -355,31 +367,28 @@
       "welcomeUrl": "https://cancercelllines.org/"
      },
      "serviceUrl": "http://cancercelllines.org/beacon/",
-     "type": {
-      "artifact": "beacon",
-      "group": "org.ga4gh",
-      "version": "v2.3.0-beaconplus"
-     },
      "updatedAt": "2024-02-24 13:00:00",
-     "version": "v2.3.0-beaconplus",
-     "welcomeUrl": "https://cancercelllines.org/biosamples/"
+     "welcomeUrl": "https://cancercelllines.org/biosamples/",
+     "xConfig": {
+      "defaultDatasetId": "cellz",
+      "domains": [
+       "beaconplus.progenetix.org",
+       "beaconplus.test",
+       "127.0.0.1",
+       "cancercelllines.org",
+       "www.cancercelllines.org",
+       "staging.cancercelllines.org",
+       "cancercelllines.test"
+      ]
+     }
     },
-    "createDateTime": "2023-07-01 00:00:00",
-    "defaultSchema": {
-     "id": "configuration",
-     "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/beaconInfoResults/"
-    },
-    "description": "Information about the beacon instance.",
-    "id": "info",
-    "isBeaconEntity": true,
     "requestEntityPathAliases": [
      "info",
      "service-info",
      "service_info"
     ],
     "requestEntityPathId": "info",
-    "responseSchema": "beaconInfoResponse",
-    "updateDateTime": "2024-02-24 13:00:00"
+    "responseSchema": "beaconInfoResponse"
    },
    "phenopacket": {
     "additionallySupportedSchemas": [],

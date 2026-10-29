@@ -3,8 +3,7 @@
   "apiVersion": "v2.3.0-beaconplus",
   "beaconId": "org.progenetix",
   "receivedRequestSummary": {
-   "apiVersion": "v2.3.0-beaconplus",
-   "beaconId": "org.progenetix",
+   "apiVersion": "v2",
    "datasetIds": [
     "progenetix"
    ],
@@ -48,10 +47,10 @@
     "id": "progenetix",
     "info": {
      "counts": {
-      "analyses": 80,
-      "biosamples": 80,
-      "individuals": 80,
-      "variants": 81
+      "analyses": 2102,
+      "biosamples": 2013,
+      "individuals": 1949,
+      "variants": 2158
      }
     },
     "responseEntityId": "genomicVariant",
@@ -59,30 +58,31 @@
      {
       "caseLevelData": [
        {
-        "analysisId": "pgxcs-m84d0nh0",
-        "biosampleId": "pgxbs-m84d0nh0",
-        "individualId": "pgxind-m84czrl6",
-        "variantId": "bycvar-684adff2939abb1b4ab16161"
+        "variantId": "bycvar-684afd5c8e9911362ca1de33"
        }
       ],
+      "frequencyInPopulations": [],
       "identifiers": {},
       "molecularAttributes": {},
-      "variantInternalId": "NC_000017.11:7666225-8210201:EFO_0020073",
+      "variantInternalId": "NC_000017.11:7312798-8210201:EFO_0020073",
       "variantLevelData": {},
       "variation": {
+       "_id": "684afd5c8e9911362ca1de33",
        "copyChange": "high-level loss",
+       "id": "bycvar-684afd5c8e9911362ca1de33",
        "location": {
         "chromosome": "17",
         "end": 8210201,
+        "sequenceId": "refseq:NC_000017.11",
         "sequenceReference": {
          "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
          "type": "SequenceReference"
         },
-        "sequence_id": "refseq:NC_000017.11",
-        "start": 7666225,
+        "start": 7312798,
         "type": "SequenceLocation"
        },
        "type": "CopyNumberChange",
+       "updated": "2025-08-21T18:17:26.109475",
        "variantState": {
         "id": "EFO:0020073",
         "label": "high-level loss"
@@ -90,7 +90,7 @@
       }
      }
     ],
-    "resultsCount": 81,
+    "resultsCount": 2158,
     "resultsHandovers": [],
     "setType": "dataset"
    }
@@ -98,6 +98,6 @@
  },
  "responseSummary": {
   "exists": true,
-  "numTotalResults": 81
+  "numTotalResults": 2158
  }
 }

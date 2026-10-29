@@ -3,8 +3,7 @@
   "apiVersion": "v2.3.0-beaconplus",
   "beaconId": "org.cancercelllines",
   "receivedRequestSummary": {
-   "apiVersion": "v2.3.0-beaconplus",
-   "beaconId": "org.cancercelllines",
+   "apiVersion": "v2",
    "datasetIds": [
     "cellz"
    ],
@@ -33,16 +32,12 @@
  },
  "response": {
   "alternativeUrl": "https://cancercelllines.org",
-  "apiVersion": "v2.3.0-beaconplus",
   "description": "The cancercelllines.org Beacon is a specific instance of the Progenetix Beacon+ environment providing information about genomic variations in cancer cell lines.",
   "environment": "prod",
   "id": "org.cancercelllines.beacon",
   "name": "Cancer Cell Line Genomics Beacon+",
   "organization": {
    "contactUrl": "mailto:contact@progenetix.org",
-   "info": {
-    "updateDateTime": "2024-02-24 12:45:00"
-   },
    "location": {
     "geometry": {
      "coordinates": [
@@ -62,7 +57,6 @@
    "logoUrl": "https://cancercelllines.org/img/cancercelllines-icon-400x300.png",
    "welcomeUrl": "https://cancercelllines.org/"
   },
-  "version": "v2.3.0-beaconplus",
   "welcomeUrl": "https://cancercelllines.org/biosamples/"
  },
  "returnedSchemas": [

@@ -3,15 +3,13 @@
   "apiVersion": "v2.3.0-beaconplus",
   "beaconId": "org.progenetix",
   "receivedRequestSummary": {
-   "apiVersion": "v2.3.0-beaconplus",
-   "beaconId": "org.progenetix",
+   "apiVersion": "v2",
    "datasetIds": [
     "progenetix"
    ],
    "filters": [
     {
-     "id": "NCIT:C3058",
-     "includeDescendantTerms": true
+     "id": "NCIT:C3058"
     }
    ],
    "includeResultsetResponses": "HIT",
@@ -48,10 +46,10 @@
     "id": "progenetix",
     "info": {
      "counts": {
-      "analyses": 53,
-      "biosamples": 53,
-      "individuals": 52,
-      "variants": 53
+      "analyses": 57747,
+      "biosamples": 54683,
+      "individuals": 53132,
+      "variants": 59312
      }
     },
     "responseEntityId": "genomicVariant",
@@ -59,38 +57,39 @@
      {
       "caseLevelData": [
        {
-        "analysisId": "pgxcs-m84d643h",
-        "biosampleId": "pgxbs-m84d643h",
-        "individualId": "pgxind-m84d3jor",
-        "variantId": "bycvar-684b0a391ac9a76cde4055cf"
+        "variantId": "bycvar-6657a888b8c2654b8626d4df"
        }
       ],
+      "frequencyInPopulations": [],
       "identifiers": {},
       "molecularAttributes": {},
-      "variantInternalId": "NC_000017.11:7512999-7687201:EFO_0020073",
+      "variantInternalId": "NC_000017.11:150734-21652826:EFO_0030068",
       "variantLevelData": {},
       "variation": {
-       "copyChange": "high-level loss",
+       "_id": "6657a888b8c2654b8626d4df",
+       "copyChange": "low-level loss",
+       "id": "bycvar-6657a888b8c2654b8626d4df",
        "location": {
         "chromosome": "17",
-        "end": 7687201,
+        "end": 21652826,
+        "sequenceId": "refseq:NC_000017.11",
         "sequenceReference": {
          "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
          "type": "SequenceReference"
         },
-        "sequence_id": "refseq:NC_000017.11",
-        "start": 7512999,
+        "start": 150734,
         "type": "SequenceLocation"
        },
        "type": "CopyNumberChange",
+       "updated": "2025-08-21T18:06:05.734624",
        "variantState": {
-        "id": "EFO:0020073",
-        "label": "high-level loss"
+        "id": "EFO:0030068",
+        "label": "low-level loss"
        }
       }
      }
     ],
-    "resultsCount": 53,
+    "resultsCount": 59312,
     "resultsHandovers": [],
     "setType": "dataset"
    }
@@ -98,6 +97,6 @@
  },
  "responseSummary": {
   "exists": true,
-  "numTotalResults": 53
+  "numTotalResults": 59312
  }
 }

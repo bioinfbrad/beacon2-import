@@ -3,8 +3,7 @@
   "apiVersion": "v2.3.0-beaconplus",
   "beaconId": "org.cancercelllines",
   "receivedRequestSummary": {
-   "apiVersion": "v2.3.0-beaconplus",
-   "beaconId": "org.cancercelllines",
+   "apiVersion": "v2",
    "datasetIds": [
     "cellz"
    ],
@@ -42,14 +41,14 @@
     "id": "cellz",
     "info": {
      "counts": {
-      "analyses": 1711,
-      "biosamples": 1719,
-      "individuals": 2234,
-      "variants": 1719
+      "analyses": 2258,
+      "biosamples": 3417,
+      "individuals": 2263,
+      "variants": 2487
      }
     },
     "responseEntityId": "genomicVariant",
-    "resultsCount": 1719,
+    "resultsCount": 2487,
     "resultsHandovers": [],
     "setType": "dataset"
    }
@@ -57,6 +56,6 @@
  },
  "responseSummary": {
   "exists": true,
-  "numTotalResults": 1719
+  "numTotalResults": 2487
  }
 }
