@@ -10,3 +10,10 @@ __pycache__/
 # Environments and test caches
 .venv/
 .pytest_cache/
+
+# Local working files
+*.zip
+*.log
+tool_test_output.*
+/fixtures/
+probe_*.py

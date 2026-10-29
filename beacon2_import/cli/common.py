@@ -27,7 +27,7 @@ from ..adapters.base import adapter_for
 from ..auth.resolver import CredentialMissing, credential_for, load_credentials, redact
 from ..formats import results as results_format
 from ..formats.outcomes import Outcome, OutcomeRecorder, Status, note_for
-from ..normalise.classify import classify
+from ..normalise.classify import classify, label_conflict
 from ..normalise.envelope import (
     PRECISION_FAILED_VERIFICATION, PRECISION_PARTIAL, EntityTypeMismatch, MalformedEnvelope,
     assert_entity_type, combined_precision,
@@ -47,7 +47,7 @@ from ..query.retrieve import retrieve
 from ..registry.evidence import suggestion_from_run
 from ..registry.loader import resolve
 from ..transport.http import (
-    AuthRequired, BeaconClient, BeaconHttpError, FixtureClient,
+    AuthRequired, BeaconClient, BeaconHttpError, FixtureClient, RequestRejected,
     FixtureProviderEscaped, ProviderBlocked, ProviderUnavailable,
 )
 
@@ -318,8 +318,16 @@ def make_client(provider, credentials):
                         credential_for(provider, credentials), provider=provider)
 
 
-def failure_outcome(provider, klass, class_status, exc, credentials) -> Outcome:
+def failure_outcome(provider, klass, class_status, exc, credentials, query=None) -> Outcome:
     """Map a provider-level failure onto its status and an actionable note."""
+    if isinstance(exc, RequestRejected):
+        form = getattr(getattr(query, "form", None), "value", getattr(query, "form", None))
+        if exc.status == 422 and form == "geneId":
+            note = f"{provider.name} does not recognise the gene symbol '{query.gene_id}'."
+        else:
+            note = f"{provider.name} rejected the request (HTTP {exc.status}): {exc}"
+        return Outcome(provider.id, provider.name, klass, class_status, Status.ERROR,
+                       notes=redact(note, credentials))
     if isinstance(exc, CredentialMissing):
         status, note = Status.AUTH_MISSING, str(exc)
     elif isinstance(exc, ProviderBlocked):
@@ -358,10 +366,11 @@ def variant_rows(checked, provider, envelope, degradations,
     expansion = "; ".join(d.render() for d in degradations if "expan" in d.kind.value)
     rows = []
     for item in checked:
+        conflict = label_conflict(item.record)
         provenance = Provenance(
             beacon_id=provider.id, beacon_name=provider.name,
             access_tier=provider.tier.value, variant_class=item.variant_class.value,
-            classification_basis=item.basis,
+            classification_basis=item.basis + (f"; {conflict}" if conflict else ""),
             granularity_returned=str(envelope.returned_granularity or ""),
             count_precision=precision, count_precision_basis=basis,
             query_degraded=bool(degradations), degradation_notes=notes,
@@ -372,6 +381,13 @@ def variant_rows(checked, provider, envelope, degradations,
         for row in flatten_variant(item.record):
             rows.append({**provenance.as_columns(), **row})
     return rows
+
+
+def label_conflict_notes(rows) -> list[str]:
+    """Count rows whose provider label contradicts their structure."""
+    n = sum(1 for r in rows if "conflicts with structure" in str(r.get("classification_basis", "")))
+    return [f"{n} rows carry a provider label that conflicts with the record's structure; "
+            f"they are classified by structure (see classification_basis)"] if n else []
 
 
 def summary_rows(provider, envelope, klass) -> list[dict[str, Any]]:
@@ -390,8 +406,7 @@ def execute_query(query: Query, provider, adapter, client, sample_size):
     Returns ``(envelope, records, retrieval_result_or_None)``.
     """
     if query.requested_granularity != "record":
-        path = adapter.entity_path(query.entity, query.entity_id, query.nested_entity)
-        envelope = parse(client.post(path, adapter.build_post_body(query)).body)
+        envelope = parse(adapter.send(client, query).body)
         return envelope, [], None
     result = retrieve(query, provider, adapter, client, sample_size)
     return result.envelope, result.records, result
@@ -448,8 +463,11 @@ def run_pair(execution: ExecutionPlan, args, credentials, results, recorder,
                 sample = (instance_count(records), envelope.num_total_results)
                 notes.append(note_for("random_sample", retrieved=sample[0],
                                       total=sample[1]))
+            # The class constraint is judged from what was SENT: a sequence
+            # query sent as a range carries none, so other classes are expected.
             verification = verify_records(records, [klass], region_for(query),
-                                          class_constrained(query))
+                                          class_constrained(adapter.wire_query(query)),
+                                          superset=adapter.matches_sequence_client_side(query))
             notes += verification.notes()
             parameter_ignored = parameter_ignored or verification.parameter_ignored
             rows += variant_rows(verification.kept, provider, envelope,
@@ -459,6 +477,7 @@ def run_pair(execution: ExecutionPlan, args, credentials, results, recorder,
         rows, removed = deduplicate(rows)
         if removed:
             notes.append(f"{removed} duplicate observations removed")
+        notes += label_conflict_notes(rows)
         notes += instance_id_anomalies(rows)
         notes += class_notes(execution, len(rows) if requested == "record" else 0, provider)
         if provider.data_notes and "ynthetic" in provider.data_notes:
@@ -482,7 +501,7 @@ def run_pair(execution: ExecutionPlan, args, credentials, results, recorder,
         raise
     except PROVIDER_FAILURES as exc:
         recorder.record(failure_outcome(provider, klass, execution.class_status, exc,
-                                        credentials))
+                                        credentials, query=execution.queries[0]))
 
 
 def run_group(group: CoalescedGroup, args, credentials, results, recorder) -> None:
@@ -537,7 +556,8 @@ def run_group(group: CoalescedGroup, args, credentials, results, recorder) -> No
         precision, basis = "imprecise", PRECISION_FAILED_VERIFICATION
     for member in group.members:
         mine = [r for r in rows if r["variant_class"] == member.variant_class.value]
-        notes = [note_for("coalesced_complete")] + entity_notes + verification.notes()
+        notes = ([note_for("coalesced_complete")] + entity_notes + verification.notes()
+                 + label_conflict_notes(mine))
         notes += class_notes(member, len(mine), provider)
         recorder.record(Outcome(
             provider.id, provider.name, member.variant_class, member.class_status,

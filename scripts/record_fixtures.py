@@ -27,6 +27,7 @@ from __future__ import annotations
 
 import argparse
 import datetime
+import gzip
 import hashlib
 import json
 import re
@@ -50,7 +51,8 @@ TEST_DATA = ROOT / "tools" / "beacon2-import" / "test-data"
 FIXTURES = TEST_DATA / "fixtures"
 LIVE = (spec.PGX, spec.CCL)
 SYNTHETIC = (spec.BRK,)
-LARGE = 1_000_000  # bytes; tools-iuc test data should stay small
+LARGE = 1_000_000  # bytes, as stored; tools-iuc test data should stay small
+COMPRESS_ABOVE = 256_000  # bytes of JSON; larger recordings are stored gzipped
 
 
 class Recorder:
@@ -132,10 +134,12 @@ def write_fixtures(provider_id: str, entries: dict, origin: str, note: str) -> l
     manifest, warnings = [], []
     for key, entry in sorted(entries.items()):
         name = "r-" + hashlib.sha256(key.encode()).hexdigest()[:12] + ".json"
-        text = json.dumps(entry["body"], indent=1, sort_keys=True) + "\n"
-        (directory / name).write_text(text)
-        if len(text.encode()) > LARGE:
-            warnings.append(f"{provider_id}/{name} is {len(text.encode()) // 1000} kB, for "
+        data = (json.dumps(entry["body"], indent=1, sort_keys=True) + "\n").encode()
+        if len(data) > COMPRESS_ABOVE:
+            name, data = name + ".gz", gzip.compress(data, 9, mtime=0)
+        (directory / name).write_bytes(data)
+        if len(data) > LARGE:
+            warnings.append(f"{provider_id}/{name} is {len(data) // 1000} kB as stored, for "
                             f"{sorted(entry['tests'])}: narrow that test's query")
         manifest.append({"request": entry["request"], "response": name, "origin": origin,
                          "note": f"{note}; used by {', '.join(sorted(entry['tests']))}"})

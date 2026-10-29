@@ -40,7 +40,17 @@ def run(monkeypatch, tmp_path, capsys):
     from beacon2_import.cli import common
     from beacon2_import.cli.main import main
 
-    def _run(*argv):
+    def _run(*argv, **registry):
+        import dataclasses
+
+        if registry:
+            original = common.resolve
+
+            def resolve(ids, table, reg):
+                providers, unresolvable = original(ids, table, reg)
+                return [dataclasses.replace(p, **registry) for p in providers], unresolvable
+
+            monkeypatch.setattr(common, "resolve", resolve)
         monkeypatch.setattr(common, "make_client", lambda p, c: SameAnswerForEverything())
         results, outcomes = tmp_path / "results.tsv", tmp_path / "outcomes.tsv"
         assert main([*argv, "--providers", "org.cancercelllines",
@@ -54,9 +64,12 @@ def run(monkeypatch, tmp_path, capsys):
 # ---------------- bug 1: class is observed, never stamped ----------------
 
 def test_a_small_variant_query_answered_with_cnv_records(run):
+    # Server mode, as the sequence query was sent when this failure was found:
+    # the request carried bases, so CNVs coming back mean a parameter was ignored.
     rows, outcome, stderr = run(
         "sequence", "--variant-class", "SMALL_VARIANT", "--reference-name", "17",
-        "--start", "7577121", "--reference-bases", "G", "--alternate-bases", "A")
+        "--start", "7577121", "--reference-bases", "G", "--alternate-bases", "A",
+        sequence_query_mode="server")
     assert rows == [], "no copy-number record may appear as a small variant"
     assert outcome["variant_class"] == "SMALL_VARIANT" and outcome["row_count"] == "0"
     assert "did not match the requested class (got CNV)" in outcome["notes"]

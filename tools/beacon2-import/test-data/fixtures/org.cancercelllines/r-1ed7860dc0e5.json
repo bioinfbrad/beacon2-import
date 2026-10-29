@@ -1,0 +1,2361 @@
+{
+ "meta": {
+  "apiVersion": "v2.3.0-beaconplus",
+  "beaconId": "org.cancercelllines",
+  "receivedRequestSummary": {
+   "apiVersion": "v2.3.0-beaconplus",
+   "beaconId": "org.cancercelllines",
+   "datasetIds": [
+    "cellz"
+   ],
+   "filters": [
+    {
+     "id": "NCIT:C3058",
+     "includeDescendantTerms": true
+    }
+   ],
+   "includeResultsetResponses": "HIT",
+   "pagination": {
+    "limit": 0,
+    "skip": 0
+   },
+   "requestedGranularity": "record",
+   "requestedSchemas": [
+    {
+     "id": "run",
+     "name": "Default schema for a sequencing run",
+     "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/run",
+     "schemaVersion": "v2.2.0"
+    }
+   ],
+   "testMode": false
+  },
+  "returnedGranularity": "record",
+  "returnedSchemas": [
+   {
+    "id": "run",
+    "name": "Default schema for a sequencing run",
+    "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/run",
+    "schemaVersion": "v2.2.0"
+   }
+  ],
+  "testMode": false
+ },
+ "response": {
+  "resultSets": [
+   {
+    "exists": true,
+    "id": "cellz",
+    "info": {
+     "counts": {
+      "analyses": 278,
+      "biosamples": 400,
+      "individuals": 184
+     }
+    },
+    "responseEntityId": "run",
+    "results": [
+     {
+      "biosampleId": "cellzbs-d1eBCde6",
+      "id": "cellzcs-09onkm2e",
+      "individualId": "cellzind-F2c1FD3d",
+      "runDate": "2026-10-09T11:03:46.301557"
+     },
+     {
+      "biosampleId": "cellzbs-556DCBF7",
+      "id": "cellzcs-0begydfi",
+      "individualId": "cellzind-f51d2291",
+      "runDate": "2026-10-09T11:03:46.301570"
+     },
+     {
+      "biosampleId": "cellzbs-1D734A43",
+      "id": "cellzcs-1qpofdmg",
+      "individualId": "cellzind-cd3f9f94",
+      "runDate": "2026-10-09T11:03:46.301573"
+     },
+     {
+      "biosampleId": "cellzbs-8f5ACcbB",
+      "id": "cellzcs-20fm93dn",
+      "individualId": "cellzind-c48F25d6",
+      "runDate": "2026-10-09T11:03:46.301575"
+     },
+     {
+      "biosampleId": "cellzbs-757eE9Ee",
+      "id": "cellzcs-24e2E33f",
+      "individualId": "cellzind-83aa5bCA",
+      "runDate": "2026-10-09T11:03:46.301577"
+     },
+     {
+      "biosampleId": "cellzbs-FE68dd8B",
+      "id": "cellzcs-2FCB50BC",
+      "individualId": "cellzind-cCe004b7",
+      "runDate": "2026-10-09T11:03:46.301579"
+     },
+     {
+      "biosampleId": "cellzbs-0fcf73eC",
+      "id": "cellzcs-2fqp4aay",
+      "individualId": "cellzind-F1Afb8A3",
+      "runDate": "2026-10-09T11:03:46.301581"
+     },
+     {
+      "biosampleId": "cellzbs-C3bE6cEA",
+      "id": "cellzcs-2qs40mrh",
+      "individualId": "cellzind-cd3f9f94",
+      "runDate": "2026-10-09T11:03:46.301583"
+     },
+     {
+      "biosampleId": "cellzbs-3eBcCfCe",
+      "id": "cellzcs-2vx6a1c8",
+      "individualId": "cellzind-21Ee9B9f",
+      "runDate": "2026-10-09T11:03:46.301585"
+     },
+     {
+      "biosampleId": "cellzbs-6576B2AE",
+      "id": "cellzcs-3801yo0h",
+      "individualId": "cellzind-bE06AcF3",
+      "runDate": "2026-10-09T11:03:46.301587"
+     },
+     {
+      "biosampleId": "cellzbs-BDFf3494",
+      "id": "cellzcs-39655zom",
+      "individualId": "cellzind-19DDA5fC",
+      "runDate": "2026-10-09T11:03:46.301589"
+     },
+     {
+      "biosampleId": "cellzbs-aae2F3fe",
+      "id": "cellzcs-3dc3phur",
+      "individualId": "cellzind-581CfcDD",
+      "runDate": "2026-10-09T11:03:46.301591"
+     },
+     {
+      "biosampleId": "cellzbs-5108eaDb",
+      "id": "cellzcs-3ijss2ob",
+      "individualId": "cellzind-6DF5Ba2A",
+      "runDate": "2026-10-09T11:03:46.301592"
+     },
+     {
+      "biosampleId": "cellzbs-9C7E315d",
+      "id": "cellzcs-3ubgyxtb",
+      "individualId": "cellzind-8A8F1A2e",
+      "runDate": "2026-10-09T11:03:46.301594"
+     },
+     {
+      "biosampleId": "cellzbs-ED6EdBE4",
+      "id": "cellzcs-4B15e2F9",
+      "individualId": "cellzind-FDC2D90A",
+      "runDate": "2026-10-09T11:03:46.301596"
+     },
+     {
+      "biosampleId": "cellzbs-892f40F7",
+      "id": "cellzcs-4plscq87",
+      "individualId": "cellzind-6A984be4",
+      "runDate": "2026-10-09T11:03:46.301598"
+     },
+     {
+      "biosampleId": "cellzbs-feECdfB5",
+      "id": "cellzcs-55pk5feu",
+      "individualId": "cellzind-28F1fCe9",
+      "runDate": "2026-10-09T11:03:46.301599"
+     },
+     {
+      "biosampleId": "cellzbs-8fcadEcd",
+      "id": "cellzcs-5cfuvs8l",
+      "individualId": "cellzind-f3Ba884e",
+      "runDate": "2026-10-09T11:03:46.301601"
+     },
+     {
+      "biosampleId": "cellzbs-48cc1075",
+      "id": "cellzcs-5hlk7ryx",
+      "individualId": "cellzind-cDbeb366",
+      "runDate": "2026-10-09T11:03:46.301603"
+     },
+     {
+      "biosampleId": "cellzbs-130fbc10",
+      "id": "cellzcs-5isw8dgm",
+      "individualId": "cellzind-f51d2291",
+      "runDate": "2026-10-09T11:03:46.301605"
+     },
+     {
+      "biosampleId": "cellzbs-93be217E",
+      "id": "cellzcs-6s6887bp",
+      "individualId": "cellzind-cd3f9f94",
+      "runDate": "2026-10-09T11:03:46.301606"
+     },
+     {
+      "biosampleId": "cellzbs-Cd0BDbEE",
+      "id": "cellzcs-706Da4ed",
+      "individualId": "cellzind-287B1048",
+      "runDate": "2026-10-09T11:03:46.301608"
+     },
+     {
+      "biosampleId": "cellzbs-649eC3B1",
+      "id": "cellzcs-7B081176",
+      "individualId": "cellzind-4DbA18BB",
+      "runDate": "2026-10-09T11:03:46.301610"
+     },
+     {
+      "biosampleId": "cellzbs-CF6bb76f",
+      "id": "cellzcs-7Ee1F2dB",
+      "individualId": "cellzind-CCe6Ef78",
+      "runDate": "2026-10-09T11:03:46.301612"
+     },
+     {
+      "biosampleId": "cellzbs-beFf0aEE",
+      "id": "cellzcs-7F35aD65",
+      "individualId": "cellzind-4Fac4afc",
+      "runDate": "2026-10-09T11:03:46.301614"
+     },
+     {
+      "biosampleId": "cellzbs-5eFdEeD2",
+      "id": "cellzcs-7l6gbo6a",
+      "individualId": "cellzind-9bE96dC3",
+      "runDate": "2026-10-09T11:03:46.301616"
+     },
+     {
+      "biosampleId": "cellzbs-e7FFcf41",
+      "id": "cellzcs-8c3b52Da",
+      "individualId": "cellzind-c086C55c",
+      "runDate": "2026-10-09T11:03:46.301618"
+     },
+     {
+      "biosampleId": "cellzbs-bCaAa6cF",
+      "id": "cellzcs-8cye0d2c",
+      "individualId": "cellzind-cd3f9f94",
+      "runDate": "2026-10-09T11:03:46.301620"
+     },
+     {
+      "biosampleId": "cellzbs-Ba57Df0C",
+      "id": "cellzcs-8om7c9pc",
+      "individualId": "cellzind-cd3f9f94",
+      "runDate": "2026-10-09T11:03:46.301621"
+     },
+     {
+      "biosampleId": "cellzbs-DeFEe56d",
+      "id": "cellzcs-8z6g2oai",
+      "individualId": "cellzind-23dbF68e",
+      "runDate": "2026-10-09T11:03:46.301623"
+     },
+     {
+      "biosampleId": "cellzbs-d6EB23BF",
+      "id": "cellzcs-9s0afdfx",
+      "individualId": "cellzind-C403D8cF",
+      "runDate": "2026-10-09T11:03:46.301625"
+     },
+     {
+      "biosampleId": "cellzbs-6a7aA4AC",
+      "id": "cellzcs-AB4eDE79",
+      "individualId": "cellzind-CAd1B3b4",
+      "runDate": "2026-10-09T11:03:46.301627"
+     },
+     {
+      "biosampleId": "cellzbs-9eACfdee",
+      "id": "cellzcs-B6c1b748",
+      "individualId": "cellzind-bCE4dBba",
+      "runDate": "2026-10-09T11:03:46.301628"
+     },
+     {
+      "biosampleId": "cellzbs-2C2DdBde",
+      "id": "cellzcs-B8570CDe",
+      "individualId": "cellzind-EFC14fbd",
+      "runDate": "2026-10-09T11:03:46.301630"
+     },
+     {
+      "biosampleId": "cellzbs-ccA31B5f",
+      "id": "cellzcs-E317df9D",
+      "individualId": "cellzind-8C4aCaa8",
+      "runDate": "2026-10-09T11:03:46.301632"
+     },
+     {
+      "biosampleId": "cellzbs-315E5cbF",
+      "id": "cellzcs-a0z16n83",
+      "individualId": "cellzind-f51d2291",
+      "runDate": "2026-10-09T11:03:46.301634"
+     },
+     {
+      "biosampleId": "cellzbs-f4dF71Fb",
+      "id": "cellzcs-arrm5gpl",
+      "individualId": "cellzind-9bE96dC3",
+      "runDate": "2026-10-09T11:03:46.301635"
+     },
+     {
+      "biosampleId": "cellzbs-958EE2dB",
+      "id": "cellzcs-b6h0i7o3",
+      "individualId": "cellzind-68DFa9E5",
+      "runDate": "2026-10-09T11:03:46.301637"
+     },
+     {
+      "biosampleId": "cellzbs-54ADa4eE",
+      "id": "cellzcs-b8oltakh",
+      "individualId": "cellzind-Cf03BDBc",
+      "runDate": "2026-10-09T11:03:46.301639"
+     },
+     {
+      "biosampleId": "cellzbs-04F2760E",
+      "id": "cellzcs-c5rc7khd",
+      "individualId": "cellzind-0a9F315b",
+      "runDate": "2026-10-09T11:03:46.301641"
+     },
+     {
+      "biosampleId": "cellzbs-5E2E5Dcd",
+      "id": "cellzcs-c9c6xv66",
+      "individualId": "cellzind-786DbEF8",
+      "runDate": "2026-10-09T11:03:46.301642"
+     },
+     {
+      "biosampleId": "cellzbs-8Fe4EdD5",
+      "id": "cellzcs-cpooljsv",
+      "individualId": "cellzind-cd3f9f94",
+      "runDate": "2026-10-09T11:03:46.301644"
+     },
+     {
+      "biosampleId": "cellzbs-3d7947BC",
+      "id": "cellzcs-ctiwgs4i",
+      "individualId": "cellzind-cd3f9f94",
+      "runDate": "2026-10-09T11:03:46.301646"
+     },
+     {
+      "biosampleId": "cellzbs-502CEF15",
+      "id": "cellzcs-d6d3aC65",
+      "individualId": "cellzind-cf5c05ED",
+      "runDate": "2026-10-09T11:03:46.301648"
+     },
+     {
+      "biosampleId": "cellzbs-f5237CbF",
+      "id": "cellzcs-dCf2125E",
+      "individualId": "cellzind-CCe6Ef78",
+      "runDate": "2026-10-09T11:03:46.301649"
+     },
+     {
+      "biosampleId": "cellzbs-7D3D4EAB",
+      "id": "cellzcs-dbms3yv7",
+      "individualId": "cellzind-d7e9fE71",
+      "runDate": "2026-10-09T11:03:46.301651"
+     },
+     {
+      "biosampleId": "cellzbs-F52B59E7",
+      "id": "cellzcs-dhnrocqy",
+      "individualId": "cellzind-cd3f9f94",
+      "runDate": "2026-10-09T11:03:46.301653"
+     },
+     {
+      "biosampleId": "cellzbs-d41B0ED5",
+      "id": "cellzcs-dss1toin",
+      "individualId": "cellzind-Be8f48Fb",
+      "runDate": "2026-10-09T11:03:46.301655"
+     },
+     {
+      "biosampleId": "cellzbs-1AC5C4E0",
+      "id": "cellzcs-dxmyul1i",
+      "individualId": "cellzind-dbaF53d4",
+      "runDate": "2026-10-09T11:03:46.301656"
+     },
+     {
+      "biosampleId": "cellzbs-aA79e6A2",
+      "id": "cellzcs-e0qsjrhn",
+      "individualId": "cellzind-1ED04e7F",
+      "runDate": "2026-10-09T11:03:46.301658"
+     },
+     {
+      "biosampleId": "cellzbs-7bFa77BB",
+      "id": "cellzcs-e1zen93w",
+      "individualId": "cellzind-513d80ce",
+      "runDate": "2026-10-09T11:03:46.301660"
+     },
+     {
+      "biosampleId": "cellzbs-d2FfB8D1",
+      "id": "cellzcs-e4DAe25D",
+      "individualId": "cellzind-A5cba35c",
+      "runDate": "2026-10-09T11:03:46.301662"
+     },
+     {
+      "biosampleId": "cellzbs-BE0DF8E5",
+      "id": "cellzcs-evmd4zhx",
+      "individualId": "cellzind-c7FdEff1",
+      "runDate": "2026-10-09T11:03:46.301664"
+     },
+     {
+      "biosampleId": "cellzbs-8cD3b3C0",
+      "id": "cellzcs-ezamq6w7",
+      "individualId": "cellzind-D3A2E3c2",
+      "runDate": "2026-10-09T11:03:46.301666"
+     },
+     {
+      "biosampleId": "cellzbs-0c7f9b9B",
+      "id": "cellzcs-f5qfnjbj",
+      "individualId": "cellzind-cd3f9f94",
+      "runDate": "2026-10-09T11:03:46.301668"
+     },
+     {
+      "biosampleId": "cellzbs-fAb9c73c",
+      "id": "cellzcs-ffwhtvvr",
+      "individualId": "cellzind-cd3f9f94",
+      "runDate": "2026-10-09T11:03:46.301670"
+     },
+     {
+      "biosampleId": "cellzbs-1b217FFE",
+      "id": "cellzcs-fipl7r85",
+      "individualId": "cellzind-b7f64e1e",
+      "runDate": "2026-10-09T11:03:46.301672"
+     },
+     {
+      "biosampleId": "cellzbs-bC305AAD",
+      "id": "cellzcs-gb0t0jyd",
+      "individualId": "cellzind-f15aA088",
+      "runDate": "2026-10-09T11:03:46.301673"
+     },
+     {
+      "biosampleId": "cellzbs-f983e38c",
+      "id": "cellzcs-gdl66zmy",
+      "individualId": "cellzind-367241fB",
+      "runDate": "2026-10-09T11:03:46.301675"
+     },
+     {
+      "biosampleId": "cellzbs-8b679acE",
+      "id": "cellzcs-gdq6chrt",
+      "individualId": "cellzind-B9D444a5",
+      "runDate": "2026-10-09T11:03:46.301677"
+     },
+     {
+      "biosampleId": "cellzbs-94FDD2eC",
+      "id": "cellzcs-ge65ozyp",
+      "individualId": "cellzind-0c41d6F4",
+      "runDate": "2026-10-09T11:03:46.301679"
+     },
+     {
+      "biosampleId": "cellzbs-B043dC3D",
+      "id": "cellzcs-ggno7nk0",
+      "individualId": "cellzind-18f18029",
+      "runDate": "2026-10-09T11:03:46.301681"
+     },
+     {
+      "biosampleId": "cellzbs-bDeF76Dc",
+      "id": "cellzcs-gi1y11qt",
+      "individualId": "cellzind-39FFA6Bc",
+      "runDate": "2026-10-09T11:03:46.301682"
+     },
+     {
+      "biosampleId": "cellzbs-7dCF9D4B",
+      "id": "cellzcs-gwdqjzsn",
+      "individualId": "cellzind-cd3f9f94",
+      "runDate": "2026-10-09T11:03:46.301684"
+     },
+     {
+      "biosampleId": "cellzbs-68f11703",
+      "id": "cellzcs-gxqvn0e7",
+      "individualId": "cellzind-F7bED485",
+      "runDate": "2026-10-09T11:03:46.301686"
+     },
+     {
+      "biosampleId": "cellzbs-5cd30c24",
+      "id": "cellzcs-h4fctuic",
+      "individualId": "cellzind-64d44D7C",
+      "runDate": "2026-10-09T11:03:46.301688"
+     },
+     {
+      "biosampleId": "cellzbs-cf23F31f",
+      "id": "cellzcs-i83rlot3",
+      "individualId": "cellzind-944cEA4b",
+      "runDate": "2026-10-09T11:03:46.301690"
+     },
+     {
+      "biosampleId": "cellzbs-B1455c5D",
+      "id": "cellzcs-iiau0p4l",
+      "individualId": "cellzind-CB9Bd40b",
+      "runDate": "2026-10-09T11:03:46.301692"
+     },
+     {
+      "biosampleId": "cellzbs-1f0e43BB",
+      "id": "cellzcs-j36p8ui4",
+      "individualId": "cellzind-6aBE67fD",
+      "runDate": "2026-10-09T11:03:46.301694"
+     },
+     {
+      "biosampleId": "cellzbs-4d7514Fd",
+      "id": "cellzcs-j5gyou0h",
+      "individualId": "cellzind-cd3f9f94",
+      "runDate": "2026-10-09T11:03:46.301695"
+     },
+     {
+      "biosampleId": "cellzbs-3DAAd395",
+      "id": "cellzcs-jiadaml6",
+      "individualId": "cellzind-7d364ea8",
+      "runDate": "2026-10-09T11:03:46.301697"
+     },
+     {
+      "biosampleId": "cellzbs-8fDF1adB",
+      "id": "cellzcs-jll1z3c4",
+      "individualId": "cellzind-cd3f9f94",
+      "runDate": "2026-10-09T11:03:46.301699"
+     },
+     {
+      "biosampleId": "cellzbs-3EFB7dbC",
+      "id": "cellzcs-jq1op7ba",
+      "individualId": "cellzind-dAbDa8fa",
+      "runDate": "2026-10-09T11:03:46.301701"
+     },
+     {
+      "biosampleId": "cellzbs-kftvgnvs",
+      "id": "cellzcs-kftvnpbk",
+      "individualId": "cellzind-kftx2f2f",
+      "platformModel": {
+       "id": "EFO:0001456",
+       "label": "DNA assay"
+      },
+      "runDate": "2024-09-26T14:05:37.725635"
+     },
+     {
+      "biosampleId": "cellzbs-kftvib0j",
+      "id": "cellzcs-kftw5x7x",
+      "individualId": "cellzind-kftx3xyd",
+      "platformModel": {
+       "id": "geo:GPL3718",
+       "label": "[Mapping250K_Nsp] Affymetrix Mapping 250K Nsp SNP Array"
+      },
+      "runDate": "2024-09-26T14:05:40.505617"
+     },
+     {
+      "biosampleId": "cellzbs-kftvib0q",
+      "id": "cellzcs-kftw5x9w",
+      "individualId": "cellzind-kftx3xyl",
+      "platformModel": {
+       "id": "geo:GPL3718",
+       "label": "[Mapping250K_Nsp] Affymetrix Mapping 250K Nsp SNP Array"
+      },
+      "runDate": "2024-09-26T14:05:40.588241"
+     },
+     {
+      "biosampleId": "cellzbs-kftvib0w",
+      "id": "cellzcs-kftw5xce",
+      "individualId": "cellzind-kftx3xyt",
+      "platformModel": {
+       "id": "geo:GPL3718",
+       "label": "[Mapping250K_Nsp] Affymetrix Mapping 250K Nsp SNP Array"
+      },
+      "runDate": "2024-09-26T14:05:40.553625"
+     },
+     {
+      "biosampleId": "cellzbs-kftvib18",
+      "id": "cellzcs-kftw5xfb",
+      "individualId": "cellzind-kftx3xz8",
+      "platformModel": {
+       "id": "geo:GPL3718",
+       "label": "[Mapping250K_Nsp] Affymetrix Mapping 250K Nsp SNP Array"
+      },
+      "runDate": "2024-09-26T14:05:40.728686"
+     },
+     {
+      "biosampleId": "cellzbs-kftvib1c",
+      "id": "cellzcs-kftw5xgs",
+      "individualId": "cellzind-kftx3xze",
+      "platformModel": {
+       "id": "geo:GPL3718",
+       "label": "[Mapping250K_Nsp] Affymetrix Mapping 250K Nsp SNP Array"
+      },
+      "runDate": "2024-09-26T14:05:40.915330"
+     },
+     {
+      "biosampleId": "cellzbs-kftvib23",
+      "id": "cellzcs-kftw5xqy",
+      "individualId": "cellzind-kftx3y0a",
+      "platformModel": {
+       "id": "geo:GPL3718",
+       "label": "[Mapping250K_Nsp] Affymetrix Mapping 250K Nsp SNP Array"
+      },
+      "runDate": "2024-09-26T14:05:40.768602"
+     },
+     {
+      "biosampleId": "cellzbs-kftvib2d",
+      "id": "cellzcs-kftw5xty",
+      "individualId": "cellzind-kftx3y0m",
+      "platformModel": {
+       "id": "geo:GPL3718",
+       "label": "[Mapping250K_Nsp] Affymetrix Mapping 250K Nsp SNP Array"
+      },
+      "runDate": "2024-09-26T14:05:41.453665"
+     },
+     {
+      "biosampleId": "cellzbs-kftvib2g",
+      "id": "cellzcs-kftw5xuy",
+      "individualId": "cellzind-kftx3y0q",
+      "platformModel": {
+       "id": "geo:GPL3718",
+       "label": "[Mapping250K_Nsp] Affymetrix Mapping 250K Nsp SNP Array"
+      },
+      "runDate": "2024-09-26T14:05:41.574246"
+     },
+     {
+      "biosampleId": "cellzbs-kftvib2j",
+      "id": "cellzcs-kftw5xvx",
+      "individualId": "cellzind-kftx3y0u",
+      "platformModel": {
+       "id": "geo:GPL3718",
+       "label": "[Mapping250K_Nsp] Affymetrix Mapping 250K Nsp SNP Array"
+      },
+      "runDate": "2024-09-26T14:05:41.493133"
+     },
+     {
+      "biosampleId": "cellzbs-kftvib2n",
+      "id": "cellzcs-kftw5xwx",
+      "individualId": "cellzind-kftx3y0z",
+      "platformModel": {
+       "id": "geo:GPL3718",
+       "label": "[Mapping250K_Nsp] Affymetrix Mapping 250K Nsp SNP Array"
+      },
+      "runDate": "2024-09-26T14:05:41.538562"
+     },
+     {
+      "biosampleId": "cellzbs-kftvib2o",
+      "id": "cellzcs-kftw5xxf",
+      "individualId": "cellzind-kftx3y11",
+      "platformModel": {
+       "id": "geo:GPL3718",
+       "label": "[Mapping250K_Nsp] Affymetrix Mapping 250K Nsp SNP Array"
+      },
+      "runDate": "2024-09-26T14:05:41.673705"
+     },
+     {
+      "biosampleId": "cellzbs-kftvib2u",
+      "id": "cellzcs-kftw5xyw",
+      "individualId": "cellzind-kftx3y17",
+      "platformModel": {
+       "id": "geo:GPL3718",
+       "label": "[Mapping250K_Nsp] Affymetrix Mapping 250K Nsp SNP Array"
+      },
+      "runDate": "2024-09-26T14:05:41.807879"
+     },
+     {
+      "biosampleId": "cellzbs-kftvib2v",
+      "id": "cellzcs-kftw5xze",
+      "individualId": "cellzind-kftx3y19",
+      "platformModel": {
+       "id": "geo:GPL3718",
+       "label": "[Mapping250K_Nsp] Affymetrix Mapping 250K Nsp SNP Array"
+      },
+      "runDate": "2024-09-26T14:05:41.853534"
+     },
+     {
+      "biosampleId": "cellzbs-kftvib31",
+      "id": "cellzcs-kftw5y0w",
+      "individualId": "cellzind-kftx3y1f",
+      "platformModel": {
+       "id": "geo:GPL3718",
+       "label": "[Mapping250K_Nsp] Affymetrix Mapping 250K Nsp SNP Array"
+      },
+      "runDate": "2024-09-26T14:05:41.923078"
+     },
+     {
+      "biosampleId": "cellzbs-kftvipvo",
+      "id": "cellzcs-kftwaeyd",
+      "individualId": "cellzind-kftx4fv8",
+      "platformModel": {
+       "id": "geo:GPL2014",
+       "label": "Affymetrix GeneChip Human Mapping 50K Hind - prerelease"
+      },
+      "runDate": "2024-09-26T14:06:36.353996"
+     },
+     {
+      "biosampleId": "cellzbs-kftvipvp",
+      "id": "cellzcs-kftwaeyv",
+      "individualId": "cellzind-kftx4fvb",
+      "platformModel": {
+       "id": "geo:GPL2014",
+       "label": "Affymetrix GeneChip Human Mapping 50K Hind - prerelease"
+      },
+      "runDate": "2024-09-26T14:06:36.590489"
+     },
+     {
+      "biosampleId": "cellzbs-kftvipvs",
+      "id": "cellzcs-kftwaezv",
+      "individualId": "cellzind-kftx4fvf",
+      "platformModel": {
+       "id": "geo:GPL2014",
+       "label": "Affymetrix GeneChip Human Mapping 50K Hind - prerelease"
+      },
+      "runDate": "2024-09-26T14:06:36.649589"
+     },
+     {
+      "biosampleId": "cellzbs-kftvipvu",
+      "id": "cellzcs-kftwaf0d",
+      "individualId": "cellzind-kftx4fvh",
+      "platformModel": {
+       "id": "geo:GPL2014",
+       "label": "Affymetrix GeneChip Human Mapping 50K Hind - prerelease"
+      },
+      "runDate": "2024-09-26T14:06:36.702417"
+     },
+     {
+      "biosampleId": "cellzbs-kftvipym",
+      "id": "cellzcs-kftwafw9",
+      "individualId": "cellzind-kftx4fyu",
+      "platformModel": {
+       "id": "geo:GPL2015",
+       "label": "Affymetrix GeneChip Human Mapping 50K Xba - prerelease"
+      },
+      "runDate": "2024-09-26T14:06:40.561034"
+     },
+     {
+      "biosampleId": "cellzbs-kftvipyo",
+      "id": "cellzcs-kftwafwr",
+      "individualId": "cellzind-kftx4fyw",
+      "platformModel": {
+       "id": "geo:GPL2015",
+       "label": "Affymetrix GeneChip Human Mapping 50K Xba - prerelease"
+      },
+      "runDate": "2024-09-26T14:06:40.705129"
+     },
+     {
+      "biosampleId": "cellzbs-kftvipyr",
+      "id": "cellzcs-kftwafxr",
+      "individualId": "cellzind-kftx4fz0",
+      "platformModel": {
+       "id": "geo:GPL2015",
+       "label": "Affymetrix GeneChip Human Mapping 50K Xba - prerelease"
+      },
+      "runDate": "2024-09-26T14:06:40.883176"
+     },
+     {
+      "biosampleId": "cellzbs-kftvipyt",
+      "id": "cellzcs-kftwafy9",
+      "individualId": "cellzind-kftx4fz2",
+      "platformModel": {
+       "id": "geo:GPL2015",
+       "label": "Affymetrix GeneChip Human Mapping 50K Xba - prerelease"
+      },
+      "runDate": "2024-09-26T14:06:40.983551"
+     },
+     {
+      "biosampleId": "cellzbs-kftvise8",
+      "id": "cellzcs-kftwb6v5",
+      "individualId": "cellzind-kftx4iz2",
+      "platformModel": {
+       "id": "geo:GPL6984",
+       "label": "Illumina Human1M-Duov3 DNA Analysis BeadChip (Human1M-Duov3_B)"
+      },
+      "runDate": "2024-09-26T14:06:53.713280"
+     },
+     {
+      "biosampleId": "cellzbs-kftvj3jd",
+      "id": "cellzcs-kftwejpw",
+      "individualId": "cellzind-kftx4wc3",
+      "platformModel": {
+       "id": "geo:GPL3720",
+       "label": "[Mapping250K_Sty] Affymetrix Mapping 250K Sty2 SNP Array"
+      },
+      "runDate": "2024-09-26T14:07:42.780229"
+     },
+     {
+      "biosampleId": "cellzbs-kftvji5o",
+      "id": "cellzcs-kftwizkj",
+      "individualId": "cellzind-kftx5eap",
+      "platformModel": {
+       "id": "geo:GPL8841",
+       "label": "Agilent-014950 Human Genome CGH Microarray 4x44K (Probe Name version)"
+      },
+      "runDate": "2024-09-26T14:08:33.210082"
+     },
+     {
+      "biosampleId": "cellzbs-kftvji5q",
+      "id": "cellzcs-kftwizl2",
+      "individualId": "cellzind-kftx5eas",
+      "platformModel": {
+       "id": "geo:GPL8841",
+       "label": "Agilent-014950 Human Genome CGH Microarray 4x44K (Probe Name version)"
+      },
+      "runDate": "2024-09-26T14:08:33.270960"
+     },
+     {
+      "biosampleId": "cellzbs-kftvji5r",
+      "id": "cellzcs-kftwizlk",
+      "individualId": "cellzind-kftx5eau",
+      "platformModel": {
+       "id": "geo:GPL8841",
+       "label": "Agilent-014950 Human Genome CGH Microarray 4x44K (Probe Name version)"
+      },
+      "runDate": "2024-09-26T14:08:33.348342"
+     },
+     {
+      "biosampleId": "cellzbs-kftvji5t",
+      "id": "cellzcs-kftwizm2",
+      "individualId": "cellzind-kftx5eaw",
+      "platformModel": {
+       "id": "geo:GPL8841",
+       "label": "Agilent-014950 Human Genome CGH Microarray 4x44K (Probe Name version)"
+      },
+      "runDate": "2024-09-26T14:08:33.305952"
+     },
+     {
+      "biosampleId": "cellzbs-kftvji5v",
+      "id": "cellzcs-kftwizmk",
+      "individualId": "cellzind-kftx5eay",
+      "platformModel": {
+       "id": "geo:GPL8841",
+       "label": "Agilent-014950 Human Genome CGH Microarray 4x44K (Probe Name version)"
+      },
+      "runDate": "2024-09-26T14:08:33.386928"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjrvl",
+      "id": "cellzcs-kftwm3st",
+      "individualId": "cellzind-kftx5pwi",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:08:40.868071"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjrvn",
+      "id": "cellzcs-kftwm3ta",
+      "individualId": "cellzind-kftx5pwk",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:08:40.812787"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjrvo",
+      "id": "cellzcs-kftwm3tr",
+      "individualId": "cellzind-kftx5pwm",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:08:40.890977"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjrvs",
+      "id": "cellzcs-kftwm3ur",
+      "individualId": "cellzind-kftx5pwq",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:08:40.911484"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjrvt",
+      "id": "cellzcs-kftwm3v8",
+      "individualId": "cellzind-kftx5pws",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:08:40.975982"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjsvp",
+      "id": "cellzcs-kftwm7b2",
+      "individualId": "cellzind-kftx5r4r",
+      "platformModel": {
+       "id": "geo:GPL6983",
+       "label": "Illumina Human1Mv1 DNA Analysis BeadChip (Human1Mv1_C)"
+      },
+      "runDate": "2024-09-26T14:08:42.014769"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjsvq",
+      "id": "cellzcs-kftwm7bh",
+      "individualId": "cellzind-kftx5r4t",
+      "platformModel": {
+       "id": "geo:GPL6983",
+       "label": "Illumina Human1Mv1 DNA Analysis BeadChip (Human1Mv1_C)"
+      },
+      "runDate": "2024-09-26T14:08:42.096436"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjsvl",
+      "id": "cellzcs-kftwm7bw",
+      "individualId": "cellzind-kftx5r4n",
+      "platformModel": {
+       "id": "geo:GPL6983",
+       "label": "Illumina Human1Mv1 DNA Analysis BeadChip (Human1Mv1_C)"
+      },
+      "runDate": "2024-09-26T14:08:42.284920"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjsvk",
+      "id": "cellzcs-kftwm7cn",
+      "individualId": "cellzind-kftx5r4l",
+      "platformModel": {
+       "id": "geo:GPL6983",
+       "label": "Illumina Human1Mv1 DNA Analysis BeadChip (Human1Mv1_C)"
+      },
+      "runDate": "2024-09-26T14:08:42.649254"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjsvu",
+      "id": "cellzcs-kftwm7d2",
+      "individualId": "cellzind-kftx5r4x",
+      "platformModel": {
+       "id": "geo:GPL6983",
+       "label": "Illumina Human1Mv1 DNA Analysis BeadChip (Human1Mv1_C)"
+      },
+      "runDate": "2024-09-26T14:08:42.540476"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjsyo",
+      "id": "cellzcs-kftwm80v",
+      "individualId": "cellzind-kftx5r8g",
+      "platformModel": {
+       "id": "geo:GPL11068",
+       "label": "Agilent-013282 Human Genome CGH Microarray 44B (Probe name version)"
+      },
+      "runDate": "2024-09-26T14:08:50.310428"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjsyj",
+      "id": "cellzcs-kftwm819",
+      "individualId": "cellzind-kftx5r8a",
+      "platformModel": {
+       "id": "geo:GPL11068",
+       "label": "Agilent-013282 Human Genome CGH Microarray 44B (Probe name version)"
+      },
+      "runDate": "2024-09-26T14:08:50.398823"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjsyp",
+      "id": "cellzcs-kftwm81o",
+      "individualId": "cellzind-kftx5r8i",
+      "platformModel": {
+       "id": "geo:GPL11068",
+       "label": "Agilent-013282 Human Genome CGH Microarray 44B (Probe name version)"
+      },
+      "runDate": "2024-09-26T14:08:50.436346"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjsyr",
+      "id": "cellzcs-kftwm86h",
+      "individualId": "cellzind-kftx5r8k",
+      "platformModel": {
+       "id": "geo:GPL11068",
+       "label": "Agilent-013282 Human Genome CGH Microarray 44B (Probe name version)"
+      },
+      "runDate": "2024-09-26T14:08:50.812185"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjsyk",
+      "id": "cellzcs-kftwm86w",
+      "individualId": "cellzind-kftx5r8c",
+      "platformModel": {
+       "id": "geo:GPL11068",
+       "label": "Agilent-013282 Human Genome CGH Microarray 44B (Probe name version)"
+      },
+      "runDate": "2024-09-26T14:08:50.987302"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjt2k",
+      "id": "cellzcs-kftwm8a9",
+      "individualId": "cellzind-kftx5rda",
+      "platformModel": {
+       "id": "geo:GPL11068",
+       "label": "Agilent-013282 Human Genome CGH Microarray 44B (Probe name version)"
+      },
+      "runDate": "2024-09-26T14:08:51.288602"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjsyh",
+      "id": "cellzcs-kftwm8qx",
+      "individualId": "cellzind-kftx5r88",
+      "platformModel": {
+       "id": "geo:GPL11068",
+       "label": "Agilent-013282 Human Genome CGH Microarray 44B (Probe name version)"
+      },
+      "runDate": "2024-09-26T14:08:53.673159"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjsyx",
+      "id": "cellzcs-kftwm937",
+      "individualId": "cellzind-kftx5r8s",
+      "platformModel": {
+       "id": "geo:GPL11068",
+       "label": "Agilent-013282 Human Genome CGH Microarray 44B (Probe name version)"
+      },
+      "runDate": "2024-09-26T14:08:54.923531"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjt4w",
+      "id": "cellzcs-kftwm9lb",
+      "individualId": "cellzind-kftx5rg6",
+      "platformModel": {
+       "id": "geo:GPL13786",
+       "label": "NCI NimbleGen Homo sapiens HG19 Whole Genome 385K Tiling Set version 1"
+      },
+      "runDate": "2024-09-26T14:08:56.881523"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjt4x",
+      "id": "cellzcs-kftwm9lp",
+      "individualId": "cellzind-kftx5rg8",
+      "platformModel": {
+       "id": "geo:GPL13786",
+       "label": "NCI NimbleGen Homo sapiens HG19 Whole Genome 385K Tiling Set version 1"
+      },
+      "runDate": "2024-09-26T14:08:56.908606"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjt50",
+      "id": "cellzcs-kftwm9mi",
+      "individualId": "cellzind-kftx5rgc",
+      "platformModel": {
+       "id": "geo:GPL13786",
+       "label": "NCI NimbleGen Homo sapiens HG19 Whole Genome 385K Tiling Set version 1"
+      },
+      "runDate": "2024-09-26T14:08:57.055790"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjt5f",
+      "id": "cellzcs-kftwm9q0",
+      "individualId": "cellzind-kftx5rgu",
+      "platformModel": {
+       "id": "geo:GPL13786",
+       "label": "NCI NimbleGen Homo sapiens HG19 Whole Genome 385K Tiling Set version 1"
+      },
+      "runDate": "2024-09-26T14:08:57.443893"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjtci",
+      "id": "cellzcs-kftwmabm",
+      "individualId": "cellzind-kftx5rpn",
+      "platformModel": {
+       "id": "geo:GPL3718",
+       "label": "[Mapping250K_Nsp] Affymetrix Mapping 250K Nsp SNP Array"
+      },
+      "runDate": "2024-09-26T14:09:00.876549"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjtco",
+      "id": "cellzcs-kftwmac3",
+      "individualId": "cellzind-kftx5rpv",
+      "platformModel": {
+       "id": "geo:GPL3718",
+       "label": "[Mapping250K_Nsp] Affymetrix Mapping 250K Nsp SNP Array"
+      },
+      "runDate": "2024-09-26T14:09:00.914530"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjtcj",
+      "id": "cellzcs-kftwmad3",
+      "individualId": "cellzind-kftx5rpp",
+      "platformModel": {
+       "id": "geo:GPL3718",
+       "label": "[Mapping250K_Nsp] Affymetrix Mapping 250K Nsp SNP Array"
+      },
+      "runDate": "2024-09-26T14:09:01.028218"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjtcl",
+      "id": "cellzcs-kftwmb9b",
+      "individualId": "cellzind-kftx5rpr",
+      "platformModel": {
+       "id": "geo:GPL3720",
+       "label": "[Mapping250K_Sty] Affymetrix Mapping 250K Sty2 SNP Array"
+      },
+      "runDate": "2024-09-26T14:09:03.589409"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjtcq",
+      "id": "cellzcs-kftwmb9s",
+      "individualId": "cellzind-kftx5rpx",
+      "platformModel": {
+       "id": "geo:GPL3720",
+       "label": "[Mapping250K_Sty] Affymetrix Mapping 250K Sty2 SNP Array"
+      },
+      "runDate": "2024-09-26T14:09:03.628860"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjtcn",
+      "id": "cellzcs-kftwmbas",
+      "individualId": "cellzind-kftx5rpt",
+      "platformModel": {
+       "id": "geo:GPL3720",
+       "label": "[Mapping250K_Sty] Affymetrix Mapping 250K Sty2 SNP Array"
+      },
+      "runDate": "2024-09-26T14:09:03.691825"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjtei",
+      "id": "cellzcs-kftwmcaa",
+      "individualId": "cellzind-kftx5rs5",
+      "platformModel": {
+       "id": "geo:GPL3720",
+       "label": "[Mapping250K_Sty] Affymetrix Mapping 250K Sty2 SNP Array"
+      },
+      "runDate": "2024-09-26T14:09:06.973456"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjugd",
+      "id": "cellzcs-kftwmkzw",
+      "individualId": "cellzind-kftx5t2w",
+      "platformModel": {
+       "id": "geo:GPL3720",
+       "label": "[Mapping250K_Sty] Affymetrix Mapping 250K Sty2 SNP Array"
+      },
+      "runDate": "2024-09-26T14:09:23.035892"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvh1",
+      "id": "cellzcs-kftwmtbq",
+      "individualId": "cellzind-kftx5ubs",
+      "platformModel": {
+       "id": "geo:GPL3720",
+       "label": "[Mapping250K_Sty] Affymetrix Mapping 250K Sty2 SNP Array"
+      },
+      "runDate": "2024-09-26T14:09:46.462027"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvh7",
+      "id": "cellzcs-kftwmtdi",
+      "individualId": "cellzind-kftx5uc0",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:46.565225"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvh9",
+      "id": "cellzcs-kftwmtdz",
+      "individualId": "cellzind-kftx5uc2",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:46.628777"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvhb",
+      "id": "cellzcs-kftwmteh",
+      "individualId": "cellzind-kftx5uc4",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:46.586826"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvhc",
+      "id": "cellzcs-kftwmtez",
+      "individualId": "cellzind-kftx5uc6",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:46.664941"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvhe",
+      "id": "cellzcs-kftwmtfg",
+      "individualId": "cellzind-kftx5uc8",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:46.706952"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvhg",
+      "id": "cellzcs-kftwmtfy",
+      "individualId": "cellzind-kftx5uca",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:46.831359"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvhh",
+      "id": "cellzcs-kftwmtgg",
+      "individualId": "cellzind-kftx5ucc",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:46.756331"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvhj",
+      "id": "cellzcs-kftwmtgy",
+      "individualId": "cellzind-kftx5uce",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:46.846412"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvhl",
+      "id": "cellzcs-kftwmthg",
+      "individualId": "cellzind-kftx5ucg",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:46.932001"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvhm",
+      "id": "cellzcs-kftwmthx",
+      "individualId": "cellzind-kftx5uci",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:46.982296"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvho",
+      "id": "cellzcs-kftwmtif",
+      "individualId": "cellzind-kftx5uck",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:47.036810"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvhq",
+      "id": "cellzcs-kftwmtiw",
+      "individualId": "cellzind-kftx5ucm",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:47.077679"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvhr",
+      "id": "cellzcs-kftwmtje",
+      "individualId": "cellzind-kftx5uco",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:47.106943"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvht",
+      "id": "cellzcs-kftwmtjv",
+      "individualId": "cellzind-kftx5ucq",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:47.129672"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvhu",
+      "id": "cellzcs-kftwmtkd",
+      "individualId": "cellzind-kftx5ucs",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:47.170980"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvhw",
+      "id": "cellzcs-kftwmtkv",
+      "individualId": "cellzind-kftx5ucu",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:47.195162"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvhy",
+      "id": "cellzcs-kftwmtlc",
+      "individualId": "cellzind-kftx5ucw",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:47.217004"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvi0",
+      "id": "cellzcs-kftwmtlt",
+      "individualId": "cellzind-kftx5ucy",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:47.252710"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvi1",
+      "id": "cellzcs-kftwmtmb",
+      "individualId": "cellzind-kftx5ud0",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:47.309833"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvi3",
+      "id": "cellzcs-kftwmtmt",
+      "individualId": "cellzind-kftx5ud2",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:47.353383"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvi5",
+      "id": "cellzcs-kftwmtna",
+      "individualId": "cellzind-kftx5ud4",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:47.331595"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvi7",
+      "id": "cellzcs-kftwmtnr",
+      "individualId": "cellzind-kftx5ud6",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:47.386880"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvi9",
+      "id": "cellzcs-kftwmto9",
+      "individualId": "cellzind-kftx5ud8",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:47.426252"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvia",
+      "id": "cellzcs-kftwmtoq",
+      "individualId": "cellzind-kftx5uda",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:47.471996"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvic",
+      "id": "cellzcs-kftwmtp8",
+      "individualId": "cellzind-kftx5udc",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:47.497486"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvie",
+      "id": "cellzcs-kftwmtpp",
+      "individualId": "cellzind-kftx5ude",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:47.542314"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvif",
+      "id": "cellzcs-kftwmtq7",
+      "individualId": "cellzind-kftx5udg",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:47.571896"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvih",
+      "id": "cellzcs-kftwmtqp",
+      "individualId": "cellzind-kftx5udi",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:47.660003"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvii",
+      "id": "cellzcs-kftwmtr7",
+      "individualId": "cellzind-kftx5udk",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:47.689104"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvik",
+      "id": "cellzcs-kftwmtro",
+      "individualId": "cellzind-kftx5udm",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:47.721519"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvim",
+      "id": "cellzcs-kftwmts6",
+      "individualId": "cellzind-kftx5udo",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:47.843678"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvin",
+      "id": "cellzcs-kftwmtso",
+      "individualId": "cellzind-kftx5udq",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:47.780599"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvip",
+      "id": "cellzcs-kftwmtt6",
+      "individualId": "cellzind-kftx5uds",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:47.909133"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvir",
+      "id": "cellzcs-kftwmtto",
+      "individualId": "cellzind-kftx5udu",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:47.876049"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvis",
+      "id": "cellzcs-kftwmtu6",
+      "individualId": "cellzind-kftx5udw",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:47.960570"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjviu",
+      "id": "cellzcs-kftwmtun",
+      "individualId": "cellzind-kftx5udy",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:48.026265"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjviw",
+      "id": "cellzcs-kftwmtv5",
+      "individualId": "cellzind-kftx5ue0",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:48.052692"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvix",
+      "id": "cellzcs-kftwmtvm",
+      "individualId": "cellzind-kftx5ue2",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:48.090760"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjviz",
+      "id": "cellzcs-kftwmtw4",
+      "individualId": "cellzind-kftx5ue5",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:48.122006"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvj1",
+      "id": "cellzcs-kftwmtwl",
+      "individualId": "cellzind-kftx5ue7",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:48.183606"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvj2",
+      "id": "cellzcs-kftwmtx3",
+      "individualId": "cellzind-kftx5ue9",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:48.272124"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvj4",
+      "id": "cellzcs-kftwmtxl",
+      "individualId": "cellzind-kftx5ueb",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:48.312751"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvj6",
+      "id": "cellzcs-kftwmty2",
+      "individualId": "cellzind-kftx5ued",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:48.341795"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvj7",
+      "id": "cellzcs-kftwmtyj",
+      "individualId": "cellzind-kftx5uef",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:48.369102"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvj9",
+      "id": "cellzcs-kftwmtz1",
+      "individualId": "cellzind-kftx5ueh",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:48.387864"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvjb",
+      "id": "cellzcs-kftwmtzj",
+      "individualId": "cellzind-kftx5uej",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:48.443897"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvjc",
+      "id": "cellzcs-kftwmu00",
+      "individualId": "cellzind-kftx5uel",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:48.470979"
+     },
+     {
+      "biosampleId": "cellzbs-kftvjvje",
+      "id": "cellzcs-kftwmu0i",
+      "individualId": "cellzind-kftx5uen",
+      "platformModel": {
+       "id": "geo:GPL16131",
+       "label": "[CytoScanHD_Array] Affymetrix CytoScan HD Array"
+      },
+      "runDate": "2024-09-26T14:09:48.535421"
+     },
+     {
+      "biosampleId": "cellzbs-kftvks8n",
+      "id": "cellzcs-kftwtx3p",
+      "individualId": "cellzind-kftx6xzm",
+      "platformModel": {
+       "id": "EFO:0001456",
+       "label": "DNA assay"
+      },
+      "runDate": "2024-09-26T14:09:56.768835"
+     },
+     {
+      "biosampleId": "cellzbs-kftvks93",
+      "id": "cellzcs-kftwtx8n",
+      "individualId": "cellzind-kftx6y06",
+      "platformModel": {
+       "id": "EFO:0001456",
+       "label": "DNA assay"
+      },
+      "runDate": "2024-09-26T14:10:00.556109"
+     },
+     {
+      "biosampleId": "cellzbs-kftvks96",
+      "id": "cellzcs-kftwtx9n",
+      "individualId": "cellzind-kftx6y0a",
+      "platformModel": {
+       "id": "EFO:0001456",
+       "label": "DNA assay"
+      },
+      "runDate": "2024-09-26T14:10:01.531508"
+     },
+     {
+      "biosampleId": "cellzbs-kftvks9z",
+      "id": "cellzcs-kftwtxij",
+      "individualId": "cellzind-kftx6y1b",
+      "platformModel": {
+       "id": "EFO:0001456",
+       "label": "DNA assay"
+      },
+      "runDate": "2024-09-26T14:10:07.762087"
+     },
+     {
+      "biosampleId": "cellzbs-kftvkscm",
+      "id": "cellzcs-kftwtyd9",
+      "individualId": "cellzind-kftx6y4l",
+      "platformModel": {
+       "id": "EFO:0001456",
+       "label": "DNA assay"
+      },
+      "runDate": "2024-09-26T14:10:26.926184"
+     },
+     {
+      "biosampleId": "cellzbs-kftvksf6",
+      "id": "cellzcs-kftwtz7d",
+      "individualId": "cellzind-kftx6y7t",
+      "platformModel": {
+       "id": "EFO:0001456",
+       "label": "DNA assay"
+      },
+      "runDate": "2024-09-26T14:10:45.802638"
+     },
+     {
+      "biosampleId": "cellzbs-kftvksfb",
+      "id": "cellzcs-kftwtz8t",
+      "individualId": "cellzind-kftx6y7z",
+      "platformModel": {
+       "id": "EFO:0001456",
+       "label": "DNA assay"
+      },
+      "runDate": "2024-09-26T14:10:46.811892"
+     },
+     {
+      "biosampleId": "cellzbs-kftvkshi",
+      "id": "cellzcs-kftwtzwb",
+      "individualId": "cellzind-kftx6yaq",
+      "platformModel": {
+       "id": "EFO:0001456",
+       "label": "DNA assay"
+      },
+      "runDate": "2024-09-26T14:11:03.037297"
+     },
+     {
+      "biosampleId": "cellzbs-kftvkshk",
+      "id": "cellzcs-kftwtzws",
+      "individualId": "cellzind-kftx6yas",
+      "platformModel": {
+       "id": "EFO:0001456",
+       "label": "DNA assay"
+      },
+      "runDate": "2024-09-26T14:11:03.865702"
+     },
+     {
+      "biosampleId": "cellzbs-kftvkshr",
+      "id": "cellzcs-kftwtzyr",
+      "individualId": "cellzind-kftx6yb0",
+      "platformModel": {
+       "id": "EFO:0001456",
+       "label": "DNA assay"
+      },
+      "runDate": "2024-09-26T14:11:05.554324"
+     },
+     {
+      "biosampleId": "cellzbs-kftvkshs",
+      "id": "cellzcs-kftwtzz8",
+      "individualId": "cellzind-kftx6yb2",
+      "platformModel": {
+       "id": "EFO:0001456",
+       "label": "DNA assay"
+      },
+      "runDate": "2024-09-26T14:11:05.829916"
+     },
+     {
+      "biosampleId": "cellzbs-kftvkshu",
+      "id": "cellzcs-kftwtzzq",
+      "individualId": "cellzind-kftx6yb4",
+      "platformModel": {
+       "id": "EFO:0001456",
+       "label": "DNA assay"
+      },
+      "runDate": "2024-09-26T14:11:06.546642"
+     },
+     {
+      "biosampleId": "cellzbs-kftvkspz",
+      "id": "cellzcs-kftwu2ks",
+      "individualId": "cellzind-kftx6yl9",
+      "platformModel": {
+       "id": "EFO:0001456",
+       "label": "DNA assay"
+      },
+      "runDate": "2024-09-26T14:12:03.300409"
+     },
+     {
+      "biosampleId": "cellzbs-kftvksrm",
+      "id": "cellzcs-kftwu358",
+      "individualId": "cellzind-kftx6ync",
+      "platformModel": {
+       "id": "EFO:0001456",
+       "label": "DNA assay"
+      },
+      "runDate": "2024-09-26T14:12:14.985562"
+     },
+     {
+      "biosampleId": "cellzbs-kftvksro",
+      "id": "cellzcs-kftwu35q",
+      "individualId": "cellzind-kftx6yne",
+      "platformModel": {
+       "id": "EFO:0001456",
+       "label": "DNA assay"
+      },
+      "runDate": "2024-09-26T14:12:15.914334"
+     },
+     {
+      "biosampleId": "cellzbs-kftvksrr",
+      "id": "cellzcs-kftwu36p",
+      "individualId": "cellzind-kftx6yni",
+      "platformModel": {
+       "id": "EFO:0001456",
+       "label": "DNA assay"
+      },
+      "runDate": "2024-09-26T14:12:16.606661"
+     },
+     {
+      "biosampleId": "cellzbs-kftvkss7",
+      "id": "cellzcs-kftwu3bn",
+      "individualId": "cellzind-kftx6yo3",
+      "platformModel": {
+       "id": "EFO:0001456",
+       "label": "DNA assay"
+      },
+      "runDate": "2024-09-26T14:12:19.785315"
+     },
+     {
+      "biosampleId": "cellzbs-kftvkstj",
+      "id": "cellzcs-kftwu3pz",
+      "individualId": "cellzind-kftx6ypq",
+      "platformModel": {
+       "id": "EFO:0001456",
+       "label": "DNA assay"
+      },
+      "runDate": "2024-09-26T14:12:33.284109"
+     },
+     {
+      "biosampleId": "cellzbs-kftvkstl",
+      "id": "cellzcs-kftwu3qh",
+      "individualId": "cellzind-kftx6yps",
+      "platformModel": {
+       "id": "EFO:0001456",
+       "label": "DNA assay"
+      },
+      "runDate": "2024-09-26T14:12:33.758048"
+     },
+     {
+      "biosampleId": "cellzbs-kftvksub",
+      "id": "cellzcs-kftwu40j",
+      "individualId": "cellzind-kftx6yqp",
+      "platformModel": {
+       "id": "EFO:0001456",
+       "label": "DNA assay"
+      },
+      "runDate": "2024-09-26T14:12:39.482387"
+     },
+     {
+      "biosampleId": "cellzbs-kftvkt7o",
+      "id": "cellzcs-kftwu89u",
+      "individualId": "cellzind-kftx6z7f",
+      "platformModel": {
+       "id": "EFO:0001456",
+       "label": "DNA assay"
+      },
+      "runDate": "2024-09-26T14:14:27.664388"
+     },
+     {
+      "biosampleId": "cellzbs-kftvkt7r",
+      "id": "cellzcs-kftwu8at",
+      "individualId": "cellzind-kftx6z7j",
+      "platformModel": {
+       "id": "EFO:0001456",
+       "label": "DNA assay"
+      },
+      "runDate": "2024-09-26T14:14:27.978285"
+     },
+     {
+      "biosampleId": "cellzbs-kftvkt9t",
+      "id": "cellzcs-kftwu8zm",
+      "individualId": "cellzind-kftx6za5",
+      "platformModel": {
+       "id": "EFO:0001456",
+       "label": "DNA assay"
+      },
+      "runDate": "2024-09-26T14:14:42.876998"
+     },
+     {
+      "biosampleId": "cellzbs-kftvkta8",
+      "id": "cellzcs-kftwu940",
+      "individualId": "cellzind-kftx6zao",
+      "platformModel": {
+       "id": "EFO:0001456",
+       "label": "DNA assay"
+      },
+      "runDate": "2024-09-26T14:14:45.856802"
+     },
+     {
+      "biosampleId": "cellzbs-kftvktaw",
+      "id": "cellzcs-kftwu9bb",
+      "individualId": "cellzind-kftx6zbj",
+      "platformModel": {
+       "id": "EFO:0001456",
+       "label": "DNA assay"
+      },
+      "runDate": "2024-09-26T14:14:51.541801"
+     },
+     {
+      "biosampleId": "cellzbs-kftvktb1",
+      "id": "cellzcs-kftwu9cs",
+      "individualId": "cellzind-kftx6zbp",
+      "platformModel": {
+       "id": "EFO:0001456",
+       "label": "DNA assay"
+      },
+      "runDate": "2024-09-26T14:14:52.685450"
+     },
+     {
+      "biosampleId": "cellzbs-kftvktbc",
+      "id": "cellzcs-kftwu9g8",
+      "individualId": "cellzind-kftx6zc3",
+      "platformModel": {
+       "id": "EFO:0001456",
+       "label": "DNA assay"
+      },
+      "runDate": "2024-09-26T14:14:55.959861"
+     },
+     {
+      "biosampleId": "cellzbs-kftvktdv",
+      "id": "cellzcs-kftwuaa0",
+      "individualId": "cellzind-kftx6zf9",
+      "platformModel": {
+       "id": "EFO:0001456",
+       "label": "DNA assay"
+      },
+      "runDate": "2024-09-26T14:15:15.343317"
+     },
+     {
+      "biosampleId": "cellzbs-kftvktfs",
+      "id": "cellzcs-kftwuaux",
+      "individualId": "cellzind-kftx6zhp",
+      "platformModel": {
+       "id": "EFO:0001456",
+       "label": "DNA assay"
+      },
+      "runDate": "2024-09-26T14:15:30.224925"
+     },
+     {
+      "biosampleId": "cellzbs-kftvkth5",
+      "id": "cellzcs-kftwubbx",
+      "individualId": "cellzind-kftx6zje",
+      "platformModel": {
+       "id": "EFO:0001456",
+       "label": "DNA assay"
+      },
+      "runDate": "2024-09-26T14:15:40.883609"
+     },
+     {
+      "biosampleId": "cellzbs-kftvkth7",
+      "id": "cellzcs-kftwubce",
+      "individualId": "cellzind-kftx6zjg",
+      "platformModel": {
+       "id": "EFO:0001456",
+       "label": "DNA assay"
+      },
+      "runDate": "2024-09-26T14:15:41.107420"
+     },
+     {
+      "biosampleId": "cellzbs-kftvkmp2",
+      "id": "cellzcs-kftwz6wm",
+      "individualId": "cellzind-kftx6rfx",
+      "platformModel": {
+       "id": "arrayexpress:A-AFFY-107",
+       "label": "Affymetrix GeneChip Human Mapping 250K Array Nsp [Mapping250K_Nsp]"
+      },
+      "runDate": "2024-09-26T14:15:58.477500"
+     },
+     {
+      "biosampleId": "cellzbs-kftvkmp3",
+      "id": "cellzcs-kftwz6xm",
+      "individualId": "cellzind-kftx6rfz",
+      "platformModel": {
+       "id": "arrayexpress:A-AFFY-72",
+       "label": "Affymetrix GeneChip Human Mapping 250K Array Sty [Mapping250K_Sty]"
+      },
+      "runDate": "2024-09-26T14:15:58.634043"
+     },
+     {
+      "biosampleId": "cellzbs-kftvkmp5",
+      "id": "cellzcs-kftwz70o",
+      "individualId": "cellzind-kftx6rg1",
+      "platformModel": {
+       "id": "arrayexpress:A-AFFY-107",
+       "label": "Affymetrix GeneChip Human Mapping 250K Array Nsp [Mapping250K_Nsp]"
+      },
+      "runDate": "2024-09-26T14:15:58.523212"
+     },
+     {
+      "biosampleId": "cellzbs-kftvkmp6",
+      "id": "cellzcs-kftwz71p",
+      "individualId": "cellzind-kftx6rg4",
+      "platformModel": {
+       "id": "arrayexpress:A-AFFY-72",
+       "label": "Affymetrix GeneChip Human Mapping 250K Array Sty [Mapping250K_Sty]"
+      },
+      "runDate": "2024-09-26T14:15:58.593569"
+     },
+     {
+      "biosampleId": "cellzbs-kftvkmp8",
+      "id": "cellzcs-kftwz72o",
+      "individualId": "cellzind-kftx6rg6",
+      "platformModel": {
+       "id": "arrayexpress:A-AFFY-107",
+       "label": "Affymetrix GeneChip Human Mapping 250K Array Nsp [Mapping250K_Nsp]"
+      },
+      "runDate": "2024-09-26T14:15:58.664544"
+     },
+     {
+      "biosampleId": "cellzbs-kftvkmpa",
+      "id": "cellzcs-kftwz73n",
+      "individualId": "cellzind-kftx6rg8",
+      "platformModel": {
+       "id": "arrayexpress:A-AFFY-72",
+       "label": "Affymetrix GeneChip Human Mapping 250K Array Sty [Mapping250K_Sty]"
+      },
+      "runDate": "2024-09-26T14:15:58.693677"
+     },
+     {
+      "biosampleId": "cellzbs-kftvkoki",
+      "id": "cellzcs-kftx0dxc",
+      "individualId": "cellzind-kftx6ts6",
+      "platformModel": {
+       "id": "arrayexpress:A-AFFY-107",
+       "label": "Affymetrix GeneChip Human Mapping 250K Array Nsp [Mapping250K_Nsp]"
+      },
+      "runDate": "2024-09-26T14:16:17.717738"
+     },
+     {
+      "biosampleId": "cellzbs-kftvkokk",
+      "id": "cellzcs-kftx0dya",
+      "individualId": "cellzind-kftx6ts8",
+      "platformModel": {
+       "id": "arrayexpress:A-AFFY-72",
+       "label": "Affymetrix GeneChip Human Mapping 250K Array Sty [Mapping250K_Sty]"
+      },
+      "runDate": "2024-09-26T14:16:17.824030"
+     },
+     {
+      "biosampleId": "cellzbs-kftvkokl",
+      "id": "cellzcs-kftx0dz9",
+      "individualId": "cellzind-kftx6tsa",
+      "platformModel": {
+       "id": "arrayexpress:A-AFFY-107",
+       "label": "Affymetrix GeneChip Human Mapping 250K Array Nsp [Mapping250K_Nsp]"
+      },
+      "runDate": "2024-09-26T14:16:17.867276"
+     },
+     {
+      "biosampleId": "cellzbs-kftvkokn",
+      "id": "cellzcs-kftx0e08",
+      "individualId": "cellzind-kftx6tsc",
+      "platformModel": {
+       "id": "arrayexpress:A-AFFY-72",
+       "label": "Affymetrix GeneChip Human Mapping 250K Array Sty [Mapping250K_Sty]"
+      },
+      "runDate": "2024-09-26T14:16:18.206391"
+     },
+     {
+      "biosampleId": "cellzbs-kftvkokp",
+      "id": "cellzcs-kftx0e16",
+      "individualId": "cellzind-kftx6tse",
+      "platformModel": {
+       "id": "arrayexpress:A-AFFY-107",
+       "label": "Affymetrix GeneChip Human Mapping 250K Array Nsp [Mapping250K_Nsp]"
+      },
+      "runDate": "2024-09-26T14:16:18.140869"
+     },
+     {
+      "biosampleId": "cellzbs-kftvkokq",
+      "id": "cellzcs-kftx0e24",
+      "individualId": "cellzind-kftx6tsg",
+      "platformModel": {
+       "id": "arrayexpress:A-AFFY-72",
+       "label": "Affymetrix GeneChip Human Mapping 250K Array Sty [Mapping250K_Sty]"
+      },
+      "runDate": "2024-09-26T14:16:18.349431"
+     },
+     {
+      "biosampleId": "cellzbs-kftvkoks",
+      "id": "cellzcs-kftx0e34",
+      "individualId": "cellzind-kftx6tsi",
+      "platformModel": {
+       "id": "arrayexpress:A-AFFY-107",
+       "label": "Affymetrix GeneChip Human Mapping 250K Array Nsp [Mapping250K_Nsp]"
+      },
+      "runDate": "2024-09-26T14:16:18.380524"
+     },
+     {
+      "biosampleId": "cellzbs-kftvkokt",
+      "id": "cellzcs-kftx0e42",
+      "individualId": "cellzind-kftx6tsk",
+      "platformModel": {
+       "id": "arrayexpress:A-AFFY-72",
+       "label": "Affymetrix GeneChip Human Mapping 250K Array Sty [Mapping250K_Sty]"
+      },
+      "runDate": "2024-09-26T14:16:18.421177"
+     },
+     {
+      "biosampleId": "cellzbs-kftvkokv",
+      "id": "cellzcs-kftx0e6z",
+      "individualId": "cellzind-kftx6tsm",
+      "platformModel": {
+       "id": "arrayexpress:A-AFFY-107",
+       "label": "Affymetrix GeneChip Human Mapping 250K Array Nsp [Mapping250K_Nsp]"
+      },
+      "runDate": "2024-09-26T14:16:18.455823"
+     },
+     {
+      "biosampleId": "cellzbs-kftvkokx",
+      "id": "cellzcs-kftx0e7z",
+      "individualId": "cellzind-kftx6tso",
+      "platformModel": {
+       "id": "arrayexpress:A-AFFY-72",
+       "label": "Affymetrix GeneChip Human Mapping 250K Array Sty [Mapping250K_Sty]"
+      },
+      "runDate": "2024-09-26T14:16:18.498727"
+     },
+     {
+      "biosampleId": "cellzbs-Fa6E28C0",
+      "id": "cellzcs-kja15l89",
+      "individualId": "cellzind-aF7Fd8c7",
+      "runDate": "2026-10-09T11:03:46.302022"
+     },
+     {
+      "biosampleId": "cellzbs-de1D8357",
+      "id": "cellzcs-ko0h7j4d",
+      "individualId": "cellzind-fbD3A5E3",
+      "runDate": "2026-10-09T11:03:46.302024"
+     },
+     {
+      "biosampleId": "cellzbs-EA7c2c9a",
+      "id": "cellzcs-kpx5jmye",
+      "individualId": "cellzind-02EcA5aC",
+      "runDate": "2026-10-09T11:03:46.302026"
+     },
+     {
+      "biosampleId": "cellzbs-1ad645e2",
+      "id": "cellzcs-kxsg9cvw",
+      "individualId": "cellzind-207BF09D",
+      "runDate": "2026-10-09T11:03:46.302027"
+     },
+     {
+      "biosampleId": "cellzbs-FFCC3994",
+      "id": "cellzcs-l3lwh0k0",
+      "individualId": "cellzind-cd3f9f94",
+      "runDate": "2026-10-09T11:03:46.302030"
+     },
+     {
+      "biosampleId": "cellzbs-D67Feda3",
+      "id": "cellzcs-l9beksxw",
+      "individualId": "cellzind-4f03e5B4",
+      "runDate": "2026-10-09T11:03:46.302031"
+     },
+     {
+      "biosampleId": "cellzbs-fCbA7861",
+      "id": "cellzcs-lgmmcgm6",
+      "individualId": "cellzind-cd3f9f94",
+      "runDate": "2026-10-09T11:03:46.302033"
+     },
+     {
+      "biosampleId": "cellzbs-ac4fd8c8",
+      "id": "cellzcs-li7cp848",
+      "individualId": "cellzind-f064D9e3",
+      "runDate": "2026-10-09T11:03:46.302035"
+     },
+     {
+      "biosampleId": "cellzbs-b4cbDD1D",
+      "id": "cellzcs-lnebvx63",
+      "individualId": "cellzind-c7967369",
+      "runDate": "2026-10-09T11:03:46.302037"
+     },
+     {
+      "biosampleId": "cellzbs-fcE2Cebb",
+      "id": "cellzcs-lqsw2pr4",
+      "individualId": "cellzind-cd3f9f94",
+      "runDate": "2026-10-09T11:03:46.302039"
+     },
+     {
+      "biosampleId": "cellzbs-68A5baEd",
+      "id": "cellzcs-m23feqya",
+      "individualId": "cellzind-1Bfa1d6B",
+      "runDate": "2026-10-09T11:03:46.302040"
+     },
+     {
+      "biosampleId": "cellzbs-1ff36d5A",
+      "id": "cellzcs-m4rted55",
+      "individualId": "cellzind-cd3f9f94",
+      "runDate": "2026-10-09T11:03:46.302042"
+     },
+     {
+      "biosampleId": "cellzbs-0ED4D0bC",
+      "id": "cellzcs-mvj54fqb",
+      "individualId": "cellzind-7d364ea8",
+      "runDate": "2026-10-09T11:03:46.302044"
+     },
+     {
+      "biosampleId": "cellzbs-cFDd87AC",
+      "id": "cellzcs-myvhvcxa",
+      "individualId": "cellzind-eD05cef8",
+      "runDate": "2026-10-09T11:03:46.302046"
+     },
+     {
+      "biosampleId": "cellzbs-2c3FBACD",
+      "id": "cellzcs-n2aevl96",
+      "individualId": "cellzind-B43fF6C2",
+      "runDate": "2026-10-09T11:03:46.302048"
+     },
+     {
+      "biosampleId": "cellzbs-4BC1b3f7",
+      "id": "cellzcs-nikmqiyh",
+      "individualId": "cellzind-cd3f9f94",
+      "runDate": "2026-10-09T11:03:46.302049"
+     },
+     {
+      "biosampleId": "cellzbs-D9E7cCed",
+      "id": "cellzcs-nmipddo9",
+      "individualId": "cellzind-a10Ad484",
+      "runDate": "2026-10-09T11:03:46.302052"
+     },
+     {
+      "biosampleId": "cellzbs-a98deb67",
+      "id": "cellzcs-nrv0loj7",
+      "individualId": "cellzind-7AcFBA6B",
+      "runDate": "2026-10-09T11:03:46.302054"
+     },
+     {
+      "biosampleId": "cellzbs-C66d3910",
+      "id": "cellzcs-o7s51fl4",
+      "individualId": "cellzind-59E34AE6",
+      "runDate": "2026-10-09T11:03:46.302056"
+     },
+     {
+      "biosampleId": "cellzbs-AbdE90a5",
+      "id": "cellzcs-ol27r1au",
+      "individualId": "cellzind-Ba75afaf",
+      "runDate": "2026-10-09T11:03:46.302058"
+     },
+     {
+      "biosampleId": "cellzbs-7ECcAC4A",
+      "id": "cellzcs-oqhoebpj",
+      "individualId": "cellzind-f232F729",
+      "runDate": "2026-10-09T11:03:46.302059"
+     },
+     {
+      "biosampleId": "cellzbs-7180966C",
+      "id": "cellzcs-oscymen1",
+      "individualId": "cellzind-2AC24253",
+      "runDate": "2026-10-09T11:03:46.302061"
+     },
+     {
+      "biosampleId": "cellzbs-feEbBCAb",
+      "id": "cellzcs-p88hq11q",
+      "individualId": "cellzind-d7eD3d1b",
+      "runDate": "2026-10-09T11:03:46.302063"
+     },
+     {
+      "biosampleId": "cellzbs-c1CbA9ad",
+      "id": "cellzcs-pauj1xhb",
+      "individualId": "cellzind-8D36E0cD",
+      "runDate": "2026-10-09T11:03:46.302065"
+     },
+     {
+      "biosampleId": "cellzbs-E1cF6aea",
+      "id": "cellzcs-qbeta110",
+      "individualId": "cellzind-E0F99Fcc",
+      "runDate": "2026-10-09T11:03:46.302067"
+     },
+     {
+      "biosampleId": "cellzbs-0Eb5b637",
+      "id": "cellzcs-r7n8yykq",
+      "individualId": "cellzind-AdBCcA2e",
+      "runDate": "2026-10-09T11:03:46.302069"
+     },
+     {
+      "biosampleId": "cellzbs-5DeaaFbA",
+      "id": "cellzcs-sd2azdw6",
+      "individualId": "cellzind-Fa25dB40",
+      "runDate": "2026-10-09T11:03:46.302071"
+     },
+     {
+      "biosampleId": "cellzbs-57EFCFcC",
+      "id": "cellzcs-shc0q8u1",
+      "individualId": "cellzind-f4a4836D",
+      "runDate": "2026-10-09T11:03:46.302073"
+     },
+     {
+      "biosampleId": "cellzbs-5A9381a7",
+      "id": "cellzcs-sv5vif64",
+      "individualId": "cellzind-2Abb9c7A",
+      "runDate": "2026-10-09T11:03:46.302074"
+     },
+     {
+      "biosampleId": "cellzbs-b1365409",
+      "id": "cellzcs-t133xo0t",
+      "individualId": "cellzind-12d73bcB",
+      "runDate": "2026-10-09T11:03:46.302076"
+     },
+     {
+      "biosampleId": "cellzbs-7de5a5CF",
+      "id": "cellzcs-t1u8s5qv",
+      "individualId": "cellzind-cd3f9f94",
+      "runDate": "2026-10-09T11:03:46.302078"
+     },
+     {
+      "biosampleId": "cellzbs-ff591824",
+      "id": "cellzcs-thvn91f3",
+      "individualId": "cellzind-d0cB0bff",
+      "runDate": "2026-10-09T11:03:46.302080"
+     },
+     {
+      "biosampleId": "cellzbs-E3AbDBe4",
+      "id": "cellzcs-tmr8k919",
+      "individualId": "cellzind-E65f38ab",
+      "runDate": "2026-10-09T11:03:46.302082"
+     },
+     {
+      "biosampleId": "cellzbs-f6552B3C",
+      "id": "cellzcs-uz0aa3r4",
+      "individualId": "cellzind-cd3f9f94",
+      "runDate": "2026-10-09T11:03:46.302084"
+     },
+     {
+      "biosampleId": "cellzbs-24e7042E",
+      "id": "cellzcs-v8uze5im",
+      "individualId": "cellzind-AF1fA5e7",
+      "runDate": "2026-10-09T11:03:46.302086"
+     },
+     {
+      "biosampleId": "cellzbs-f21ABd68",
+      "id": "cellzcs-vkbqnpzh",
+      "individualId": "cellzind-cb211adf",
+      "runDate": "2026-10-09T11:03:46.302088"
+     },
+     {
+      "biosampleId": "cellzbs-ba2E5dB3",
+      "id": "cellzcs-vv801tjm",
+      "individualId": "cellzind-C5F13fBf",
+      "runDate": "2026-10-09T11:03:46.302090"
+     },
+     {
+      "biosampleId": "cellzbs-418Cf5c1",
+      "id": "cellzcs-wg4vxx3m",
+      "individualId": "cellzind-bcFA4eC3",
+      "runDate": "2026-10-09T11:03:46.302091"
+     },
+     {
+      "biosampleId": "cellzbs-EAB2EeF0",
+      "id": "cellzcs-wjozkzti",
+      "individualId": "cellzind-390e14d6",
+      "runDate": "2026-10-09T11:03:46.302093"
+     },
+     {
+      "biosampleId": "cellzbs-AeA9d612",
+      "id": "cellzcs-wpcu3gz5",
+      "individualId": "cellzind-24edA6Af",
+      "runDate": "2026-10-09T11:03:46.302095"
+     },
+     {
+      "biosampleId": "cellzbs-c5188d2b",
+      "id": "cellzcs-wsq5ne5x",
+      "individualId": "cellzind-A0CdDac0",
+      "runDate": "2026-10-09T11:03:46.302097"
+     },
+     {
+      "biosampleId": "cellzbs-2a30d23d",
+      "id": "cellzcs-xksc2dnm",
+      "individualId": "cellzind-CfBa7Ec2",
+      "runDate": "2026-10-09T11:03:46.302099"
+     },
+     {
+      "biosampleId": "cellzbs-fC9eabD6",
+      "id": "cellzcs-xzg7cqog",
+      "individualId": "cellzind-B43fF6C2",
+      "runDate": "2026-10-09T11:03:46.302101"
+     },
+     {
+      "biosampleId": "cellzbs-EE7aaaCb",
+      "id": "cellzcs-ybpwzw9i",
+      "individualId": "cellzind-C105eFa0",
+      "runDate": "2026-10-09T11:03:46.302102"
+     },
+     {
+      "biosampleId": "cellzbs-58b4Ef9c",
+      "id": "cellzcs-yesg5d54",
+      "individualId": "cellzind-ABd580e7",
+      "runDate": "2026-10-09T11:03:46.302104"
+     },
+     {
+      "biosampleId": "cellzbs-eD79CEfd",
+      "id": "cellzcs-yxyp7tes",
+      "individualId": "cellzind-cd3f9f94",
+      "runDate": "2026-10-09T11:03:46.302106"
+     },
+     {
+      "biosampleId": "cellzbs-FdBFaF6c",
+      "id": "cellzcs-z6wgub0x",
+      "individualId": "cellzind-4dFbdBB4",
+      "runDate": "2026-10-09T11:03:46.302107"
+     },
+     {
+      "biosampleId": "cellzbs-EeA8AC3e",
+      "id": "cellzcs-z9nwsfc4",
+      "individualId": "cellzind-66DDAdaC",
+      "runDate": "2026-10-09T11:03:46.302109"
+     },
+     {
+      "biosampleId": "cellzbs-2091c9C6",
+      "id": "cellzcs-zleoh5q1",
+      "individualId": "cellzind-330aBdD9",
+      "runDate": "2026-10-09T11:03:46.302111"
+     }
+    ],
+    "resultsCount": 278,
+    "resultsHandovers": [],
+    "setType": "dataset"
+   }
+  ]
+ },
+ "responseSummary": {
+  "exists": true,
+  "numTotalResults": 278
+ }
+}

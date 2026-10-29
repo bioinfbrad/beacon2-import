@@ -112,9 +112,10 @@
             </output>
             <output name="outcomes">
                 <assert_contents>
-                    <has_line_matching expression="^org\.progenetix\.beacon\t[^\t]*\tCNV\t[^\t]*\tok\t.*"/>
-                    <has_line_matching expression="^org\.cancercelllines\t[^\t]*\tCNV\t[^\t]*\tok\t.*"/>
+                    <has_line_matching expression="^org\.progenetix\.beacon\t[^\t]*\tCNV\t[^\t]*\tok\t313\t.*"/>
+                    <has_line_matching expression="^org\.cancercelllines\t[^\t]*\tCNV\t[^\t]*\tok\t1\t.*"/>
                     <has_n_lines n="3"/>
+                    <has_text text="304 duplicate observations removed"/>
                 </assert_contents>
             </output>
         </test>
@@ -137,7 +138,7 @@
             </output>
             <output name="outcomes">
                 <assert_contents>
-                    <has_line_matching expression="^test\.fixture\.bracketless\t[^\t]*\tCNV\t[^\t]*\tok\t.*"/>
+                    <has_line_matching expression="^test\.fixture\.bracketless\t[^\t]*\tCNV\t[^\t]*\tok\t2\t.*"/>
                     <has_text text="bracket"/>
                     <has_text text="range"/>
                 </assert_contents>
@@ -160,7 +161,7 @@
             </section>
             <output name="outcomes">
                 <assert_contents>
-                    <has_line_matching expression="^test\.fixture\.bracketless\t[^\t]*\tCNV\t[^\t]*\tskipped\t.*"/>
+                    <has_line_matching expression="^test\.fixture\.bracketless\t[^\t]*\tCNV\t[^\t]*\tskipped\t0\t.*"/>
                 </assert_contents>
             </output>
         </test>
@@ -189,7 +190,7 @@
             </output>
             <output name="outcomes">
                 <assert_contents>
-                    <has_line_matching expression="^org\.cancercelllines\t[^\t]*\tCNV\t[^\t]*\tok\t.*"/>
+                    <has_line_matching expression="^org\.cancercelllines\t[^\t]*\tCNV\t[^\t]*\tok\t540\t.*"/>
                 </assert_contents>
             </output>
         </test>

@@ -138,6 +138,9 @@ def _capability(provider_id: str, raw: dict[str, Any],
         # Unset means UNKNOWN, never "pages": an undeclared provider is not
         # trusted to page contiguously. See schema.pagination_behaviour.
         pagination_behaviour=str(raw.get("pagination_behaviour") or "unknown"),
+        gene_query_transport=str(raw.get("gene_query_transport") or "post"),
+        sequence_query_mode=str(raw.get("sequence_query_mode") or "server"),
+        small_variant_type_filter=str(raw.get("small_variant_type_filter") or ""),
         full_retrieval=str(raw.get("full_retrieval") or "unknown"),
         total_counts_unit=str(raw.get("total_counts_unit") or "records"),
         info_counts_individuals_reliable=bool(

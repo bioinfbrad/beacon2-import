@@ -37,6 +37,7 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Sequence
 
+from .filters import requires_post
 from ..registry.schema import ProviderCapability
 from .classes import VariantClass
 from .model import Query
@@ -55,6 +56,9 @@ class DegradationKind(str, Enum):
     ASSEMBLY_SUBSTITUTED = "assembly_substituted"
     NESTED_PATH_UNAVAILABLE = "nested_path_unavailable"
     COALESCENCE_FALLBACK = "coalescence_rejected_requeried_per_class"
+    #: An SO term for the small-variant class, not sent to a provider that
+    #: returns nothing for one (adapters.base.wire_query).
+    SMALL_VARIANT_TERM_NOT_SENT = "small_variant_term_not_sent"
 
 
 class SkipKind(str, Enum):
@@ -71,6 +75,9 @@ class SkipKind(str, Enum):
     #: A later page was requested from a provider whose pages are independent
     #: random draws. Refused at plan time rather than sent (R5).
     PAGINATION_UNSUPPORTED = "pagination_unsupported"
+    #: A gene query to a provider that resolves genes only by GET, carrying an
+    #: alphanumeric filter, which only POST can encode.
+    GENE_FILTER_UNSUPPORTED = "gene_filter_unsupported"
 
 
 @dataclass(frozen=True)
@@ -261,6 +268,12 @@ def plan_pair(
     Checks run from the most fundamental reason not to query to the least, so
     the skip a user reads is the one that actually decided it.
     """
+    if (getattr(query.form, "value", query.form) == "geneId"
+            and provider.gene_query_transport == "get" and requires_post(query.filters)):
+        return _skip(query, provider, SkipKind.GENE_FILTER_UNSUPPORTED,
+                     f"{provider.name} resolves gene symbols only by GET, which cannot carry "
+                     f"an alphanumeric filter. Query the gene's coordinates with a range "
+                     f"query instead, which can.")
     from ..adapters.base import PaginationUnsupported, adapter_for
     from ..registry.schema import ClassStatus
     from .classes import incoherent_parameters, is_queryable_today, legal_for
@@ -319,6 +332,15 @@ def plan_pair(
         else:
             return _skip(query, provider, SkipKind.FORM_UNSUPPORTED,
                          f"{provider.name} does not support {form} queries")
+
+    if (query.variant_class is VariantClass.SMALL_VARIANT
+            and provider.small_variant_type_filter == "unsupported"
+            and str(query.variant_type or "").startswith("SO:")):
+        degradations.append(Degradation(
+            DegradationKind.SMALL_VARIANT_TERM_NOT_SENT, provider.id, query.variant_class,
+            f"{query.variant_type} not sent: {provider.name} returns nothing for small-variant "
+            f"SO terms, so every small variant in the region was retrieved and the term was "
+            f"not applied"))
 
     query, capped = _cap_granularity(query, provider)
     degradations.extend(capped)

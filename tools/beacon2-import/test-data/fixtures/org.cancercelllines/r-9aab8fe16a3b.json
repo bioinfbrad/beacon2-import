@@ -1,0 +1,83 @@
+{
+ "meta": {
+  "apiVersion": "v2.3.0-beaconplus",
+  "beaconId": "org.cancercelllines",
+  "receivedRequestSummary": {
+   "apiVersion": "v2.3.0-beaconplus",
+   "beaconId": "org.cancercelllines",
+   "datasetIds": [
+    "cellz"
+   ],
+   "filters": [
+    {
+     "id": "NCIT:C3058",
+     "includeDescendantTerms": true
+    }
+   ],
+   "includeResultsetResponses": "HIT",
+   "pagination": {
+    "limit": 1,
+    "skip": 0
+   },
+   "requestedGranularity": "record",
+   "requestedSchemas": [
+    {
+     "id": "analysis",
+     "name": "Default schema for a bioinformatics analysis",
+     "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/analysis",
+     "schemaVersion": "v2.2.0"
+    }
+   ],
+   "testMode": false
+  },
+  "returnedGranularity": "record",
+  "returnedSchemas": [
+   {
+    "id": "analysis",
+    "name": "Default schema for a bioinformatics analysis",
+    "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/analysis",
+    "schemaVersion": "v2.2.0"
+   }
+  ],
+  "testMode": false
+ },
+ "response": {
+  "resultSets": [
+   {
+    "exists": true,
+    "id": "cellz",
+    "info": {
+     "counts": {
+      "analyses": 278,
+      "biosamples": 400,
+      "individuals": 184
+     }
+    },
+    "responseEntityId": "analysis",
+    "results": [
+     {
+      "analysisDate": "2026-10-09",
+      "assemblyId": "GRCh38",
+      "biosampleId": "cellzbs-d1eBCde6",
+      "id": "cellzcs-09onkm2e",
+      "individualId": "cellzind-F2c1FD3d",
+      "label": "G-1187GM (CVCL_UN48)",
+      "operation": {
+       "id": "EDAM:operation_3227",
+       "label": "Variant Calling"
+      },
+      "pipelineName": "progenetix",
+      "variantClass": "SNV"
+     }
+    ],
+    "resultsCount": 278,
+    "resultsHandovers": [],
+    "setType": "dataset"
+   }
+  ]
+ },
+ "responseSummary": {
+  "exists": true,
+  "numTotalResults": 278
+ }
+}

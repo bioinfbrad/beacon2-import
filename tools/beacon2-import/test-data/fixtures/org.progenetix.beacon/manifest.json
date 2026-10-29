@@ -1,0 +1,454 @@
+{
+ "entries": [
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://progenetix.org/beacon; used by beacon2_sequence#1, beacon2_sequence#3",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/g_variants",
+    "query": {
+     "alternateBases": "T",
+     "pagination": {
+      "limit": 1,
+      "skip": 0
+     },
+     "referenceBases": "C",
+     "referenceName": "17",
+     "requestedGranularity": "record",
+     "start": [
+      7673801
+     ]
+    }
+   },
+   "response": "r-d148b6790333.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://progenetix.org/beacon; used by beacon2_cnv#1",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/g_variants",
+    "query": {
+     "end": [
+      198169247
+     ],
+     "filters": [
+      {
+       "id": "NCIT:C3058",
+       "includeDescendantTerms": true
+      }
+     ],
+     "pagination": {
+      "limit": 1,
+      "skip": 0
+     },
+     "referenceName": "3",
+     "requestedGranularity": "record",
+     "start": [
+      195728637
+     ],
+     "variantType": "EFO:0030072"
+    }
+   },
+   "response": "r-cc7c0cc2afb9.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://progenetix.org/beacon; used by beacon2_cnv#1",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/g_variants",
+    "query": {
+     "end": [
+      198169247
+     ],
+     "filters": [
+      {
+       "id": "NCIT:C3058",
+       "includeDescendantTerms": true
+      }
+     ],
+     "pagination": {
+      "limit": 2000,
+      "skip": 0
+     },
+     "referenceName": "3",
+     "requestedGranularity": "record",
+     "start": [
+      195728637
+     ],
+     "variantType": "EFO:0030072"
+    }
+   },
+   "response": "r-bf7ead6fe9fe.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://progenetix.org/beacon; used by beacon2_range#4",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/g_variants",
+    "query": {
+     "end": [
+      7578641
+     ],
+     "filters": [
+      {
+       "id": "NCIT:C3058",
+       "includeDescendantTerms": false
+      }
+     ],
+     "pagination": {
+      "limit": 1,
+      "skip": 0
+     },
+     "referenceName": "17",
+     "requestedGranularity": "record",
+     "start": [
+      7572836
+     ],
+     "variantType": "EFO:0020073"
+    }
+   },
+   "response": "r-0aea4a656f6e.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://progenetix.org/beacon; used by beacon2_range#4",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/g_variants",
+    "query": {
+     "end": [
+      7578641
+     ],
+     "filters": [
+      {
+       "id": "NCIT:C3058",
+       "includeDescendantTerms": false
+      }
+     ],
+     "pagination": {
+      "limit": 2000,
+      "skip": 0
+     },
+     "referenceName": "17",
+     "requestedGranularity": "record",
+     "start": [
+      7572836
+     ],
+     "variantType": "EFO:0020073"
+    }
+   },
+   "response": "r-c6af69fb5422.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://progenetix.org/beacon; used by beacon2_range#1",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/g_variants",
+    "query": {
+     "end": [
+      7578641
+     ],
+     "filters": [
+      {
+       "id": "NCIT:C3058",
+       "includeDescendantTerms": true
+      }
+     ],
+     "pagination": {
+      "limit": 1,
+      "skip": 0
+     },
+     "referenceName": "17",
+     "requestedGranularity": "record",
+     "start": [
+      7572836
+     ],
+     "variantType": "EFO:0020073"
+    }
+   },
+   "response": "r-d90354ef6d9b.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://progenetix.org/beacon; used by beacon2_range#1",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/g_variants",
+    "query": {
+     "end": [
+      7578641
+     ],
+     "filters": [
+      {
+       "id": "NCIT:C3058",
+       "includeDescendantTerms": true
+      }
+     ],
+     "pagination": {
+      "limit": 2000,
+      "skip": 0
+     },
+     "referenceName": "17",
+     "requestedGranularity": "record",
+     "start": [
+      7572836
+     ],
+     "variantType": "EFO:0020073"
+    }
+   },
+   "response": "r-7078efbe4a66.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://progenetix.org/beacon; used by beacon2_range#2",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/g_variants",
+    "query": {
+     "end": [
+      7578641
+     ],
+     "pagination": {
+      "limit": 1,
+      "skip": 0
+     },
+     "referenceName": "17",
+     "requestedGranularity": "record",
+     "start": [
+      7572836
+     ]
+    }
+   },
+   "response": "r-fa3010a07bec.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://progenetix.org/beacon; used by beacon2_bracket#1",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/g_variants",
+    "query": {
+     "end": [
+      7669607,
+      10000000
+     ],
+     "filters": [
+      {
+       "id": "NCIT:C3058",
+       "includeDescendantTerms": true
+      }
+     ],
+     "pagination": {
+      "limit": 1,
+      "skip": 0
+     },
+     "referenceName": "17",
+     "requestedGranularity": "record",
+     "start": [
+      4999999,
+      7676591
+     ],
+     "variantType": "EFO:0020073"
+    }
+   },
+   "response": "r-90d81c4a649b.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://progenetix.org/beacon; used by beacon2_bracket#1",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/g_variants",
+    "query": {
+     "end": [
+      7669607,
+      10000000
+     ],
+     "filters": [
+      {
+       "id": "NCIT:C3058",
+       "includeDescendantTerms": true
+      }
+     ],
+     "pagination": {
+      "limit": 1,
+      "skip": 0
+     },
+     "referenceName": "17",
+     "requestedGranularity": "record",
+     "start": [
+      4999999,
+      7676591
+     ],
+     "variantType": "EFO:0030067"
+    }
+   },
+   "response": "r-b51963041571.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://progenetix.org/beacon; used by beacon2_bracket#1",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/g_variants",
+    "query": {
+     "end": [
+      7669607,
+      10000000
+     ],
+     "filters": [
+      {
+       "id": "NCIT:C3058",
+       "includeDescendantTerms": true
+      }
+     ],
+     "pagination": {
+      "limit": 1,
+      "skip": 0
+     },
+     "referenceName": "17",
+     "requestedGranularity": "record",
+     "start": [
+      4999999,
+      7676591
+     ],
+     "variantType": "EFO:0030068"
+    }
+   },
+   "response": "r-4321a7e33115.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://progenetix.org/beacon; used by beacon2_bracket#1",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/g_variants",
+    "query": {
+     "end": [
+      7669607,
+      10000000
+     ],
+     "filters": [
+      {
+       "id": "NCIT:C3058",
+       "includeDescendantTerms": true
+      }
+     ],
+     "pagination": {
+      "limit": 1,
+      "skip": 0
+     },
+     "referenceName": "17",
+     "requestedGranularity": "record",
+     "start": [
+      4999999,
+      7676591
+     ],
+     "variantType": "EFO:0030069"
+    }
+   },
+   "response": "r-349e2d040775.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://progenetix.org/beacon; used by beacon2_bracket#1",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/g_variants",
+    "query": {
+     "end": [
+      7669607,
+      10000000
+     ],
+     "filters": [
+      {
+       "id": "NCIT:C3058",
+       "includeDescendantTerms": true
+      }
+     ],
+     "pagination": {
+      "limit": 2000,
+      "skip": 0
+     },
+     "referenceName": "17",
+     "requestedGranularity": "record",
+     "start": [
+      4999999,
+      7676591
+     ],
+     "variantType": "EFO:0020073"
+    }
+   },
+   "response": "r-12041d21bdd5.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://progenetix.org/beacon; used by beacon2_bracket#1",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/g_variants",
+    "query": {
+     "end": [
+      7669607,
+      10000000
+     ],
+     "filters": [
+      {
+       "id": "NCIT:C3058",
+       "includeDescendantTerms": true
+      }
+     ],
+     "pagination": {
+      "limit": 2000,
+      "skip": 0
+     },
+     "referenceName": "17",
+     "requestedGranularity": "record",
+     "start": [
+      4999999,
+      7676591
+     ],
+     "variantType": "EFO:0030067"
+    }
+   },
+   "response": "r-8b0c23b5631c.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://progenetix.org/beacon; used by beacon2_bracket#1",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/g_variants",
+    "query": {
+     "end": [
+      7669607,
+      10000000
+     ],
+     "filters": [
+      {
+       "id": "NCIT:C3058",
+       "includeDescendantTerms": true
+      }
+     ],
+     "pagination": {
+      "limit": 2000,
+      "skip": 0
+     },
+     "referenceName": "17",
+     "requestedGranularity": "record",
+     "start": [
+      4999999,
+      7676591
+     ],
+     "variantType": "EFO:0030068"
+    }
+   },
+   "response": "r-141771a3dac5.json"
+  }
+ ],
+ "format": "beacon2-fixtures/2"
+}

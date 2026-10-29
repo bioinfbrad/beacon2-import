@@ -246,6 +246,17 @@ class ProviderCapability:
     #: never decides whether a short retrieval is REPORTED as partial -- that is
     #: observed in every response, whatever the registry says.
     pagination_behaviour: str = "unknown"
+    #: post | get. bycon resolves geneId only over GET: every POST form returns
+    #: zero (observed: TP53 69,662 by GET, 0 by POST, on Progenetix).
+    gene_query_transport: str = "post"
+    #: server | range_then_filter. bycon's sequence matching misses stored
+    #: alleles (observed: R273H stored at 7673801 C>T, sequence query 0), so a
+    #: range over the position is sent and alleles are matched client-side.
+    sequence_query_mode: str = "server"
+    #: "" undeclared | unsupported | an SO term the provider filters small
+    #: variants by. cancercelllines returns 0 for SO:0001483 and SO:0001059
+    #: although it labels its own small variants SO:0001059.
+    small_variant_type_filter: str = ""
     #: OBSERVED: limit 0 is honoured as "all".
     full_retrieval: str = "unknown"            # limit_0_honoured | unknown
     #: OBSERVED: numTotalResults counts caseLevelData ENTRIES (per-sample

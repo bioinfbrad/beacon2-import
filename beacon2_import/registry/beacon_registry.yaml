@@ -186,6 +186,16 @@ providers:
     #: identical runs overlapped on 22 of ~295 rows. Never page; retrieve all
     #: and verify, or refuse.
     pagination_behaviour: random_subset_below_total
+    #: OBSERVED 2026-10-26: GET geneId is resolved; every POST form returns 0 (TP53:
+    #: 69,662 by GET, 0 by POST). Controls: CDKN2A differs and matches
+    #: its own span exactly; a nonsense symbol is rejected with HTTP 422.
+    gene_query_transport: get
+    #: OBSERVED 2026-10-26: every sequence form returns 0, though a complete range
+    #: listing holds R273H at exactly 7673801 C>T. Sent as a range over the
+    #: position; alleles matched client-side (normalise/verify.py).
+    sequence_query_mode: range_then_filter
+    #: OBSERVED 2026-10-26: observed: SO:0001483 277 and SO:0001059 531 over TP53, expanding to deletions (SO:0000159) and insertions (SO:0000667).
+    small_variant_type_filter: "SO:0001059"
     #: Not observed on this instance (it is on cancercelllines, same stack and
     #: version): until it is, full retrieval asks for the reported total.
     full_retrieval: unknown
@@ -245,6 +255,9 @@ providers:
         - pagination_behaviour
         - test_mode_supported
         - variant_classes_served.SMALL_VARIANT
+        - gene_query_transport
+        - sequence_query_mode
+        - small_variant_type_filter
       documented:
         - default_pagination_limit
         - request_layout
@@ -268,7 +281,12 @@ providers:
         actionable if one ever appears. Scale: unfiltered CDKN2A losses are
         57,677 instances, above the default 10,000 ceiling, so an unfiltered
         search of a common region is refused with a suggestion to filter; with
-        NCIT:C3058 the same query is 4,182.
+        NCIT:C3058 the same query is 4,182. ALLELES (observed 2026-10-26): its
+        small-variant records are labelled SO:0001483 (SNV) but structured as
+        one-base deletions with an EMPTY alternate allele, and its own ids end in
+        a bare colon (all 277 TP53 SO:0001483 records). Its conversion appears to
+        drop the alternate allele, so no allele-specific query can match here;
+        the tool says so in the outcome rather than reporting a plain zero.
         Flat request layout and lowercase `assemblyid` are corroborated by a
         published POST example placing parameters directly under
         requestParameters with datasets.datasetIds nested inside. That example
@@ -309,6 +327,16 @@ providers:
     #: zero overlap, testMode off. Pages are independent draws, so paging is
     #: sampling WITH REPLACEMENT -- duplicates and gaps, indistinguishable.
     pagination_behaviour: random_subset_below_total
+    #: OBSERVED 2026-10-26: GET geneId is resolved; every POST form returns 0 (TP53:
+    #: 2,487 by GET, 0 by POST). Controls: CDKN2A differs and matches
+    #: its own span exactly; a nonsense symbol is rejected with HTTP 422.
+    gene_query_transport: get
+    #: OBSERVED 2026-10-26: every sequence form returns 0, though a complete range
+    #: listing holds R273H at exactly 7673801 C>T. Sent as a range over the
+    #: position; alleles matched client-side (normalise/verify.py).
+    sequence_query_mode: range_then_filter
+    #: OBSERVED 2026-10-26: observed: 0 for SO:0001483 and for SO:0001059 over TP53, although its own small variants are labelled SO:0001059.
+    small_variant_type_filter: "unsupported"
     #: OBSERVED: limit 0 is honoured as "all"; ~1700 records served in one shot
     #: with no cap encountered.
     full_retrieval: limit_0_honoured
@@ -411,10 +439,14 @@ providers:
           documentation, which describes it as a mostly CNV-containing resource.
         observed: "2026-09-08"
       SMALL_VARIANT:
-        status: "unknown"
-        evidence_source: none
-        evidence: Not evidenced.
-        observed: null
+        status: "yes"
+        evidence_source: query_observation
+        evidence: >-
+          An exhaustive range listing of the TP53 codon-273 window (1,304
+          records, 1,730 of 1,730 instances) holds small variants with explicit
+          alleles, labelled SO:0001059: R273L (7673801 C>A), R273H (7673801
+          C>T), R273C (7673802 G>A).
+        observed: "2026-10-26"
       SV:
         status: "unknown"
         evidence_source: none
@@ -442,6 +474,10 @@ providers:
         - full_retrieval
         - total_counts_unit
         - info_counts_individuals_reliable
+        - variant_classes_served.SMALL_VARIANT
+        - gene_query_transport
+        - sequence_query_mode
+        - small_variant_type_filter
       documented:
         - request_layout
         - entity_paths

@@ -1,0 +1,75 @@
+{
+ "meta": {
+  "apiVersion": "v2.3.0-beaconplus",
+  "beaconId": "org.cancercelllines",
+  "receivedRequestSummary": {
+   "apiVersion": "v2.3.0-beaconplus",
+   "beaconId": "org.cancercelllines",
+   "datasetIds": [
+    "cellz"
+   ],
+   "filters": [
+    {
+     "id": "NCIT:C3058",
+     "includeDescendantTerms": true
+    }
+   ],
+   "includeResultsetResponses": "HIT",
+   "pagination": {
+    "limit": 1,
+    "skip": 0
+   },
+   "requestedGranularity": "record",
+   "requestedSchemas": [
+    {
+     "id": "run",
+     "name": "Default schema for a sequencing run",
+     "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/run",
+     "schemaVersion": "v2.2.0"
+    }
+   ],
+   "testMode": false
+  },
+  "returnedGranularity": "record",
+  "returnedSchemas": [
+   {
+    "id": "run",
+    "name": "Default schema for a sequencing run",
+    "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/run",
+    "schemaVersion": "v2.2.0"
+   }
+  ],
+  "testMode": false
+ },
+ "response": {
+  "resultSets": [
+   {
+    "exists": true,
+    "id": "cellz",
+    "info": {
+     "counts": {
+      "analyses": 278,
+      "biosamples": 400,
+      "individuals": 184
+     }
+    },
+    "responseEntityId": "run",
+    "results": [
+     {
+      "biosampleId": "cellzbs-d1eBCde6",
+      "id": "cellzcs-09onkm2e",
+      "individualId": "cellzind-F2c1FD3d",
+      "runDate": "2026-10-09T11:03:44.419802"
+     }
+    ],
+    "resultsCount": 278,
+    "resultsHandovers": [],
+    "setType": "dataset"
+   }
+  ]
+ },
+ "responseSummary": {
+  "exists": true,
+  "numTotalResults": 278
+ }
+}

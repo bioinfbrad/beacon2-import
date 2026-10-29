@@ -1,0 +1,45 @@
+{
+ "meta": {
+  "apiVersion": "v2.3.0-beaconplus",
+  "beaconId": "org.cancercelllines",
+  "receivedRequestSummary": {
+   "apiVersion": "v2.3.0-beaconplus",
+   "beaconId": "org.cancercelllines",
+   "datasetIds": [
+    "cellz"
+   ],
+   "includeResultsetResponses": "HIT",
+   "pagination": {
+    "limit": 1,
+    "skip": 0
+   },
+   "requestedGranularity": "record",
+   "requestedSchemas": [
+    {
+     "id": "genomicVariant",
+     "name": "Default schema for a genomic variation",
+     "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/genomicVariant",
+     "schemaVersion": "v2.2.0"
+    }
+   ],
+   "testMode": false
+  },
+  "returnedGranularity": "record",
+  "returnedSchemas": [
+   {
+    "id": "genomicVariant",
+    "name": "Default schema for a genomic variation",
+    "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/genomicVariant",
+    "schemaVersion": "v2.2.0"
+   }
+  ],
+  "testMode": false
+ },
+ "response": {
+  "resultSets": []
+ },
+ "responseSummary": {
+  "exists": false,
+  "numTotalResults": 0
+ }
+}

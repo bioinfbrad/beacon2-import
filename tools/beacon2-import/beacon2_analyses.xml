@@ -120,11 +120,12 @@
                 <assert_contents>
                     <has_line_matching expression="^org\.cancercelllines\t.*"/>
                     <has_text text="analysis_id"/>
+                    <has_n_lines n="279"/>
                 </assert_contents>
             </output>
             <output name="outcomes">
                 <assert_contents>
-                    <has_line_matching expression="^org\.cancercelllines\t[^\t]*\tn/a\t[^\t]*\tok\t.*"/>
+                    <has_line_matching expression="^org\.cancercelllines\t[^\t]*\tn/a\t[^\t]*\tok\t278\t.*"/>
                     <has_n_lines n="2"/>
                 </assert_contents>
             </output>

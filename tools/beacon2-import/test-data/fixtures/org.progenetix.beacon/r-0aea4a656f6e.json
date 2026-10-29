@@ -1,0 +1,103 @@
+{
+ "meta": {
+  "apiVersion": "v2.3.0-beaconplus",
+  "beaconId": "org.progenetix",
+  "receivedRequestSummary": {
+   "apiVersion": "v2.3.0-beaconplus",
+   "beaconId": "org.progenetix",
+   "datasetIds": [
+    "progenetix"
+   ],
+   "filters": [
+    {
+     "id": "NCIT:C3058",
+     "includeDescendantTerms": false
+    }
+   ],
+   "includeResultsetResponses": "HIT",
+   "pagination": {
+    "limit": 1,
+    "skip": 0
+   },
+   "requestedGranularity": "record",
+   "requestedSchemas": [
+    {
+     "id": "genomicVariant",
+     "name": "Default schema for a genomic variation",
+     "referenceToSchemaDefinition": "https://progenetix.org/services/schemas/genomicVariant",
+     "schemaVersion": "v2.2.0"
+    }
+   ],
+   "testMode": false
+  },
+  "returnedGranularity": "record",
+  "returnedSchemas": [
+   {
+    "id": "genomicVariant",
+    "name": "Default schema for a genomic variation",
+    "referenceToSchemaDefinition": "https://progenetix.org/services/schemas/genomicVariant",
+    "schemaVersion": "v2.2.0"
+   }
+  ],
+  "testMode": false
+ },
+ "response": {
+  "resultSets": [
+   {
+    "exists": true,
+    "id": "progenetix",
+    "info": {
+     "counts": {
+      "analyses": 53,
+      "biosamples": 53,
+      "individuals": 52,
+      "variants": 53
+     }
+    },
+    "responseEntityId": "genomicVariant",
+    "results": [
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftx0mzt",
+        "biosampleId": "pgxbs-kftvl8ta",
+        "individualId": "pgxind-kftx7ish",
+        "variantId": "bycvar-66e2dec1f9e005aa5fa5e8e7"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:7312798-7677333:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 7677333,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 7312798,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     }
+    ],
+    "resultsCount": 53,
+    "resultsHandovers": [],
+    "setType": "dataset"
+   }
+  ]
+ },
+ "responseSummary": {
+  "exists": true,
+  "numTotalResults": 53
+ }
+}

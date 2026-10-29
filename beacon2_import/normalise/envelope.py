@@ -2,6 +2,10 @@
 
 Handled shapes:
   * ``response.resultSets[].results`` (record granularity, normative)
+  * ``response.collections`` -- the Beacon v2 COLLECTIONS response, which the
+    collection endpoints (cohorts, datasets) return instead of result sets.
+    Observed on cancercelllines: 6 cohorts and 4 datasets, each in
+    `collections`. Reading only resultSets saw zero records and refused them.
   * flat ``response.results`` (used by some bycon endpoints)
   * ``responseSummary`` with an EMPTY ``resultSets`` -- a legitimate "no
     matches", which must be distinguishable from an error and from
@@ -188,6 +192,10 @@ def parse(body: dict[str, Any]) -> Envelope:
     result_sets: list[ResultSetMeta] = []
     records: list[dict[str, Any]] = []
     entity_ids: list[str] = []
+    # A collections response carries its records directly, with no result sets.
+    for collection in response.get("collections") or []:
+        if isinstance(collection, dict):
+            records.append(collection)
     for result_set in response.get("resultSets") or []:
         if not isinstance(result_set, dict):
             continue

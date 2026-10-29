@@ -13,6 +13,7 @@ point at a ``.test`` data table whose base URLs are file:// paths.
 
 from __future__ import annotations
 
+import gzip
 import hashlib
 import json
 import time
@@ -26,6 +27,19 @@ from ..auth.resolver import Secret
 
 class BeaconHttpError(Exception):
     """Base for transport failures that become an ``error`` row, not a crash."""
+
+
+class RequestRejected(BeaconHttpError):
+    """The provider rejected the request itself (400, 404, 422...): not retried.
+
+    Kept apart from AuthRequired: an unknown gene symbol answered with 422 was
+    once classified as an authorisation failure, because every 4xx other than
+    401/403/429 fell through to AUTH.
+    """
+
+    def __init__(self, message: str, status: int | None = None):
+        super().__init__(message)
+        self.status = status
 
 
 class AuthRequired(BeaconHttpError):
@@ -112,6 +126,7 @@ class TransportFailure(str, Enum):
     BLOCKED = "blocked"            # edge challenge on a 403/429
     AUTH = "auth"                  # genuine Beacon authorisation refusal
     RATE_LIMITED = "rate_limited"  # 429 from the application
+    REJECTED = "rejected"          # any other 4xx: the request itself refused
 
 
 @dataclass
@@ -219,6 +234,10 @@ class BeaconClient:
                 TransportFailure.RATE_LIMITED if has_envelope
                 else TransportFailure.BLOCKED
             )
+        if 400 <= int(status) <= 499:
+            # 400, 404, 422...: the request was understood and refused. Never
+            # AUTH -- an unknown gene symbol (422) is not an authorisation issue.
+            return TransportFailure.REJECTED
         return TransportFailure.AUTH if has_envelope else TransportFailure.BLOCKED
 
     @staticmethod
@@ -344,6 +363,8 @@ class BeaconClient:
             return ProviderBlocked(detail)
         if failure is TransportFailure.RATE_LIMITED:
             return RateLimited(detail)
+        if failure is TransportFailure.REJECTED:
+            return RequestRejected(detail, status)
         return AuthRequired(detail)
 
 
@@ -479,7 +500,11 @@ class FixtureClient(BeaconClient):
                 f"There is no fallback: a request without its own recorded response "
                 f"fails. Record it with scripts/record_fixtures.py.")
         filename = matches[0]["response"]
-        payload = json.loads((self.fixture_dir / filename).read_text())
+        path = self.fixture_dir / filename
+        # Large recordings are stored gzipped, byte-for-byte, to keep the tool
+        # repository small; small ones stay plain JSON, readable in review.
+        raw = gzip.decompress(path.read_bytes()) if filename.endswith(".gz") else path.read_bytes()
+        payload = json.loads(raw.decode("utf-8"))
         return Response(
             status=int(payload.get("_status", 200)),
             body=payload,

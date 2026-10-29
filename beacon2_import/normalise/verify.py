@@ -51,6 +51,9 @@ class Region:
     semantics: str
     start: tuple[int | None, ...] = ()
     end: tuple[int | None, ...] = ()
+    #: (referenceBases, alternateBases) a sequence query asked for: a record
+    #: answers it only with the SAME alleles, never merely the same position.
+    alleles: tuple[str, str] | None = None
 
     def describe(self) -> str:
         where = f"chromosome {self.chromosome}" if self.chromosome else "any chromosome"
@@ -71,7 +74,9 @@ def region_for(query) -> Region | None:
     if form == "bracket":
         return Region(chromosome, "bracket", starts, ends)
     if form == "sequence":
-        return Region(chromosome, "position", starts)
+        alleles = ((str(query.reference_bases).upper(), str(query.alternate_bases).upper())
+                   if query.reference_bases and query.alternate_bases else None)
+        return Region(chromosome, "position", starts, alleles=alleles)
     return None
 
 
@@ -107,19 +112,28 @@ class Verification:
     outside_region: int = 0
     no_location: int = 0
     example: str = ""
+    other_allele: int = 0
+    missing_alternate: int = 0
     class_constrained: bool = False
     requested: tuple[VariantClass, ...] = ()
+    #: The provider was deliberately sent a WIDER request than asked -- a range
+    #: over a sequence query's position -- so records outside the position or
+    #: with other alleles are expected, not a sign of an ignored parameter.
+    superset: bool = False
 
     @property
     def excluded(self) -> int:
         return (sum(self.other_class.values()) + self.unclassified
-                + self.outside_region + self.no_location)
+                + self.outside_region + self.no_location + self.other_allele
+                + self.missing_alternate)
 
     @property
     def parameter_ignored(self) -> bool:
         """A sign the provider did not apply what was sent -- so its reported
         total no longer counts answers to this query, and cannot be exact."""
-        return self.outside_region > 0 or (
+        if self.superset:
+            return False
+        return self.outside_region > 0 or self.other_allele > 0 or (
             self.class_constrained and sum(self.other_class.values()) > 0)
 
     def notes(self) -> list[str]:
@@ -140,10 +154,24 @@ class Verification:
             out.append(f"{self.unclassified} records returned could not be classified from "
                        f"their own structure, so are not reported as {wanted}; they are "
                        f"excluded from the results")
-        if self.outside_region:
+        if self.superset:
+            out.append("matched client-side: this provider's sequence query does not return "
+                       "stored alleles, so a range over the position was retrieved and the "
+                       "position and alleles were matched here")
+            if self.outside_region or self.other_allele:
+                out.append(f"{self.outside_region + self.other_allele} records in that range "
+                           f"were at another position or had other alleles, and are excluded")
+        elif self.outside_region:
             out.append(f"{self.outside_region} records returned lay outside the requested "
                        f"region ({self.example}); the provider may have ignored a query "
                        f"parameter. They are excluded from the results")
+        if self.other_allele and not self.superset:
+            out.append(f"{self.other_allele} records returned at the requested position had "
+                       f"other alleles; the provider may have ignored a query parameter. They "
+                       f"are excluded from the results")
+        if self.missing_alternate:
+            out.append(f"{self.missing_alternate} records at this position have no recorded "
+                       f"alternate allele and cannot be matched")
         if self.no_location:
             out.append(f"{self.no_location} records returned carried no coordinates to check "
                        f"against the requested region; they are excluded from the results")
@@ -166,6 +194,51 @@ def _is_reference_length_expression(record: dict[str, Any]) -> bool:
     return isinstance(state, dict) and state.get("type") == "ReferenceLengthExpression"
 
 
+def record_alleles(record: dict[str, Any]) -> tuple[str | None, str | None]:
+    """(reference, alternate) from referenceBases/alternateBases or VRS forms; None if absent.
+
+    An EMPTY alternate is returned as "", not None: whether it means a true
+    deletion or a dropped allele, it cannot match an allele-specific query.
+    """
+    variation = record.get("variation") if isinstance(record.get("variation"), dict) else {}
+    reference = (variation.get("referenceBases") or record.get("referenceBases")
+                 or variation.get("referenceSequence"))
+    alternate = variation.get("alternateBases", record.get("alternateBases"))
+    state = variation.get("state")
+    if alternate is None and isinstance(state, dict):
+        if state.get("type") in ("LiteralSequenceExpression", "ReferenceLengthExpression"):
+            alternate = state.get("sequence")
+            length = state.get("length")
+            if alternate is None and state.get("type") == "ReferenceLengthExpression" \
+                    and isinstance(length, int):
+                # VRS 2.0: an RLE's sequence is DERIVED by repeating the
+                # reference's repeat subunit up to `length`.
+                unit = str(reference or "")[: int(state.get("repeatSubunitLength") or 0)
+                                             or len(str(reference or ""))]
+                alternate = (unit * (length // len(unit) + 1))[:length] if unit else (
+                    "" if length == 0 else None)
+    up = lambda value: None if value is None else str(value).upper()
+    return up(reference), up(alternate)
+
+
+def _indel_matches(record: dict[str, Any], reference: str, alternate: str,
+                   start: int, end: int) -> bool:
+    """A VRS repeat-indel answers an INDEL query with the same net length change.
+
+    VRS normalisation widens an indel in a repeat over the whole repeat, so its
+    alleles cannot be compared base by base with a VCF-style anchored query; its
+    net change in length can, and is invariant under that normalisation. SNV
+    queries never take this path.
+    """
+    if len(reference) == len(alternate):
+        return False
+    variation = record.get("variation") if isinstance(record.get("variation"), dict) else record
+    state = variation.get("state") if isinstance(variation, dict) else None
+    if not (isinstance(state, dict) and state.get("type") == "ReferenceLengthExpression"):
+        return False
+    return int(state.get("length", -1)) - (end - start) == len(alternate) - len(reference)
+
+
 def _in_region(region: Region, start: int, end: int, record: dict[str, Any]) -> bool:
     if region.semantics == "overlap":
         return start < region.end[0] and end > region.start[0]
@@ -180,6 +253,9 @@ def _in_region(region: Region, start: int, end: int, record: dict[str, Any]) -> 
         # VRS normalisation widens an indel in repetitive sequence over the whole
         # repeat (vrs docs/source/conventions/normalization.rst), so such a
         # ReferenceLengthExpression starts at the repeat, not at the queried base.
+        # INDEL queries only: an SNV query never matches a spanning interval.
+        if region.alleles and len(region.alleles[0]) == len(region.alleles[1]):
+            return False
         return _is_reference_length_expression(record) and start <= position <= end
     if region.semantics == "containment":
         low = region.start[0] if region.start else None
@@ -191,7 +267,8 @@ def _in_region(region: Region, start: int, end: int, record: dict[str, Any]) -> 
 def verify_records(records: Iterable[dict[str, Any]],
                    requested: Iterable[VariantClass] | None,
                    region: Region | None,
-                   constrained: bool = False) -> Verification:
+                   constrained: bool = False,
+                   superset: bool = False) -> Verification:
     """Classify every record from its own structure and check it answers the query.
 
     ``requested`` is the set of classes that would answer it, or None where any
@@ -199,7 +276,8 @@ def verify_records(records: Iterable[dict[str, Any]],
     :func:`region_for`, or None where the query had no coordinates.
     """
     wanted = tuple(requested) if requested is not None else ()
-    verification = Verification(class_constrained=constrained, requested=wanted)
+    verification = Verification(class_constrained=constrained, requested=wanted,
+                                superset=superset)
     for record in records:
         klass, basis = classify(record)
         if requested is not None and klass not in wanted:
@@ -225,5 +303,14 @@ def verify_records(records: Iterable[dict[str, Any]],
                 verification.example = verification.example or (
                     f"e.g. {chromosome}:{int(start) + 1}-{end} for {region.describe()}")
                 continue
+            if region.alleles:
+                reference, alternate = record_alleles(record)
+                if not alternate:
+                    verification.missing_alternate += 1
+                    continue
+                if (reference, alternate) != region.alleles and not _indel_matches(
+                        record, *region.alleles, int(start), int(end)):
+                    verification.other_allele += 1
+                    continue
         verification.kept.append(Checked(record, klass, basis))
     return verification

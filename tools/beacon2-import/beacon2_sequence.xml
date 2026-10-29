@@ -70,7 +70,7 @@
     </inputs>
     <expand macro="beacon_outputs"/>
     <tests>
-        <!-- A sequence query on a provider holding small variants. -->
+        <!-- R273H on Progenetix: none, as its small variants carry no alternate allele; the report says so. -->
         <test expect_num_outputs="2">
             <conditional name="connection">
                 <param name="transport" value="api"/>
@@ -84,11 +84,13 @@
             <param name="alternate_bases" value="T"/>
             <output name="outcomes">
                 <assert_contents>
-                    <has_line_matching expression="^org\.progenetix\.beacon\t[^\t]*\tSMALL_VARIANT\t[^\t]*\tok\t.*"/>
+                    <has_line_matching expression="^org\.progenetix\.beacon\t[^\t]*\tSMALL_VARIANT\t[^\t]*\tok\t0\t.*"/>
+                    <has_text text="no recorded alternate allele"/>
+                    <has_text text="matched client-side"/>
                 </assert_contents>
             </output>
         </test>
-        <!-- A class of unknown status: queried, and zero is not evidence of absence. -->
+        <!-- R273H on cancercelllines: found at 7673802 C>T, matched client-side. -->
         <test expect_num_outputs="2">
             <conditional name="connection">
                 <param name="transport" value="api"/>
@@ -99,10 +101,15 @@
             <param name="start" value="7673802"/>
             <param name="reference_bases" value="C"/>
             <param name="alternate_bases" value="T"/>
+            <output name="results">
+                <assert_contents>
+                    <has_line_matching expression="^org\.cancercelllines\t[^&#9;]*\t[^&#9;]*\tSMALL_VARIANT\t[^&#9;]*\t[^&#9;]*\t[^&#9;]*\t[^&#9;]*\t[^&#9;]*\t[^&#9;]*\t[^&#9;]*\t[^&#9;]*\t[^&#9;]*\t17\t7673802\t[^&#9;]*\t[^&#9;]*\tC\tT\t.*"/>
+                </assert_contents>
+            </output>
             <output name="outcomes">
                 <assert_contents>
                     <has_line_matching expression="^org\.cancercelllines\t[^\t]*\tSMALL_VARIANT\t[^\t]*\tok\t.*"/>
-                    <has_text text="unknown"/>
+                    <has_text text="matched client-side"/>
                 </assert_contents>
             </output>
         </test>
@@ -119,9 +126,10 @@
             <param name="alternate_bases" value="T"/>
             <output name="outcomes">
                 <assert_contents>
-                    <has_line_matching expression="^org\.progenetix\.beacon\t[^\t]*\tSMALL_VARIANT\t[^\t]*\tok\t.*"/>
-                    <has_line_matching expression="^org\.progenetix\.beacon\t[^\t]*\tCNV\t[^\t]*\tskipped\t.*"/>
+                    <has_line_matching expression="^org\.progenetix\.beacon\t[^\t]*\tSMALL_VARIANT\t[^\t]*\tok\t0\t.*"/>
+                    <has_line_matching expression="^org\.progenetix\.beacon\t[^\t]*\tCNV\t[^\t]*\tskipped\t0\t.*"/>
                     <has_n_lines n="3"/>
+                    <has_text text="no recorded alternate allele"/>
                 </assert_contents>
             </output>
         </test>
@@ -138,7 +146,7 @@
             <param name="alternate_bases" value="T"/>
             <output name="outcomes">
                 <assert_contents>
-                    <has_line_matching expression="^test\.fixture\.bracketless\t[^\t]*\tSV\t[^\t]*\tskipped\t.*"/>
+                    <has_line_matching expression="^test\.fixture\.bracketless\t[^\t]*\tSV\t[^\t]*\tskipped\t0\t.*"/>
                     <has_text text="does not serve"/>
                 </assert_contents>
             </output>
@@ -156,7 +164,7 @@
             <param name="alternate_bases" value="T"/>
             <output name="outcomes">
                 <assert_contents>
-                    <has_line_matching expression="^org\.progenetix\.beacon\t[^\t]*\tREPEAT\t[^\t]*\tskipped\t.*"/>
+                    <has_line_matching expression="^org\.progenetix\.beacon\t[^\t]*\tREPEAT\t[^\t]*\tskipped\t0\t.*"/>
                 </assert_contents>
             </output>
         </test>

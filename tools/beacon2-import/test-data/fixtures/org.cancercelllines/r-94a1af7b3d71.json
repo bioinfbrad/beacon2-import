@@ -1,0 +1,117 @@
+{
+ "meta": {
+  "apiVersion": "v2.3.0-beaconplus",
+  "beaconId": "org.cancercelllines",
+  "receivedRequestSummary": {
+   "apiVersion": "v2.3.0-beaconplus",
+   "beaconId": "org.cancercelllines",
+   "datasetIds": [
+    "cellz"
+   ],
+   "pagination": {
+    "limit": 0,
+    "skip": 0
+   },
+   "requestedGranularity": "record",
+   "requestedSchemas": [
+    {
+     "id": "cohort",
+     "name": "Default schema for cohorts",
+     "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/cohort",
+     "schemaVersion": "v2.2.0"
+    }
+   ],
+   "testMode": false
+  },
+  "returnedGranularity": "record",
+  "returnedSchemas": [
+   {
+    "id": "cohort",
+    "name": "Default schema for cohorts",
+    "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/cohort",
+    "schemaVersion": "v2.2.0"
+   }
+  ],
+  "testMode": false
+ },
+ "response": {
+  "collections": [
+   {
+    "cnvAnalyses": 5725,
+    "code": "pgx:cohort-2021progenetix",
+    "cohortSize": 5725,
+    "cohortType": "beacon-defined",
+    "entity": "biosample",
+    "id": "pgx:cohort-2021progenetix",
+    "label": "Version at Progenetix Update 2021",
+    "name": "Version at Progenetix Update 2021",
+    "reference": "https://progenetix.org/services/ids/pgx:cohort-2021progenetix",
+    "updated": "2025-01-16T11:46:56.949713"
+   },
+   {
+    "cnvAnalyses": 4641,
+    "code": "pgx:cohort-arraymap",
+    "cohortSize": 4641,
+    "cohortType": "beacon-defined",
+    "entity": "biosample",
+    "id": "pgx:cohort-arraymap",
+    "label": "arrayMap collection",
+    "name": "arrayMap collection",
+    "reference": "https://progenetix.org/services/ids/pgx:cohort-arraymap",
+    "updated": "2025-01-16T11:46:56.950610"
+   },
+   {
+    "cnvAnalyses": 3999,
+    "code": "pgx:cohort-carriocordo2021heterogeneity",
+    "cohortSize": 3999,
+    "cohortType": "beacon-defined",
+    "entity": "biosample",
+    "id": "pgx:cohort-carriocordo2021heterogeneity",
+    "label": "Carrio-Cordo and Baudis - Genomic Heterogeneity in Cancer Types (2021)",
+    "name": "Carrio-Cordo and Baudis - Genomic Heterogeneity in Cancer Types (2021)",
+    "reference": "https://progenetix.org/services/ids/pgx:cohort-carriocordo2021heterogeneity",
+    "updated": "2025-01-16T11:46:56.951383"
+   },
+   {
+    "cnvAnalyses": 5724,
+    "code": "pgx:cohort-celllines",
+    "cohortSize": 5724,
+    "cohortType": "beacon-defined",
+    "entity": "biosample",
+    "id": "pgx:cohort-celllines",
+    "label": "Cancer cell lines",
+    "name": "Cancer cell lines",
+    "reference": "https://progenetix.org/services/ids/pgx:cohort-celllines",
+    "updated": "2025-01-16T11:46:56.952268"
+   },
+   {
+    "cnvAnalyses": 450,
+    "code": "pgx:cohort-excluded",
+    "cohortSize": 450,
+    "cohortType": "beacon-defined",
+    "entity": "biosample",
+    "id": "pgx:cohort-excluded",
+    "label": "Excluded samples",
+    "name": "Excluded samples",
+    "reference": "https://progenetix.org/services/ids/pgx:cohort-excluded",
+    "updated": "2025-01-16T11:46:56.952461"
+   },
+   {
+    "cnvAnalyses": 2863,
+    "code": "pgx:cohort-gao2021signatures",
+    "cohortSize": 2863,
+    "cohortType": "beacon-defined",
+    "entity": "biosample",
+    "id": "pgx:cohort-gao2021signatures",
+    "label": "Gao and Baudis - Cancer CNV Signatures (2021)",
+    "name": "Gao and Baudis - Cancer CNV Signatures (2021)",
+    "reference": "https://progenetix.org/services/ids/pgx:cohort-gao2021signatures",
+    "updated": "2025-01-16T11:46:56.952983"
+   }
+  ]
+ },
+ "responseSummary": {
+  "exists": true,
+  "numTotalResults": 6
+ }
+}

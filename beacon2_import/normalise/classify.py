@@ -394,3 +394,37 @@ def _sequence_evidence(record: dict[str, Any]) -> str | None:
         return (f"sequence-specified {kind}; length {length} exceeds the "
                 f"{LENGTH_DISCLOSURE_THRESHOLD} bp convention")
     return f"sequence-specified {kind}; ref/alt length {length}"
+
+
+#: Provider labels that claim a single-base substitution.
+_SUBSTITUTION_LABELS = {"SO:0001483": "SNV", "SO:0000694": "SNP"}
+
+
+def label_conflict(record: dict[str, Any]) -> str | None:
+    """Name a provider label its own record's structure contradicts, or None.
+
+    Classification is by structure and stays so; this only refuses to choose
+    silently. Progenetix labels records SO:0001483 (SNV) that are structured as
+    one-base deletions with no alternate allele.
+    """
+    from .verify import record_alleles
+
+    variation = _variation(record)
+    state = variation.get("variantState") or record.get("variantState")
+    label = (state.get("id") if isinstance(state, dict) else None) or \
+        variation.get("variantType") or record.get("variantType")
+    if label not in _SUBSTITUTION_LABELS:
+        return None
+    reference, alternate = record_alleles(record)
+    if not reference:
+        return None
+    if not alternate:
+        structure = f"{len(reference)}-base deletion, no alternate allele"
+    elif len(reference) == len(alternate):
+        return None
+    elif len(alternate) < len(reference):
+        structure = f"{len(reference) - len(alternate)}-base deletion"
+    else:
+        structure = f"{len(alternate) - len(reference)}-base insertion"
+    return (f"provider label {label} ({_SUBSTITUTION_LABELS[label]}) conflicts with "
+            f"structure: {structure}")

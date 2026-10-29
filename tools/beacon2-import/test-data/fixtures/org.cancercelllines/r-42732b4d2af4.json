@@ -1,0 +1,452 @@
+{
+ "meta": {
+  "apiVersion": "v2.3.0-beaconplus",
+  "beaconId": "org.cancercelllines",
+  "receivedRequestSummary": {
+   "apiVersion": "v2.3.0-beaconplus",
+   "beaconId": "org.cancercelllines",
+   "datasetIds": [
+    "cellz"
+   ],
+   "includeResultsetResponses": "HIT",
+   "pagination": {
+    "limit": 200,
+    "skip": 0
+   },
+   "requestedGranularity": "record",
+   "requestedSchemas": [
+    {
+     "id": "configuration",
+     "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/beaconConfigurationSchema/"
+    }
+   ],
+   "testMode": false
+  },
+  "returnedGranularity": "record",
+  "returnedSchemas": [
+   {
+    "id": "configuration",
+    "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/beaconConfigurationSchema/"
+   }
+  ],
+  "testMode": false
+ },
+ "response": {
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "entryTypes": {
+   "aggregationTerm": {
+    "defaultSchema": {
+     "id": "aggregationTerm",
+     "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/aggregationTermsSchema/"
+    },
+    "description": "Information about the summary terms available in the beacon instance.",
+    "id": "aggregationTerm",
+    "isBeaconEntity": true,
+    "pathIdValueByconParameter": "aggregationTerms",
+    "requestEntityPathAliases": [
+     "aggregationTerms"
+    ],
+    "requestEntityPathId": "aggregation_terms",
+    "responseSchema": "beaconAggregationConceptsResponse",
+    "tests": [
+     {
+      "description": "default test mode",
+      "testValues": {
+       "testMode": true
+      }
+     }
+    ]
+   },
+   "analysis": {
+    "additionallySupportedSchemas": [],
+    "defaultSchema": {
+     "id": "analysis",
+     "name": "Default schema for a bioinformatics analysis",
+     "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/analysis",
+     "schemaVersion": "v2.2.0"
+    },
+    "description": "Information about matching analyses from the corresponding dataset. The type of response used for the endpoint depends on the requested and granted `responseGranularity`.",
+    "id": "analysis",
+    "isBeaconEntity": true,
+    "name": "Bioinformatics analysis of a genomic experiment",
+    "ontologyTermForThisType": {
+     "id": "edam:operation_2945",
+     "label": "Analysis"
+    },
+    "partOfSpecification": "Beacon v2.2.0",
+    "pathIdValueByconParameter": "analysis_ids",
+    "requestEntityPathId": "analyses",
+    "responseSchema": "beaconResultsetsResponse",
+    "tests": [
+     {
+      "description": "default test mode",
+      "testValues": {
+       "testMode": true
+      }
+     }
+    ]
+   },
+   "beaconMap": {
+    "defaultSchema": {
+     "id": "map",
+     "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/beaconMapSchema/"
+    },
+    "description": "Map of the beacon instance configuration.",
+    "id": "beaconMap",
+    "isBeaconEntity": true,
+    "requestEntityPathId": "map",
+    "responseSchema": "beaconMapResponse"
+   },
+   "biosample": {
+    "additionallySupportedSchemas": [],
+    "defaultSchema": {
+     "id": "biosample",
+     "name": "Default schema for a biological sample",
+     "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/biosample"
+    },
+    "description": "Information about matching samples from the corresponding dataset. The type of response used for the endpoint depends on the requested and granted `responseGranularity`.",
+    "id": "biosample",
+    "isBeaconEntity": true,
+    "name": "Biological Sample",
+    "ontologyTermForThisType": {
+     "id": "NCIT:C70699",
+     "label": "Biospecimen"
+    },
+    "partOfSpecification": "Beacon v2.2.0",
+    "pathIdValueByconParameter": "biosample_ids",
+    "requestEntityPathAliases": [
+     "samples"
+    ],
+    "requestEntityPathId": "biosamples",
+    "responseSchema": "beaconResultsetsResponse",
+    "tests": [
+     {
+      "description": "default test mode",
+      "testValues": {
+       "testMode": true
+      }
+     }
+    ]
+   },
+   "cohort": {
+    "aCollectionOf": [
+     {
+      "id": "individual",
+      "name": "Individuals"
+     }
+    ],
+    "additionalSupportedSchemas": [],
+    "defaultSchema": {
+     "id": "cohort",
+     "name": "Default schema for cohorts",
+     "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/cohort",
+     "schemaVersion": "v2.2.0"
+    },
+    "description": "A group of individuals, identified by a common characteristic.",
+    "id": "cohort",
+    "isBeaconEntity": true,
+    "name": "Cohort",
+    "ontologyTermForThisType": {
+     "id": "NCIT:C61512",
+     "label": "Cohort"
+    },
+    "partOfSpecification": "Beacon v2.2.0",
+    "pathIdValueByconParameter": "filters",
+    "requestEntityPathId": "cohorts",
+    "responseSchema": "beaconCollectionsResponse",
+    "tests": [
+     {
+      "description": "default test mode",
+      "testValues": {
+       "testMode": true
+      }
+     }
+    ]
+   },
+   "configuration": {
+    "defaultSchema": {
+     "id": "configuration",
+     "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/beaconConfigurationSchema/"
+    },
+    "description": "Information about the beacon instance configuration.",
+    "id": "configuration",
+    "isBeaconEntity": true,
+    "requestEntityPathId": "configuration",
+    "responseSchema": "beaconConfigurationResponse"
+   },
+   "dataset": {
+    "aCollectionOf": [
+     {
+      "id": "genomicVariant",
+      "name": "Genomic Variants"
+     },
+     {
+      "id": "biosample",
+      "name": "Biosamples"
+     },
+     {
+      "id": "individual",
+      "name": "Individuals"
+     },
+     {
+      "id": "analysis",
+      "name": "Genomic Analyses"
+     }
+    ],
+    "additionalSupportedSchemas": [],
+    "defaultSchema": {
+     "id": "dataset",
+     "name": "Default schema for datasets",
+     "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/dataset",
+     "schemaVersion": "v2.2.0"
+    },
+    "description": "A Dataset is a collection of related sets of information, e.g. genomic variations together with associated procedural and biological metadata. In a Beacon context, a datasets may consist of information generated in a specific study or project, or represent the main content of the Beacon resource.",
+    "id": "dataset",
+    "isBeaconEntity": true,
+    "name": "Dataset",
+    "ontologyTermForThisType": {
+     "id": "NCIT:C47824",
+     "label": "Data set"
+    },
+    "partOfSpecification": "Beacon v2.2.0",
+    "pathIdValueByconParameter": "dataset_ids",
+    "requestEntityPathId": "datasets",
+    "responseSchema": "beaconCollectionsResponse",
+    "tests": [
+     {
+      "description": "default test mode",
+      "testValues": {
+       "testMode": true
+      }
+     }
+    ]
+   },
+   "entryType": {
+    "defaultSchema": {
+     "id": "entryType",
+     "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/entryTypesSchema/"
+    },
+    "id": "entryType",
+    "isBeaconEntity": true,
+    "requestEntityPathId": "entry_types",
+    "responseSchema": "beaconEntryTypesResponse"
+   },
+   "filteringTerm": {
+    "defaultSchema": {
+     "id": "filteringTerm",
+     "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/filteringTermsSchema/"
+    },
+    "description": "Information about the filtering terms available in the beacon instance.",
+    "id": "filteringTerm",
+    "isBeaconEntity": true,
+    "pathIdValueByconParameter": "filters",
+    "requestEntityPathAliases": [
+     "filteringTerms"
+    ],
+    "requestEntityPathId": "filtering_terms",
+    "responseSchema": "beaconFilteringTermsResponse",
+    "tests": [
+     {
+      "description": "default test mode",
+      "testValues": {
+       "testMode": true
+      }
+     }
+    ]
+   },
+   "genomicVariant": {
+    "additionallySupportedSchemas": [],
+    "defaultSchema": {
+     "id": "genomicVariant",
+     "name": "Default schema for a genomic variation",
+     "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/genomicVariant",
+     "schemaVersion": "v2.2.0"
+    },
+    "description": "Information about matching genomic variants from the corresponding dataset. The type of response used for the endpoint depends on the requested and granted `responseGranularity`.",
+    "id": "genomicVariant",
+    "isBeaconEntity": true,
+    "name": "Genomic Variants",
+    "ontologyTermForThisType": {
+     "id": "ENSGLOSSARY:0000092",
+     "label": "Variant"
+    },
+    "partOfSpecification": "Beacon v2.2.0",
+    "pathIdValueByconParameter": "variant_ids",
+    "requestEntityPathAliases": [
+     "genomicVariations",
+     "variants"
+    ],
+    "requestEntityPathId": "g_variants",
+    "responseSchema": "beaconResultsetsResponse",
+    "tests": [
+     {
+      "description": "default test mode",
+      "testValues": {
+       "testMode": true
+      }
+     }
+    ]
+   },
+   "individual": {
+    "additionallySupportedSchemas": [],
+    "defaultSchema": {
+     "id": "individual",
+     "name": "Default schema for an individual",
+     "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/individual"
+    },
+    "description": "Information about matching subjects (individuals) from the corresponding dataset. The type of response used for the endpoint depends on the requested and granted `responseGranularity`.",
+    "examples": [
+     "?filters=EFO:0030049&limit=5"
+    ],
+    "id": "individual",
+    "isBeaconEntity": true,
+    "name": "Individual",
+    "ontologyTermForThisType": {
+     "id": "NCIT:C25190",
+     "label": "Person"
+    },
+    "partOfSpecification": "Beacon v2.2.0",
+    "pathIdValueByconParameter": "individual_ids",
+    "requestEntityPathId": "individuals",
+    "responseSchema": "beaconResultsetsResponse",
+    "tests": [
+     {
+      "description": "default test mode",
+      "testValues": {
+       "testMode": true
+      }
+     }
+    ]
+   },
+   "info": {
+    "content": {
+     "alternativeUrl": "https://cancercelllines.org",
+     "apiVersion": "v2.3.0-beaconplus",
+     "beaconId": "org.cancercelllines",
+     "contactUrl": "mailto:contact@progenetix.org",
+     "createdAt": "2023-07-01 00:00:00",
+     "description": "The cancercelllines.org Beacon is a specific instance of the Progenetix Beacon+ environment providing information about genomic variations in cancer cell lines.",
+     "documentationUrl": "http://docs.cancercelllines.org",
+     "environment": "prod",
+     "id": "org.cancercelllines.beacon",
+     "name": "Cancer Cell Line Genomics Beacon+",
+     "organization": {
+      "contactUrl": "mailto:contact@progenetix.org",
+      "info": {
+       "updateDateTime": "2024-02-24 12:45:00"
+      },
+      "location": {
+       "geometry": {
+        "coordinates": [
+         47.37,
+         8.55
+        ],
+        "type": "Point"
+       },
+       "properties": {
+        "ISO3166alpha3": "CHE",
+        "city": "Zurich",
+        "country": "Switzerland",
+        "label": "Winterthurerstrasse 190, Zurich, Switzerland"
+       },
+       "type": "Feature"
+      },
+      "logoUrl": "https://cancercelllines.org/img/cancercelllines-icon-400x300.png",
+      "welcomeUrl": "https://cancercelllines.org/"
+     },
+     "serviceUrl": "http://cancercelllines.org/beacon/",
+     "type": {
+      "artifact": "beacon",
+      "group": "org.ga4gh",
+      "version": "v2.3.0-beaconplus"
+     },
+     "updatedAt": "2024-02-24 13:00:00",
+     "version": "v2.3.0-beaconplus",
+     "welcomeUrl": "https://cancercelllines.org/biosamples/"
+    },
+    "createDateTime": "2023-07-01 00:00:00",
+    "defaultSchema": {
+     "id": "configuration",
+     "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/beaconInfoResults/"
+    },
+    "description": "Information about the beacon instance.",
+    "id": "info",
+    "isBeaconEntity": true,
+    "requestEntityPathAliases": [
+     "info",
+     "service-info",
+     "service_info"
+    ],
+    "requestEntityPathId": "info",
+    "responseSchema": "beaconInfoResponse",
+    "updateDateTime": "2024-02-24 13:00:00"
+   },
+   "phenopacket": {
+    "additionallySupportedSchemas": [],
+    "defaultSchema": {
+     "id": "phenopacket",
+     "name": "Default schema for a phenopacket",
+     "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/phenopacket"
+    },
+    "description": "Information about matching subjects (individuals) from the corresponding dataset, converted to Phenopackets format by aggregating the relevant information from the matched `individual`, `biosample`s, `analysis`(/es) and `genomicVariation`s.",
+    "id": "phenopacket",
+    "isBeaconEntity": true,
+    "name": "Phenopacket",
+    "ontologyTermForThisType": {
+     "id": "NCIT:C25190",
+     "label": "Person"
+    },
+    "partOfSpecification": "BeaconPlus",
+    "pathIdValueByconParameter": "individual_ids",
+    "requestEntityPathId": "phenopackets",
+    "responseSchema": "beaconResultsetsResponse",
+    "tests": [
+     {
+      "description": "default test mode",
+      "testValues": {
+       "testMode": true
+      }
+     }
+    ]
+   },
+   "run": {
+    "additionallySupportedSchemas": [],
+    "defaultSchema": {
+     "id": "run",
+     "name": "Default schema for a sequencing run",
+     "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/run",
+     "schemaVersion": "v2.2.0"
+    },
+    "description": "The valid and completed operation of a high-throughput sequencing instrument for a single sequencing process. [ NCI ]",
+    "id": "run",
+    "isBeaconEntity": true,
+    "name": "Experimental run",
+    "ontologyTermForThisType": {
+     "id": "NCIT:C148088",
+     "label": "Sequencing run"
+    },
+    "partOfSpecification": "Beacon v2.2.0",
+    "pathIdValueByconParameter": "run_ids",
+    "requestEntityPathId": "runs",
+    "responseSchema": "beaconResultsetsResponse",
+    "tests": [
+     {
+      "description": "default test mode",
+      "testValues": {
+       "testMode": true
+      }
+     }
+    ]
+   }
+  },
+  "maturityAttributes": {
+   "productionStatus": "PROD"
+  },
+  "securityAttributes": {
+   "defaultGranularity": "record",
+   "securityLevels": [
+    "PUBLIC"
+   ]
+  }
+ }
+}

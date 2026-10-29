@@ -88,12 +88,17 @@ def refusal_message(provider_name: str, total: int, ceiling: int) -> str:
 
 
 def short_retrieval_message(provider_name: str, retrieved: int, total: int) -> str:
-    """A full retrieval that came back short: the server capped it silently."""
+    """A full retrieval that came back short. States what was OBSERVED only.
+
+    The cause is not knowable from the response: a server may cap the request,
+    or report a total it cannot fully deliver -- cancercelllines reported 184
+    individuals and delivered 180 at limit 0. Either way it is not complete.
+    """
     return (
         f"{provider_name} was asked for all {total} matching instances but returned "
-        f"{retrieved}. The server applied a maximum below the total, so the result "
-        f"is a random subset rather than the complete set, and was refused rather "
-        f"than reported as complete. Narrow the query -- an ontology filter usually "
+        f"{retrieved}. A retrieval short of the provider's own total is not a "
+        f"complete answer, so it was refused rather than reported as complete. "
+        f"Narrow the query -- an ontology filter usually "
         f"brings the total down furthest, e.g. --filter NCIT:C3058 -- or opt into "
         f"sampling with --sample N."
     )
@@ -126,9 +131,7 @@ def decide_retrieval(provider, adapter, total: int | None,
 
 
 def _send(client, adapter, query: Query) -> Envelope:
-    path = adapter.entity_path(query.entity, query.entity_id, query.nested_entity)
-    response = client.post(path, adapter.build_post_body(query))
-    return parse(response.body)
+    return parse(adapter.send(client, query).body)
 
 
 def retrieve(query: Query, provider, adapter, client,

@@ -64,3 +64,15 @@ def test_a_miss_names_the_request_to_record(tmp_path):
     with pytest.raises(FixtureMiss) as caught:
         _client(tmp_path).get("/info")
     assert '"path": "/info"' in str(caught.value) and "record_fixtures.py" in str(caught.value)
+
+
+def test_a_gzipped_recording_is_served_unchanged(tmp_path):
+    """Large recordings are stored gzipped; the client serves them as recorded."""
+    import gzip
+
+    body = {"responseSummary": {"numTotalResults": 7}, "payload": "x" * 1000}
+    (tmp_path / "big.json.gz").write_bytes(gzip.compress(json.dumps(body).encode(), mtime=0))
+    entry = {"request": canonical_request("POST", "/g_variants", None, BODY),
+             "response": "big.json.gz", "origin": "recorded"}
+    (tmp_path / "manifest.json").write_text(json.dumps({"format": MANIFEST_FORMAT, "entries": [entry]}))
+    assert FixtureClient(str(tmp_path)).post("/g_variants", BODY).body == body

@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/beacon2_import-{{ version }}.tar.gz
-  sha256: efc4f7cf3e759f3ea46815575d439a4fe78cfa4ddaa9eb7028c811409b04b2e7
+  sha256: a1942fec54a134177832fdbe8bc2d4b77e29a1187ba665d34e99c2fa1754a1cd
 
 build:
   entry_points:

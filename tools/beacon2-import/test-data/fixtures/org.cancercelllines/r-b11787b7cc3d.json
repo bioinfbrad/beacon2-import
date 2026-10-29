@@ -1,0 +1,139 @@
+{
+ "meta": {
+  "apiVersion": "v2.3.0-beaconplus",
+  "beaconId": "org.cancercelllines",
+  "receivedRequestSummary": {
+   "apiVersion": "v2.3.0-beaconplus",
+   "beaconId": "org.cancercelllines",
+   "datasetIds": [
+    "cellz"
+   ],
+   "includeResultsetResponses": "HIT",
+   "pagination": {
+    "limit": 200,
+    "skip": 0
+   },
+   "requestedGranularity": "record",
+   "requestedSchemas": [
+    {
+     "id": "configuration",
+     "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/beaconInfoResults/"
+    }
+   ],
+   "testMode": false
+  },
+  "returnedGranularity": "record",
+  "returnedSchemas": [
+   {
+    "id": "configuration",
+    "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/beaconInfoResults/"
+   }
+  ],
+  "testMode": false
+ },
+ "response": {
+  "alternativeUrl": "https://cancercelllines.org",
+  "apiVersion": "v2.3.0-beaconplus",
+  "description": "The cancercelllines.org Beacon is a specific instance of the Progenetix Beacon+ environment providing information about genomic variations in cancer cell lines.",
+  "environment": "prod",
+  "id": "org.cancercelllines.beacon",
+  "name": "Cancer Cell Line Genomics Beacon+",
+  "organization": {
+   "contactUrl": "mailto:contact@progenetix.org",
+   "info": {
+    "updateDateTime": "2024-02-24 12:45:00"
+   },
+   "location": {
+    "geometry": {
+     "coordinates": [
+      47.37,
+      8.55
+     ],
+     "type": "Point"
+    },
+    "properties": {
+     "ISO3166alpha3": "CHE",
+     "city": "Zurich",
+     "country": "Switzerland",
+     "label": "Winterthurerstrasse 190, Zurich, Switzerland"
+    },
+    "type": "Feature"
+   },
+   "logoUrl": "https://cancercelllines.org/img/cancercelllines-icon-400x300.png",
+   "welcomeUrl": "https://cancercelllines.org/"
+  },
+  "version": "v2.3.0-beaconplus",
+  "welcomeUrl": "https://cancercelllines.org/biosamples/"
+ },
+ "returnedSchemas": [
+  {
+   "id": "dataset",
+   "name": "Default schema for datasets",
+   "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/dataset",
+   "schemaVersion": "v2.2.0"
+  },
+  {
+   "id": "cohort",
+   "name": "Default schema for cohorts",
+   "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/cohort",
+   "schemaVersion": "v2.2.0"
+  },
+  {
+   "id": "genomicVariant",
+   "name": "Default schema for a genomic variation",
+   "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/genomicVariant",
+   "schemaVersion": "v2.2.0"
+  },
+  {
+   "id": "individual",
+   "name": "Default schema for an individual",
+   "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/individual"
+  },
+  {
+   "id": "biosample",
+   "name": "Default schema for a biological sample",
+   "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/biosample"
+  },
+  {
+   "id": "run",
+   "name": "Default schema for a sequencing run",
+   "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/run",
+   "schemaVersion": "v2.2.0"
+  },
+  {
+   "id": "analysis",
+   "name": "Default schema for a bioinformatics analysis",
+   "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/analysis",
+   "schemaVersion": "v2.2.0"
+  },
+  {
+   "id": "phenopacket",
+   "name": "Default schema for a phenopacket",
+   "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/phenopacket"
+  },
+  {
+   "id": "filteringTerm",
+   "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/filteringTermsSchema/"
+  },
+  {
+   "id": "aggregationTerm",
+   "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/aggregationTermsSchema/"
+  },
+  {
+   "id": "configuration",
+   "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/beaconInfoResults/"
+  },
+  {
+   "id": "map",
+   "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/beaconMapSchema/"
+  },
+  {
+   "id": "configuration",
+   "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/beaconConfigurationSchema/"
+  },
+  {
+   "id": "entryType",
+   "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/entryTypesSchema/"
+  }
+ ]
+}

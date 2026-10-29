@@ -1,0 +1,174 @@
+{
+ "meta": {
+  "apiVersion": "v2.3.0-beaconplus",
+  "beaconId": "org.cancercelllines",
+  "receivedRequestSummary": {
+   "apiVersion": "v2.3.0-beaconplus",
+   "beaconId": "org.cancercelllines",
+   "datasetIds": [
+    "cellz"
+   ],
+   "filters": [
+    {
+     "id": "NCIT:C3058",
+     "includeDescendantTerms": true
+    }
+   ],
+   "includeResultsetResponses": "HIT",
+   "pagination": {
+    "limit": 1,
+    "skip": 0
+   },
+   "requestedGranularity": "record",
+   "requestedSchemas": [
+    {
+     "id": "biosample",
+     "name": "Default schema for a biological sample",
+     "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/biosample"
+    }
+   ],
+   "testMode": false
+  },
+  "returnedGranularity": "record",
+  "returnedSchemas": [
+   {
+    "id": "biosample",
+    "name": "Default schema for a biological sample",
+    "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/biosample"
+   }
+  ],
+  "testMode": false
+ },
+ "response": {
+  "resultSets": [
+   {
+    "exists": true,
+    "id": "cellz",
+    "info": {
+     "counts": {
+      "analyses": 278,
+      "biosamples": 400,
+      "individuals": 184
+     }
+    },
+    "responseEntityId": "biosample",
+    "results": [
+     {
+      "analysisInfo": {
+       "experimentId": "geo:GSM50179",
+       "platformId": "geo:GPL2014",
+       "seriesId": "geo:GSE2520"
+      },
+      "biosampleStatus": {
+       "id": "EFO:0030035",
+       "label": "cancer cell line sample"
+      },
+      "celllineInfo": {
+       "id": "cellosaurus:CVCL_1706",
+       "label": "",
+       "notes": "",
+       "reference": "https://web.expasy.org/cellosaurus/CVCL_1706",
+       "synonyms": [
+        "cellosaurus:CVCL_1706",
+        "CVCL_1706"
+       ]
+      },
+      "cohorts": [
+       {
+        "id": "pgx:cohort-2021progenetix",
+        "label": "Version at Progenetix Update 2021"
+       },
+       {
+        "id": "pgx:cohort-celllines",
+        "label": "Cancer cell lines"
+       },
+       {
+        "id": "pgx:cohort-excluded",
+        "label": "Excluded samples"
+       }
+      ],
+      "externalReferences": [
+       {
+        "description": "Garraway LA, Widlund HR et al. (2005): Integrative genomic analyses identify MITF as...",
+        "id": "pubmed:16001072",
+        "reference": "https://europepmc.org/article/MED/16001072"
+       },
+       {
+        "description": "SNB-75",
+        "id": "cellosaurus:CVCL_1706",
+        "reference": "https://www.cellosaurus.org/CVCL_1706"
+       }
+      ],
+      "geoLocation": {
+       "geometry": {
+        "coordinates": [
+         -71.06,
+         42.36
+        ],
+        "type": "Point"
+       },
+       "properties": {
+        "ISO3166alpha3": "USA",
+        "city": "Boston",
+        "country": "United States of America",
+        "label": "Boston, United States",
+        "latitude": 42.36,
+        "longitude": -71.06,
+        "precision": "city"
+       },
+       "type": "Feature"
+      },
+      "histologicalDiagnosis": {
+       "id": "NCIT:C3058",
+       "label": "Glioblastoma"
+      },
+      "icdoMorphology": {
+       "id": "pgx:icdom-94403",
+       "label": "Glioblastoma, NOS"
+      },
+      "icdoTopography": {
+       "id": "pgx:icdot-C71.9",
+       "label": "Brain, NOS"
+      },
+      "id": "cellzbs-kftvipvs",
+      "individualId": "cellzind-f3Ba884e",
+      "individualInfo": {
+       "ageDays": 27393,
+       "sex": {
+        "id": "NCIT:C16576",
+        "label": "female"
+       }
+      },
+      "info": {
+       "callsetIds": [
+        "pgxcs-kftwaezv"
+       ],
+       "legacyIds": [
+        "PGX_AM_BS_GSM50179"
+       ],
+       "provenance": "arraymap import"
+      },
+      "label": " (CVCL_1706)",
+      "notes": "Glioblastoma [cell line SNB-75]",
+      "sampleOriginDetail": {
+       "id": "UBERON:0000955",
+       "label": "brain"
+      },
+      "sampleOriginType": {
+       "id": "OBI:0001479",
+       "label": "specimen from organism"
+      },
+      "updated": "2020-09-10 17:45:36.477000"
+     }
+    ],
+    "resultsCount": 400,
+    "resultsHandovers": [],
+    "setType": "dataset"
+   }
+  ]
+ },
+ "responseSummary": {
+  "exists": true,
+  "numTotalResults": 400
+ }
+}

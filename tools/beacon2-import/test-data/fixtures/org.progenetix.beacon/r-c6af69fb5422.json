@@ -1,0 +1,1738 @@
+{
+ "meta": {
+  "apiVersion": "v2.3.0-beaconplus",
+  "beaconId": "org.progenetix",
+  "receivedRequestSummary": {
+   "apiVersion": "v2.3.0-beaconplus",
+   "beaconId": "org.progenetix",
+   "datasetIds": [
+    "progenetix"
+   ],
+   "filters": [
+    {
+     "id": "NCIT:C3058",
+     "includeDescendantTerms": false
+    }
+   ],
+   "includeResultsetResponses": "HIT",
+   "pagination": {
+    "limit": 2000,
+    "skip": 0
+   },
+   "requestedGranularity": "record",
+   "requestedSchemas": [
+    {
+     "id": "genomicVariant",
+     "name": "Default schema for a genomic variation",
+     "referenceToSchemaDefinition": "https://progenetix.org/services/schemas/genomicVariant",
+     "schemaVersion": "v2.2.0"
+    }
+   ],
+   "testMode": false
+  },
+  "returnedGranularity": "record",
+  "returnedSchemas": [
+   {
+    "id": "genomicVariant",
+    "name": "Default schema for a genomic variation",
+    "referenceToSchemaDefinition": "https://progenetix.org/services/schemas/genomicVariant",
+    "schemaVersion": "v2.2.0"
+   }
+  ],
+  "testMode": false
+ },
+ "response": {
+  "resultSets": [
+   {
+    "exists": true,
+    "id": "progenetix",
+    "info": {
+     "counts": {
+      "analyses": 53,
+      "biosamples": 53,
+      "individuals": 52,
+      "variants": 53
+     }
+    },
+    "responseEntityId": "genomicVariant",
+    "results": [
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84d04dw",
+        "biosampleId": "pgxbs-m84d04dw",
+        "individualId": "pgxind-m84czcau",
+        "variantId": "bycvar-684b0b65e2f6de7983e4602d"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:7471258-7677166:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 7677166,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 7471258,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftwnmy6",
+        "biosampleId": "pgxbs-kftvjyws",
+        "individualId": "pgxind-kftx5yjb",
+        "variantId": "bycvar-665749a62d6be9a260e55da0"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:4040249-7679765:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 7679765,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 4040249,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84dgxzi",
+        "biosampleId": "pgxbs-m84dgxzi",
+        "individualId": "pgxind-m84dbyt8",
+        "variantId": "bycvar-684b03cd155c84936d70c8fe"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:150708-7671252:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 7671252,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 150708,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftwunza",
+        "biosampleId": "pgxbs-kftvkuk8",
+        "individualId": "pgxind-kftx70yh",
+        "variantId": "bycvar-66e36ea1d2ef81e071d84411"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:6943754-17228013:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 17228013,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 6943754,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftwuolq",
+        "biosampleId": "pgxbs-kftvkum4",
+        "individualId": "pgxind-kftx710w",
+        "variantId": "bycvar-66e36ebcd2ef81e071d8459b"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:7314347-7677333:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 7677333,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 7314347,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m3io2iu5",
+        "biosampleId": "pgxbs-m3io2iu5",
+        "individualId": "pgxind-m3io2iu5",
+        "variantId": "bycvar-673cfbf92cbf8b196b9d7f3d"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:6444190-7936974:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 7936974,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 6444190,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84dbq97",
+        "biosampleId": "pgxbs-m84dbq97",
+        "individualId": "pgxind-m84d7m32",
+        "variantId": "bycvar-684b08badde97818a24f98f2"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:4636982-8087369:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 8087369,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 4636982,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m3io6fdw",
+        "biosampleId": "pgxbs-m3io6fdw",
+        "individualId": "pgxind-m3io2itj",
+        "variantId": "bycvar-673cfbf32cbf8b196b9d7edd"
+       },
+       {
+        "analysisId": "pgxcs-m3io2itj",
+        "biosampleId": "pgxbs-m3io2itj",
+        "individualId": "pgxind-m3io2itj",
+        "variantId": "bycvar-673cfbed2cbf8b196b9d7e7f"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:7356335-7740144:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 7740144,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 7356335,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftwy9ag",
+        "biosampleId": "pgxbs-kftvkl7u",
+        "individualId": "pgxind-kftx6pl7",
+        "variantId": "bycvar-6657d43c02cc20f83046756d"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:5579551-9339825:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 9339825,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 5579551,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84da01y",
+        "biosampleId": "pgxbs-m84da01y",
+        "individualId": "pgxind-m84d6bfx",
+        "variantId": "bycvar-684b18da1ac9a76cde430d2d"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:150708-8204337:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 8204337,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 150708,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84d9l3v",
+        "biosampleId": "pgxbs-m84d9l3v",
+        "individualId": "pgxind-m84d5y4k",
+        "variantId": "bycvar-684b10b51ac9a76cde418493"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:4427592-7687459:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 7687459,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 4427592,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84da4lm",
+        "biosampleId": "pgxbs-m84da4lm",
+        "individualId": "pgxind-m84d6fi2",
+        "variantId": "bycvar-684b0320e2f6de7983e38afb"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:6595710-8018792:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 8018792,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 6595710,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84d04e7",
+        "biosampleId": "pgxbs-m84d04e7",
+        "individualId": "pgxind-m84czcau",
+        "variantId": "bycvar-684b0b67e2f6de7983e4608d"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:7471258-7997772:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 7997772,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 7471258,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84da308",
+        "biosampleId": "pgxbs-m84da308",
+        "individualId": "pgxind-m84d6e33",
+        "variantId": "bycvar-684b00ece2f6de7983e35c9e"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:7513479-8018172:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 8018172,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 7513479,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84d1vw7",
+        "biosampleId": "pgxbs-m84d1vw7",
+        "individualId": "pgxind-m84d0q72",
+        "variantId": "bycvar-684b103be2f6de7983e541de"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:4628552-8801943:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 8801943,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 4628552,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m3io2iz6",
+        "biosampleId": "pgxbs-m3io2iz6",
+        "individualId": "pgxind-m3io2iz6",
+        "variantId": "bycvar-673cfc572cbf8b196b9d851d"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:7074054-9379654:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 9379654,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 7074054,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftvyem9",
+        "biosampleId": "pgxbs-kftvhmzw",
+        "individualId": "pgxind-kftx3g5s",
+        "variantId": "bycvar-665742c15503aea495a21e0d"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:1074619-13745215:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 13745215,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 1074619,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84d30mw",
+        "biosampleId": "pgxbs-m84d30mw",
+        "individualId": "pgxind-m84d1hbo",
+        "variantId": "bycvar-684ae139f0397667d5476ecc"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:7312798-7676393:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 7676393,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 7312798,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84d1tb4",
+        "biosampleId": "pgxbs-m84d1tb4",
+        "individualId": "pgxind-m84d0nuf",
+        "variantId": "bycvar-684ae2110a1749c40ed513c4"
+       },
+       {
+        "analysisId": "pgxcs-m84ddw7w",
+        "biosampleId": "pgxbs-m84ddw7w",
+        "individualId": "pgxind-m84d9d2g",
+        "variantId": "bycvar-684afac6dde97818a24e6625"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:6943754-7677333:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 7677333,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 6943754,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84d1vxt",
+        "biosampleId": "pgxbs-m84d1vxt",
+        "individualId": "pgxind-m84d0q8p",
+        "variantId": "bycvar-684b1054e2f6de7983e54670"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:7569516-7684403:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 7684403,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 7569516,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftvzv8d",
+        "biosampleId": "pgxbs-kftvhrmk",
+        "individualId": "pgxind-kftx3pmm",
+        "variantId": "bycvar-6657304aea1558707a9ac2b2"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:1074619-7657424:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 7657424,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 1074619,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m3io6fev",
+        "biosampleId": "pgxbs-m3io6fev",
+        "individualId": "pgxind-m3io2iu5",
+        "variantId": "bycvar-673cfbff2cbf8b196b9d7f95"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:7290162-7936974:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 7936974,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 7290162,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftw4ciq",
+        "biosampleId": "pgxbs-kftvi5ue",
+        "individualId": "pgxind-kftx3o4d",
+        "variantId": "bycvar-665743198f6b961582632adb"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:6243184-17244311:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 17244311,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 6243184,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84d66no",
+        "biosampleId": "pgxbs-m84d66no",
+        "individualId": "pgxind-m84d3lzh",
+        "variantId": "bycvar-684b10efe2f6de7983e563c5"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:7569516-7681947:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 7681947,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 7569516,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84dew25",
+        "biosampleId": "pgxbs-m84dew25",
+        "individualId": "pgxind-m84da5lt",
+        "variantId": "bycvar-684b1a25e2f6de7983e720d5"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:7503569-7853065:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 7853065,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 7503569,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84d06qo",
+        "biosampleId": "pgxbs-m84d06qo",
+        "individualId": "pgxind-m84czee4",
+        "variantId": "bycvar-684b0dfae2f6de7983e4d88a"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:7471258-8703411:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 8703411,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 7471258,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84d6cgk",
+        "biosampleId": "pgxbs-m84d6cgk",
+        "individualId": "pgxind-m84d3r96",
+        "variantId": "bycvar-684b0f241ac9a76cde413a36"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:7336136-7673652:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 7673652,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 7336136,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84cz5g0",
+        "biosampleId": "pgxbs-m84cz5g0",
+        "individualId": "pgxind-kftx71k2",
+        "variantId": "bycvar-684adc34b690097719851c2b"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:4055047-16194516:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 16194516,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 4055047,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftx0mzt",
+        "biosampleId": "pgxbs-kftvl8ta",
+        "individualId": "pgxind-kftx7ish",
+        "variantId": "bycvar-66e2dec1f9e005aa5fa5e8e7"
+       },
+       {
+        "analysisId": "pgxcs-m84dczv6",
+        "biosampleId": "pgxbs-m84dczv6",
+        "individualId": "pgxind-m84d8ln7",
+        "variantId": "bycvar-684b089b1c48348915c48235"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:7312798-7677333:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 7677333,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 7312798,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84d643h",
+        "biosampleId": "pgxbs-m84d643h",
+        "individualId": "pgxind-m84d3jor",
+        "variantId": "bycvar-684b0a391ac9a76cde4055cf"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:7512999-7687201:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 7687201,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 7512999,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84ddg1x",
+        "biosampleId": "pgxbs-m84ddg1x",
+        "individualId": "pgxind-m84d8zhv",
+        "variantId": "bycvar-684b0ba0e2f6de7983e46aef"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:7484721-8018172:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 8018172,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 7484721,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84d3r8v",
+        "biosampleId": "pgxbs-m84d3r8v",
+        "individualId": "pgxind-m84d1u7o",
+        "variantId": "bycvar-684b1564e2f6de7983e63aaf"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:5127641-8207370:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 8207370,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 5127641,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84cywfa",
+        "biosampleId": "pgxbs-m84cywfa",
+        "individualId": "pgxind-m84cyde3",
+        "variantId": "bycvar-684adc85b69009771985271f"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:7313947-7677333:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 7677333,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 7313947,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84d03zv",
+        "biosampleId": "pgxbs-m84d03zv",
+        "individualId": "pgxind-m84czbxz",
+        "variantId": "bycvar-684b0b0de2f6de7983e45034"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:1602343-8207370:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 8207370,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 1602343,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84d66vh",
+        "biosampleId": "pgxbs-m84d66vh",
+        "individualId": "pgxind-m84d3m74",
+        "variantId": "bycvar-684b0b6e1ac9a76cde408d86"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:1365579-7676705:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 7676705,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 1365579,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftvy4bx",
+        "biosampleId": "pgxbs-kftvhm3i",
+        "individualId": "pgxind-kftx3kdp",
+        "variantId": "bycvar-665736eb5503aea495a17737"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:5636086-10228926:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 10228926,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 5636086,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftw1hzt",
+        "biosampleId": "pgxbs-kftvhwzc",
+        "individualId": "pgxind-kftx3sw1",
+        "variantId": "bycvar-66571158183fc78d1fb00911"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:1074619-11629518:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 11629518,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 1074619,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kg6kqzvp",
+        "biosampleId": "pgxbs-kg6kqzvo",
+        "individualId": "pgxind-kg6kqzvq",
+        "variantId": "bycvar-6657a18002cc20f830436a6a"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:7128319-7985653:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 7985653,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 7128319,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84d9qte",
+        "biosampleId": "pgxbs-m84d9qte",
+        "individualId": "pgxind-m84d637h",
+        "variantId": "bycvar-684b13df1ac9a76cde421d01"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:7512999-7687459:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 7687459,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 7512999,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84d9yjn",
+        "biosampleId": "pgxbs-m84d9yjn",
+        "individualId": "pgxind-m84d6a58",
+        "variantId": "bycvar-684b17f01ac9a76cde42e0fa"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:150708-7668827:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 7668827,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 150708,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftwutg4",
+        "biosampleId": "pgxbs-kftvkv1l",
+        "individualId": "pgxind-kftx71k2",
+        "variantId": "bycvar-66e37095d2ef81e071d860bc"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:264878-16072187:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 16072187,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 264878,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84d9osv",
+        "biosampleId": "pgxbs-m84d9osv",
+        "individualId": "pgxind-m84d61go",
+        "variantId": "bycvar-684b12b81ac9a76cde41e592"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:5588024-14915684:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 14915684,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 5588024,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftwubbx",
+        "biosampleId": "pgxbs-kftvkth5",
+        "individualId": "pgxind-kftx6zje",
+        "variantId": "bycvar-66e365a9d2ef81e071d7c16e"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:150733-13100038:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 13100038,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 150733,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84d619e",
+        "biosampleId": "pgxbs-m84d619e",
+        "individualId": "pgxind-m84d3h87",
+        "variantId": "bycvar-684b05c71ac9a76cde3fef3a"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:150708-7685695:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 7685695,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 150708,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftw95s2",
+        "biosampleId": "pgxbs-kftvili0",
+        "individualId": "pgxind-kftx4aua",
+        "variantId": "bycvar-66572e072d6be9a260e3d209"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:7389722-8228078:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 8228078,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 7389722,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftwy81o",
+        "biosampleId": "pgxbs-kftvkl5v",
+        "individualId": "pgxind-kftx6piq",
+        "variantId": "bycvar-6657d28102cc20f830465968"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:5564577-13654075:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 13654075,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 5564577,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftw0toi",
+        "biosampleId": "pgxbs-kftvhulr",
+        "individualId": "pgxind-kftx3rp1",
+        "variantId": "bycvar-6656f0e7183fc78d1fae3d99"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:6685104-7758490:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 7758490,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 6685104,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84d4z17",
+        "biosampleId": "pgxbs-m84d4z17",
+        "individualId": "pgxind-m84d2ozr",
+        "variantId": "bycvar-684b1916e2f6de7983e6ed0c"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:7569516-7685049:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 7685049,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 7569516,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84dh4bx",
+        "biosampleId": "pgxbs-m84dh4bx",
+        "individualId": "pgxind-m84dc4ws",
+        "variantId": "bycvar-684b0872155c84936d712b46"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:7484721-7667872:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 7667872,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 7484721,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84d1ve5",
+        "biosampleId": "pgxbs-m84d1ve5",
+        "individualId": "pgxind-m84d0pr2",
+        "variantId": "bycvar-684b0f9ee2f6de7983e5248a"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000017.11:150708-7681947:EFO_0020073",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level loss",
+       "location": {
+        "chromosome": "17",
+        "end": 7681947,
+        "sequenceReference": {
+         "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000017.11",
+        "start": 150708,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0020073",
+        "label": "high-level loss"
+       }
+      }
+     }
+    ],
+    "resultsCount": 53,
+    "resultsHandovers": [],
+    "setType": "dataset"
+   }
+  ]
+ },
+ "responseSummary": {
+  "exists": true,
+  "numTotalResults": 53
+ }
+}

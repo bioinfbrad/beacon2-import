@@ -1,0 +1,1915 @@
+{
+ "meta": {
+  "apiVersion": "v2.3.0-beaconplus",
+  "beaconId": "org.progenetix",
+  "receivedRequestSummary": {
+   "apiVersion": "v2.3.0-beaconplus",
+   "beaconId": "org.progenetix",
+   "datasetIds": [
+    "progenetix"
+   ],
+   "filters": [
+    {
+     "id": "NCIT:C3058",
+     "includeDescendantTerms": true
+    }
+   ],
+   "includeResultsetResponses": "HIT",
+   "pagination": {
+    "limit": 2000,
+    "skip": 0
+   },
+   "requestedGranularity": "record",
+   "requestedSchemas": [
+    {
+     "id": "genomicVariant",
+     "name": "Default schema for a genomic variation",
+     "referenceToSchemaDefinition": "https://progenetix.org/services/schemas/genomicVariant",
+     "schemaVersion": "v2.2.0"
+    }
+   ],
+   "testMode": false
+  },
+  "returnedGranularity": "record",
+  "returnedSchemas": [
+   {
+    "id": "genomicVariant",
+    "name": "Default schema for a genomic variation",
+    "referenceToSchemaDefinition": "https://progenetix.org/services/schemas/genomicVariant",
+    "schemaVersion": "v2.2.0"
+   }
+  ],
+  "testMode": false
+ },
+ "response": {
+  "resultSets": [
+   {
+    "exists": true,
+    "id": "progenetix",
+    "info": {
+     "counts": {
+      "analyses": 53,
+      "biosamples": 53,
+      "individuals": 54,
+      "variants": 60
+     }
+    },
+    "responseEntityId": "genomicVariant",
+    "results": [
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84d4xuo",
+        "biosampleId": "pgxbs-m84d4xuo",
+        "individualId": "pgxind-m84d2nvu",
+        "variantId": "bycvar-684b1758e2f6de7983e698d9"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:172790507-198235059:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 198235059,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 172790507,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftwu9bb",
+        "biosampleId": "pgxbs-kftvktaw",
+        "individualId": "pgxind-kftx6zbj",
+        "variantId": "bycvar-66e3555fd2ef81e071d6d2f7"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:195691392-195729005:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 195729005,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 195691392,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftwtzzq",
+        "biosampleId": "pgxbs-kftvkshu",
+        "individualId": "pgxind-kftx6yb4",
+        "variantId": "bycvar-66e306d5d2ef81e071d290e3"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:195729085-195747892:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 195747892,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 195729085,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84d04e7",
+        "biosampleId": "pgxbs-m84d04e7",
+        "individualId": "pgxind-m84czcau",
+        "variantId": "bycvar-684b0b66e2f6de7983e46052"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:195976935-198235059:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 198235059,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 195976935,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftwtzwb",
+        "biosampleId": "pgxbs-kftvkshi",
+        "individualId": "pgxind-kftx6yaq",
+        "variantId": "bycvar-66e32e4bd2ef81e071d498cf"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:195672204-195747892:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 195747892,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 195672204,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftwnkxy",
+        "biosampleId": "pgxbs-kftvjyot",
+        "individualId": "pgxind-kftx5y9j",
+        "variantId": "bycvar-66576b9f755f55bd95bd1b9c"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:161049490-196061276:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 196061276,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 161049490,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftwxlfw",
+        "biosampleId": "pgxbs-kftvkk5s",
+        "individualId": "pgxind-kftx6o9l",
+        "variantId": "bycvar-6657b2a102cc20f83044686f"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:198169115-198169248:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 198169248,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 198169115,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftw5xce",
+        "biosampleId": "pgxbs-kftvib0w",
+        "individualId": "pgxind-kftx3xyt",
+        "variantId": "bycvar-66577042420b106c18be2ee3"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:197483680-197748569:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 197748569,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 197483680,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftwy99h",
+        "biosampleId": "pgxbs-kftvkl7t",
+        "individualId": "pgxind-kftx6pl5",
+        "variantId": "bycvar-6657d22b02cc20f8304653be"
+       },
+       {
+        "analysisId": "pgxcs-kftwy9ag",
+        "biosampleId": "pgxbs-kftvkl7u",
+        "individualId": "pgxind-kftx6pl7",
+        "variantId": "bycvar-6657d42002cc20f830467402"
+       },
+       {
+        "analysisId": "pgxcs-kftwy82n",
+        "biosampleId": "pgxbs-kftvkl5x",
+        "individualId": "pgxind-kftx6pis",
+        "variantId": "bycvar-6657d0b102cc20f830463b28"
+       },
+       {
+        "analysisId": "pgxcs-kftwy8d7",
+        "biosampleId": "pgxbs-kftvkl6f",
+        "individualId": "pgxind-kftx6pje",
+        "variantId": "bycvar-6657d30202cc20f830466175"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:197219245-197219508:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 197219508,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 197219245,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftwxl59",
+        "biosampleId": "pgxbs-kftvkk5d",
+        "individualId": "pgxind-kftx6o92",
+        "variantId": "bycvar-6657b26f02cc20f830446558"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:198106674-198109015:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 198109015,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 198106674,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftvmwbl",
+        "biosampleId": "pgxbs-kftvgl6l",
+        "individualId": "pgxind-kftx2brq",
+        "variantId": "bycvar-665a1df47c144a46166147dd"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:195751823-198118346:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 198118346,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 195751823,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84d69ih",
+        "biosampleId": "pgxbs-m84d69ih",
+        "individualId": "pgxind-m84d3okd",
+        "variantId": "bycvar-684b0d631ac9a76cde40e8f7"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:168391363-198235059:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 198235059,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 168391363,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kg6kr026",
+        "biosampleId": "pgxbs-kg6kr025",
+        "individualId": "pgxind-kg6kr027",
+        "variantId": "bycvar-6657a19202cc20f830436b69"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:195573413-197336437:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 197336437,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 195573413,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftw5xrg",
+        "biosampleId": "pgxbs-kftvib24",
+        "individualId": "pgxind-kftx3y0c",
+        "variantId": "bycvar-665770ce420b106c18be36e7"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:197327674-198106887:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 198106887,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 197327674,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftvmwbl",
+        "biosampleId": "pgxbs-kftvgl6l",
+        "individualId": "pgxind-kftx2brq",
+        "variantId": "bycvar-665a1df47c144a46166147dc"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:195735113-195737996:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 195737996,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 195735113,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84ddfrw",
+        "biosampleId": "pgxbs-m84ddfrw",
+        "individualId": "pgxind-m84d8z7c",
+        "variantId": "bycvar-684b0b09e2f6de7983e44f85"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:169451250-198235059:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 198235059,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 169451250,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kg6kqzlf",
+        "biosampleId": "pgxbs-kg6kqzld",
+        "individualId": "pgxind-kg6kqzlg",
+        "variantId": "bycvar-6657a13302cc20f83043662c"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:197465041-197748569:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 197748569,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 197465041,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84d9lxp",
+        "biosampleId": "pgxbs-m84d9lxp",
+        "individualId": "pgxind-m84d5yxe",
+        "variantId": "bycvar-684b11461ac9a76cde419fcf"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:166744806-198235059:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 198235059,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 166744806,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftwu9bb",
+        "biosampleId": "pgxbs-kftvktaw",
+        "individualId": "pgxind-kftx6zbj",
+        "variantId": "bycvar-66e3555fd2ef81e071d6d2f9"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:198169131-198169247:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 198169247,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 198169131,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftw32he",
+        "biosampleId": "pgxbs-kftvi1vi",
+        "individualId": "pgxind-kftx3o0r",
+        "variantId": "bycvar-6656f49a8f6b9615825ed129"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:196209690-196209705:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 196209705,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 196209690,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftw5xrg",
+        "biosampleId": "pgxbs-kftvib24",
+        "individualId": "pgxind-kftx3y0c",
+        "variantId": "bycvar-665770ce420b106c18be36e6"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:194532008-197040983:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 197040983,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 194532008,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84d3ox9",
+        "biosampleId": "pgxbs-m84d3ox9",
+        "individualId": "pgxind-m84d1s28",
+        "variantId": "bycvar-684b1332e2f6de7983e5d0cc"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:190583197-198235059:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 198235059,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 190583197,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftw5hew",
+        "biosampleId": "pgxbs-kftvi9m7",
+        "individualId": "pgxind-kftx3wml",
+        "variantId": "bycvar-66570c5abe3f6845a3563d70"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:197350933-197351037:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 197351037,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 197350933,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftwrsu6",
+        "biosampleId": "pgxbs-kftvki2l",
+        "individualId": "pgxind-kftx6ln8",
+        "variantId": "bycvar-665702c6a94ead87c8094792"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:179181180-197948565:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 197948565,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 179181180,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftw2wbw",
+        "biosampleId": "pgxbs-kftvi1cg",
+        "individualId": "pgxind-kftx3l7i",
+        "variantId": "bycvar-6656f8f48f6b9615825f0eca"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:179656620-197812401:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 197812401,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 179656620,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftwxkg2",
+        "biosampleId": "pgxbs-kftvkk47",
+        "individualId": "pgxind-kftx6o7k",
+        "variantId": "bycvar-6657b1dd02cc20f830445c53"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:198121263-198169248:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 198169248,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 198121263,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84d66w2",
+        "biosampleId": "pgxbs-m84d66w2",
+        "individualId": "pgxind-m84d3m7s",
+        "variantId": "bycvar-684b0b901ac9a76cde4093ba"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:186136542-198235059:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 198235059,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 186136542,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftvmwbl",
+        "biosampleId": "pgxbs-kftvgl6l",
+        "individualId": "pgxind-kftx2brq",
+        "variantId": "bycvar-665a1df47c144a46166147de"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:198122835-198125949:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 198125949,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 198122835,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m3io2q9c",
+        "biosampleId": "pgxbs-m3io2q9c",
+        "individualId": "pgxind-m3io2q9c",
+        "variantId": "bycvar-673d077f2cbf8b196b9e332d"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:198164706-198220228:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 198220228,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 198164706,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftwu2ks",
+        "biosampleId": "pgxbs-kftvkspz",
+        "individualId": "pgxind-kftx6yl9",
+        "variantId": "bycvar-66e30f9ed2ef81e071d30779"
+       },
+       {
+        "analysisId": "pgxcs-kftwtzwb",
+        "biosampleId": "pgxbs-kftvkshi",
+        "individualId": "pgxind-kftx6yaq",
+        "variantId": "bycvar-66e32e4bd2ef81e071d498d1"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:197621717-197627117:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 197627117,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 197621717,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftwxkvi",
+        "biosampleId": "pgxbs-kftvkk4x",
+        "individualId": "pgxind-kftx6o8i",
+        "variantId": "bycvar-6657b44802cc20f8304482f7"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:198107278-198108860:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 198108860,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 198107278,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m3io2q8o",
+        "biosampleId": "pgxbs-m3io2q8o",
+        "individualId": "pgxind-m3io2q8o",
+        "variantId": "bycvar-673d07692cbf8b196b9e31b5"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:195909059-195909858:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 195909858,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 195909059,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kg6kqznv",
+        "biosampleId": "pgxbs-kg6kqznu",
+        "individualId": "pgxind-kg6kqznw",
+        "variantId": "bycvar-6657a0dd02cc20f830436160"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:197465388-197484527:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 197484527,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 197465388,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84d4xhe",
+        "biosampleId": "pgxbs-m84d4xhe",
+        "individualId": "pgxind-m84d2nj7",
+        "variantId": "bycvar-684b00971ac9a76cde3f820e"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:193720423-198235059:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 198235059,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 193720423,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84d3ssq",
+        "biosampleId": "pgxbs-m84d3ssq",
+        "individualId": "pgxind-m84d1vna",
+        "variantId": "bycvar-684b1730e2f6de7983e69168"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:191183076-198235059:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 198235059,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 191183076,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftvzylj",
+        "biosampleId": "pgxbs-kftvhrx2",
+        "individualId": "pgxind-kftx3k60",
+        "variantId": "bycvar-66572cbeea1558707a9a909e"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:191541460-197812401:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 197812401,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 191541460,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kg6kqzrx",
+        "biosampleId": "pgxbs-kg6kqzrw",
+        "individualId": "pgxind-kg6kqzrz",
+        "variantId": "bycvar-6657a15302cc20f8304367fd"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:197465041-197848490:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 197848490,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 197465041,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftw5xo0",
+        "biosampleId": "pgxbs-kftvib1t",
+        "individualId": "pgxind-kftx3xzy",
+        "variantId": "bycvar-665770a5420b106c18be3494"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:190006181-195746770:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 195746770,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 190006181,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftx0e16",
+        "biosampleId": "pgxbs-kftvkokp",
+        "individualId": "pgxind-kftx6tse",
+        "variantId": "bycvar-66582adc02cc20f8304c8ac4"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:197278817-198106887:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 198106887,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 197278817,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftw1n13",
+        "biosampleId": "pgxbs-kftvhxf0",
+        "individualId": "pgxind-kftx3t8u",
+        "variantId": "bycvar-66571642183fc78d1fb04e45"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:167384381-197812401:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 197812401,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 167384381,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84da65h",
+        "biosampleId": "pgxbs-m84da65h",
+        "individualId": "pgxind-m84d6gwo",
+        "variantId": "bycvar-684b0572e2f6de7983e3bbf6"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:159979359-198235059:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 198235059,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 159979359,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftwxkg2",
+        "biosampleId": "pgxbs-kftvkk47",
+        "individualId": "pgxind-kftx6o7k",
+        "variantId": "bycvar-6657b1dd02cc20f830445c51"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:198106494-198118346:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 198118346,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 198106494,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m3io2hs3",
+        "biosampleId": "pgxbs-m3io2hs3",
+        "individualId": "pgxind-m3io2hs3",
+        "variantId": "bycvar-673cf5742cbf8b196b9d13e6"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:195778623-195792481:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 195792481,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 195778623,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftwpgkf",
+        "biosampleId": "pgxbs-kftvk6yu",
+        "individualId": "pgxind-kftx680w",
+        "variantId": "bycvar-6656f7889267d4e772e763f5"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:195751990-198073373:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 198073373,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 195751990,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftwppt1",
+        "biosampleId": "pgxbs-kftvk8a0",
+        "individualId": "pgxind-kl8hk4dg",
+        "variantId": "bycvar-66571a919267d4e772e95187"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:195711827-195745954:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 195745954,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 195711827,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m3io6d5f",
+        "biosampleId": "pgxbs-m3io6d5f",
+        "individualId": "pgxind-m3io2gte",
+        "variantId": "bycvar-673cf1cc2cbf8b196b9cd88f"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:191374062-198039668:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 198039668,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 191374062,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84dgxcw",
+        "biosampleId": "pgxbs-m84dgxcw",
+        "individualId": "pgxind-m84dby75",
+        "variantId": "bycvar-684b0358155c84936d70bf72"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:187724890-198235059:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 198235059,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 187724890,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84d1wc9",
+        "biosampleId": "pgxbs-m84d1wc9",
+        "individualId": "pgxind-m84d0qmx",
+        "variantId": "bycvar-684b1162e2f6de7983e5796e"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:195188219-198235059:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 198235059,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 195188219,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftw9rei",
+        "biosampleId": "pgxbs-kftvinqw",
+        "individualId": "pgxind-kftx4d7y",
+        "variantId": "bycvar-665714d5a94ead87c80a4759"
+       },
+       {
+        "analysisId": "pgxcs-kftwcol7",
+        "biosampleId": "pgxbs-kftvix8o",
+        "individualId": "pgxind-kftx4oxu",
+        "variantId": "bycvar-66573dd49267d4e772eb4828"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:195692326-195737582:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 195737582,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 195692326,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftwubce",
+        "biosampleId": "pgxbs-kftvkth7",
+        "individualId": "pgxind-kftx6zjg",
+        "variantId": "bycvar-66e34244d2ef81e071d5bab8"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:195673928-195768450:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 195768450,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 195673928,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftwxkzf",
+        "biosampleId": "pgxbs-kftvkk53",
+        "individualId": "pgxind-kftx6o8q",
+        "variantId": "bycvar-6657b25b02cc20f83044641b"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:198107476-198108860:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 198108860,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 198107476,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftwxkyf",
+        "biosampleId": "pgxbs-kftvkk52",
+        "individualId": "pgxind-kftx6o8o",
+        "variantId": "bycvar-6657b46002cc20f830448476"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:198106928-198108860:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 198108860,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 198106928,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-m84da0uq",
+        "biosampleId": "pgxbs-m84da0uq",
+        "individualId": "pgxind-m84d6c5o",
+        "variantId": "bycvar-684b19461ac9a76cde4321aa"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:180546235-198235059:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 198235059,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 180546235,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftw5xo0",
+        "biosampleId": "pgxbs-kftvib1t",
+        "individualId": "pgxind-kftx3xzy",
+        "variantId": "bycvar-665770a6420b106c18be3495"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:195775067-197111615:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 197111615,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 195775067,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     },
+     {
+      "caseLevelData": [
+       {
+        "analysisId": "pgxcs-kftwxkqn",
+        "biosampleId": "pgxbs-kftvkk4p",
+        "individualId": "pgxind-kftx6o87",
+        "variantId": "bycvar-6657b22002cc20f830446072"
+       }
+      ],
+      "identifiers": {},
+      "molecularAttributes": {},
+      "variantInternalId": "NC_000003.12:198107700-198108568:EFO_0030072",
+      "variantLevelData": {},
+      "variation": {
+       "copyChange": "high-level gain",
+       "location": {
+        "chromosome": "3",
+        "end": 198108568,
+        "sequenceReference": {
+         "refgetAccession": "SQ.Zu7h9AggXxhTaGVsy7h_EZSChSZGcmgX",
+         "type": "SequenceReference"
+        },
+        "sequence_id": "refseq:NC_000003.12",
+        "start": 198107700,
+        "type": "SequenceLocation"
+       },
+       "type": "CopyNumberChange",
+       "variantState": {
+        "id": "EFO:0030072",
+        "label": "high-level gain"
+       }
+      }
+     }
+    ],
+    "resultsCount": 60,
+    "resultsHandovers": [],
+    "setType": "dataset"
+   }
+  ]
+ },
+ "responseSummary": {
+  "exists": true,
+  "numTotalResults": 60
+ }
+}

@@ -77,12 +77,14 @@ def test_over_ceiling_refuses_without_fetching(ccl, full):
 
 
 def test_a_silently_capped_full_retrieval_is_refused(ccl, full):
-    """The server applied a maximum below the total: refuse, never compute."""
+    """Short of the provider's own total: refuse, never compute. The message
+    states what was observed, not a cause the response cannot show."""
     client = StubClient(full, cap=2)
     result = retrieve(_query(), ccl, adapter_for(ccl), client)
     assert result.decision.mode is RetrievalMode.REFUSE
     assert result.records == []
-    assert "maximum below the total" in result.refusal
+    assert "short of the provider's own total" in result.refusal
+    assert "maximum" not in result.refusal and "random subset" not in result.refusal
 
 
 def test_sampling_is_opt_in_and_labelled(ccl, full):

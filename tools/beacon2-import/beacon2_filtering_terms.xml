@@ -39,11 +39,12 @@
                 <assert_contents>
                     <has_text text="shared_with"/>
                     <has_text text="NCIT:"/>
+                    <has_n_lines n="18556"/>
                 </assert_contents>
             </output>
             <output name="outcomes">
                 <assert_contents>
-                    <has_line_matching expression="^org\.cancercelllines\t[^\t]*\tn/a\t[^\t]*\tok\t.*"/>
+                    <has_line_matching expression="^org\.cancercelllines\t[^\t]*\tn/a\t[^\t]*\tok\t18555\t.*"/>
                 </assert_contents>
             </output>
         </test>
@@ -53,9 +54,14 @@
                 <param name="providers" value="org.cancercelllines"/>
             </conditional>
             <param name="prefixes" value="EFO"/>
+            <output name="terms">
+                <assert_contents>
+                    <has_n_lines n="12"/>
+                </assert_contents>
+            </output>
             <output name="outcomes">
                 <assert_contents>
-                    <has_line_matching expression="^org\.cancercelllines\t[^\t]*\tn/a\t[^\t]*\tok\t.*"/>
+                    <has_line_matching expression="^org\.cancercelllines\t[^\t]*\tn/a\t[^\t]*\tok\t11\t.*"/>
                     <has_text text="selected client-side"/>
                 </assert_contents>
             </output>

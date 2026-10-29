@@ -67,7 +67,7 @@
     </inputs>
     <expand macro="beacon_outputs"/>
     <tests>
-        <!-- Two live providers; rows from each on the requested chromosome. -->
+        <!-- Two live providers over TP53 (GRCh38): high-level losses in glioblastoma. -->
         <test expect_num_outputs="2">
             <conditional name="connection">
                 <param name="transport" value="api"/>
@@ -76,8 +76,8 @@
             <param name="variant_classes" value="CNV"/>
             <param name="reference_name" value="17"/>
             <param name="assembly" value="GRCh38"/>
-            <param name="start" value="7572837"/>
-            <param name="end" value="7578641"/>
+            <param name="start" value="7668421"/>
+            <param name="end" value="7687490"/>
             <param name="granularity" value="record"/>
             <section name="cnv_terms">
                 <conditional name="variant_type">
@@ -96,7 +96,6 @@
             <output name="results">
                 <assert_contents>
                     <has_line_matching expression="^org\.progenetix\.beacon\t(?:[^\t]*\t){2}CNV\t(?:[^\t]*\t){9}17\t.*"/>
-                    <has_line_matching expression="^org\.cancercelllines\t(?:[^\t]*\t){2}CNV\t(?:[^\t]*\t){9}17\t.*"/>
                 </assert_contents>
             </output>
             <output name="outcomes">
@@ -107,7 +106,7 @@
                 </assert_contents>
             </output>
         </test>
-        <!-- An unfiltered common region exceeds the ceiling: refused, with a filter suggested. -->
+        <!-- Unfiltered TP53 exceeds the ceiling on Progenetix: refused, with a filter suggested. -->
         <test expect_num_outputs="2">
             <conditional name="connection">
                 <param name="transport" value="api"/>
@@ -115,17 +114,17 @@
             </conditional>
             <param name="variant_classes" value="CNV"/>
             <param name="reference_name" value="17"/>
-            <param name="start" value="7572837"/>
-            <param name="end" value="7578641"/>
+            <param name="start" value="7668421"/>
+            <param name="end" value="7687490"/>
             <output name="outcomes">
                 <assert_contents>
-                    <has_line_matching expression="^org\.progenetix\.beacon\t[^\t]*\tCNV\t[^\t]*\tskipped\t.*"/>
+                    <has_line_matching expression="^org\.progenetix\.beacon\t[^\t]*\tCNV\t[^\t]*\tskipped\t0\t.*"/>
                     <has_text text="ceiling"/>
                     <has_text text="--filter"/>
                 </assert_contents>
             </output>
         </test>
-        <!-- Count granularity: one summary row, no records. -->
+        <!-- Count granularity over TP53: one summary row, no records. -->
         <test expect_num_outputs="2">
             <conditional name="connection">
                 <param name="transport" value="api"/>
@@ -133,8 +132,8 @@
             </conditional>
             <param name="variant_classes" value="CNV"/>
             <param name="reference_name" value="17"/>
-            <param name="start" value="7572837"/>
-            <param name="end" value="7578641"/>
+            <param name="start" value="7668421"/>
+            <param name="end" value="7687490"/>
             <param name="granularity" value="count"/>
             <output name="results">
                 <assert_contents>
@@ -144,11 +143,11 @@
             </output>
             <output name="outcomes">
                 <assert_contents>
-                    <has_line_matching expression="^org\.cancercelllines\t[^\t]*\tCNV\t[^\t]*\tok\t.*"/>
+                    <has_line_matching expression="^org\.cancercelllines\t[^\t]*\tCNV\t[^\t]*\tok\t1\t.*"/>
                 </assert_contents>
             </output>
         </test>
-        <!-- An ontology filter without descendants. -->
+        <!-- An ontology filter without descendants, over TP53. -->
         <test expect_num_outputs="2">
             <conditional name="connection">
                 <param name="transport" value="api"/>
@@ -156,8 +155,8 @@
             </conditional>
             <param name="variant_classes" value="CNV"/>
             <param name="reference_name" value="17"/>
-            <param name="start" value="7572837"/>
-            <param name="end" value="7578641"/>
+            <param name="start" value="7668421"/>
+            <param name="end" value="7687490"/>
             <section name="cnv_terms">
                 <conditional name="variant_type">
                     <param name="mode" value="efo"/>
@@ -180,6 +179,36 @@
             <output name="outcomes">
                 <assert_contents>
                     <has_line_matching expression="^org\.progenetix\.beacon\t[^\t]*\tCNV\t[^\t]*\tok\t.*"/>
+                </assert_contents>
+            </output>
+        </test>
+        <!-- The positional twin of gene #1: its counts must equal the gene query's. -->
+        <test expect_num_outputs="2">
+            <conditional name="connection">
+                <param name="transport" value="api"/>
+                <param name="providers" value="org.progenetix.beacon,org.cancercelllines"/>
+            </conditional>
+            <param name="variant_classes" value="CNV"/>
+            <param name="reference_name" value="17"/>
+            <param name="start" value="7668421"/>
+            <param name="end" value="7687490"/>
+            <repeat name="filters">
+                <conditional name="filter_type">
+                    <param name="kind" value="ontology"/>
+                    <param name="term" value="NCIT:C3058"/>
+                    <param name="include_descendant_terms" value="true"/>
+                </conditional>
+            </repeat>
+            <output name="results">
+                <assert_contents>
+                    <has_line_matching expression="^org\.progenetix\.beacon\t(?:[^\t]*\t){2}CNV\t(?:[^\t]*\t){9}17\t.*"/>
+                </assert_contents>
+            </output>
+            <output name="outcomes">
+                <assert_contents>
+                    <has_line_matching expression="^org\.progenetix\.beacon\t[^\t]*\tCNV\t[^\t]*\tok\t.*"/>
+                    <has_line_matching expression="^org\.cancercelllines\t[^\t]*\tCNV\t[^\t]*\tok\t.*"/>
+                    <has_n_lines n="3"/>
                 </assert_contents>
             </output>
         </test>

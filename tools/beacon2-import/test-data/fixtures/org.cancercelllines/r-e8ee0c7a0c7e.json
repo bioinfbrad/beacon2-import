@@ -1,0 +1,147 @@
+{
+ "meta": {
+  "apiVersion": "v2.3.0-beaconplus",
+  "beaconId": "org.cancercelllines",
+  "receivedRequestSummary": {
+   "apiVersion": "v2.3.0-beaconplus",
+   "beaconId": "org.cancercelllines",
+   "datasetIds": [
+    "cellz"
+   ],
+   "filters": [
+    {
+     "id": "NCIT:C3058",
+     "includeDescendantTerms": true
+    }
+   ],
+   "includeResultsetResponses": "HIT",
+   "pagination": {
+    "limit": 1,
+    "skip": 0
+   },
+   "requestedGranularity": "record",
+   "requestedSchemas": [
+    {
+     "id": "individual",
+     "name": "Default schema for an individual",
+     "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/individual"
+    }
+   ],
+   "testMode": false
+  },
+  "returnedGranularity": "record",
+  "returnedSchemas": [
+   {
+    "id": "individual",
+    "name": "Default schema for an individual",
+    "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/individual"
+   }
+  ],
+  "testMode": false
+ },
+ "response": {
+  "resultSets": [
+   {
+    "exists": true,
+    "id": "cellz",
+    "info": {
+     "counts": {
+      "analyses": 278,
+      "biosamples": 400,
+      "individuals": 184
+     }
+    },
+    "responseEntityId": "individual",
+    "results": [
+     {
+      "biosampleIds": [
+       "pgxbs-FE68dd8B",
+       "pgxbs-kftvib23",
+       "pgxbs-kftvkmp8",
+       "pgxbs-kftvkmpa",
+       "pgxbs-kftvksfb"
+      ],
+      "cellLines": [
+       {
+        "description": "DK-MG",
+        "id": "cellosaurus:CVCL_1173",
+        "reference": "https://www.cellosaurus.org/CVCL_1173"
+       }
+      ],
+      "diseases": [
+       {
+        "clinicalTnmFinding": [],
+        "diseaseCode": {
+         "id": "NCIT:C3058",
+         "label": "Glioblastoma"
+        },
+        "followupState": {
+         "id": "EFO:0030039",
+         "label": "no followup status"
+        },
+        "followupTime": "null",
+        "onset": {
+         "age": "P67Y",
+         "ageDays": 24471
+        },
+        "stage": {
+         "id": "NCIT:C92207",
+         "label": "Stage Unknown"
+        }
+       }
+      ],
+      "genomeAncestry": [
+       {
+        "id": "HANCESTRO:0010",
+        "label": "African",
+        "percentage": "0.82"
+       },
+       {
+        "id": "HANCESTRO:0013",
+        "label": "Native American",
+        "percentage": "0"
+       },
+       {
+        "id": "HANCESTRO:0009",
+        "label": "East Asian",
+        "percentage": "4.28"
+       },
+       {
+        "id": "HANCESTRO:0007",
+        "label": "South East Asian",
+        "percentage": "0"
+       },
+       {
+        "id": "HANCESTRO:0006",
+        "label": "South Asian",
+        "percentage": "0.04"
+       },
+       {
+        "id": "HANCESTRO:0005",
+        "label": "European (North)",
+        "percentage": "60.17"
+       },
+       {
+        "id": "HANCESTRO:0005",
+        "label": "European (South)",
+        "percentage": "34.69"
+       }
+      ],
+      "id": "cellzind-cCe004b7",
+      "sex": {
+       "id": "NCIT:C16576",
+       "label": "female"
+      }
+     }
+    ],
+    "resultsCount": 184,
+    "resultsHandovers": [],
+    "setType": "dataset"
+   }
+  ]
+ },
+ "responseSummary": {
+  "exists": true,
+  "numTotalResults": 184
+ }
+}

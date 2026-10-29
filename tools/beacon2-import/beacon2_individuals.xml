@@ -122,14 +122,16 @@
             </conditional>
             <output name="results">
                 <assert_contents>
-                    <has_line_matching expression="^org\.cancercelllines\t.*"/>
                     <has_text text="individual_id"/>
+                    <has_n_lines n="1"/>
                 </assert_contents>
             </output>
             <output name="outcomes">
                 <assert_contents>
-                    <has_line_matching expression="^org\.cancercelllines\t[^\t]*\tn/a\t[^\t]*\tok\t.*"/>
-                    <has_n_lines n="2"/>
+                    <has_line_matching expression="^org\.cancercelllines\t[^\t]*\tn/a\t[^\t]*\tskipped\t0\t.*"/>
+                    <has_text text="all 184 matching instances"/>
+                    <has_text text="returned 180"/>
+                    <has_text text="short of the provider's own total"/>
                 </assert_contents>
             </output>
         </test>

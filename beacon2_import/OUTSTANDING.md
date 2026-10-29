@@ -25,6 +25,17 @@ setuptools still accepts, though it warns that support will be removed.
 
 ---
 
+## Lesson: the recordings found what the constructed fixtures could not
+
+Replaying the first real recordings failed cohorts and datasets. cancercelllines
+answers both as a Beacon COLLECTIONS response (`response.collections`), and the
+parser read only `resultSets`. The constructed fixtures had put cohorts and
+datasets in `resultSets` -- agreeing with the code, not the specification -- so
+every test passed on a path that never worked against a real beacon. The Galaxy
+replay now runs in pytest, so this class of failure surfaces without planemo.
+
+---
+
 ## The principle: trust the response, not the query or the declaration
 
 Three instances, each learned from a real failure, all enforced:
@@ -102,11 +113,12 @@ real database by hardcoded address). Inserts stay covered at the Python level.
   `$connection.providers.fields.base_url` of a multiple select returning the
   comma-joined column. Without it, no tool passes base URLs to the CLI, and tool
   tests would reach the network. Needs a planemo run.
-- **Galaxy fixtures for cancercelllines and Progenetix are awaiting a live
-  recording** (`scripts/record_fixtures.py --record`, run from AWS). Until then
-  their 20 Galaxy tests fail with FixtureMiss, and `test_galaxy_fixtures.py`
-  skips the two providers by name (galaxy_fixtures_awaiting.txt). The
-  bracketless provider's fixture is constructed, as a synthetic provider must be.
+- **Galaxy fixtures are recorded** from the live providers (cancercelllines 29
+  requests, Progenetix 15, from AWS), plus the constructed bracketless provider.
+  Every Galaxy test asserts the count the provider actually returned, and
+  `tests/test_galaxy_replay.py` replays all of them in pytest with their own
+  XML assertions. Three recordings over 256 kB are stored gzipped, byte for
+  byte: the tree is 1.5 MB rather than 4.7 MB.
 - **Verified before recording, so the AWS session is not wasted:** for all 24
   spec tests, Galaxy's rendered `<command>` sends exactly the requests the
   recorder records (`tests/test_galaxy_command_keys.py`, which renders each
@@ -114,11 +126,16 @@ real database by hardcoded address). Inserts stay covered at the Python level.
   and `--record` then `--check` completes against a stand-in network with no
   FixtureMiss on replay. The dry run also found, and fixed, the recorder
   leaving its client factory patched after `--record`.
-- **No Galaxy test asserts a count yet.** Counts can only come from a recording;
-  `--record` prints each test's row count, and those become `row_count`
-  assertions once recorded. Row assertions (beacon, class, chromosome) are in
-  place but depend on the recorded queries returning rows, which `--check`
-  reports before Galaxy is run.
+- **Weak by the data, not the design:** four Galaxy tests assert a recorded
+  zero. cancercelllines holds no CNV for the range #1, cnv #1 and gene #1 queries
+  (each total 0, delivered 0), and neither provider holds TP53 R273H for the
+  sequence tests. Zero is a specific, recorded fact, but a test that matches
+  nothing cannot show matching works. Re-recording gene #1 with a gene
+  cancercelllines does hold (CDKN2A, say) would make it prove something.
+- **Individuals on cancercelllines is refused, correctly.** The server reports
+  resultsCount 184 and delivers 180 at limit 0. A retrieval short of the
+  provider's own total is never reported as complete; the Galaxy test asserts
+  the refusal, with both numbers.
 - **The bioblend check is static.** All seven call sites bind against bioblend
   1.9.0's signatures; none was exercised against a live Galaxy server.
 - **The recipe sha256 is for the shipped sdist only.** Two builds of an

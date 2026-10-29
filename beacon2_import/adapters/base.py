@@ -206,8 +206,66 @@ class BeaconAdapter(ABC):
             return coordinates.to_refseq_accession(query.reference_name, assembly), None
         return coordinates.normalise_chromosome(query.reference_name), assembly
 
+    # ---- what is sent, as distinct from what was asked ---------------------
+
+    def uses_get(self, query: Query) -> bool:
+        """Whether this query goes by GET. bycon resolves geneId only over GET."""
+        return (getattr(query.form, "value", query.form) == "geneId"
+                and self.provider.gene_query_transport == "get")
+
+    def matches_sequence_client_side(self, query: Query) -> bool:
+        return (getattr(query.form, "value", query.form) == "sequence"
+                and self.provider.sequence_query_mode == "range_then_filter")
+
+    def small_variant_prefilter(self) -> str | None:
+        """The SO term this provider filters small variants by, if any."""
+        declared = self.provider.small_variant_type_filter
+        return declared if declared.startswith("SO:") else None
+
+    def wire_query(self, query: Query) -> Query:
+        """The query as it goes on the wire, which may differ from the one asked.
+
+        * SEQUENCE on a range_then_filter provider: a RANGE over
+          [start, start + len(referenceBases)), with no bases, carrying the
+          provider's small-variant prefilter if it declares one. The alleles
+          are matched client-side against the ASKED query (normalise/verify.py).
+        * SMALL_VARIANT with an SO term, where the provider cannot filter by SO
+          term: the term is not sent, since sending it returns zero; class
+          verification excludes the other classes instead. The planner labels
+          the query degraded.
+        """
+        from dataclasses import replace
+
+        from ..query.classes import VariantClass
+        from ..query.model import Position, QueryForm
+
+        if self.matches_sequence_client_side(query):
+            start = query.start.values[0]
+            length = max(len(query.reference_bases or ""), 1)
+            return replace(query, form=QueryForm.RANGE, start=Position((start,)),
+                           end=Position((start + length,)), reference_bases=None,
+                           alternate_bases=None, variant_type=self.small_variant_prefilter())
+        if query.variant_class is VariantClass.SMALL_VARIANT:
+            if (self.provider.small_variant_type_filter == "unsupported"
+                    and str(query.variant_type or "").startswith("SO:")):
+                return replace(query, variant_type=None)
+            if not query.variant_type and self.small_variant_prefilter():
+                # Without it, a small-variant query on a CNV-rich provider is
+                # swamped: 63,972 instances at codon 273 on Progenetix, nearly
+                # all CNVs. The declared term (observed to expand) selects them.
+                return replace(query, variant_type=self.small_variant_prefilter())
+        return query
+
+    def send(self, client, query: Query):
+        """Send the query by the method this provider needs for it."""
+        path = self.entity_path(query.entity, query.entity_id, query.nested_entity)
+        if self.uses_get(query):
+            return client.get(path, self.build_get_params(query))
+        return client.post(path, self.build_post_body(query))
+
     def _genomic_parameters(self, query: Query) -> dict[str, Any]:
         """The g_variant parameter block, before layout is applied."""
+        query = self.wire_query(query)
         reference, assembly = self._reference(query)
         params: dict[str, Any] = {}
         if reference:

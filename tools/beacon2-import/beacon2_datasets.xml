@@ -93,11 +93,12 @@
                 <assert_contents>
                     <has_line_matching expression="^org\.cancercelllines\t.*"/>
                     <has_text text="dataset_id"/>
+                    <has_n_lines n="5"/>
                 </assert_contents>
             </output>
             <output name="outcomes">
                 <assert_contents>
-                    <has_line_matching expression="^org\.cancercelllines\t[^\t]*\tn/a\t[^\t]*\tok\t.*"/>
+                    <has_line_matching expression="^org\.cancercelllines\t[^\t]*\tn/a\t[^\t]*\tok\t4\t.*"/>
                     <has_n_lines n="2"/>
                 </assert_contents>
             </output>

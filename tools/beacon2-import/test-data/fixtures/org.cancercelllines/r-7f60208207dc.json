@@ -1,0 +1,330 @@
+{
+ "meta": {
+  "apiVersion": "v2.3.0-beaconplus",
+  "beaconId": "org.cancercelllines",
+  "receivedRequestSummary": {
+   "apiVersion": "v2.3.0-beaconplus",
+   "beaconId": "org.cancercelllines",
+   "datasetIds": [
+    "cellz"
+   ],
+   "includeResultsetResponses": "HIT",
+   "pagination": {
+    "limit": 200,
+    "skip": 0
+   },
+   "requestedGranularity": "record",
+   "requestedSchemas": [
+    {
+     "id": "map",
+     "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/beaconMapSchema/"
+    }
+   ],
+   "testMode": false
+  },
+  "returnedGranularity": "record",
+  "returnedSchemas": [
+   {
+    "id": "map",
+    "referenceToSchemaDefinition": "https://cancercelllines.org/services/schemas/beaconMapSchema/"
+   }
+  ],
+  "testMode": false
+ },
+ "response": {
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "endpointSets": {
+   "analysisEndpoints": {
+    "endpoints": {
+     "biosampleLookup": {
+      "returnedEntryType": "biosample",
+      "url": "https://cancercelllines.org/beacon/analyses/{id}/biosamples"
+     },
+     "genomicVariantLookup": {
+      "returnedEntryType": "genomicVariant",
+      "url": "https://cancercelllines.org/beacon/analyses/{id}/g_variants"
+     },
+     "individualLookup": {
+      "returnedEntryType": "individual",
+      "url": "https://cancercelllines.org/beacon/analyses/{id}/individuals"
+     },
+     "phenopacketLookup": {
+      "returnedEntryType": "phenopacket",
+      "url": "https://cancercelllines.org/beacon/analyses/{id}/phenopackets"
+     },
+     "runLookup": {
+      "returnedEntryType": "run",
+      "url": "https://cancercelllines.org/beacon/analyses/{id}/runs"
+     }
+    },
+    "entryType": "analysis",
+    "filteringTermsUrl": "https://cancercelllines.org/beacon/filtering_terms",
+    "openAPIEndpointsDefinition": "https://cancercelllines.org/services/endpoints/analyses",
+    "rootUrl": "https://cancercelllines.org/beacon/analyses",
+    "singleEntryUrl": "https://cancercelllines.org/beacon/analyses/{id}"
+   },
+   "biosampleEndpoints": {
+    "aggregationTermsUrl": "https://cancercelllines.org/beacon/aggregation_terms",
+    "endpoints": {
+     "analysisLookup": {
+      "returnedEntryType": "analysis",
+      "url": "https://cancercelllines.org/beacon/biosamples/{id}/analyses"
+     },
+     "genomicVariantLookup": {
+      "returnedEntryType": "genomicVariant",
+      "url": "https://cancercelllines.org/beacon/biosamples/{id}/g_variants"
+     },
+     "individualLookup": {
+      "returnedEntryType": "individual",
+      "url": "https://cancercelllines.org/beacon/biosamples/{id}/individuals"
+     },
+     "phenopacketLookup": {
+      "returnedEntryType": "phenopacket",
+      "url": "https://cancercelllines.org/beacon/biosamples/{id}/phenopackets"
+     },
+     "runLookup": {
+      "returnedEntryType": "run",
+      "url": "https://cancercelllines.org/beacon/biosamples/{id}/runs"
+     }
+    },
+    "entryType": "biosample",
+    "filteringTermsUrl": "https://cancercelllines.org/beacon/filtering_terms",
+    "openAPIEndpointsDefinition": "https://cancercelllines.org/services/endpoints/biosamples",
+    "rootUrl": "https://cancercelllines.org/beacon/biosamples",
+    "rootUrlAliases": [
+     "https://cancercelllines.org/beacon/samples"
+    ],
+    "singleEntryUrl": "https://cancercelllines.org/beacon/biosamples/{id}"
+   },
+   "cohortEndpoints": {
+    "aggregationTermsUrl": "https://cancercelllines.org/beacon/aggregation_terms",
+    "endpoints": {
+     "analysisLookup": {
+      "returnedEntryType": "analysis",
+      "url": "https://cancercelllines.org/beacon/cohorts/{id}/analyses"
+     },
+     "biosampleLookup": {
+      "returnedEntryType": "biosample",
+      "url": "https://cancercelllines.org/beacon/cohorts/{id}/biosamples"
+     },
+     "genomicVariantLookup": {
+      "returnedEntryType": "genomicVariant",
+      "url": "https://cancercelllines.org/beacon/cohorts/{id}/g_variants"
+     },
+     "individualLookup": {
+      "returnedEntryType": "individual",
+      "url": "https://cancercelllines.org/beacon/cohorts/{id}/individuals"
+     },
+     "phenopacketLookup": {
+      "returnedEntryType": "phenopacket",
+      "url": "https://cancercelllines.org/beacon/cohorts/{id}/phenopackets"
+     },
+     "runLookup": {
+      "returnedEntryType": "run",
+      "url": "https://cancercelllines.org/beacon/cohorts/{id}/runs"
+     }
+    },
+    "entryType": "cohort",
+    "filteringTermsUrl": "https://cancercelllines.org/beacon/filtering_terms",
+    "openAPIEndpointsDefinition": "https://cancercelllines.org/services/endpoints/cohorts",
+    "rootUrl": "https://cancercelllines.org/beacon/cohorts",
+    "singleEntryUrl": "https://cancercelllines.org/beacon/cohorts/{id}"
+   },
+   "datasetEndpoints": {
+    "aggregationTermsUrl": "https://cancercelllines.org/beacon/aggregation_terms",
+    "endpoints": {
+     "analysisLookup": {
+      "returnedEntryType": "analysis",
+      "url": "https://cancercelllines.org/beacon/datasets/{id}/analyses"
+     },
+     "biosampleLookup": {
+      "returnedEntryType": "biosample",
+      "url": "https://cancercelllines.org/beacon/datasets/{id}/biosamples"
+     },
+     "genomicVariantLookup": {
+      "returnedEntryType": "genomicVariant",
+      "url": "https://cancercelllines.org/beacon/datasets/{id}/g_variants"
+     },
+     "individualLookup": {
+      "returnedEntryType": "individual",
+      "url": "https://cancercelllines.org/beacon/datasets/{id}/individuals"
+     },
+     "phenopacketLookup": {
+      "returnedEntryType": "phenopacket",
+      "url": "https://cancercelllines.org/beacon/datasets/{id}/phenopackets"
+     },
+     "runLookup": {
+      "returnedEntryType": "run",
+      "url": "https://cancercelllines.org/beacon/datasets/{id}/runs"
+     }
+    },
+    "entryType": "dataset",
+    "filteringTermsUrl": "https://cancercelllines.org/beacon/filtering_terms",
+    "openAPIEndpointsDefinition": "https://cancercelllines.org/services/endpoints/datasets",
+    "rootUrl": "https://cancercelllines.org/beacon/datasets",
+    "singleEntryUrl": "https://cancercelllines.org/beacon/datasets/{id}"
+   },
+   "genomicVariantEndpoints": {
+    "aggregationTermsUrl": "https://cancercelllines.org/beacon/aggregation_terms",
+    "endpoints": {
+     "analysisLookup": {
+      "returnedEntryType": "analysis",
+      "url": "https://cancercelllines.org/beacon/g_variants/{id}/analyses"
+     },
+     "biosampleLookup": {
+      "returnedEntryType": "biosample",
+      "url": "https://cancercelllines.org/beacon/g_variants/{id}/biosamples"
+     },
+     "individualLookup": {
+      "returnedEntryType": "individual",
+      "url": "https://cancercelllines.org/beacon/g_variants/{id}/individuals"
+     },
+     "phenopacketLookup": {
+      "returnedEntryType": "phenopacket",
+      "url": "https://cancercelllines.org/beacon/g_variants/{id}/phenopackets"
+     },
+     "runLookup": {
+      "returnedEntryType": "run",
+      "url": "https://cancercelllines.org/beacon/g_variants/{id}/runs"
+     }
+    },
+    "entryType": "genomicVariant",
+    "filteringTermsUrl": "https://cancercelllines.org/beacon/filtering_terms",
+    "openAPIEndpointsDefinition": "https://cancercelllines.org/services/endpoints/genomicVariations",
+    "rootUrl": "https://cancercelllines.org/beacon/g_variants",
+    "rootUrlAliases": [
+     "https://cancercelllines.org/beacon/genomicVariations",
+     "https://cancercelllines.org/beacon/variants"
+    ],
+    "singleEntryUrl": "https://cancercelllines.org/beacon/g_variants/{id}"
+   },
+   "individualEndpoints": {
+    "aggregationTermsUrl": "https://cancercelllines.org/beacon/aggregation_terms",
+    "endpoints": {
+     "analysisLookup": {
+      "returnedEntryType": "analysis",
+      "url": "https://cancercelllines.org/beacon/individuals/{id}/analyses"
+     },
+     "biosampleLookup": {
+      "returnedEntryType": "biosample",
+      "url": "https://cancercelllines.org/beacon/individuals/{id}/biosamples"
+     },
+     "genomicVariantLookup": {
+      "returnedEntryType": "genomicVariant",
+      "url": "https://cancercelllines.org/beacon/individuals/{id}/g_variants"
+     },
+     "phenopacketLookup": {
+      "returnedEntryType": "phenopacket",
+      "url": "https://cancercelllines.org/beacon/individuals/{id}/phenopackets"
+     },
+     "runLookup": {
+      "returnedEntryType": "run",
+      "url": "https://cancercelllines.org/beacon/individuals/{id}/runs"
+     }
+    },
+    "entryType": "individual",
+    "filteringTermsUrl": "https://cancercelllines.org/beacon/filtering_terms",
+    "openAPIEndpointsDefinition": "https://cancercelllines.org/services/endpoints/individuals",
+    "rootUrl": "https://cancercelllines.org/beacon/individuals",
+    "singleEntryUrl": "https://cancercelllines.org/beacon/individuals/{id}"
+   },
+   "phenopacketEndpoints": {
+    "aggregationTermsUrl": "https://cancercelllines.org/beacon/aggregation_terms",
+    "endpoints": {
+     "analysisLookup": {
+      "returnedEntryType": "analysis",
+      "url": "https://cancercelllines.org/beacon/phenopackets/{id}/analyses"
+     },
+     "biosampleLookup": {
+      "returnedEntryType": "biosample",
+      "url": "https://cancercelllines.org/beacon/phenopackets/{id}/biosamples"
+     },
+     "genomicVariantLookup": {
+      "returnedEntryType": "genomicVariant",
+      "url": "https://cancercelllines.org/beacon/phenopackets/{id}/g_variants"
+     },
+     "individualLookup": {
+      "returnedEntryType": "individual",
+      "url": "https://cancercelllines.org/beacon/phenopackets/{id}/individuals"
+     },
+     "runLookup": {
+      "returnedEntryType": "run",
+      "url": "https://cancercelllines.org/beacon/phenopackets/{id}/runs"
+     }
+    },
+    "entryType": "phenopacket",
+    "filteringTermsUrl": "https://cancercelllines.org/beacon/filtering_terms",
+    "openAPIEndpointsDefinition": "https://cancercelllines.org/services/endpoints/phenopackets",
+    "rootUrl": "https://cancercelllines.org/beacon/phenopackets",
+    "singleEntryUrl": "https://cancercelllines.org/beacon/phenopackets/{id}"
+   },
+   "runEndpoints": {
+    "aggregationTermsUrl": "https://cancercelllines.org/beacon/aggregation_terms",
+    "endpoints": {
+     "analysisLookup": {
+      "returnedEntryType": "analysis",
+      "url": "https://cancercelllines.org/beacon/runs/{id}/analyses"
+     },
+     "biosampleLookup": {
+      "returnedEntryType": "biosample",
+      "url": "https://cancercelllines.org/beacon/runs/{id}/biosamples"
+     },
+     "genomicVariantLookup": {
+      "returnedEntryType": "genomicVariant",
+      "url": "https://cancercelllines.org/beacon/runs/{id}/g_variants"
+     },
+     "individualLookup": {
+      "returnedEntryType": "individual",
+      "url": "https://cancercelllines.org/beacon/runs/{id}/individuals"
+     },
+     "phenopacketLookup": {
+      "returnedEntryType": "phenopacket",
+      "url": "https://cancercelllines.org/beacon/runs/{id}/phenopackets"
+     }
+    },
+    "entryType": "run",
+    "filteringTermsUrl": "https://cancercelllines.org/beacon/filtering_terms",
+    "openAPIEndpointsDefinition": "https://cancercelllines.org/services/endpoints/runs",
+    "rootUrl": "https://cancercelllines.org/beacon/runs",
+    "singleEntryUrl": "https://cancercelllines.org/beacon/runs/{id}"
+   }
+  },
+  "informationalEndpoints": {
+   "aggregationTerm": {
+    "entryType": "aggregationTerm",
+    "rootUrl": "https://cancercelllines.org/beacon/aggregation_terms",
+    "rootUrlAliases": [
+     "https://cancercelllines.org/beacon/aggregationTerms/"
+    ]
+   },
+   "beaconMap": {
+    "entryType": "beaconMap",
+    "rootUrl": "https://cancercelllines.org/beacon/map"
+   },
+   "configuration": {
+    "entryType": "configuration",
+    "rootUrl": "https://cancercelllines.org/beacon/configuration"
+   },
+   "entryType": {
+    "entryType": "entryType",
+    "rootUrl": "https://cancercelllines.org/beacon/entry_types"
+   },
+   "filteringTerm": {
+    "entryType": "filteringTerm",
+    "rootUrl": "https://cancercelllines.org/beacon/filtering_terms",
+    "rootUrlAliases": [
+     "https://cancercelllines.org/beacon/filteringTerms/"
+    ]
+   },
+   "info": {
+    "entryType": "info",
+    "rootUrl": "https://cancercelllines.org/beacon/info",
+    "rootUrlAliases": [
+     "https://cancercelllines.org/beacon/",
+     "https://cancercelllines.org/beacon/service-info",
+     "https://cancercelllines.org/beacon/service_info"
+    ]
+   }
+  }
+ }
+}

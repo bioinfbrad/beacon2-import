@@ -1,0 +1,633 @@
+{
+ "entries": [
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://cancercelllines.org/beacon; used by beacon2_service_info#1",
+   "origin": "recorded",
+   "request": {
+    "method": "GET",
+    "path": "/configuration",
+    "query": {}
+   },
+   "response": "r-42732b4d2af4.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://cancercelllines.org/beacon; used by beacon2_service_info#1",
+   "origin": "recorded",
+   "request": {
+    "method": "GET",
+    "path": "/entry_types",
+    "query": {}
+   },
+   "response": "r-1ab43b0df4bb.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://cancercelllines.org/beacon; used by beacon2_filtering_terms#1, beacon2_filtering_terms#2",
+   "origin": "recorded",
+   "request": {
+    "method": "GET",
+    "path": "/filtering_terms",
+    "query": {
+     "pagination": {
+      "limit": 200
+     }
+    }
+   },
+   "response": "r-5240612aa039.json.gz"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://cancercelllines.org/beacon; used by beacon2_service_info#1",
+   "origin": "recorded",
+   "request": {
+    "method": "GET",
+    "path": "/info",
+    "query": {}
+   },
+   "response": "r-b11787b7cc3d.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://cancercelllines.org/beacon; used by beacon2_service_info#1",
+   "origin": "recorded",
+   "request": {
+    "method": "GET",
+    "path": "/map",
+    "query": {}
+   },
+   "response": "r-7f60208207dc.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://cancercelllines.org/beacon; used by beacon2_analyses#1",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/analyses",
+    "query": {
+     "filters": [
+      {
+       "id": "NCIT:C3058",
+       "includeDescendantTerms": true
+      }
+     ],
+     "pagination": {
+      "limit": 0,
+      "skip": 0
+     },
+     "requestedGranularity": "record"
+    }
+   },
+   "response": "r-3c9d874632c5.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://cancercelllines.org/beacon; used by beacon2_analyses#1",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/analyses",
+    "query": {
+     "filters": [
+      {
+       "id": "NCIT:C3058",
+       "includeDescendantTerms": true
+      }
+     ],
+     "pagination": {
+      "limit": 1,
+      "skip": 0
+     },
+     "requestedGranularity": "record"
+    }
+   },
+   "response": "r-9aab8fe16a3b.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://cancercelllines.org/beacon; used by beacon2_biosamples#1",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/biosamples",
+    "query": {
+     "filters": [
+      {
+       "id": "NCIT:C3058",
+       "includeDescendantTerms": true
+      }
+     ],
+     "pagination": {
+      "limit": 0,
+      "skip": 0
+     },
+     "requestedGranularity": "record"
+    }
+   },
+   "response": "r-457a27810be8.json.gz"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://cancercelllines.org/beacon; used by beacon2_biosamples#1",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/biosamples",
+    "query": {
+     "filters": [
+      {
+       "id": "NCIT:C3058",
+       "includeDescendantTerms": true
+      }
+     ],
+     "pagination": {
+      "limit": 1,
+      "skip": 0
+     },
+     "requestedGranularity": "record"
+    }
+   },
+   "response": "r-447fb0d266e6.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://cancercelllines.org/beacon; used by beacon2_cohorts#1",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/cohorts",
+    "query": {
+     "pagination": {
+      "limit": 0,
+      "skip": 0
+     },
+     "requestedGranularity": "record"
+    }
+   },
+   "response": "r-94a1af7b3d71.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://cancercelllines.org/beacon; used by beacon2_cohorts#1",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/cohorts",
+    "query": {
+     "pagination": {
+      "limit": 1,
+      "skip": 0
+     },
+     "requestedGranularity": "record"
+    }
+   },
+   "response": "r-0e7caecf1c47.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://cancercelllines.org/beacon; used by beacon2_datasets#1",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/datasets",
+    "query": {
+     "pagination": {
+      "limit": 0,
+      "skip": 0
+     },
+     "requestedGranularity": "record"
+    }
+   },
+   "response": "r-985f48a2a139.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://cancercelllines.org/beacon; used by beacon2_datasets#1",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/datasets",
+    "query": {
+     "pagination": {
+      "limit": 1,
+      "skip": 0
+     },
+     "requestedGranularity": "record"
+    }
+   },
+   "response": "r-2394b00b6ef9.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://cancercelllines.org/beacon; used by beacon2_sequence#2",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/genomicVariations",
+    "query": {
+     "alternateBases": "T",
+     "pagination": {
+      "limit": 1,
+      "skip": 0
+     },
+     "referenceBases": "C",
+     "referenceName": "17",
+     "requestedGranularity": "record",
+     "start": [
+      7673801
+     ]
+    }
+   },
+   "response": "r-99386e602137.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://cancercelllines.org/beacon; used by beacon2_cnv#1",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/genomicVariations",
+    "query": {
+     "end": [
+      198169247
+     ],
+     "filters": [
+      {
+       "id": "NCIT:C3058",
+       "includeDescendantTerms": true
+      }
+     ],
+     "pagination": {
+      "limit": 1,
+      "skip": 0
+     },
+     "referenceName": "3",
+     "requestedGranularity": "record",
+     "start": [
+      195728637
+     ],
+     "variantType": "EFO:0030072"
+    }
+   },
+   "response": "r-829c7ad21399.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://cancercelllines.org/beacon; used by beacon2_bracket#4",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/genomicVariations",
+    "query": {
+     "end": [
+      21967753,
+      22500000
+     ],
+     "pagination": {
+      "limit": 0,
+      "skip": 0
+     },
+     "referenceName": "9",
+     "requestedGranularity": "record",
+     "start": [
+      21500000,
+      21975097
+     ],
+     "variantType": "DEL"
+    }
+   },
+   "response": "r-a4231fb26150.json.gz"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://cancercelllines.org/beacon; used by beacon2_bracket#4",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/genomicVariations",
+    "query": {
+     "end": [
+      21967753,
+      22500000
+     ],
+     "pagination": {
+      "limit": 1,
+      "skip": 0
+     },
+     "referenceName": "9",
+     "requestedGranularity": "record",
+     "start": [
+      21500000,
+      21975097
+     ],
+     "variantType": "DEL"
+    }
+   },
+   "response": "r-03a0dbb8f778.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://cancercelllines.org/beacon; used by beacon2_range#1",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/genomicVariations",
+    "query": {
+     "end": [
+      7578641
+     ],
+     "filters": [
+      {
+       "id": "NCIT:C3058",
+       "includeDescendantTerms": true
+      }
+     ],
+     "pagination": {
+      "limit": 1,
+      "skip": 0
+     },
+     "referenceName": "17",
+     "requestedGranularity": "record",
+     "start": [
+      7572836
+     ],
+     "variantType": "EFO:0020073"
+    }
+   },
+   "response": "r-85b9053a5c38.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://cancercelllines.org/beacon; used by beacon2_range#3",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/genomicVariations",
+    "query": {
+     "end": [
+      7578641
+     ],
+     "pagination": {
+      "limit": 100,
+      "skip": 0
+     },
+     "referenceName": "17",
+     "requestedGranularity": "count",
+     "start": [
+      7572836
+     ]
+    }
+   },
+   "response": "r-b162a7a6a56d.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://cancercelllines.org/beacon; used by beacon2_bracket#1",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/genomicVariations",
+    "query": {
+     "end": [
+      7669607,
+      10000000
+     ],
+     "filters": [
+      {
+       "id": "NCIT:C3058",
+       "includeDescendantTerms": true
+      }
+     ],
+     "pagination": {
+      "limit": 0,
+      "skip": 0
+     },
+     "referenceName": "17",
+     "requestedGranularity": "record",
+     "start": [
+      4999999,
+      7676591
+     ],
+     "variantType": "EFO:0030067"
+    }
+   },
+   "response": "r-9f271c2a5b7e.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://cancercelllines.org/beacon; used by beacon2_bracket#1",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/genomicVariations",
+    "query": {
+     "end": [
+      7669607,
+      10000000
+     ],
+     "filters": [
+      {
+       "id": "NCIT:C3058",
+       "includeDescendantTerms": true
+      }
+     ],
+     "pagination": {
+      "limit": 1,
+      "skip": 0
+     },
+     "referenceName": "17",
+     "requestedGranularity": "record",
+     "start": [
+      4999999,
+      7676591
+     ],
+     "variantType": "EFO:0020073"
+    }
+   },
+   "response": "r-0f994a7517bb.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://cancercelllines.org/beacon; used by beacon2_bracket#1",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/genomicVariations",
+    "query": {
+     "end": [
+      7669607,
+      10000000
+     ],
+     "filters": [
+      {
+       "id": "NCIT:C3058",
+       "includeDescendantTerms": true
+      }
+     ],
+     "pagination": {
+      "limit": 1,
+      "skip": 0
+     },
+     "referenceName": "17",
+     "requestedGranularity": "record",
+     "start": [
+      4999999,
+      7676591
+     ],
+     "variantType": "EFO:0030067"
+    }
+   },
+   "response": "r-41cc4ca1c6e9.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://cancercelllines.org/beacon; used by beacon2_bracket#1",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/genomicVariations",
+    "query": {
+     "end": [
+      7669607,
+      10000000
+     ],
+     "filters": [
+      {
+       "id": "NCIT:C3058",
+       "includeDescendantTerms": true
+      }
+     ],
+     "pagination": {
+      "limit": 1,
+      "skip": 0
+     },
+     "referenceName": "17",
+     "requestedGranularity": "record",
+     "start": [
+      4999999,
+      7676591
+     ],
+     "variantType": "EFO:0030068"
+    }
+   },
+   "response": "r-9e643cc4abd4.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://cancercelllines.org/beacon; used by beacon2_bracket#1",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/genomicVariations",
+    "query": {
+     "end": [
+      7669607,
+      10000000
+     ],
+     "filters": [
+      {
+       "id": "NCIT:C3058",
+       "includeDescendantTerms": true
+      }
+     ],
+     "pagination": {
+      "limit": 1,
+      "skip": 0
+     },
+     "referenceName": "17",
+     "requestedGranularity": "record",
+     "start": [
+      4999999,
+      7676591
+     ],
+     "variantType": "EFO:0030069"
+    }
+   },
+   "response": "r-b0873956e253.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://cancercelllines.org/beacon; used by beacon2_gene#1",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/genomicVariations",
+    "query": {
+     "geneId": "TP53",
+     "pagination": {
+      "limit": 1,
+      "skip": 0
+     },
+     "requestedGranularity": "record"
+    }
+   },
+   "response": "r-909fac11bc13.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://cancercelllines.org/beacon; used by beacon2_individuals#1",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/individuals",
+    "query": {
+     "filters": [
+      {
+       "id": "NCIT:C3058",
+       "includeDescendantTerms": true
+      }
+     ],
+     "pagination": {
+      "limit": 0,
+      "skip": 0
+     },
+     "requestedGranularity": "record"
+    }
+   },
+   "response": "r-806dac7d1b59.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://cancercelllines.org/beacon; used by beacon2_individuals#1",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/individuals",
+    "query": {
+     "filters": [
+      {
+       "id": "NCIT:C3058",
+       "includeDescendantTerms": true
+      }
+     ],
+     "pagination": {
+      "limit": 1,
+      "skip": 0
+     },
+     "requestedGranularity": "record"
+    }
+   },
+   "response": "r-e8ee0c7a0c7e.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://cancercelllines.org/beacon; used by beacon2_runs#1",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/runs",
+    "query": {
+     "filters": [
+      {
+       "id": "NCIT:C3058",
+       "includeDescendantTerms": true
+      }
+     ],
+     "pagination": {
+      "limit": 0,
+      "skip": 0
+     },
+     "requestedGranularity": "record"
+    }
+   },
+   "response": "r-1ed7860dc0e5.json"
+  },
+  {
+   "note": "recorded 2026-10-09T09:04Z from https://cancercelllines.org/beacon; used by beacon2_runs#1",
+   "origin": "recorded",
+   "request": {
+    "method": "POST",
+    "path": "/runs",
+    "query": {
+     "filters": [
+      {
+       "id": "NCIT:C3058",
+       "includeDescendantTerms": true
+      }
+     ],
+     "pagination": {
+      "limit": 1,
+      "skip": 0
+     },
+     "requestedGranularity": "record"
+    }
+   },
+   "response": "r-50779db3d9ff.json"
+  }
+ ],
+ "format": "beacon2-fixtures/2"
+}
