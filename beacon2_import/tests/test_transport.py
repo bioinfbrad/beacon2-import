@@ -343,3 +343,54 @@ def test_effective_limit_prefers_the_response():
 
     assert limit == 2000
     assert source == "response"
+
+# ---------------------------------------------------------------------------
+# A RECORDED FAILURE REPLAYS AS A FAILURE
+#
+# The trap this guards: FixtureClient overrides _request, so it bypassed the
+# live client's status classification entirely. A recorded 500 came back as a
+# Response with an empty body -- indistinguishable, to every caller above it,
+# from a provider that answered "nothing found". An outage cannot be tested at
+# all if replaying it produces a plausible success.
+# ---------------------------------------------------------------------------
+
+def _recorded(tmp_path, payload):
+    """A one-entry fixture directory keyed on POST /datasets."""
+    from beacon2_import.transport.http import MANIFEST_FORMAT
+
+    request = {"method": "POST", "path": "/datasets", "query": {}}
+    (tmp_path / "manifest.json").write_text(json.dumps(
+        {"format": MANIFEST_FORMAT,
+         "entries": [{"request": request, "response": "r-recorded.json",
+                      "origin": "recorded", "note": "a recorded failure"}]}))
+    (tmp_path / "r-recorded.json").write_text(json.dumps(payload))
+    return tmp_path
+
+
+@pytest.mark.parametrize("status,content_type,expected_name", [
+    (500, "text/html; charset=iso-8859-1", "ProviderUnavailable"),
+    (503, "text/html", "ProviderUnavailable"),
+    (403, "text/html", "ProviderBlocked"),
+    (422, "application/json", "RequestRejected"),
+])
+def test_a_recorded_failure_replays_as_the_same_failure(
+        tmp_path, status, content_type, expected_name):
+    """Replay classifies on the status and content type that were recorded."""
+    from beacon2_import.transport import http
+
+    directory = _recorded(tmp_path, {"_status": status,
+                                     "_content_type": content_type,
+                                     "_body_excerpt": "a provider error page"})
+    client = http.FixtureClient(str(directory))
+    with pytest.raises(getattr(http, expected_name)):
+        client.post("/datasets", {})
+
+
+def test_a_recorded_success_is_still_served(tmp_path):
+    """The failure branch must not swallow ordinary recordings."""
+    from beacon2_import.transport.http import FixtureClient
+
+    directory = _recorded(tmp_path, {"meta": {}, "response": {}})
+    response = FixtureClient(str(directory)).post("/datasets", {})
+    assert response.status == 200
+    assert response.body["meta"] == {}

@@ -7,6 +7,7 @@
     <expand macro="creators"/>
     <expand macro="xrefs"/>
     <expand macro="requirements"/>
+    <expand macro="query_version"/>
     <command detect_errors="exit_code"><![CDATA[
 #if str($connection.transport) == "api"
     #set $filters = $connection.filters

@@ -26,7 +26,16 @@ from ..auth.resolver import Secret
 
 
 class BeaconHttpError(Exception):
-    """Base for transport failures that become an ``error`` row, not a crash."""
+    """Base for transport failures that become an ``error`` row, not a crash.
+
+    ``status`` and ``content_type`` are what the classifier SAW, set by
+    ``_as_exception``. The fixture recorder stores them so a recorded outage can
+    be replayed and asserted; reading them off the message text would be
+    guesswork, and the pair is what decides a 403 challenge from a 403 refusal.
+    """
+
+    status: int | None = None
+    content_type: str | None = None
 
 
 class RequestRejected(BeaconHttpError):
@@ -350,13 +359,22 @@ class BeaconClient:
             if self.is_retryable(failure) and attempt <= self.max_retries:
                 time.sleep(min(2.0 ** attempt, 30.0))
                 continue
-            raise self._as_exception(failure, url, status)
+            raise self._as_exception(failure, url, status, content_type)
 
     @staticmethod
     def _as_exception(failure: "TransportFailure", url: str,
-                      status: int | None) -> BeaconHttpError:
+                      status: int | None,
+                      content_type: str | None = None) -> BeaconHttpError:
         """Map a classified failure onto the exception the caller expects."""
         detail = f"{url} returned {status}" if status else f"{url} did not respond"
+        error = BeaconClient._exception_for(failure, detail, status)
+        error.status, error.content_type = status, content_type
+        return error
+
+    @staticmethod
+    def _exception_for(failure: "TransportFailure", detail: str,
+                       status: int | None) -> BeaconHttpError:
+        """The exception class for one classified failure."""
         if failure is TransportFailure.UNAVAILABLE:
             return ProviderUnavailable(detail)
         if failure is TransportFailure.BLOCKED:
@@ -501,14 +519,30 @@ class FixtureClient(BeaconClient):
                 f"fails. Record it with scripts/record_fixtures.py.")
         filename = matches[0]["response"]
         path = self.fixture_dir / filename
+        # Name the recording, not its absolute path: this string reaches an
+        # outcome note when a recorded failure replays, and a reader needs the
+        # fixture it came from, not a machine-specific directory.
+        url = f"{self.base_url}/{filename}"
         # Large recordings are stored gzipped, byte-for-byte, to keep the tool
         # repository small; small ones stay plain JSON, readable in review.
         raw = gzip.decompress(path.read_bytes()) if filename.endswith(".gz") else path.read_bytes()
         payload = json.loads(raw.decode("utf-8"))
+        status = int(payload.get("_status", 200))
+        if not 200 <= status < 300:
+            # A RECORDED FAILURE replays as a failure. The live client classifies
+            # a non-2xx response and raises; if this one returned it as a
+            # Response instead, a recorded outage would reach the caller looking
+            # like a successful empty answer -- the exact ambiguity the project
+            # exists to remove. Status class decides a 5xx before any body is
+            # read, so a recording need not carry the provider's HTML.
+            failure = self.classify_transport_failure(
+                status, payload.get("_content_type"), payload.get("_body_excerpt"))
+            raise self._as_exception(failure, url, status,
+                                     payload.get("_content_type"))
         return Response(
-            status=int(payload.get("_status", 200)),
+            status=status,
             body=payload,
-            url=f"{self.base_url}/{str(path).lstrip('/')}",
+            url=url,
             method=method.upper(),
             elapsed_seconds=0.0,
         )

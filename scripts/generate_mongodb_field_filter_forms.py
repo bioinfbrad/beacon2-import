@@ -44,6 +44,7 @@ HEADER = """<tool id="beacon2_{tool}" name="Beacon2 {title}" version="@TOOL_VERS
     <expand macro="creators"/>
     <expand macro="xrefs"/>
     <expand macro="requirements"/>
+    <expand macro="query_version"/>
 """
 
 MONGO_HEAD = """    beacon2-query {sub}

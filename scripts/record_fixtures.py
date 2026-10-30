@@ -44,6 +44,7 @@ import galaxy_tests as spec  # noqa: E402
 from beacon2_import.cli import common  # noqa: E402
 from beacon2_import.cli.main import main as beacon2_query  # noqa: E402
 from beacon2_import.transport.http import (  # noqa: E402
+    BeaconHttpError,
     MANIFEST_FORMAT, Response, canonical_request,
 )
 
@@ -68,11 +69,37 @@ class Recorder:
         entry["tests"].add(self.test_id)
         return response
 
+    def _keep_failure(self, method, path, params, body, error):
+        """Record a FAILED request: an outage is a recording, not a gap.
+
+        Without this, a provider that is down leaves no fixture at all, the
+        replay reports a fixture MISS, and the test cannot distinguish "the
+        endpoint is broken" from "nobody recorded it". The stored payload is
+        the status and content type the classifier saw, which is all a 5xx
+        needs; the body excerpt is provenance, never logic.
+        """
+        key = canonical_request(method, path, params, body)
+        payload = {"_status": getattr(error, "status", None) or 0,
+                   "_content_type": getattr(error, "content_type", None),
+                   "_body_excerpt": str(error)[:200]}
+        entry = self.store.setdefault(self.provider.id, {}).setdefault(
+            json.dumps(key, sort_keys=True),
+            {"request": key, "body": payload, "tests": set()})
+        entry["tests"].add(self.test_id)
+
     def post(self, path, body):
-        return self._keep("POST", path, None, body, self.client.post(path, body))
+        try:
+            return self._keep("POST", path, None, body, self.client.post(path, body))
+        except BeaconHttpError as error:
+            self._keep_failure("POST", path, None, body, error)
+            raise
 
     def get(self, path, params=None):
-        return self._keep("GET", path, params, None, self.client.get(path, params))
+        try:
+            return self._keep("GET", path, params, None, self.client.get(path, params))
+        except BeaconHttpError as error:
+            self._keep_failure("GET", path, params, None, error)
+            raise
 
 
 class Synthetic:

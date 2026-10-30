@@ -4,6 +4,3 @@
 # miss its fixtures; once recorded, it must be removed from this list.
 #
 # test<TAB>why
-beacon2_range#5	unfiltered now, so the gene-equals-positional behaviour stays testable
-beacon2_gene#1	unfiltered now, so the gene-equals-positional behaviour stays testable
-beacon2_datasets#1	the 26 October recording met an outage; nothing was stored

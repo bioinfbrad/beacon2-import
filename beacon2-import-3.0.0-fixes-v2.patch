@@ -1,0 +1,509 @@
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -27,6 +27,15 @@
+ 
+ - `beacon2-query`, with subcommands `range`, `bracket`, `sequence`, `gene`,
+   `entity`, `service-info` and `filtering-terms`.
++- Both commands answer `--version`, and every Galaxy wrapper declares it as its
++  `version_command`, so a job record names the version that actually ran. A
++  stale install on `PATH` is the one failure a test suite cannot see in its own
++  results: it reports failures that the working tree does not have.
++- A recorded failure replays as a failure. `FixtureClient` classifies a
++  recorded non-2xx response through the same status-and-content-type rules as
++  the live client, and `scripts/record_fixtures.py` stores a failed request
++  instead of leaving a gap. A provider outage is therefore testable, and is not
++  replayed as a successful empty answer.
+ - Queries any number of Beacon v2 providers per run. Every result row carries
+   its provider and variant class; `outcomes.tsv` reports one row per provider
+   and variant class.
+--- a/beacon2_import/commands.py
++++ b/beacon2_import/commands.py
+@@ -52,6 +52,14 @@
+     def __init__(self, *args, command: str, **kwargs) -> None:
+         self.intro = INTRO[command]
+         super().__init__(*args, **kwargs)
++        # Both commands answer --version, and every Galaxy wrapper declares it as
++        # its version_command. The job record then carries the version that
++        # actually RAN: a stale install on PATH is the one failure mode a test
++        # suite cannot see from its own results, and it has cost a planemo cycle.
++        from . import __version__
++
++        self.add_argument("--version", action="version",
++                          version=f"{command} {__version__}")
+ 
+     def format_help(self) -> str:
+         return f"{self.intro}\n\n{super().format_help()}"
+--- a/beacon2_import/tests/galaxy_tests_awaiting.txt
++++ b/beacon2_import/tests/galaxy_tests_awaiting.txt
+@@ -4,6 +4,3 @@
+ # miss its fixtures; once recorded, it must be removed from this list.
+ #
+ # test<TAB>why
+-beacon2_range#5	unfiltered now, so the gene-equals-positional behaviour stays testable
+-beacon2_gene#1	unfiltered now, so the gene-equals-positional behaviour stays testable
+-beacon2_datasets#1	the 26 October recording met an outage; nothing was stored
+--- a/beacon2_import/tests/test_transport.py
++++ b/beacon2_import/tests/test_transport.py
+@@ -343,3 +343,54 @@
+ 
+     assert limit == 2000
+     assert source == "response"
++
++# ---------------------------------------------------------------------------
++# A RECORDED FAILURE REPLAYS AS A FAILURE
++#
++# The trap this guards: FixtureClient overrides _request, so it bypassed the
++# live client's status classification entirely. A recorded 500 came back as a
++# Response with an empty body -- indistinguishable, to every caller above it,
++# from a provider that answered "nothing found". An outage cannot be tested at
++# all if replaying it produces a plausible success.
++# ---------------------------------------------------------------------------
++
++def _recorded(tmp_path, payload):
++    """A one-entry fixture directory keyed on POST /datasets."""
++    from beacon2_import.transport.http import MANIFEST_FORMAT
++
++    request = {"method": "POST", "path": "/datasets", "query": {}}
++    (tmp_path / "manifest.json").write_text(json.dumps(
++        {"format": MANIFEST_FORMAT,
++         "entries": [{"request": request, "response": "r-recorded.json",
++                      "origin": "recorded", "note": "a recorded failure"}]}))
++    (tmp_path / "r-recorded.json").write_text(json.dumps(payload))
++    return tmp_path
++
++
++@pytest.mark.parametrize("status,content_type,expected_name", [
++    (500, "text/html; charset=iso-8859-1", "ProviderUnavailable"),
++    (503, "text/html", "ProviderUnavailable"),
++    (403, "text/html", "ProviderBlocked"),
++    (422, "application/json", "RequestRejected"),
++])
++def test_a_recorded_failure_replays_as_the_same_failure(
++        tmp_path, status, content_type, expected_name):
++    """Replay classifies on the status and content type that were recorded."""
++    from beacon2_import.transport import http
++
++    directory = _recorded(tmp_path, {"_status": status,
++                                     "_content_type": content_type,
++                                     "_body_excerpt": "a provider error page"})
++    client = http.FixtureClient(str(directory))
++    with pytest.raises(getattr(http, expected_name)):
++        client.post("/datasets", {})
++
++
++def test_a_recorded_success_is_still_served(tmp_path):
++    """The failure branch must not swallow ordinary recordings."""
++    from beacon2_import.transport.http import FixtureClient
++
++    directory = _recorded(tmp_path, {"meta": {}, "response": {}})
++    response = FixtureClient(str(directory)).post("/datasets", {})
++    assert response.status == 200
++    assert response.body["meta"] == {}
+--- a/beacon2_import/transport/http.py
++++ b/beacon2_import/transport/http.py
+@@ -26,7 +26,16 @@
+ 
+ 
+ class BeaconHttpError(Exception):
+-    """Base for transport failures that become an ``error`` row, not a crash."""
++    """Base for transport failures that become an ``error`` row, not a crash.
++
++    ``status`` and ``content_type`` are what the classifier SAW, set by
++    ``_as_exception``. The fixture recorder stores them so a recorded outage can
++    be replayed and asserted; reading them off the message text would be
++    guesswork, and the pair is what decides a 403 challenge from a 403 refusal.
++    """
++
++    status: int | None = None
++    content_type: str | None = None
+ 
+ 
+ class RequestRejected(BeaconHttpError):
+@@ -350,13 +359,22 @@
+             if self.is_retryable(failure) and attempt <= self.max_retries:
+                 time.sleep(min(2.0 ** attempt, 30.0))
+                 continue
+-            raise self._as_exception(failure, url, status)
++            raise self._as_exception(failure, url, status, content_type)
+ 
+     @staticmethod
+     def _as_exception(failure: "TransportFailure", url: str,
+-                      status: int | None) -> BeaconHttpError:
++                      status: int | None,
++                      content_type: str | None = None) -> BeaconHttpError:
+         """Map a classified failure onto the exception the caller expects."""
+         detail = f"{url} returned {status}" if status else f"{url} did not respond"
++        error = BeaconClient._exception_for(failure, detail, status)
++        error.status, error.content_type = status, content_type
++        return error
++
++    @staticmethod
++    def _exception_for(failure: "TransportFailure", detail: str,
++                       status: int | None) -> BeaconHttpError:
++        """The exception class for one classified failure."""
+         if failure is TransportFailure.UNAVAILABLE:
+             return ProviderUnavailable(detail)
+         if failure is TransportFailure.BLOCKED:
+@@ -501,14 +519,30 @@
+                 f"fails. Record it with scripts/record_fixtures.py.")
+         filename = matches[0]["response"]
+         path = self.fixture_dir / filename
++        # Name the recording, not its absolute path: this string reaches an
++        # outcome note when a recorded failure replays, and a reader needs the
++        # fixture it came from, not a machine-specific directory.
++        url = f"{self.base_url}/{filename}"
+         # Large recordings are stored gzipped, byte-for-byte, to keep the tool
+         # repository small; small ones stay plain JSON, readable in review.
+         raw = gzip.decompress(path.read_bytes()) if filename.endswith(".gz") else path.read_bytes()
+         payload = json.loads(raw.decode("utf-8"))
++        status = int(payload.get("_status", 200))
++        if not 200 <= status < 300:
++            # A RECORDED FAILURE replays as a failure. The live client classifies
++            # a non-2xx response and raises; if this one returned it as a
++            # Response instead, a recorded outage would reach the caller looking
++            # like a successful empty answer -- the exact ambiguity the project
++            # exists to remove. Status class decides a 5xx before any body is
++            # read, so a recording need not carry the provider's HTML.
++            failure = self.classify_transport_failure(
++                status, payload.get("_content_type"), payload.get("_body_excerpt"))
++            raise self._as_exception(failure, url, status,
++                                     payload.get("_content_type"))
+         return Response(
+-            status=int(payload.get("_status", 200)),
++            status=status,
+             body=payload,
+-            url=f"{self.base_url}/{str(path).lstrip('/')}",
++            url=url,
+             method=method.upper(),
+             elapsed_seconds=0.0,
+         )
+--- a/scripts/galaxy_tests.py
++++ b/scripts/galaxy_tests.py
+@@ -59,6 +59,16 @@
+             cols.index("chromosome"): chromosome, cols.index("start"): str(start),
+             cols.index("reference_bases"): ref, cols.index("alternate_bases"): alt}
+     expr = "^" + r"\t".join(want.get(i, r"[^\t]*") for i in range(max(want) + 1)) + r"\t.*"
++    return f'<has_line_matching expression={quoteattr(expr)}/>'
++
++
++def matching(expr: str) -> str:
++    """One has_line_matching assertion for a ready-made expression.
++
++    Exists so a caller can pass a raw pattern: an escaped string inside an
++    f-string expression is a SyntaxError before Python 3.12, and this file must
++    import on the 3.10 floor the package declares.
++    """
+     return f'<has_line_matching expression={quoteattr(expr)}/>'
+ 
+ 
+@@ -188,7 +198,7 @@
+                ["range", "--providers", CCL, "--variant-classes", "CNV", "--reference-name", "17",
+                 *TP53_SPAN, "--granularity", "count"],
+                [outcome(CCL, "CNV", "ok", 1)],
+-               [rf'<has_line_matching expression={quoteattr(chr(94) + re.escape(CCL) + r"\t(?:[^\t]*\t){2}CNV\t[^\t]*\tcount\t.*")}/>',
++               [matching("^" + re.escape(CCL) + r"\t(?:[^\t]*\t){2}CNV\t[^\t]*\tcount\t.*"),
+                 lines(2)],
+                requests_to=[CCL]),
+     GalaxyTest("beacon2_range", 4, "An ontology filter without descendants, over TP53.",
+@@ -326,14 +336,14 @@
+                ["service-info", "--providers", CCL],
+                [outcome(CCL, "n/a", "ok", 7)],
+                # an OBSERVED value, not merely the row: the row is written either way
+-               [rf'<has_line_matching expression={quoteattr(chr(94) + re.escape(CCL) + r"\tbeacon_id_reported\t[^\t]*\t[^\t]+\t.*")}/>',
++               [matching("^" + re.escape(CCL) + r"\tbeacon_id_reported\t[^\t]*\t[^\t]+\t.*"),
+                 text("production_status")],
+                requests_to=[CCL], output_names=("report", "outcomes")),
+ ]
+ 
+ def _entity_rows(count: int, column: str) -> tuple[list[str], list[str]]:
+     return ([outcome(CCL, "n/a", "ok", count), lines(2)],
+-            [rf'<has_line_matching expression={quoteattr(chr(94) + re.escape(CCL) + r"\t.*")}/>',
++            [matching("^" + re.escape(CCL) + r"\t.*"),
+              text(column), lines(count + 1)])
+ 
+ 
+@@ -348,7 +358,15 @@
+     "analysis": _entity_rows(278, "analysis_id"),
+     "run": _entity_rows(278, "run_id"),
+     "cohort": _entity_rows(6, "cohort_id"),
+-    "dataset": _entity_rows(4, "dataset_id"),
++    # /datasets has answered 500 on BOTH bycon servers since at least 26 October
++    # (recorded 2026-10-29; /cohorts, /filtering_terms and /info were fine in the
++    # same probe). The recording is of that outage, so this test asserts what the
++    # tool must do with a provider that cannot answer: say unavailable, return no
++    # rows, and name the cause. Restore the record-level expectation --
++    # _entity_rows(4, "dataset_id") -- once the endpoint serves JSON again.
++    "dataset": ([outcome(CCL, "n/a", "unavailable", 0), text("worth retrying later"),
++                 lines(2)],
++                [text("dataset_id"), lines(1)]),
+ }
+ 
+ for entity, plural, column, filtered in (
+@@ -358,9 +376,14 @@
+         # Small collections, which may not apply a disease filter at all.
+         ("cohort", "cohorts", "cohort_id", False), ("dataset", "datasets", "dataset_id", False)):
+     inner = [ontology_filter(GBM)] if filtered else []
++    description = (f"{plural.capitalize()}"
++                   f"{' matching a filter' if filtered else ''}, from a live provider.")
++    if entity == "dataset":
++        description = ("Datasets, from a provider whose /datasets endpoint is "
++                       "answering 500: the outage itself, as recorded.")
+     TESTS.append(GalaxyTest(
+         f"beacon2_{plural}", 1,
+-        f"{plural.capitalize()}{' matching a filter' if filtered else ''}, from a live provider.",
++        description,
+         [connection([CCL], *inner)],
+         ["entity", "--entity", entity, "--providers", CCL, "--granularity", "record",
+          "--limit", "100", "--skip", "0", *(arg_filter(GBM) if filtered else [])],
+--- a/scripts/generate_mongodb_field_filter_forms.py
++++ b/scripts/generate_mongodb_field_filter_forms.py
+@@ -44,6 +44,7 @@
+     <expand macro="creators"/>
+     <expand macro="xrefs"/>
+     <expand macro="requirements"/>
++    <expand macro="query_version"/>
+ """
+ 
+ MONGO_HEAD = """    beacon2-query {sub}
+--- a/scripts/record_fixtures.py
++++ b/scripts/record_fixtures.py
+@@ -44,6 +44,7 @@
+ from beacon2_import.cli import common  # noqa: E402
+ from beacon2_import.cli.main import main as beacon2_query  # noqa: E402
+ from beacon2_import.transport.http import (  # noqa: E402
++    BeaconHttpError,
+     MANIFEST_FORMAT, Response, canonical_request,
+ )
+ 
+@@ -68,11 +69,37 @@
+         entry["tests"].add(self.test_id)
+         return response
+ 
++    def _keep_failure(self, method, path, params, body, error):
++        """Record a FAILED request: an outage is a recording, not a gap.
++
++        Without this, a provider that is down leaves no fixture at all, the
++        replay reports a fixture MISS, and the test cannot distinguish "the
++        endpoint is broken" from "nobody recorded it". The stored payload is
++        the status and content type the classifier saw, which is all a 5xx
++        needs; the body excerpt is provenance, never logic.
++        """
++        key = canonical_request(method, path, params, body)
++        payload = {"_status": getattr(error, "status", None) or 0,
++                   "_content_type": getattr(error, "content_type", None),
++                   "_body_excerpt": str(error)[:200]}
++        entry = self.store.setdefault(self.provider.id, {}).setdefault(
++            json.dumps(key, sort_keys=True),
++            {"request": key, "body": payload, "tests": set()})
++        entry["tests"].add(self.test_id)
++
+     def post(self, path, body):
+-        return self._keep("POST", path, None, body, self.client.post(path, body))
++        try:
++            return self._keep("POST", path, None, body, self.client.post(path, body))
++        except BeaconHttpError as error:
++            self._keep_failure("POST", path, None, body, error)
++            raise
+ 
+     def get(self, path, params=None):
+-        return self._keep("GET", path, params, None, self.client.get(path, params))
++        try:
++            return self._keep("GET", path, params, None, self.client.get(path, params))
++        except BeaconHttpError as error:
++            self._keep_failure("GET", path, params, None, error)
++            raise
+ 
+ 
+ class Synthetic:
+--- a/tools/beacon2-import/beacon2_analyses.xml
++++ b/tools/beacon2-import/beacon2_analyses.xml
+@@ -7,6 +7,7 @@
+     <expand macro="creators"/>
+     <expand macro="xrefs"/>
+     <expand macro="requirements"/>
++    <expand macro="query_version"/>
+     <command detect_errors="exit_code"><![CDATA[
+ #if str($connection.transport) == "api"
+     #set $filters = $connection.filters
+--- a/tools/beacon2-import/beacon2_biosamples.xml
++++ b/tools/beacon2-import/beacon2_biosamples.xml
+@@ -7,6 +7,7 @@
+     <expand macro="creators"/>
+     <expand macro="xrefs"/>
+     <expand macro="requirements"/>
++    <expand macro="query_version"/>
+     <command detect_errors="exit_code"><![CDATA[
+ #if str($connection.transport) == "api"
+     #set $filters = $connection.filters
+--- a/tools/beacon2-import/beacon2_bracket.xml
++++ b/tools/beacon2-import/beacon2_bracket.xml
+@@ -6,6 +6,7 @@
+     <expand macro="creators"/>
+     <expand macro="xrefs"/>
+     <expand macro="requirements"/>
++    <expand macro="query_version"/>
+     <command detect_errors="exit_code"><![CDATA[
+ #if str($connection.transport) == "api"
+     beacon2-query bracket
+--- a/tools/beacon2-import/beacon2_cnv.xml
++++ b/tools/beacon2-import/beacon2_cnv.xml
+@@ -7,6 +7,7 @@
+     <expand macro="creators"/>
+     <expand macro="xrefs"/>
+     <expand macro="requirements"/>
++    <expand macro="query_version"/>
+     <command detect_errors="exit_code"><![CDATA[
+ #if str($connection.transport) == "api"
+     #set $filters = $connection.filters
+--- a/tools/beacon2-import/beacon2_cohorts.xml
++++ b/tools/beacon2-import/beacon2_cohorts.xml
+@@ -7,6 +7,7 @@
+     <expand macro="creators"/>
+     <expand macro="xrefs"/>
+     <expand macro="requirements"/>
++    <expand macro="query_version"/>
+     <command detect_errors="exit_code"><![CDATA[
+ #if str($connection.transport) == "api"
+     #set $filters = $connection.filters
+--- a/tools/beacon2-import/beacon2_datasets.xml
++++ b/tools/beacon2-import/beacon2_datasets.xml
+@@ -7,6 +7,7 @@
+     <expand macro="creators"/>
+     <expand macro="xrefs"/>
+     <expand macro="requirements"/>
++    <expand macro="query_version"/>
+     <command detect_errors="exit_code"><![CDATA[
+ #if str($connection.transport) == "api"
+     #set $filters = $connection.filters
+@@ -83,7 +84,7 @@
+     </inputs>
+     <expand macro="beacon_outputs"/>
+     <tests>
+-        <!-- Datasets, from a live provider. -->
++        <!-- Datasets, from a provider whose /datasets endpoint is answering 500: the outage itself, as recorded. -->
+         <test expect_num_outputs="2">
+             <conditional name="connection">
+                 <param name="transport" value="api"/>
+@@ -91,14 +92,14 @@
+             </conditional>
+             <output name="results">
+                 <assert_contents>
+-                    <has_line_matching expression="^org\.cancercelllines\t.*"/>
+                     <has_text text="dataset_id"/>
+-                    <has_n_lines n="5"/>
++                    <has_n_lines n="1"/>
+                 </assert_contents>
+             </output>
+             <output name="outcomes">
+                 <assert_contents>
+-                    <has_line_matching expression="^org\.cancercelllines\t[^\t]*\tn/a\t[^\t]*\tok\t4\t.*"/>
++                    <has_line_matching expression="^org\.cancercelllines\t[^\t]*\tn/a\t[^\t]*\tunavailable\t0\t.*"/>
++                    <has_text text="worth retrying later"/>
+                     <has_n_lines n="2"/>
+                 </assert_contents>
+             </output>
+--- a/tools/beacon2-import/beacon2_filtering_terms.xml
++++ b/tools/beacon2-import/beacon2_filtering_terms.xml
+@@ -6,6 +6,7 @@
+     <expand macro="creators"/>
+     <expand macro="xrefs"/>
+     <expand macro="requirements"/>
++    <expand macro="query_version"/>
+     <command detect_errors="exit_code"><![CDATA[
+     beacon2-query filtering-terms
+         @PROVIDER_ARGS@
+--- a/tools/beacon2-import/beacon2_gene.xml
++++ b/tools/beacon2-import/beacon2_gene.xml
+@@ -6,6 +6,7 @@
+     <expand macro="creators"/>
+     <expand macro="xrefs"/>
+     <expand macro="requirements"/>
++    <expand macro="query_version"/>
+     <command detect_errors="exit_code"><![CDATA[
+ #if str($connection.transport) == "api"
+     beacon2-query gene
+--- a/tools/beacon2-import/beacon2_individuals.xml
++++ b/tools/beacon2-import/beacon2_individuals.xml
+@@ -7,6 +7,7 @@
+     <expand macro="creators"/>
+     <expand macro="xrefs"/>
+     <expand macro="requirements"/>
++    <expand macro="query_version"/>
+     <command detect_errors="exit_code"><![CDATA[
+ #if str($connection.transport) == "api"
+     #set $filters = $connection.filters
+--- a/tools/beacon2-import/beacon2_range.xml
++++ b/tools/beacon2-import/beacon2_range.xml
+@@ -6,6 +6,7 @@
+     <expand macro="creators"/>
+     <expand macro="xrefs"/>
+     <expand macro="requirements"/>
++    <expand macro="query_version"/>
+     <command detect_errors="exit_code"><![CDATA[
+ #if str($connection.transport) == "api"
+     beacon2-query range
+--- a/tools/beacon2-import/beacon2_runs.xml
++++ b/tools/beacon2-import/beacon2_runs.xml
+@@ -7,6 +7,7 @@
+     <expand macro="creators"/>
+     <expand macro="xrefs"/>
+     <expand macro="requirements"/>
++    <expand macro="query_version"/>
+     <command detect_errors="exit_code"><![CDATA[
+ #if str($connection.transport) == "api"
+     #set $filters = $connection.filters
+--- a/tools/beacon2-import/beacon2_sequence.xml
++++ b/tools/beacon2-import/beacon2_sequence.xml
+@@ -6,6 +6,7 @@
+     <expand macro="creators"/>
+     <expand macro="xrefs"/>
+     <expand macro="requirements"/>
++    <expand macro="query_version"/>
+     <command detect_errors="exit_code"><![CDATA[
+ #if str($connection.transport) == "api"
+     beacon2-query sequence
+--- a/tools/beacon2-import/beacon2_service_info.xml
++++ b/tools/beacon2-import/beacon2_service_info.xml
+@@ -6,6 +6,7 @@
+     <expand macro="creators"/>
+     <expand macro="xrefs"/>
+     <expand macro="requirements"/>
++    <expand macro="query_version"/>
+     <command detect_errors="exit_code"><![CDATA[
+     beacon2-query service-info
+         @PROVIDER_ARGS@
+--- a/tools/beacon2-import/import.xml
++++ b/tools/beacon2-import/import.xml
+@@ -5,6 +5,7 @@
+     </macros>
+     <expand macro="creators"/>
+     <expand macro="requirements"/>
++    <expand macro="import_version"/>
+     <command detect_errors="exit_code"><![CDATA[    
+         ln -s '$input_json_file' ./input.json &&
+         beacon2-import
+--- a/tools/beacon2-import/macros.xml
++++ b/tools/beacon2-import/macros.xml
+@@ -7,6 +7,14 @@
+         <requirements>
+             <requirement type="package" version="@TOOL_VERSION@">beacon2-import</requirement>
+         </requirements>
++    </xml>
++
++    <xml name="query_version">
++        <version_command>beacon2-query --version</version_command>
++    </xml>
++
++    <xml name="import_version">
++        <version_command>beacon2-import --version</version_command>
+     </xml>
+ 
+     <xml name="xrefs">
+--- /dev/null
++++ b/tools/beacon2-import/test-data/fixtures/org.cancercelllines/r-2394b00b6ef9.json
+@@ -0,0 +1,5 @@
++{
++ "_body_excerpt": "https://cancercelllines.org/beacon/datasets returned 500",
++ "_content_type": "text/html; charset=iso-8859-1",
++ "_status": 500
++}

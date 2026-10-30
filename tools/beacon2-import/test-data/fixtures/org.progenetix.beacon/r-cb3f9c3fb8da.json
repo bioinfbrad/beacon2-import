@@ -52,31 +52,31 @@
      {
       "caseLevelData": [
        {
-        "variantId": "bycvar-665706019267d4e772e82fdd"
+        "variantId": "bycvar-6656ff79ea1558707a980cd2"
        }
       ],
       "frequencyInPopulations": [],
       "identifiers": {},
       "molecularAttributes": {},
-      "variantInternalId": "NC_000017.11:4947604-17354592:EFO_0030068",
+      "variantInternalId": "NC_000017.11:1074619-8502424:EFO_0030068",
       "variantLevelData": {},
       "variation": {
-       "_id": "665706019267d4e772e82fdd",
+       "_id": "6656ff79ea1558707a980cd2",
        "copyChange": "low-level loss",
-       "id": "bycvar-665706019267d4e772e82fdd",
+       "id": "bycvar-6656ff79ea1558707a980cd2",
        "location": {
         "chromosome": "17",
-        "end": 17354592,
+        "end": 8502424,
         "sequenceId": "refseq:NC_000017.11",
         "sequenceReference": {
          "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
          "type": "SequenceReference"
         },
-        "start": 4947604,
+        "start": 1074619,
         "type": "SequenceLocation"
        },
        "type": "CopyNumberChange",
-       "updated": "2025-08-21T17:53:05.268507",
+       "updated": "2025-08-21T17:52:23.451038",
        "variantState": {
         "id": "EFO:0030068",
         "label": "low-level loss"

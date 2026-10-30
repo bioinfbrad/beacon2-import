@@ -6,6 +6,7 @@
     <expand macro="creators"/>
     <expand macro="xrefs"/>
     <expand macro="requirements"/>
+    <expand macro="query_version"/>
     <command detect_errors="exit_code"><![CDATA[
     beacon2-query service-info
         @PROVIDER_ARGS@

@@ -52,31 +52,31 @@
      {
       "caseLevelData": [
        {
-        "variantId": "bycvar-63d118c842040c6f3566518b"
+        "variantId": "bycvar-63d118af42040c6f355ab4ce"
        }
       ],
       "frequencyInPopulations": [],
       "identifiers": {},
       "molecularAttributes": {},
-      "variantInternalId": "NC_000017.11:497601-15739232:EFO_0030070",
+      "variantInternalId": "NC_000017.11:601219-51970202:EFO_0030070",
       "variantLevelData": {},
       "variation": {
-       "_id": "63d118c842040c6f3566518b",
+       "_id": "63d118af42040c6f355ab4ce",
        "copyChange": "gain",
-       "id": "bycvar-63d118c842040c6f3566518b",
+       "id": "bycvar-63d118af42040c6f355ab4ce",
        "location": {
         "chromosome": "17",
-        "end": 15739232,
+        "end": 51970202,
         "sequenceId": "refseq:NC_000017.11",
         "sequenceReference": {
          "refgetAccession": "SQ.dLZ15tNO1Ur0IcGjwc3Sdi_0A6Yf4zm7",
          "type": "SequenceReference"
         },
-        "start": 497601,
+        "start": 601219,
         "type": "SequenceLocation"
        },
        "type": "CopyNumberChange",
-       "updated": "2025-08-21T17:46:39.114973",
+       "updated": "2025-08-21T17:45:50.581201",
        "variantState": {
         "id": "EFO:0030070",
         "label": "gain"

@@ -52,6 +52,14 @@ class IntroducedParser(argparse.ArgumentParser):
     def __init__(self, *args, command: str, **kwargs) -> None:
         self.intro = INTRO[command]
         super().__init__(*args, **kwargs)
+        # Both commands answer --version, and every Galaxy wrapper declares it as
+        # its version_command. The job record then carries the version that
+        # actually RAN: a stale install on PATH is the one failure mode a test
+        # suite cannot see from its own results, and it has cost a planemo cycle.
+        from . import __version__
+
+        self.add_argument("--version", action="version",
+                          version=f"{command} {__version__}")
 
     def format_help(self) -> str:
         return f"{self.intro}\n\n{super().format_help()}"

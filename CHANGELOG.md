@@ -27,6 +27,15 @@ client for the GA4GH Beacon v2 HTTP API, with MongoDB kept as a transport.
 
 - `beacon2-query`, with subcommands `range`, `bracket`, `sequence`, `gene`,
   `entity`, `service-info` and `filtering-terms`.
+- Both commands answer `--version`, and every Galaxy wrapper declares it as its
+  `version_command`, so a job record names the version that actually ran. A
+  stale install on `PATH` is the one failure a test suite cannot see in its own
+  results: it reports failures that the working tree does not have.
+- A recorded failure replays as a failure. `FixtureClient` classifies a
+  recorded non-2xx response through the same status-and-content-type rules as
+  the live client, and `scripts/record_fixtures.py` stores a failed request
+  instead of leaving a gap. A provider outage is therefore testable, and is not
+  replayed as a successful empty answer.
 - Queries any number of Beacon v2 providers per run. Every result row carries
   its provider and variant class; `outcomes.tsv` reports one row per provider
   and variant class.

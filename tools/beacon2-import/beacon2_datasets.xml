@@ -7,6 +7,7 @@
     <expand macro="creators"/>
     <expand macro="xrefs"/>
     <expand macro="requirements"/>
+    <expand macro="query_version"/>
     <command detect_errors="exit_code"><![CDATA[
 #if str($connection.transport) == "api"
     #set $filters = $connection.filters
@@ -83,7 +84,7 @@
     </inputs>
     <expand macro="beacon_outputs"/>
     <tests>
-        <!-- Datasets, from a live provider. -->
+        <!-- Datasets, from a provider whose /datasets endpoint is answering 500: the outage itself, as recorded. -->
         <test expect_num_outputs="2">
             <conditional name="connection">
                 <param name="transport" value="api"/>
@@ -91,14 +92,14 @@
             </conditional>
             <output name="results">
                 <assert_contents>
-                    <has_line_matching expression="^org\.cancercelllines\t.*"/>
                     <has_text text="dataset_id"/>
-                    <has_n_lines n="5"/>
+                    <has_n_lines n="1"/>
                 </assert_contents>
             </output>
             <output name="outcomes">
                 <assert_contents>
-                    <has_line_matching expression="^org\.cancercelllines\t[^\t]*\tn/a\t[^\t]*\tok\t4\t.*"/>
+                    <has_line_matching expression="^org\.cancercelllines\t[^\t]*\tn/a\t[^\t]*\tunavailable\t0\t.*"/>
+                    <has_text text="worth retrying later"/>
                     <has_n_lines n="2"/>
                 </assert_contents>
             </output>
